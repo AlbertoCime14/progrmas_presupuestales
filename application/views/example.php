@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Ejemplo</h1>
+            <h1>algo</h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="index.html">
@@ -21,8 +21,8 @@ include 'application/views/masterpage/navegacion.php';
         </section>
         <!-- Main content -->
         <section class="content">
-		<!---Aqui va el contenido de la pagina :v->
-        
+		<!---Aqui va el contenido de la pagina :v-->
+        dsfdgfsdfdgfs
         </section>
         <!-- /.content -->
     </aside>
