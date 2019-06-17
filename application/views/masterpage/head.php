@@ -13,9 +13,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <!-- global css -->
-    <link type="text/css" href="css/app.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
-    <link rel="stylesheet" href="css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
+    <link type="text/css" href="<?=base_url();?>css/app.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
     <!-- end of global css -->
 </head>
 
@@ -23,7 +23,7 @@
 
 <body class="skin-default">
 <div class="preloader">
-    <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
+    <div class="loader_img"><img src="<?=base_url();?>img/loader.gif" alt="loading..." height="64" width="64"></div>
 </div>
 <!-- header logo: style can be found in header-->
 <header class="header">
