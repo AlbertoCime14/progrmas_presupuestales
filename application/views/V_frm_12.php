@@ -1,3 +1,16 @@
+ <link type="text/css" href="<?=base_url();?>css/app.css" rel="stylesheet"/>
+    <!-- end of global css -->
+    <!--page level css-->
+    <link href="<?=base_url();?>vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>vendors/gridforms/css/gridforms.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>vendors/datedropper/datedropper.css">
+    <link href="<?=base_url();?>vendors/airdatepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>vendors/select2/css/select2.min.css">
+    <link href="<?=base_url();?>vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/complex_forms.css">
+
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
 <?php
@@ -6,49 +19,52 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Formato 9</h1>
-            
+            <h1>Formato 1</h1>
+           
         </section>
         <!-- Main content -->
-        <!---Aqui inicia e contenido  de la pagina :v-->
-        <section class="content">
-        <div class="col-lg-12">
+      
+        <!---Aqui va el contenido de la pagina :v-->
+       <section class="content">
+            <div class="row" id="complex-form">
+                <!--5th tab bank application starting-->
+                <div class="col-lg-12">
                     <form class="grid-form">
                         <h2 style="text-align:center">BANK ACCOUNT OPENING FORM</h2>
                         <fieldset>
                             <legend>Please open an account at</legend>
                             <div data-row-span="1">
-                                <div data-field-span="1" class="" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Branch Name</label>
-                                    <input type="text" autofocus="">
+                                    <input type="text" autofocus>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>Personal Details (Sole/First Accountholder/Minor)</legend>
                             <div data-row-span="4">
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Title</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="customer-title[]" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Mr.</label> &nbsp;
-                                    <label class="">
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="customer-title[]" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Mrs.</label> &nbsp;
-                                    <label class="">
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="customer-title[]" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Ms.</label>
+                                        <input type="radio" name="customer-title[]"> Mr.</label> &nbsp;
+                                    <label>
+                                        <input type="radio" name="customer-title[]"> Mrs.</label> &nbsp;
+                                    <label>
+                                        <input type="radio" name="customer-title[]"> Ms.</label>
                                 </div>
-                                <div data-field-span="3" style="height: 66px;">
+                                <div data-field-span="3">
                                     <label>Full Name</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 75px;">
+                                <div data-field-span="1">
                                     <label>Date of birth</label>
                                     <input type="text" class="dob" placeholder="Select DOB">
                                 </div>
-                                <div data-field-span="1" style="height: 75px;">
+                                <div data-field-span="1">
                                     <label for="country">Nationality</label>
-                                    <select id="country" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+                                    <select id="country">
                                         <option>Select Country</option>
                                         <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
                                         <option value="Ã…land Islands" title="Ã…land Islands">Aland Islands
@@ -80,9 +96,11 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Benin" title="Benin">Benin</option>
                                         <option value="Bermuda" title="Bermuda">Bermuda</option>
                                         <option value="Bhutan" title="Bhutan">Bhutan</option>
-                                        <option value="Bolivia, Plurinational State of" title="Bolivia, Plurinational State of">Bolivia, Plurinational State of
+                                        <option value="Bolivia, Plurinational State of"
+                                                title="Bolivia, Plurinational State of">Bolivia, Plurinational State of
                                         </option>
-                                        <option value="Bonaire, Sint Eustatius and Saba" title="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and
+                                        <option value="Bonaire, Sint Eustatius and Saba"
+                                                title="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and
                                             Saba
                                         </option>
                                         <option value="Bosnia and Herzegovina" title="Bosnia and Herzegovina">
@@ -92,7 +110,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Bouvet Island" title="Bouvet Island">Bouvet Island
                                         </option>
                                         <option value="Brazil" title="Brazil">Brazil</option>
-                                        <option value="British Indian Ocean Territory" title="British Indian Ocean Territory">British Indian Ocean Territory
+                                        <option value="British Indian Ocean Territory"
+                                                title="British Indian Ocean Territory">British Indian Ocean Territory
                                         </option>
                                         <option value="Brunei Darussalam" title="Brunei Darussalam">Brunei Darussalam
                                         </option>
@@ -119,7 +138,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Colombia" title="Colombia">Colombia</option>
                                         <option value="Comoros" title="Comoros">Comoros</option>
                                         <option value="Congo" title="Congo">Congo</option>
-                                        <option value="Congo, the Democratic Republic of the" title="Congo, the Democratic Republic of the">Congo, the Democratic
+                                        <option value="Congo, the Democratic Republic of the"
+                                                title="Congo, the Democratic Republic of the">Congo, the Democratic
                                             Republic of the
                                         </option>
                                         <option value="Cook Islands" title="Cook Islands">Cook Islands</option>
@@ -178,10 +198,12 @@ include 'application/views/masterpage/navegacion.php';
                                         </option>
                                         <option value="Guyana" title="Guyana">Guyana</option>
                                         <option value="Haiti" title="Haiti">Haiti</option>
-                                        <option value="Heard Island and McDonald Islands" title="Heard Island and McDonald Islands">Heard Island and McDonald
+                                        <option value="Heard Island and McDonald Islands"
+                                                title="Heard Island and McDonald Islands">Heard Island and McDonald
                                             Islands
                                         </option>
-                                        <option value="Holy See (Vatican City State)" title="Holy See (Vatican City State)">Holy See (Vatican City State)
+                                        <option value="Holy See (Vatican City State)"
+                                                title="Holy See (Vatican City State)">Holy See (Vatican City State)
                                         </option>
                                         <option value="Honduras" title="Honduras">Honduras</option>
                                         <option value="Hong Kong" title="Hong Kong">Hong Kong</option>
@@ -204,14 +226,16 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Kazakhstan" title="Kazakhstan">Kazakhstan</option>
                                         <option value="Kenya" title="Kenya">Kenya</option>
                                         <option value="Kiribati" title="Kiribati">Kiribati</option>
-                                        <option value="Korea, Democratic People's Republic of" title="Korea, Democratic People's Republic of">Korea, Democratic
+                                        <option value="Korea, Democratic People's Republic of"
+                                                title="Korea, Democratic People's Republic of">Korea, Democratic
                                             People's Republic of
                                         </option>
                                         <option value="Korea, Republic of" title="Korea, Republic of">Korea, Republic of
                                         </option>
                                         <option value="Kuwait" title="Kuwait">Kuwait</option>
                                         <option value="Kyrgyzstan" title="Kyrgyzstan">Kyrgyzstan</option>
-                                        <option value="Lao People's Democratic Republic" title="Lao People's Democratic Republic">Lao People's Democratic
+                                        <option value="Lao People's Democratic Republic"
+                                                title="Lao People's Democratic Republic">Lao People's Democratic
                                             Republic
                                         </option>
                                         <option value="Latvia" title="Latvia">Latvia</option>
@@ -224,7 +248,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Lithuania" title="Lithuania">Lithuania</option>
                                         <option value="Luxembourg" title="Luxembourg">Luxembourg</option>
                                         <option value="Macao" title="Macao">Macao</option>
-                                        <option value="Macedonia, the former Yugoslav Republic of" title="Macedonia, the former Yugoslav Republic of">Macedonia, the former
+                                        <option value="Macedonia, the former Yugoslav Republic of"
+                                                title="Macedonia, the former Yugoslav Republic of">Macedonia, the former
                                             Yugoslav Republic of
                                         </option>
                                         <option value="Madagascar" title="Madagascar">Madagascar</option>
@@ -240,7 +265,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Mauritius" title="Mauritius">Mauritius</option>
                                         <option value="Mayotte" title="Mayotte">Mayotte</option>
                                         <option value="Mexico" title="Mexico">Mexico</option>
-                                        <option value="Micronesia, Federated States of" title="Micronesia, Federated States of">Micronesia, Federated States of
+                                        <option value="Micronesia, Federated States of"
+                                                title="Micronesia, Federated States of">Micronesia, Federated States of
                                         </option>
                                         <option value="Moldova, Republic of" title="Moldova, Republic of">
                                             Moldova, Republic of
@@ -272,7 +298,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Oman" title="Oman">Oman</option>
                                         <option value="Pakistan" title="Pakistan">Pakistan</option>
                                         <option value="Palau" title="Palau">Palau</option>
-                                        <option value="Palestinian Territory, Occupied" title="Palestinian Territory, Occupied">Palestinian Territory, Occupied
+                                        <option value="Palestinian Territory, Occupied"
+                                                title="Palestinian Territory, Occupied">Palestinian Territory, Occupied
                                         </option>
                                         <option value="Panama" title="Panama">Panama</option>
                                         <option value="Papua New Guinea" title="Papua New Guinea">Papua New Guinea
@@ -292,7 +319,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Rwanda" title="Rwanda">Rwanda</option>
                                         <option value="Saint BarthÃ©lemy" title="Saint BarthÃ©lemy">Saint BarthÃ©lemy
                                         </option>
-                                        <option value="Saint Helena, Ascension and Tristan da Cunha" title="Saint Helena, Ascension and Tristan da Cunha">Saint Helena,
+                                        <option value="Saint Helena, Ascension and Tristan da Cunha"
+                                                title="Saint Helena, Ascension and Tristan da Cunha">Saint Helena,
                                             Ascension and Tristan da Cunha
                                         </option>
                                         <option value="Saint Kitts and Nevis" title="Saint Kitts and Nevis">
@@ -305,7 +333,8 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Saint Pierre and Miquelon" title="Saint Pierre and Miquelon">
                                             Saint Pierre and Miquelon
                                         </option>
-                                        <option value="Saint Vincent and the Grenadines" title="Saint Vincent and the Grenadines">Saint Vincent and the
+                                        <option value="Saint Vincent and the Grenadines"
+                                                title="Saint Vincent and the Grenadines">Saint Vincent and the
                                             Grenadines
                                         </option>
                                         <option value="Samoa" title="Samoa">Samoa</option>
@@ -328,7 +357,8 @@ include 'application/views/masterpage/navegacion.php';
                                         </option>
                                         <option value="Somalia" title="Somalia">Somalia</option>
                                         <option value="South Africa" title="South Africa">South Africa</option>
-                                        <option value="South Georgia and the South Sandwich Islands" title="South Georgia and the South Sandwich Islands">South Georgia and
+                                        <option value="South Georgia and the South Sandwich Islands"
+                                                title="South Georgia and the South Sandwich Islands">South Georgia and
                                             the South Sandwich Islands
                                         </option>
                                         <option value="South Sudan" title="South Sudan">South Sudan</option>
@@ -349,7 +379,8 @@ include 'application/views/masterpage/navegacion.php';
                                             Taiwan, Province of China
                                         </option>
                                         <option value="Tajikistan" title="Tajikistan">Tajikistan</option>
-                                        <option value="Tanzania, United Republic of" title="Tanzania, United Republic of">Tanzania, United Republic of
+                                        <option value="Tanzania, United Republic of"
+                                                title="Tanzania, United Republic of">Tanzania, United Republic of
                                         </option>
                                         <option value="Thailand" title="Thailand">Thailand</option>
                                         <option value="Timor-Leste" title="Timor-Leste">Timor-Leste</option>
@@ -375,13 +406,15 @@ include 'application/views/masterpage/navegacion.php';
                                         </option>
                                         <option value="United States" title="United States">United States
                                         </option>
-                                        <option value="United States Minor Outlying Islands" title="United States Minor Outlying Islands">United States Minor
+                                        <option value="United States Minor Outlying Islands"
+                                                title="United States Minor Outlying Islands">United States Minor
                                             Outlying Islands
                                         </option>
                                         <option value="Uruguay" title="Uruguay">Uruguay</option>
                                         <option value="Uzbekistan" title="Uzbekistan">Uzbekistan</option>
                                         <option value="Vanuatu" title="Vanuatu">Vanuatu</option>
-                                        <option value="Venezuela, Bolivarian Republic of" title="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic
+                                        <option value="Venezuela, Bolivarian Republic of"
+                                                title="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic
                                             of
                                         </option>
                                         <option value="Viet Nam" title="Viet Nam">Viet Nam</option>
@@ -398,31 +431,31 @@ include 'application/views/masterpage/navegacion.php';
                                         <option value="Yemen" title="Yemen">Yemen</option>
                                         <option value="Zambia" title="Zambia">Zambia</option>
                                         <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
-                                    </select><span class="select2 select2-container select2-container--bootstrap" dir="ltr" style="width: 508px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-country-container"><span class="select2-selection__rendered" id="select2-country-container" title="Select Country">Select Country</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </select>
                                 </div>
                             </div>
                             <div data-row-span="4">
-                                <div data-field-span="2" data-field-error="Please enter a valid email address" style="height: 82px;">
+                                <div data-field-span="2" data-field-error="Please enter a valid email address">
                                     <label>E-mail</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 82px;">
+                                <div data-field-span="1">
                                     <label>Mobile No.</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 82px;">
+                                <div data-field-span="1">
                                     <label>Existing Bank Account No. (if any)</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 82px;">
+                                <div data-field-span="1">
                                     <label>In case of a minor please provide details (Name of parent and natural
                                         guardian)
                                     </label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 82px;">
+                                <div data-field-span="1">
                                     <label>Name of father/spouse</label>
                                     <input type="text">
                                 </div>
@@ -431,39 +464,39 @@ include 'application/views/masterpage/navegacion.php';
                             <fieldset>
                                 <legend>Residential address</legend>
                                 <div data-row-span="2">
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Flat no. and bldg. name</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Road no./name</label>
                                         <input type="text">
                                     </div>
                                 </div>
                                 <div data-row-span="4">
-                                    <div data-field-span="3" style="height: 64px;">
+                                    <div data-field-span="3">
                                         <label>Area and landmark</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>City</label>
                                         <input type="text">
                                     </div>
                                 </div>
                                 <div data-row-span="4">
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Telephone Residence</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Office</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Fax</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Pin code</label>
                                         <input type="text">
                                     </div>
@@ -475,49 +508,49 @@ include 'application/views/masterpage/navegacion.php';
                             <legend>Mailing Address (If different from the First Accountholder's address)
                             </legend>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Company name and department/ Flat no. and bldg. name</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="4">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Road no./name</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Area and landmark</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>City</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Pin Code</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="4">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Telephone Residence</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Office</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Fax</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Mobile No.</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>E-mail</label>
                                     <input type="text">
                                 </div>
@@ -528,17 +561,17 @@ include 'application/views/masterpage/navegacion.php';
                         <fieldset>
                             <legend>Details of Introduction by Existing Customer (If applicable)</legend>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Customer Name</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Account No.</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: auto;">
+                                <div data-field-span="1">
                                     <label>Introducer's signature</label>
                                     <textarea class="resize_vertical"></textarea>
                                 </div>
@@ -549,27 +582,27 @@ include 'application/views/masterpage/navegacion.php';
                         <fieldset>
                             <legend>Account Details</legend>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Choice of account</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="choiceofacc" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Savings</label> &nbsp;
+                                        <input type="radio" name="choiceofacc"> Savings</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="choiceofacc" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Current</label> &nbsp;
+                                        <input type="radio" name="choiceofacc"> Current</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="choiceofacc" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Fixed deposits</label>
+                                        <input type="radio" name="choiceofacc"> Fixed deposits</label>
                                 </div>
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Mode of funding</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="fundmode" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Cash</label> &nbsp;
+                                        <input type="radio" name="fundmode"> Cash</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="fundmode" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Cheque</label> &nbsp;
+                                        <input type="radio" name="fundmode"> Cheque</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="fundmode" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> NEFT</label>
+                                        <input type="radio" name="fundmode"> NEFT</label>
                                 </div>
                             </div>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Amount</label>
                                     <input type="text">
                                 </div>
@@ -578,33 +611,33 @@ include 'application/views/masterpage/navegacion.php';
                             <fieldset>
                                 <legend>Details of Fixed Deposit</legend>
                                 <div data-row-span="2">
-                                    <div data-field-span="1" style="height: 66px;">
+                                    <div data-field-span="1">
                                         <label>Types of deposit</label>
                                         <label>
-                                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="typeofdeposit" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Ordinary</label> &nbsp;
+                                            <input type="radio" name="typeofdeposit"> Ordinary</label> &nbsp;
                                         <label>
-                                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="typeofdeposit" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Cumulative</label>
+                                            <input type="radio" name="typeofdeposit"> Cumulative</label>
                                     </div>
-                                    <div data-field-span="1" style="height: 66px;">
+                                    <div data-field-span="1">
                                         <label>Mode of funding</label>
                                         <label>
-                                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="modefund" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Cash</label> &nbsp;
+                                            <input type="radio" name="modefund"> Cash</label> &nbsp;
                                         <label>
-                                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="modefund" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Cheque</label> &nbsp;
+                                            <input type="radio" name="modefund"> Cheque</label> &nbsp;
                                         <label>
-                                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="modefund" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> NEFT</label>
+                                            <input type="radio" name="modefund"> NEFT</label>
                                     </div>
                                 </div>
                                 <div data-row-span="4">
-                                    <div data-field-span="2" style="height: 64px;">
+                                    <div data-field-span="2">
                                         <label>Amount</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>No. of deposits</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Individual Deposit Amount</label>
                                         <input type="text">
                                     </div>
@@ -618,72 +651,72 @@ include 'application/views/masterpage/navegacion.php';
                                 <small>(Occupation)</small>
                             </legend>
                             <div data-row-span="12">
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="non-executive" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="non-executive">
+                                <div data-field-span="2">
+                                    <input id="non-executive" type="checkbox">&nbsp;<label for="non-executive">
                                     Non-executive</label>
                                 </div>
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="hwife" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="hwife"> Housewife</label>
+                                <div data-field-span="2">
+                                    <input id="hwife" type="checkbox">&nbsp;<label for="hwife"> Housewife</label>
                                 </div>
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="retired1" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="retired1"> Retired</label>
+                                <div data-field-span="2">
+                                    <input id="retired1" type="checkbox">&nbsp;<label for="retired1"> Retired</label>
                                 </div>
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="studnt" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="studnt"> Student</label>
+                                <div data-field-span="2">
+                                    <input id="studnt" type="checkbox">&nbsp;<label for="studnt"> Student</label>
                                 </div>
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="other" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="other"> Other</label>
+                                <div data-field-span="2">
+                                    <input id="other" type="checkbox">&nbsp;<label for="other"> Other</label>
                                 </div>
-                                <div data-field-span="2" style="height: 42px;">
-                                    <div class="icheckbox_square-blue" style="position: relative;"><input id="unemployed" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>&nbsp;<label for="unemployed">
+                                <div data-field-span="2">
+                                    <input id="unemployed" type="checkbox">&nbsp;<label for="unemployed">
                                     Unemployed</label>
                                 </div>
                             </div>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Job Title</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Department</label>
                                     <input type="text">
                                 </div>
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Nature of business</label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Education</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="educaton" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Under graduate</label>
+                                        <input type="radio" name="educaton"> Under graduate</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="educaton" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Graduate</label> &nbsp;
+                                        <input type="radio" name="educaton"> Graduate</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="educaton" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Others</label>
+                                        <input type="radio" name="educaton"> Others</label>
                                 </div>
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Monthly Income</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="income" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Zero Income</label> &nbsp;
+                                        <input type="radio" name="income"> Zero Income</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="income" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Less than $10,000</label> &nbsp;
+                                        <input type="radio" name="income"> Less than $10,000</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="income" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> $10,000+</label>
+                                        <input type="radio" name="income"> $10,000+</label>
                                 </div>
                             </div>
                             <div data-row-span="2">
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Maritial Status</label>
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="maritial" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Married</label> &nbsp;
+                                        <input type="radio" name="maritial"> Married</label> &nbsp;
                                     <label>
-                                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="maritial" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Single</label>
+                                        <input type="radio" name="maritial"> Single</label>
                                 </div>
-                                <div data-field-span="1" style="height: 66px;">
+                                <div data-field-span="1">
                                     <label>Spouse name</label>
                                     <input type="text">
                                 </div>
@@ -692,11 +725,11 @@ include 'application/views/masterpage/navegacion.php';
                             <fieldset>
                                 <legend>Other existing bank accounts, if any</legend>
                                 <div data-row-span="2">
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Name of the Bank / branch</label>
                                         <input type="text">
                                     </div>
-                                    <div data-field-span="1" style="height: 64px;">
+                                    <div data-field-span="1">
                                         <label>Name of the Bank / branch</label>
                                         <input type="text">
                                     </div>
@@ -708,7 +741,7 @@ include 'application/views/masterpage/navegacion.php';
                         <fieldset>
                             <legend>Reason for Account opening</legend>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 64px;">
+                                <div data-field-span="1">
                                     <label>Please specify</label>
                                     <input type="text">
                                 </div>
@@ -719,10 +752,10 @@ include 'application/views/masterpage/navegacion.php';
                         <fieldset>
                             <legend>Terms And Conditions</legend>
                             <div data-row-span="1">
-                                <div data-field-span="1" style="height: 68px;">
+                                <div data-field-span="1">
                                     <label></label>
                                     <label>
-                                        <div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> I/We confirm having read and understood the account
+                                        <input type="checkbox"> I/We confirm having read and understood the account
                                         rules of The Banking Corporation Limited ('the Bank'), and hereby agree to be
                                         bound by the terms and conditions and amendments governing the account(s) issued
                                         by the Bank from time-to-time.</label>
@@ -731,11 +764,452 @@ include 'application/views/masterpage/navegacion.php';
                         </fieldset>
                     </form>
                 </div>
-        </section>
-        
-		<!---Aqui termina el contenido de la pagina :v-->
+            </div>
+            <!--5 th tab bank application ending  -->
+            <!--rightside bar -->
+            <div id="right">
+                <div id="right-slim">
+                    <div class="rightsidebar-right">
+                        <div class="rightsidebar-right-content">
+                            <div class="panel-tabs">
+                                <ul class="nav nav-tabs nav-float" role="tablist">
+                                    <li class="active text-center">
+                                        <a href="#r_tab1" role="tab" data-toggle="tab"><i
+                                                class="fa fa-fw ti-comments"></i></a>
+                                    </li>
+                                    <li class="text-center">
+                                        <a href="#r_tab2" role="tab" data-toggle="tab"><i class="fa fa-fw ti-bell"></i></a>
+                                    </li>
+                                    <li class="text-center">
+                                        <a href="#r_tab3" role="tab" data-toggle="tab"><i
+                                                class="fa fa-fw ti-settings"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="r_tab1">
+                                    <div id="slim_t1">
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="menu-icon  fa fa-fw ti-user"></i>
+                                            Contacts
+                                        </h5>
+                                        <ul class="list-unstyled margin-none">
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar6.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-primary"></i>
+                                                    Annette
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-primary"></i>
+                                                    Jordan
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar2.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-primary"></i>
+                                                    Stewart
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar3.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-warning"></i>
+                                                    Alfred
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar4.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-danger"></i>
+                                                    Eileen
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar5.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-muted"></i>
+                                                    Robert
+                                                </a>
+                                            </li>
+                                            <li class="rightsidebar-contact-wrapper">
+                                                <a class="rightsidebar-contact" href="#">
+                                                    <img src="<?=base_url();?>img/authors/avatar7.jpg"
+                                                         class="img-circle pull-right" alt="avatar-image">
+                                                    <i class="fa fa-circle text-xs text-muted"></i>
+                                                    Cassandra
+                                                </a>
+                                            </li>
+                                        </ul>
 
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="fa fa-fw ti-export"></i>
+                                            Recent Updates
+                                        </h5>
+                                        <div>
+                                            <ul class="list-unstyled">
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-comments-smiley fa-fw text-primary"></i>
+                                                        New Comment
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-twitter-alt fa-fw text-success"></i>
+                                                        3 New Followers
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-email fa-fw text-info"></i>
+                                                        Message Sent
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-write fa-fw text-warning"></i>
+                                                        New Task
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-export fa-fw text-danger"></i>
+                                                        Server Rebooted
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-info-alt fa-fw text-primary"></i>
+                                                        Server Not Responding
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-shopping-cart fa-fw text-success"></i>
+                                                        New Order Placed
+                                                    </a>
+                                                </li>
+                                                <li class="rightsidebar-notification">
+                                                    <a href="#">
+                                                        <i class="fa ti-money fa-fw text-info"></i>
+                                                        Payment Received
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="r_tab2">
+                                    <div id="slim_t2">
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="fa fa-fw ti-bell"></i>
+                                            Notifications
+                                        </h5>
+                                        <ul class="list-unstyled m-t-15 notifications">
+                                            <li>
+                                                <a href="" class="message icon-not striped-col">
+                                                    <img class="message-image img-circle"
+                                                         src="<?=base_url();?>img/authors/avatar3.jpg" alt="avatar-image">
+
+                                                    <div class="message-body">
+                                                        <strong>John Doe</strong>
+                                                        <br>
+                                                        5 members joined today
+                                                        <br>
+                                                        <small class="noti-date">Just now</small>
+                                                    </div>
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="message icon-not">
+                                                    <img class="message-image img-circle"
+                                                         src="<?=base_url();?>img/authors/avatar.jpg" alt="avatar-image">
+                                                    <div class="message-body">
+                                                        <strong>Tony</strong>
+                                                        <br>
+                                                        likes a photo of you
+                                                        <br>
+                                                        <small class="noti-date">5 min</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="message icon-not striped-col">
+                                                    <img class="message-image img-circle"
+                                                         src="<?=base_url();?>img/authors/avatar6.jpg" alt="avatar-image">
+
+                                                    <div class="message-body">
+                                                        <strong>John</strong>
+                                                        <br>
+                                                        Dont forgot to call...
+                                                        <br>
+                                                        <small class="noti-date">11 min</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="message icon-not">
+                                                    <img class="message-image img-circle"
+                                                         src="<?=base_url();?>img/authors/avatar1.jpg" alt="avatar-image">
+                                                    <div class="message-body">
+                                                        <strong>Jenny Kerry</strong>
+                                                        <br>
+                                                        Done with it...
+                                                        <br>
+                                                        <small class="noti-date">1 Hour</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="message icon-not striped-col">
+                                                    <img class="message-image img-circle"
+                                                         src="<?=base_url();?>img/authors/avatar7.jpg" alt="avatar-image">
+
+                                                    <div class="message-body">
+                                                        <strong>Ernest Kerry</strong>
+                                                        <br>
+                                                        2 members joined today
+                                                        <br>
+                                                        <small class="noti-date">3 Days</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="text-right noti-footer"><a href="#">View All Notifications <i
+                                                    class="ti-arrow-right"></i></a></li>
+                                        </ul>
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="fa fa-fw ti-check-box"></i>
+                                            Tasks
+                                        </h5>
+                                        <ul class="list-unstyled m-t-15">
+                                            <li>
+                                                <div>
+                                                    <p>
+                                                        <span>Button Design</span>
+                                                        <small class="pull-right text-muted">40%</small>
+                                                    </p>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar progress-bar-success"
+                                                             role="progressbar"
+                                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 40%">
+                                                            <span class="sr-only">40% Complete (success)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <p>
+                                                        <span>Theme Creation</span>
+                                                        <small class="pull-right text-muted">20%</small>
+                                                    </p>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar progress-bar-info" role="progressbar"
+                                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 20%">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <p>
+                                                        <span>XYZ Task To Do</span>
+                                                        <small class="pull-right text-muted">60%</small>
+                                                    </p>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar progress-bar-warning"
+                                                             role="progressbar"
+                                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 60%">
+                                                            <span class="sr-only">60% Complete (warning)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <p>
+                                                        <span>Transitions Creation</span>
+                                                        <small class="pull-right text-muted">80%</small>
+                                                    </p>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar progress-bar-danger" role="progressbar"
+                                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 80%">
+                                                            <span class="sr-only">80% Complete (danger)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="text-right"><a href="#">View All Tasks <i
+                                                    class="ti-arrow-right"></i></a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="r_tab3">
+                                    <div id="slim_t3">
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="fa fa-fw ti-layers"></i>
+                                            Skins
+                                        </h5>
+                                        <ul>
+                                            <li class="setting-color">
+                                                <label class="active-color">
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-default");'
+                                                           checked='checked'/>
+                                                    <span class='split'>
+                                            <span class='color bg-default-clear'></span>
+                                            <span class='color bg-default-light'></span>
+                                        </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+                                                <label>
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-mint");'/>
+                                                    <span class='split'>
+                                                <span class='color bg-mint'></span>
+                                                <span class='color bg-mint-light'></span>
+                                            </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+                                                <label>
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-grape");'/>
+                                                    <span class='split'>
+                                                <span class='color bg-grape'></span>
+                                                <span class='color bg-grape-light'></span>
+                                            </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+                                            </li>
+                                            <li class="setting-color">
+                                                <label>
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-lavender");'/>
+                                                    <span class='split'>
+                                                <span class='color bg-lavender'></span>
+                                                <span class='color bg-lavender-light'></span>
+                                            </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+
+                                                <label>
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-pink");'/>
+                                                    <span class='split'>
+                                                <span class='color bg-pink'></span>
+                                                <span class='color bg-pink-light'></span>
+                                            </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+                                                <label>
+                                                    <input name='skins' type='radio'
+                                                           onchange='change_skin("skin-sunflower");'/>
+                                                    <span class='split'>
+                                                <span class='color bg-sunflower'></span>
+                                                <span class='color bg-sunflower-light'></span>
+                                            </span>
+                                                    <span class='color l-m-bg'></span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <h5 class="rightsidebar-right-heading text-uppercase gen-sett-m-t text-xs">
+                                            <i class="fa fa-fw ti-settings"></i>
+                                            General
+                                        </h5>
+                                        <ul class="list-unstyled settings-list m-t-10">
+                                            <li>
+                                                <label for="status">Available</label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="status" name="my-checkbox" checked>
+                                        </span>
+                                            </li>
+                                            <li>
+                                                <label for="email-auth">Login with Email</label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="email-auth" name="my-checkbox">
+                                        </span>
+                                            </li>
+                                            <li>
+                                                <label for="update">Auto Update</label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="update" name="my-checkbox">
+                                        </span>
+                                            </li>
+
+                                        </ul>
+                                        <h5 class="rightsidebar-right-heading text-uppercase text-xs">
+                                            <i class="fa fa-fw ti-volume"></i>
+                                            Sound & Notification
+                                        </h5>
+                                        <ul class="list-unstyled settings-list m-t-10">
+                                            <li>
+                                                <label for="chat-sound">Chat Sound</label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="chat-sound" name="my-checkbox" checked>
+                                        </span>
+                                            </li>
+                                            <li>
+                                                <label for="noti-sound">Notification Sound</label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="noti-sound" name="my-checkbox">
+                                        </span>
+                                            </li>
+                                            <li>
+                                                <label for="remain">Remainder </label>
+                                                <span class="pull-right">
+                                            <input type="checkbox" id="remain" name="my-checkbox" checked>
+                                        </span>
+
+                                            </li>
+                                            <li>
+                                                <label for="vol">Volume</label>
+                                                <input type="range" id="vol" min="0" max="100" value="15">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="background-overlay"></div>
+        </section>
         <!-- /.content -->
     </aside>
     <!-- /.right-side -->
 </div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script src="http://collaborateny.com/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datepair.js/0.4.16/datepair.min.js"></script>
+
+<script src="<?=base_url();?>js/app.js" type="text/javascript"></script>
+<!-- end of global js-->
+<!--page level js-->
+<script src="<?=base_url();?>vendors/iCheck/js/icheck.js" type="text/javascript"></script>
+<script src="<?=base_url();?>vendors/datedropper/datedropper.js" type="text/javascript"></script>
+<script src="<?=base_url();?>vendors/airdatepicker/js/datepicker.min.js" type="text/javascript"></script>
+<script src="<?=base_url();?>vendors/airdatepicker/js/datepicker.en.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/gridforms/js/gridforms.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/select2/js/select2.js"></script>
+<script src="<?=base_url();?>js/custom_js/complex_forms.js" type="text/javascript"></script>
+
