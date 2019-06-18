@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Nombre del instrumento de Planeacion</h1>
+            <h1>Formato 2</h1>
            
         </section>
         <!-- Main content -->
@@ -19,7 +19,7 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> General Elements
+                                <i class=""></i>Alineación con la planeación del desarrollo
                             </h3>
 
                         </div>
@@ -119,12 +119,19 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                                  </div>
-                                   		 <div class="col-md-3">
+                                   		 <div class="col-md-3" style="text-align: center">
                         		 			   		<div class="form-group">                        
                                 		<select class="form-control">
                                 		<option>Seleccione</option>
                                 		</select>                                    
                                 </div>
+                                                 </br>
+                                       <button type="button" class="btn btn-labeled btn-success">
+                                    
+                                                    <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span> Guardar
+                                            </button>
                                  </div>
                                 </div>
                                </section>

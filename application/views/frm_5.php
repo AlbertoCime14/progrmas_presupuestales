@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Vinculación con otro</h1>
+            <h1>Formato 5</h1>
            
         </section>
         <!-- Main content -->
@@ -20,7 +20,7 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> General Elements
+                                <i class=""></i> Identificación y cuantificación de la población objetivo 
                             </h3>
 
                         </div>
@@ -67,9 +67,31 @@ include 'application/views/masterpage/navegacion.php';
                                                   <td >
                                    <input type="text" class="form-control" value="" id="some_name"/>
                                         </td>
-                                                  <td style="text-align:center">
+                                                  <td >
                                    <input type="text" class="form-control" value="" id="some_name"/>
-                               </br>
+                 
+																
+                                        </td>
+                                    </tr>
+                                   <tr>
+                                   	<th>
+                                   		Medio de verificación:
+                                   	</th>
+                                   		<td>
+                                    			<textarea class="form-control"></textarea>
+                                    		</td>
+                                    			<td>
+                                    			<textarea class="form-control"></textarea>
+                                    		</td>
+                                    			<td>
+                                    			<textarea class="form-control"></textarea>
+                                    		</td>
+                                    			<td>
+                                    			<textarea class="form-control"></textarea>
+                                    		</td>
+                                    			<td style="text-align:center">
+                                    			<textarea class="form-control"></textarea>
+                                    			              </br>
 										
 									
 									   <button type="button" class="btn btn-labeled btn-success">
@@ -83,10 +105,8 @@ include 'application/views/masterpage/navegacion.php';
                                                 <i class="glyphicon glyphicon-remove"></i>
                                             </span> Eliminar
                                             </button>
-																
-                                        </td>
-                                    </tr>
-                                   
+                                    		</td>
+                                   </tr>
                                     </tbody>
                                 </table>
                             </div>

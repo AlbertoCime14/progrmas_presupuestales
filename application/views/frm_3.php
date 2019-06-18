@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Vinculación con otro</h1>
+            <h1>Formato 3</h1>
            
         </section>
         <!-- Main content -->
@@ -20,7 +20,7 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> General Elements
+                                <i class=""></i>Vinculación con otros programas
                             </h3>
 
                         </div>
@@ -45,13 +45,13 @@ include 'application/views/masterpage/navegacion.php';
                                     </tr>
                           
                                         <td>
-                                        	<select class="selectpicker form-control">
+                                        	<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
                                         </td>
                                         <td>
-                                        		<select class="selectpicker form-control">
+                                        		<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
@@ -60,31 +60,31 @@ include 'application/views/masterpage/navegacion.php';
                                         	<textarea placeholder="Describe el objetivo" class="form-control" style="width: 116px; height: 115px;"></textarea>
                                         </td>
                                         <td>
-                                        		<select class="selectpicker form-control">
+                                        		<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
                                         </td>
                                         <td>
-                                        	<select class="selectpicker form-control">
+                                        	<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
                                         </td>
                                             <td>
-                                        		<select class="selectpicker form-control">
+                                        		<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
                                         </td>
                                             <td>
-                                        		<select class="selectpicker form-control">
+                                        		<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>
                                         </td>
                                             <td>
-                                        	<select class="selectpicker form-control">
+                                        	<select class="selectpicker form-control" style="width:150px">
                                         		<option>Seleccione...</option>
                                         		<option>Seleccione...</option>
                                         	</select>

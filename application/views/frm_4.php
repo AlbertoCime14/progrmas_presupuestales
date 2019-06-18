@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Vinculación con otro</h1>
+            <h1>Formato 4</h1>
            
         </section>
         <!-- Main content -->
@@ -20,7 +20,7 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> General Elements
+                                <i class=""></i> Identificación de involucrados
                             </h3>
 
                         </div>

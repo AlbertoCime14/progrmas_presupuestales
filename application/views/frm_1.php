@@ -6,7 +6,7 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Fomento al empleo</h1>
+            <h1>Formato 1</h1>
            
         </section>
         <!-- Main content -->
@@ -20,7 +20,7 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> General Elements
+                                <i class=""></i>Documentación de políticas públicas o programas similares
                             </h3>
 
                         </div>
@@ -100,14 +100,20 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                     	  		<div class="col-md-6">
+                     	  		<div class="col-md-6" style="text-align: center">
                         		  			 		 	<div class="form-group">
                                     <label class="control-label">
                                     Resultados*
                                     </label>
                                  
                                         <textarea rows="4" class="form-control resize_vertical" placeholder="Describa su politica o programa"></textarea>
+                                         </br>
+                                       <button type="button" class="btn btn-labeled btn-success">
                                     
+                                                    <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span> Guardar
+                                            </button>
                                 </div>
                         		 </div>
                         		 </div>
