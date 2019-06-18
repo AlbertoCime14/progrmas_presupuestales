@@ -17,6 +17,18 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
     <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
     <!-- end of global css -->
+
+    <!--page level css -->
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
+    <link href="<?=base_url();?>vendors/hover/css/hover-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url();?>vendors/laddabootstrap/css/ladda-themeless.min.css">
+    <link href="<?=base_url();?>css/buttons_sass.css" rel="stylesheet">
+    <link href="<?=base_url();?>css/advbuttons.css" rel="stylesheet">
+    <link href="<?=base_url();?>vendors/iCheck/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="<?=base_url();?>vendors/datetime/css/jquery.datetimepicker.css">
+    <link href="<?=base_url();?>vendors/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/realtime_form.css">
 </head>
 
 <!--Head-->

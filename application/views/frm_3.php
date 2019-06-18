@@ -25,112 +25,84 @@ include 'application/views/masterpage/navegacion.php';
 
                         </div>
                         <div class="panel-body">
-                        	<section>
-                        		<div class="row">
-                        		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                       Nombre del instrumento de Planeacion
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                     Objetivo
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                        Estrategias/políticas
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                         Líneas de acción planeación
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                </div>
-                               </section>
-                               <!--Seccion dos-->
-                                     	<section>
-                        		<div class="row">
-                        		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                      Plan Estatal de Desarrollo (PED)
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 			   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 			   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                </div>
-                               </section>
-                               <!--Seccion tres-->
-                                                    	<section>
-                        		<div class="row">
-                        		 <div class="col-md-3">
-                        		 	<div class="form-group">
-                                    <label class="control-label">
-                                     Otro instrumento de planeación relevante
-                                    </label>
-               
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 			   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                   		 <div class="col-md-3">
-                        		 			   		<div class="form-group">                        
-                                		<select class="form-control">
-                                		<option>Seleccione</option>
-                                		</select>                                    
-                                </div>
-                                 </div>
-                                </div>
-                               </section>
-                             
-               
+                      <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id="table2">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre del programa</th>
+                                        <th>Tipo de programa 1=Federal. 2=Estatal. 3=Municipal. 4= Otro (especifique).</th>
+                                        <th>Objetivo</th>
+                                        <th>Población objetivo</th>
+                                          <th>Bienes y servicios que provee</th>
+                                            <th>Cobertura 1=Todos los municipios. 2=Regional. 3=Zonas prioritarias. 4=Municipal.</th>
+                                             <th>Dirección o Depto. coordinador del programa</th>
+                                               <th>1=Complemen tario 2=Posible duplicidad 3=Otro (especifique)</th>
+                                               <th>Describa las interdepende ncias identificadas entre los programas</th>
+                                               <th>Opciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tr>
+                          
+                                        <td>
+                                        	<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                        <td>
+                                        		<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                        <td>
+                                        	<textarea placeholder="Describe el objetivo" class="form-control"></textarea>
+                                        </td>
+                                        <td>
+                                        		<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                        <td>
+                                        	<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                            <td>
+                                        		<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                            <td>
+                                        		<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                            <td>
+                                        	<select class="selectpicker form-control">
+                                        		<option>Seleccione...</option>
+                                        		<option>Seleccione...</option>
+                                        	</select>
+                                        </td>
+                                        <td>
+                                        	<textarea placeholder="Describe el objetivo" class="form-control"></textarea>
+                                        </td>
+                                        <td>
+                                        <button class="button button-flat" type="submit" value="Guardar" />Guardar</button>
+                                        &nbsp
+                                          <button class="button button-caution">Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
