@@ -30,7 +30,7 @@
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="index.html" class="logo">
             <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            <img src="img/logo.png" alt="logo"/>
+            <img src="<?=base_url();?>img/logo.png" alt="logo"/>
         </a>
         <!-- Header Navbar: style can be found in header-->
         <!-- Sidebar toggle button-->
@@ -50,7 +50,7 @@
                         <li class="dropdown-title">New Messages</li>
                         <li>
                             <a href="" class="message striped-col">
-                                <img class="message-image img-circle" src="img/authors/avatar7.jpg" alt="avatar-image">
+                                <img class="message-image img-circle" src="<?=base_url();?>img/authors/avatar7.jpg" alt="avatar-image">
 
                                 <div class="message-body"><strong>Ernest Kerry</strong>
                                     <br>
@@ -63,7 +63,7 @@
                         </li>
                         <li>
                             <a href="" class="message">
-                                <img class="message-image img-circle" src="img/authors/avatar6.jpg" alt="avatar-image">
+                                <img class="message-image img-circle" src="<?=base_url();?>img/authors/avatar6.jpg" alt="avatar-image">
 
                                 <div class="message-body"><strong>John</strong>
                                     <br>
@@ -76,7 +76,7 @@
                         </li>
                         <li>
                             <a href="" class="message striped-col">
-                                <img class="message-image img-circle" src="img/authors/avatar5.jpg" alt="avatar-image">
+                                <img class="message-image img-circle" src="<?=base_url();?>img/authors/avatar5.jpg" alt="avatar-image">
 
                                 <div class="message-body">
                                     <strong>Wilton Zeph</strong>
@@ -90,7 +90,7 @@
                         </li>
                         <li>
                             <a href="" class="message">
-                                <img class="message-image img-circle" src="img/authors/avatar1.jpg" alt="avatar-image">
+                                <img class="message-image img-circle" src="<?=base_url();?>img/authors/avatar1.jpg" alt="avatar-image">
                                 <div class="message-body">
                                     <strong>Jenny Kerry</strong>
                                     <br>
@@ -102,7 +102,7 @@
                         </li>
                         <li>
                             <a href="" class="message striped-col">
-                                <img class="message-image img-circle" src="img/authors/avatar.jpg" alt="avatar-image">
+                                <img class="message-image img-circle" src="<?=base_url();?>img/authors/avatar.jpg" alt="avatar-image">
                                 <div class="message-body">
                                     <strong>Tony</strong>
                                     <br>
@@ -126,7 +126,7 @@
                 <!-- User Account: style can be found in dropdown-->
                 <li class="dropdown user user-menu">
                     <a href="javascript:void(0)" class="dropdown-toggle padding-user" data-toggle="dropdown">
-                        <img src="img/authors/avatar1.jpg" width="35" class="img-circle img-responsive pull-left"
+                        <img src="<?=base_url();?>img/authors/avatar1.jpg" width="35" class="img-circle img-responsive pull-left"
                              height="35" alt="User Image">
                         <div class="riot">
                             <div>
@@ -140,7 +140,7 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="img/authors/avatar1.jpg" class="img-circle" alt="User Image">
+                            <img src="<?=base_url();?>img/authors/avatar1.jpg" class="img-circle" alt="User Image">
                             <p> Addison</p>
                         </li>
                         <!-- Menu Body -->
