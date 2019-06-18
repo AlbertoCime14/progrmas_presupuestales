@@ -121,10 +121,10 @@ $route['formatos/frm_5'] = 'C_Frm_5/index';
 
 
 $route['formatos/frm_6'] = 'C_Frm_6/index';
-
-
-
-
+$route['formatos/frm_7'] = 'C_Frm_7/index';
+$route['formatos/frm_8'] = 'C_Frm_8/index';
+$route['formatos/frm_9'] = 'C_Frm_9/index';
+$route['formatos/frm_12'] = 'C_Frm_12/index';
 
 
 
