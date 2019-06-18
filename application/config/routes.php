@@ -92,7 +92,7 @@ $route['formatos/frm_1'] = 'frm_1/index';
 //======================Alberto====================================//
 
 
-
+$route['formatos/frm_6'] = 'C_Frm_6/index';
 
 
 
