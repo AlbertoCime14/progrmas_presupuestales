@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Blank | Clear Admin Template </title>
+    <title>Programas Presupuestales </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="shortcut icon" href="img/favicon.ico"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,9 +43,9 @@
 <!-- header logo: style can be found in header-->
 <header class="header">
     <nav class="navbar navbar-static-top" role="navigation">
-        <a href="index.html" class="logo">
+        <a href="<?=base_url();?>" class="logo">
             <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            <img src="<?=base_url();?>img/logo.png" alt="logo"/>
+            <img src="<?=base_url();?>img/logo_seplan.png" alt="logo" style="max-width: 92%;"/>
         </a>
         <!-- Header Navbar: style can be found in header-->
         <!-- Sidebar toggle button-->

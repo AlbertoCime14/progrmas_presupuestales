@@ -1,12 +1,13 @@
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
 <?php
+$pag = 14;
 include 'application/views/masterpage/navegacion.php';
 ?>
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Informe de desempeño</h1>
+            <!--<h1>Informe de desempeño</h1>-->
            
         </section>
         <!-- Main content -->
@@ -19,7 +20,8 @@ include 'application/views/masterpage/navegacion.php';
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> Llene los siguientes campos
+                                <i class=""></i> Informe de desempeño
+                                <!-- Llene los siguientes campos -->
                             </h3>
 
                         </div>

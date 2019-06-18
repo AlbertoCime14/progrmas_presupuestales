@@ -45,88 +45,88 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="active" id="active">
-                                <a href="frm_1">
+                            <li class="<?php echo ($pag==1) ? 'active' : '' ; ?>" id="frm_1">
+                                <a href="<?=base_url();?>formatos/frm_1">
                                     <i class="fa fa-fw ti-file"></i> Formato 1
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_2">
+                                    <li class="<?php echo ($pag==2) ? 'active' : '' ; ?>" id="frm_2">
+                                <a href="<?=base_url();?>formatos/frm_2">
                                     <i class="fa fa-fw ti-file"></i> Formato 2
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_3">
+                                    <li class="<?php echo ($pag==3) ? 'active' : '' ; ?>" id="frm_3">
+                                <a href="<?=base_url();?>formatos/frm_3">
                                     <i class="fa fa-fw ti-file"></i> Formato 3
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_4">
+                                    <li class="<?php echo ($pag==4) ? 'active' : '' ; ?>" id="frm_4">
+                                <a href="<?=base_url();?>formatos/frm_4">
                                     <i class="fa fa-fw ti-file"></i> Formato 4
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_5">
+                                    <li class="<?php echo ($pag==5) ? 'active' : '' ; ?>" id="frm_5">
+                                <a href="<?=base_url();?>formatos/frm_5">
                                     <i class="fa fa-fw ti-file"></i> Formato 5
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_6">
+                                    <li class="<?php echo ($pag==6) ? 'active' : '' ; ?>" id="frm_6">
+                                <a href="<?=base_url();?>formatos/frm_6">
                                     <i class="fa fa-fw ti-file"></i> Formato 6
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_7">
+                                    <li class="<?php echo ($pag==7) ? 'active' : '' ; ?>" id="frm_7">
+                                <a href="<?=base_url();?>formatos/frm_7">
                                     <i class="fa fa-fw ti-file"></i> Formato 7
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_8">
+                                    <li class="<?php echo ($pag==8) ? 'active' : '' ; ?>" id="frm_8">
+                                <a href="<?=base_url();?>formatos/frm_8">
                                     <i class="fa fa-fw ti-file"></i> Formato 8
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_9">
+                                    <li class="<?php echo ($pag==9) ? 'active' : '' ; ?>" id="frm_9">
+                                <a href="<?=base_url();?>formatos/frm_9">
                                     <i class="fa fa-fw ti-file"></i> Formato 9
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_10">
+                                    <li class="<?php echo ($pag==10) ? 'active' : '' ; ?>" id="frm_10">
+                                <a href="<?=base_url();?>formatos/frm_10">
                                     <i class="fa fa-fw ti-file"></i> Formato 10
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_11">
+                                    <li class="<?php echo ($pag==11) ? 'active' : '' ; ?>" id="frm_11">
+                                <a href="<?=base_url();?>formatos/frm_11">
                                     <i class="fa fa-fw ti-file"></i> Formato 11
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_12">
+                                    <li class="<?php echo ($pag==12) ? 'active' : '' ; ?>" id="frm_12">
+                                <a href="<?=base_url();?>formatos/frm_12">
                                     <i class="fa fa-fw ti-file"></i> Formato 12
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_13">
+                                    <li class="<?php echo ($pag==13) ? 'active' : '' ; ?>" id="frm_13">
+                                <a href="<?=base_url();?>formatos/frm_13">
                                     <i class="fa fa-fw ti-file"></i> Formato 13
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_14">
+                                    <li class="<?php echo ($pag==14) ? 'active' : '' ; ?>" id="frm_14">
+                                <a href="<?=base_url();?>formatos/frm_14">
                                     <i class="fa fa-fw ti-file"></i> Formato 14
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_15">
+                                    <li class="<?php echo ($pag==15) ? 'active' : '' ; ?>" id="frm_15">
+                                <a href="<?=base_url();?>formatos/frm_15">
                                     <i class="fa fa-fw ti-file"></i> Formato 15
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_16">
+                                    <li class="<?php echo ($pag==16) ? 'active' : '' ; ?>" id="frm_16">
+                                <a href="<?=base_url();?>formatos/frm_16">
                                     <i class="fa fa-fw ti-file"></i> Formato 16
                                 </a>
                             </li>
-                                    <li class="active" id="active">
-                                <a href="frm_17">
+                            <li class="<?php echo ($pag==17) ? 'active' : '' ; ?>" id="frm_17">
+                                 <a href="<?=base_url();?>formatos/frm_17">
                                     <i class="fa fa-fw ti-file"></i> Formato 17
                                 </a>
                             </li>

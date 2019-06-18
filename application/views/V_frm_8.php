@@ -1,12 +1,13 @@
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
 <?php
+$pag = 8;
 include 'application/views/masterpage/navegacion.php';
 ?>
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Formato 8</h1>
+            <!--<h1>Formato 8</h1>-->
             
         </section>
         <!-- Main content -->

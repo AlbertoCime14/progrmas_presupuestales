@@ -81,7 +81,7 @@ body > .header .logo {
   padding: 3px 10px;
   text-align: center;
   width: 251px;
-  background-color: #2E576B; }
+  background-color: #73308A; }
 
 body > .header .logo .icon {
   margin-right: 10px; }
@@ -438,7 +438,8 @@ input[type="range"] {
   padding: 0 15px; }
 
 .skin-default .navbar {
-  background: url("../img/nav_bg.jpg") repeat; }
+  /*background: url("../img/nav_bg.jpg") repeat; */
+  background: #73308A}
 
 .left-side {
   background: #FFF;
@@ -839,13 +840,15 @@ a {
 
 #menu li.active > a {
   background: #EEEEEE;
-  color: #33CC99; }
+  font-weight: 800;
+  color: #73308A; }
 
 #menu .profile-left li > a:hover {
   color: #0A1414; }
 
 #menu li > a:hover {
-  color: #33CC99; }
+  color: #73308A; 
+  font-weight: 600;}
 
 #menu .menu-dropdown > ul > li > a {
   padding-left: 37px; }

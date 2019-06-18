@@ -1,12 +1,13 @@
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
 <?php
+$pag = 1;
 include 'application/views/masterpage/navegacion.php';
 ?>
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>algo</h1>
+            <h1>Formatos</h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="index.html">
@@ -22,7 +23,7 @@ include 'application/views/masterpage/navegacion.php';
         <!-- Main content -->
         <section class="content">
 		<!---Aqui va el contenido de la pagina :v-->
-        dsfdgfsdfdgfs
+        
         </section>
         <!-- /.content -->
     </aside>
