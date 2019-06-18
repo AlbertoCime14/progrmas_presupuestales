@@ -55,8 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //======================Carlos====================================//
 $route['formatos/frm_1'] = 'C_Frm_1/index';
-
 $route['formatos/frm_2'] = 'C_Frm_2/index';
+$route['formatos/frm_3'] = 'C_Frm_3/index';
 
 
 

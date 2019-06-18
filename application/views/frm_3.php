@@ -6,10 +6,11 @@ include 'application/views/masterpage/navegacion.php';
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Nombre del instrumento de Planeacion</h1>
+            <h1>Vinculación con otro</h1>
            
         </section>
         <!-- Main content -->
+        
 		<!---Aqui va el contenido de la pagina :v-->
       
      

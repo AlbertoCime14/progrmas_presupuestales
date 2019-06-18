@@ -10,7 +10,7 @@ include 'application/views/masterpage/navegacion.php';
            
         </section>
         <!-- Main content -->
-        <section class="content">
+      
 		<!---Aqui va el contenido de la pagina :v-->
       
      
