@@ -53,16 +53,38 @@ $route['default_controller'] = 'control_pagina/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+
+
+
 //======================Carlos====================================//
 $route['formatos/frm_1'] = 'C_Frm_1/index';
 $route['formatos/frm_2'] = 'C_Frm_2/index';
 $route['formatos/frm_3'] = 'C_Frm_3/index';
-//======================Randy====================================//
-$route['formatos/frm_13'] = 'C_Frm_13/index';
-$route['formatos/frm_14'] = 'C_Frm_14/index';
-$route['formatos/frm_15'] = 'C_Frm_15/index';
-$route['formatos/frm_16'] = 'C_Frm_16/index';
-$route['formatos/frm_17'] = 'C_Frm_17/index';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,4 +158,28 @@ $route['formatos/frm_6'] = 'C_Frm_6/index';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //======================Randy====================================//
+
+$route['formatos/frm_13'] = 'C_Frm_13/index';
+$route['formatos/frm_14'] = 'C_Frm_14/index';
+$route['formatos/frm_15'] = 'C_Frm_15/index';
+$route['formatos/frm_16'] = 'C_Frm_16/index';
+$route['formatos/frm_17'] = 'C_Frm_17/index';

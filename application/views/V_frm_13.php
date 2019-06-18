@@ -40,14 +40,14 @@ include 'application/views/masterpage/navegacion.php';
                                         <button type="button" class="btn btn-labeled btn-success">
                                                 <span class="btn-label">
                                                 <i class="glyphicon glyphicon-ok"></i>
-                                            </span> Success
+                                            </span> Guardar
                                         </button>
                                     </div>
                                  </div>
                                 </section>
                                <section>
                         		<div class="row">
-                        		  <div class="col-md-3">
+                        		  <div class="col-md-1">
                         		  			 	<div class="form-group">
                                     <label class="control-label">
                                       Indicadores
@@ -62,7 +62,7 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                        		  <div class="col-md-3">
+                        		  <div class="col-md-1">
                         		  		<div class="form-group">
                                     <label class="control-label">
                                       Variables
@@ -81,7 +81,7 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                        		 	 <div class="col-md-6">
+                        		 	 <div class="col-md-3">
                         		 		 	<div class="form-group">
                                     <label class="control-label">
                                      Registro administrativo generado
@@ -96,7 +96,7 @@ include 'application/views/masterpage/navegacion.php';
                <section>
                	<div class="row">
                         	
-                        		  <div class="col-md-3">
+                        		  <div class="col-md-1">
                         		  	  		<div class="form-group">
                                     <label class="control-label">
                                     Desagregacion por sexo
@@ -109,7 +109,7 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                        		  <div class="col-md-3">
+                        		  <div class="col-md-1">
                         		  	  		<div class="form-group">
                                     <label class="control-label">
                                     Instrumento de recolección de la información
@@ -121,7 +121,7 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                     	  		<div class="col-md-6">
+                     	  		<div class="col-md-3">
                         		  			 		 	<div class="form-group">
                                     <label class="control-label">
                                     ¿En qué programa tiene o tendrá su base de datos?</label>
@@ -135,7 +135,7 @@ include 'application/views/masterpage/navegacion.php';
                             <section>
                	<div class="row">
                         	
-                        		  <div class="col-md-6">
+                        		  <div class="col-md-3">
                         		  	  		<div class="form-group">
                                     <label class="control-label">
                                     Responsable de la producción de información
@@ -150,7 +150,7 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
-                        		  <div class="col-md-6">
+                        		  <div class="col-md-3">
                         		  	  		<div class="form-group">
                                     <label class="control-label">
                                     Periodicidad de la producción de la información
@@ -162,7 +162,24 @@ include 'application/views/masterpage/navegacion.php';
                                 		</select>                                    
                                 </div>
                         		 </div>
+                                <div class="col-md-2">
+                                
+                                </div>
+                                <div class="col-md-4">
+                                    <br>
+                                    <br><br>
 
+                                <button type="button" class="btn btn-labeled btn-success">
+                                                <span class="btn-label">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </span> Guardar
+                                        </button>
+                                <button type="button" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </span> Eliminar
+                                        </button>
+                                </div>
                         		 </div>
                         		 </div>
                         	</section>
