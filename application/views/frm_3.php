@@ -57,7 +57,7 @@ include 'application/views/masterpage/navegacion.php';
                                         	</select>
                                         </td>
                                         <td>
-                                        	<textarea placeholder="Describe el objetivo" class="form-control"></textarea>
+                                        	<textarea placeholder="Describe el objetivo" class="form-control" style="width: 116px; height: 115px;"></textarea>
                                         </td>
                                         <td>
                                         		<select class="selectpicker form-control">
@@ -90,12 +90,19 @@ include 'application/views/masterpage/navegacion.php';
                                         	</select>
                                         </td>
                                         <td>
-                                        	<textarea placeholder="Describe el objetivo" class="form-control"></textarea>
+                                        	<textarea placeholder="Describe el objetivo" class="form-control" style="width: 116px; height: 115px;"></textarea>
                                         </td>
                                         <td>
-                                        <button class="button button-flat" type="submit" value="Guardar" />Guardar</button>
-                                        &nbsp
-                                          <button class="button button-caution">Eliminar
+                                   <button type="button" class="btn btn-labeled btn-success">
+                                                    <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span> Guardar
+                                            </button>
+                                            &nbsp
+                                            <button type="button" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </span> Eliminar
                                             </button>
                                         </td>
                                     </tr>
