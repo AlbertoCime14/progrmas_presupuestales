@@ -29,6 +29,9 @@
     <link href="<?=base_url();?>vendors/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="<?=base_url();?>css/custom_css/realtime_form.css">
+        <link href="<?=base_url();?>vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/complex_forms.css">
 </head>
 
 <!--Head-->
