@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Frm_1 extends CI_Controller {
+class C_Frm_2 extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -29,7 +29,7 @@ class Frm_1 extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('masterpage/head');
-		$this->load->view('frm_1');
+		$this->load->view('frm_2');
 		$this->load->view('masterpage/footer');
 	}
 }

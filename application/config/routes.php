@@ -54,9 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //======================Carlos====================================//
-$route['formatos/frm_1'] = 'frm_1/index';
+$route['formatos/frm_1'] = 'C_Frm_1/index';
 
-
+$route['formatos/frm_2'] = 'C_Frm_2/index';
 
 
 
