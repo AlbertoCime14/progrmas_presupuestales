@@ -32,4 +32,11 @@ class Control_pagina extends CI_Controller {
 		$this->load->view('example');
 		$this->load->view('masterpage/footer');
 	}
+
+	public function form($n)
+	{
+		$this->load->view('masterpage/head');
+		$this->load->view('frm_'.$n);
+		$this->load->view('masterpage/footer');
+	}
 }
