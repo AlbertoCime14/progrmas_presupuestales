@@ -28,8 +28,8 @@ class C_Frm_1 extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('masterpage/head');
-		$this->load->view('frm_1');
-		$this->load->view('masterpage/footer');
+		$this->load->view('masterpage/Head');
+		$this->load->view('V_frm_1');
+		$this->load->view('masterpage/Footer');
 	}
 }
