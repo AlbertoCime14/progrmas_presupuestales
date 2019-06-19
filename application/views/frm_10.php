@@ -1,7 +1,7 @@
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
 <?php
-$pag = 1;
+$pag = 10;
 include 'application/views/masterpage/navegacion.php';
 ?>
     <aside class="right-side">
