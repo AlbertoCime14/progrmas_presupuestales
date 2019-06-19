@@ -145,7 +145,7 @@
                              height="35" alt="User Image">
                         <div class="riot">
                             <div>
-                                Addison
+                                SEPLAN
                                 <span>
                                         <i class="caret"></i>
                                     </span>
@@ -156,33 +156,28 @@
                         <!-- User image -->
                         <li class="user-header">
                             <img src="<?=base_url();?>img/authors/avatar1.jpg" class="img-circle" alt="User Image">
-                            <p> Addison</p>
+                            <p> SEPLAN</p>
                         </li>
                         <!-- Menu Body -->
                         <li class="p-t-3">
                             <a href="user_profile.html">
-                                <i class="fa fa-fw ti-user"></i> My Profile
+                                <i class="fa fa-fw ti-user"></i> Mi cuenta
                             </a>
                         </li>
                         <li role="presentation"></li>
                         <li>
                             <a href="edit_user.html">
-                                <i class="fa fa-fw ti-settings"></i> Account Settings
+                                <i class="fa fa-fw ti-settings"></i> Configuración
                             </a>
                         </li>
                         <li role="presentation" class="divider"></li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="lockscreen.html">
-                                    <i class="fa fa-fw ti-lock"></i>
-                                    Lock
-                                </a>
-                            </div>
+                            
                             <div class="pull-right">
                                 <a href="login.html">
                                     <i class="fa fa-fw ti-shift-right"></i>
-                                    Logout
+                                    Cerrar sesión
                                 </a>
                             </div>
                         </li>
