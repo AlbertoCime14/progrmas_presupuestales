@@ -215,8 +215,8 @@ $route['formatos/frm_17'] = 'C_Frm_17/index';
 
 
 //======================Jorge E.====================================//
-$route['formatos/frm_10'] = 'Control_pagina/form/10';
-$route['formatos/frm_11'] = 'Control_pagina/form/11';
+//$route['formatos/frm_10'] = 'Control_pagina/form/10';
+//$route['formatos/frm_11'] = 'Control_pagina/form/11';
 //$route['formatos/frm_12'] = 'Control_pagina/form/12';
 $route['formatos/frm_18'] = 'Control_pagina/form/18';
 $route['formatos/frm_19'] = 'Control_pagina/form/19';
