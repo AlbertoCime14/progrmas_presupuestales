@@ -8,7 +8,7 @@ include 'application/views/masterpage/navegacion.php';
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <!--<h1>Formato 1</h1>-->
-           
+         
         </section>
         <!-- Main content -->
       
@@ -33,7 +33,7 @@ include 'application/views/masterpage/navegacion.php';
                                  </div>
                                 </div>
                             </section>
-                                                  
+                                            
                         </div>
                     </div>
                 </div>

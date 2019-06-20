@@ -13,7 +13,7 @@ include 'application/views/masterpage/navegacion.php';
         <!-- Main content -->
       
 		<!---Aqui va el contenido de la pagina :v-->
-      
+                                                         
      
         <section class="content">
             <div class="row">
