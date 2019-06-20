@@ -4,6 +4,15 @@
     $pag = 13;
     include 'application/views/masterpage/navegacion.php';
     ?>
+  <style>
+
+
+      .textdeltd{
+          
+          width: 250px;
+
+      }
+  </style>
     <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -67,7 +76,7 @@
                                         <thead>
 
                                         <tr>
-                                            <th style="text-align: center;vertical-align: middle"  rowspan="3">
+                                            <th style="text-align: center;vertical-align: middle;"  rowspan="3">
                                                 Resumen narrativo
                                             </th>
                                             <th colspan="9" style="text-align: center">
@@ -116,6 +125,80 @@
                                             </td>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td >
+                                               <textarea rows="5" cols="50" style="resize:none;" class="form-control textdeltd"
+                                                         placeholder="Ingrese aqui la información correspondiente">Contribuir a incrementar la calidad del empleo en Yucatán mediante la ocupación de las personas desempleadas o subempledas
+                                               </textarea>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" style="width:250px">
+                                                    <option value="0">Seleccione</option>
+                                                    <option  value="1" selected>Crecimiento Promedio de Trabajadores Asegurados ante el IMSS en Yucatán
+                                                    </option>
+                                                    <option  value="2">Porcentaje de colocación de personas desempleadas y subempleadas
+                                                    </option>
+                                                    <option  value="3">Porcentaje de apoyos económicos entregado
+                                                    </option>
+                                                    <option  value="4">Porcentaje de apoyos en especie entregados
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" style="width:250px">
+                                                    <option value="0">Seleccione</option>
+                                                    <option  value="1" selected>Cubos dinámicos IMSS
+                                                    </option>
+                                                    <option  value="2">Sistema de Información de Apoyo al Empleo Web (SISPAEW ). Reporte Detalle de Acciones.
+                                                    </option>
+                                                    <option  value="3">Unidad de Apoyos Financieros a la Capacitación. Servicio Nacional de Empleo Yucatán (SNEY)
+                                                    </option>
+                                                    <option  value="4">Sistema de Información de Apoyo al Empleo Web (SISPAEW). Reporte Detalle de Acciones.
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" style="width:250px">
+                                                    <option value="0">Seleccione</option>
+                                                    <option  value="1">Las empresas tienen interés de contratar a los beneficiarios.
+                                                    </option>
+                                                    <option  value="2">Los beneficiarios concluyen los procesos de capacitación.
+                                                    </option>
+                                                    <option  value="3">Los beneficiarios le dan el uso adecuado a las herramientas.
+                                                    </option>
+                                                    <option  value="4" selected>Los buscadores de empleo y los empleadores hacen uso del servicio de vinculación laboral.
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
 
                                     </table>
                                 </div>
