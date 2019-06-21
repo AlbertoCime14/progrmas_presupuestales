@@ -28,8 +28,8 @@ class Control_pagina extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('masterpage/head');
-		$this->load->view('example');
+		//$this->load->view('masterpage/head');
+		$this->load->view('listadoprogamas');
 		$this->load->view('masterpage/footer');
 	}
 

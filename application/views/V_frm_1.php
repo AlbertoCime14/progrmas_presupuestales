@@ -17,6 +17,7 @@ include 'application/views/masterpage/navegacion.php';
      
         <section class="content">
             <div class="row">
+
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">

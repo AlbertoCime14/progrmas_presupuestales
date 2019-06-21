@@ -28,6 +28,11 @@ class C_Frm_1 extends CI_Controller {
 	}
 	public function index()
 	{
+	  	            if(isset($_POST['idprograma'])){
+	  	                $valor=$_POST['idprograma'];
+
+	            }
+
 		$this->load->view('masterpage/Head');
 		$this->load->view('V_frm_1');
 		$this->load->view('masterpage/Footer');

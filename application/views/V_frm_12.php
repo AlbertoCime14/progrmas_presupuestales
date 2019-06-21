@@ -1,10 +1,5 @@
-<div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-<?php
-$pag = 12;
-include 'application/views/masterpage/navegacion.php';
-?>
-    <aside class="right-side">
+
+    <aside class="">
         <!-- Content Header (Page header) -->
         <section class="content-header">
            <!-- <h1>Formatos</h1> -->
@@ -392,4 +387,3 @@ include 'application/views/masterpage/navegacion.php';
         <!-- /.content -->
     </aside>
     <!-- /.right-side -->
-</div>
