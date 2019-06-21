@@ -218,8 +218,8 @@
             <!---Aqui va el contenido de la pagina :v-->
          <div class="row">
             <sesion >
-                <div class="col-md-2"></div>
-                <div class="col-md-8" >
+
+                <div class="col-md-10" >
 
                     <input type="text" class="form-control" placeholder="Escriba un nuevo plan presupuestal">
                 </div>
