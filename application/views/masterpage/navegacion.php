@@ -42,7 +42,7 @@
 
 
 
-                    <h3 class="form-control">Formatos</h3>
+                    <h3 style="text-align: center">Formatos</h3>
                     <ul class="sub-menu">
                         <li class="<?php echo ($pag == 1) ? 'active' : ''; ?>" id="frm_1">
                             <a href="<?= base_url(); ?>formatos/frm_1">
