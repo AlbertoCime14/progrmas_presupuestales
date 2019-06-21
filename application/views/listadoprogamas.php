@@ -234,45 +234,59 @@
 
          </div>
             </sesion>
-            </br>
-            </br>
-            <table class="table table-striped table-bordered" id="table2">
-                <thead>
-                <tr>
-                    <th>Nombre del programa</th>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <i class=""></i> Programas presupuestales
+                            </h3>
 
-                    <th>Opciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tr>
-                <td style="width: 60%;">Nombre de ejemplo</td>
-                <td>
-                    <div class="row">
-                        <div class="col-md-6" style="text-align: right">
-                            <form action="formatos/frm_1" method="POST">
-                                <button type="submit" class="btn btn-labeled btn-success" name="idprograma" value="1" >
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered" id="table2">
+                                <thead>
+                                <tr>
+                                    <th>Nombre del programa</th>
+
+                                    <th>Opciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tr>
+                                <td style="width: 60%;">Nombre de ejemplo</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-6" style="text-align: right">
+                                            <form action="formatos/frm_1" method="POST">
+                                                <button type="submit" class="btn btn-labeled btn-success" name="idprograma" value="1" >
                                                     <span class="btn-label">
                                                     <i class="glyphicon glyphicon-edit" ></i>
                                                 </span> Editar
-                                </button>
+                                                </button>
 
-                            </form>
+                                            </form>
 
-                        </div>
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-labeled btn-danger">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-labeled btn-danger">
                                                 <span class="btn-label">
                                                 <i class="glyphicon glyphicon-remove"></i>
                                                                             </span> Eliminar
-                            </button>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
-                </td>
-                </tr>
-
-                </tbody>
-            </table>
+                </div>
+            </div>
 
         </section>
         <!-- /.content -->
