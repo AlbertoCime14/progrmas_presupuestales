@@ -222,5 +222,5 @@ $route['formatos/frm_17'] = 'C_Frm_17/index';
 //$route['formatos/frm_12'] = 'Control_pagina/form/12';
 $route['formatos/frm_18'] = 'Control_pagina/form/18';
 $route['formatos/frm_19'] = 'Control_pagina/form/19';
-$route['formatos/frm_20'] = 'Control_pagina/form/20';
-$route['formatos/frm_21'] = 'Control_pagina/form/21';
+$route['formatos/frm_20'] = 'C_Frm_20/index';
+$route['formatos/frm_21'] = 'C_Frm_21/index';
