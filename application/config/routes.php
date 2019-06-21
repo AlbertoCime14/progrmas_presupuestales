@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 
+//==================== inicio de sesión ===========
+$route['login'] = 'Control_login/inicia_sesion';
 
 //======================Carlos====================================//
 $route['formatos/frm_1'] = 'C_Frm_1/index';

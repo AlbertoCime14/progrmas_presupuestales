@@ -10,10 +10,10 @@ body {
 }
 
 #sign-in, #sign-up {
-    background: radial-gradient(ellipse at center, #5A93AF 0%, #004E74 100%);
+    background: radial-gradient(ellipse at center, #73308a 0%, #73308a 100%);
 }
 .login-form {
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(255, 255, 255, .1);
     border-radius: 4px;
     padding-top: 15px;
     padding-bottom: 15px;
