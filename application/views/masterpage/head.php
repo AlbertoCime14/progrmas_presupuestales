@@ -13,6 +13,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <!-- global css -->
+    
     <link type="text/css" href="<?=base_url();?>css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
     <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
@@ -32,6 +33,18 @@
         <link href="<?=base_url();?>vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/complex_forms.css">
+
+    <!--Notifiaciones-->
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
+    <link rel="stylesheet" href="<?=base_url();?>vendors/animate/animate.min.css"/>
+    <link rel="stylesheet" href="<?=base_url();?>vendors/pnotify/css/pnotify.css">
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.brighttheme.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.buttons.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.mobile.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.history.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom_css/toastr_notificatons.css">
+
 </head>
 
 <!--Head-->

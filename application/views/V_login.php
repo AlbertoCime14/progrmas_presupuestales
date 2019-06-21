@@ -25,7 +25,7 @@
         <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 login-form">
             <div class="panel-header">
                 <h2 class="text-center">
-                    <img src="<?=base_url();?>img/logo_seplan.png" alt="Logo" height="64" width="250">
+                    <img src="<?=base_url();?>img/logo_seplan.png" alt="Logo" height="64" width="300">
                 </h2>
             </div>
             <div class="panel-body">

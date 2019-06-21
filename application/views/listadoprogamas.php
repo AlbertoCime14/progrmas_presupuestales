@@ -33,6 +33,16 @@
     <link href="<?= base_url(); ?>vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>css/complex_forms.css">
+        <!--Notifiaciones-->
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
+    <link rel="stylesheet" href="<?=base_url();?>css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
+    <link rel="stylesheet" href="<?=base_url();?>vendors/animate/animate.min.css"/>
+    <link rel="stylesheet" href="<?=base_url();?>vendors/pnotify/css/pnotify.css">
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.brighttheme.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.buttons.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.mobile.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url();?>vendors/pnotify/css/pnotify.history.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom_css/toastr_notificatons.css">
 </head>
 
 <!--Head-->
@@ -270,11 +280,13 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                            <button type="button" class="btn btn-labeled btn-danger">
+                                            <button type="button" class="btn btn-labeled btn-danger" onclick="eliminarprograma()">
                                                 <span class="btn-label">
                                                 <i class="glyphicon glyphicon-remove"></i>
                                                                             </span> Eliminar
                                             </button>
+                                            
+                                             
                                         </div>
                                     </div>
                                 </td>
@@ -293,3 +305,15 @@
     </aside>
     <!-- /.right-side -->
 </div>
+
+<script type="text/javascript" src="<?= base_url(); ?>/js/formatos/programas.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.animate.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.buttons.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.confirm.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.nonblock.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.mobile.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.desktop.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.history.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.callbacks.js"></script>
+<script src="js/custom_js/notifications.js"></script>
