@@ -2,7 +2,7 @@
 if(isset($_SESION['idusuario'])){
 
 }else{
-        echo '<script>window.location="'.base_url().'"</script>';
+       // echo '<script>window.location="'.base_url().'"</script>';
 }
 ?>
 <aside class="left-side sidebar-offcanvas">

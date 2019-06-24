@@ -1,5 +1,10 @@
-
-    <aside class="">
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+<?php
+$pag = 12;
+include 'application/views/masterpage/navegacion.php';
+?>
+    <aside class="right-side">
         <!-- Content Header (Page header) -->
         <section class="content-header">
            <!-- <h1>Formatos</h1> -->
@@ -385,5 +390,7 @@
         
         </section>
         <!-- /.content -->
+        <!-- /.content -->
     </aside>
     <!-- /.right-side -->
+</div>
