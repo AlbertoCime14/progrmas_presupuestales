@@ -1,3 +1,10 @@
+<?php 
+if(isset($_SESION['idusuario'])){
+
+}else{
+        echo '<script>window.location="'.base_url().'"</script>';
+}
+?>
 <aside class="left-side sidebar-offcanvas">
     <!-- sidebar: style can be found in sidebar-->
     <section class="sidebar">

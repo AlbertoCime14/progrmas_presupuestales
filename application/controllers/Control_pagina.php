@@ -29,14 +29,13 @@ class Control_pagina extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('masterpage/head');
-		$this->load->view('listadoprogamas');
+		if(isset($_SESION['idusuario'])){
+						$this->load->view('listadoprogamas');
 		$this->load->view('masterpage/footer');
+		}else{
+					$this->load->view('V_login');
+		}
 	}
 
-	public function form($n)
-	{
-		$this->load->view('masterpage/head');
-		$this->load->view('frm_'.$n);
-		$this->load->view('masterpage/footer');
-	}
+	
 }
