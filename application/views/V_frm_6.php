@@ -22,10 +22,38 @@ include 'application/views/masterpage/navegacion.php';
                             </h3>
 
                         </div>
+
                         <div class="panel-body">
-                            
-                                
-                            
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Agregue un nuevo municipio
+                                            </label>
+                                            <select id="skill" name="skill" class="form-control" data-bv-field="skill">
+                                                <option value="">
+                                                    Seleccione una opción
+                                                </option>
+                                                <option value="html">Mérida</option>
+                                                <option value="css">Mérida</option>
+                                                <option value="css">Mérida</option>
+                                                <option value="css">Mérida</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="padding-top: 2.3%">
+                                        <button type="button" class="btn btn-labeled btn-success">
+                                            <span class="btn-label">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </span> Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+
+
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered" id="sample_1">
                                     <thead>
@@ -42,7 +70,7 @@ include 'application/views/masterpage/navegacion.php';
                                         </th>
                                         <th style="text-align: center">% de poblacion rural</th>
                                         <th style="text-align: center">Habitantes por  tamaño de localidad</th>
-                                        <!---<th style="text-align: center" class="col-sm-4">Opciones</th>-->
+                                        <th style="text-align: center" class="col-sm-2">Opciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -88,7 +116,7 @@ include 'application/views/masterpage/navegacion.php';
                                             <option value="css">Más de 50,000</option>
                                         </select>
                                         </td>
-                                        <!---<td>
+                                        <td>
                                             <button type="submit" class="btn btn-labeled btn-success">
                                                     <span class="btn-label">
                                                     <i class="glyphicon glyphicon-ok"></i>
@@ -100,7 +128,7 @@ include 'application/views/masterpage/navegacion.php';
                                                 <i class="glyphicon glyphicon-remove"></i>
                                             </span> Eliminar
                                             </button>
-                                        </td>-->
+                                        </td>
                                     </tr>
                                    
                                    
