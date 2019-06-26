@@ -265,8 +265,10 @@ function init() {
 
   // Show the diagram's model in JSON format
   function save() {
-    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
-    myDiagram.isModified = false;
+    //document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+    //myDiagram.isModified = false;
+    var jsonData = myDiagram.model.toJson ();
+    
   }
   function load() {
     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
