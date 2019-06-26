@@ -1,7 +1,7 @@
 <script src="<?=base_url();?>js/app.js" type="text/javascript"></script>
 
 
-<!-- /.right-side -->
+<!-- /.pruebas -->
 <!-- ./wrapper -->
 <!-- global js -->
 <!--Notificaciones-->

@@ -1,0 +1,36 @@
+.audiojs {
+    width:200px;
+    height:24px;
+}
+.audiojs p {
+    margin:0 !important;
+    height:24px;
+}
+.audiojs .play-pause {
+    height:24px;
+    padding:0px 8px 0px 0px;
+    margin:-1px 0 0 0;
+}
+.audiojs .play {
+    height:24px;
+}
+.audiojs .scrubber {
+    width:50px;
+    height:12px;
+    margin:6px 5px;
+}
+.audiojs .progress {
+    height:12px;
+}
+.audiojs .loaded {
+    height:12px;
+}
+.audiojs .time {
+    float:left;
+    height:24px;
+    line-height:24px;
+}
+.audiojs .error-message {
+    height:24px;
+    line-height:24px;
+}

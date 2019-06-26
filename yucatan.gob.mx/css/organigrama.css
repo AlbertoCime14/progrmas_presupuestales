@@ -1,0 +1,110 @@
+#chart li, #chart ul li {
+    list-style:none;
+}
+#chart, #chart ul {
+    margin:0;
+    padding:0;
+}
+#chart ul ul {
+    margin-left:1em;
+    padding:0 40px;
+    position:relative;
+}
+#chart ul ul:before {
+    content:"";
+    display:block;
+    width:0;
+    position:absolute;
+    top:0;
+    bottom:0;
+    border-left:1px solid #CCC;
+}
+#chart ul ul li {
+    margin:0;
+    padding:30px 0 0 0;
+    position:relative;
+}
+#chart ul ul li:before {
+    content:"";
+    display:block;
+    width:40px;
+    height:0;
+    border-top:1px solid #CCC;
+    position:absolute;
+    top:50px;
+    left:0;
+}
+#chart ul ul li:last-child:before {
+    background:#FFF;
+    height:auto;
+    top:50px;
+    bottom:0
+}
+#chart ul li span.action {
+    padding:3px 5px;
+    background:#EEE;
+    position:absolute;
+    cursor:pointer;
+}
+#chart ul ul li span.action {
+    left:-12px;
+    top:35px;
+}
+#chart div.todos {
+    margin-bottom:30px;
+}
+#chart a.clickAll > span {
+    padding:3px 5px;
+    background:#EEE;
+    cursor:pointer;
+    float:left;
+    margin-right:10px;
+}
+#chart a.clickAll > .ico {
+    color:#555;
+}
+#chart div.entidad {
+    margin:0;
+    margin-left:35px;
+    padding:10px 15px;
+    background-color:#F5F5F5;
+    border:1px solid #DDD;
+    width:400px;
+    position:relative;
+    text-align:left;
+}
+#chart div.foto {
+    padding:10px 15px 10px 60px;
+}
+#chart div.f {
+    padding:3px;
+    background-color:#FFF;
+    border:1px solid #DDD;
+    position:absolute;
+    top:40px;
+    left:-20px;
+}
+#chart a, #chart a:hover {
+    text-decoration:none;
+}
+#chart div.n {
+    font-weight:bold;
+    color:#1F3464;
+}
+#chart div.p {
+    font-weight:bold;
+}
+@media print {
+    #chart ul ul:before {
+        border-left:none;
+    }
+    #chart ul ul li:before {
+        border-top:none;
+    }
+    .todos, span.action {
+        display:none;
+    }
+    #chart div.entidad, #chart div.f {
+        page-break-inside:avoid;
+    }
+}
