@@ -281,8 +281,10 @@
   /*
 *funcion para llenar el canvas automaticamente desde la base de datos
 */
-
-  	(function autorecuperarjson() {
+(function(){
+ autorecuperarjson();   
+})();
+  	function autorecuperarjson() {
 	var url=document.getElementById("url").value;
 	var id_problema=1;
 	   $.ajax({
@@ -326,7 +328,7 @@
 		}); 
 		
 
-		})();
+	}
 
   function layout() {
     myDiagram.layoutDiagram(true);
@@ -419,3 +421,89 @@ var url=document.getElementById("url").value;
 }); 
 	
   }
+  
+  function resetearjson(){
+	      	/*Url estatica*/
+var url=document.getElementById("url").value;
+	var id_problema=1;
+	var Nombre_problema="Problema central";
+	var json64="eyAiY2xhc3MiOiAiR3JhcGhMaW5rc01vZGVsIiwKICAibm9kZURhdGFBcnJheSI6IFsgCnsiY2F0ZWdvcnkiOiJTb3VyY2UiLCAia2V5IjotMSwgImxvYyI6Ii0xLjQyMTA4NTQ3MTUyMDIwMDRlLTE0IDQ3LjIzODU3NjI1MDg0NjAzIiwgInRleHQiOiJQcm9ibGVtYSBjZW50cmFsIn0sCnsia2V5IjotMiwgImxvYyI6IjI2OS40NTA5MzkxODU2OTQ0IDAifSwKeyJ0ZXh0IjoiQ2F1c2EiLCAibG9jIjoiNDg1LjA3Mzc4NTE1ODEyMzQgMCIsICJrZXkiOi0zfSwKeyJjYXRlZ29yeSI6IkRlc2lyZWRFdmVudCIsICJrZXkiOi00LCAibG9jIjoiMjI5LjEzOTUxNjE5OTQ4MDA2IDcyLjIzODU3NjI1MDg0NjA3In0sCnsiY2F0ZWdvcnkiOiJEZXNpcmVkRXZlbnQiLCAia2V5IjotNSwgImxvYyI6IjQ0NC43NjIzNjIxNzE5MDg5MyA3Mi4yMzg1NzYyNTA4NDYwNyJ9LAp7ImNhdGVnb3J5IjoiRGVzaXJlZEV2ZW50IiwgImtleSI6LTYsICJsb2MiOiI2NjAuMzg1MjA4MTQ0MzM3OSA3Mi4yMzg1NzYyNTA4NDYwMiJ9CiBdLAogICJsaW5rRGF0YUFycmF5IjogWyAKeyJmcm9tIjotMiwgInRvIjotMywgInBvaW50cyI6WzMzNC40NTA5MzkxODU2OTQ0LDE1Ljg4MTY2NjcwNzk5MjU1NCwzODQuNjU4NTU0NTA5ODM3MzYsMTUuODgxNjY2NzA3OTkyNTU2LDQzNC44NjYxNjk4MzM5ODA0LDE1Ljg4MTY2NjcwNzk5MjU1Niw0ODUuMDczNzg1MTU4MTIzNCwxNS44ODE2NjY3MDc5OTI1NTRdfSwKeyJmcm9tIjotMSwgInRvIjotMiwgInBvaW50cyI6WzE1OS4xMzk1MTYxOTk0Nzk4LDY1Ljg4MTY2NjcwNzk5MjU3LDE5OS4xMzk1MTYxOTk0Nzk4LDY1Ljg4MTY2NjcwNzk5MjU3LDIxOS40NTA5MzkxODU2OTQzOCwxNS44ODE2NjY3MDc5OTI1NTQsMjY5LjQ1MDkzOTE4NTY5NDQsMTUuODgxNjY2NzA3OTkyNTU0XX0sCnsiZnJvbSI6LTEsICJ0byI6LTQsICJwb2ludHMiOlsxNTkuMTM5NTE2MTk5NDc5OCw2NS44ODE2NjY3MDc5OTI1NywxOTkuMTM5NTE2MTk5NDc5OCw2NS44ODE2NjY3MDc5OTI1NywxNzkuMTM5NTE2MTk5NDc5ODksOTAuODgxNjY2NzA3OTkyNTcsMjI5LjEzOTUxNjE5OTQ3OTg5LDkwLjg4MTY2NjcwNzk5MjU3XX0sCnsiZnJvbSI6LTQsICJ0byI6LTUsICJwb2ludHMiOlszNzQuNzYyMzYyMTcxOTA4OSw5MC44ODE2NjY3MDc5OTI1NywzOTguMDk1Njk1NTA1MjQyMjUsOTAuODgxNjY2NzA3OTkyNTcsNDIxLjQyOTAyODgzODU3NTU2LDkwLjg4MTY2NjcwNzk5MjU3LDQ0NC43NjIzNjIxNzE5MDg5Myw5MC44ODE2NjY3MDc5OTI1N119LAp7ImZyb20iOi01LCAidG8iOi02LCAicG9pbnRzIjpbNTkwLjM4NTIwODE0NDMzOCw5MC44ODE2NjY3MDc5OTI1Nyw2MTMuNzE4NTQxNDc3NjcxNCw5MC44ODE2NjY3MDc5OTI1Nyw2MzcuMDUxODc0ODExMDA0Nyw5MC44ODE2NjY3MDc5OTI1Nyw2NjAuMzg1MjA4MTQ0MzM4LDkwLjg4MTY2NjcwNzk5MjU3XX0KIF19";
+	/***
+	*Inicio script para llenar guardar el canvas
+	***/
+	
+
+				
+	   new PNotify({
+                                        title: 'Eliminar',
+                                        text: '¿Seguro desea resetear el programa?',
+                                        icon: 'fa fa-question-circle',
+                                         type: 'warning',
+                                        hide: false,
+                                        confirm: {
+                                            confirm: true
+                                        },
+                                        buttons: {
+                                            closer: false,
+                                            sticker: false
+                                        },
+                                        history: {
+                                            history: false
+                                        },
+                                        addclass: 'stack-modal',
+                                        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true }
+                                    }).get().on('pnotify.confirm', function(){
+										
+						   $.ajax({
+										
+										
+										type: "POST",
+										url: url+"modificaciones/frm_20",
+										data: "iId_problema="+id_problema+"&tEstructura_problema="+json64+"&tNombre_problema="+Nombre_problema,
+										success: function(data) {
+												 console.log( "Peticion realizada correctamente!" );
+												
+												
+												/**
+												sirve para recargar el json64
+
+												*/
+												 if(data=="Correcto"){
+													 
+														new PNotify({
+														title: 'Problema restablecido correctamente',
+														type: 'success',
+													});
+													autorecuperarjson();
+												 }else{
+													   new PNotify({
+														title: 'Realiza cambios primero antes de guardar',
+													  
+														type: 'warning',
+													
+													 
+													});
+												 }
+													 
+										},
+										error: function(XMLHttpRequest, textStatus, errorThrown) {
+											console.log("Status: " + textStatus);
+											console.log("Error: " + errorThrown);
+													new PNotify({
+														title: 'Error en el servidor',
+													  
+														type: 'error',
+													
+													 
+													});
+
+										}
+										
+						}); 							
+
+                                    }).on('pnotify.cancel', function(){
+                                      //  alert('Cancelado');
+                                    })
+
+
+		}

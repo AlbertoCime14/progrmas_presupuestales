@@ -40,6 +40,7 @@
                                   <!--  <button onclick="load()" class="btn btn-success">Load</button>
 								  -->
                                     <button onclick="layout()"class="btn btn-warning">Acoplar</button>
+									  <button onclick="resetearjson()"class="btn btn-danger">Resetear problema</button>
                                     <textarea id="mySavedModel" style="width:100%;height:300px; visibility:hidden;"></textarea>
                                 </div>
 
