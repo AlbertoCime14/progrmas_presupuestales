@@ -132,6 +132,10 @@ $route['formatos/frm_9'] = 'C_Frm_9/index';
 $route['formatos/frm_10'] = 'C_Frm_10/index';
 $route['formatos/frm_11'] = 'C_Frm_11/index';
 $route['formatos/frm_12'] = 'C_Frm_12/index';
+$route['formatos/frm_21'] = 'C_Frm_21/index';
+$route['modificaciones/frm_21'] = 'C_Frm_21/actualizarobjetivo';
+$route['consultas/frm_21/(:any)'] = 'C_Frm_21/consultar_problema';
+$route['consultasObj/frm_21/(:any)'] = 'C_Frm_21/cosultar_objetivos';
 
 
 
@@ -228,4 +232,3 @@ $route['formatos/frm_17'] = 'C_Frm_17/index';
 $route['formatos/frm_18'] = 'Control_pagina/form/18';
 $route['formatos/frm_19'] = 'Control_pagina/form/19';
 $route['formatos/frm_20'] = 'C_Frm_20/index';
-$route['formatos/frm_21'] = 'C_Frm_21/index';
