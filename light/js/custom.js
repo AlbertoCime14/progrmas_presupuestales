@@ -1,13 +1,4 @@
-
-
-
-
-(function init() {
-	
-	
-	
-	
-	
+function init() {
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
 
@@ -266,49 +257,7 @@
     // read in the JSON-format data from the "mySavedModel" element
     load();
     //layout();
-  })();
-  
-  
-  	(function autorecuperarjson() {
-	var url=document.getElementById("url").value;
-	var id_problema=1;
-	   $.ajax({
-                
-                type: "POST",
-                url: url+"consultas/frm_20/"+id_problema,
-                data: "ok=ok",
-                success: function(data) {
-						 var o = JSON.parse(data);
-							var llaves=(Object.values(o['problema']));
-							var valor=(Object.keys(llaves).length);
-
-							//console.log(valor);
-							for (x=0;x<valor;x++){
-								var objetos = Object.values(llaves[x]);
-								//console.log(objetos);
-								//posicion 2 viene de la base de datos modificar cualsea el caso
-								
-								 
-								document.getElementById("mySavedModel").value=window.atob(objetos[2]);
-								myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
-								console.log("JSON Recuperado correctamente");
-								
-							
-								 
-								
-								
-							}
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log("Status: " + textStatus);
-                    console.log("Error: " + errorThrown);
-
-                }
-				
-		}); 
-		
-
-		})();
+  }
 
   function layout() {
     myDiagram.layoutDiagram(true);
@@ -316,84 +265,10 @@
 
   // Show the diagram's model in JSON format
   function save() {
-    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+    //document.getElementById("mySavedModel").value = myDiagram.model.toJson();
     //myDiagram.isModified = false;
-    //var jsonData = myDiagram.model.toJson ();
-	
-	
-    	/*Url estatica*/
-var url=document.getElementById("url").value;
-	var id_problema=1;
-	var estructura_problema=document.getElementById("mySavedModel").value;
-	var Nombre_problema="";
-	
-	/***
-	*Inicio script para llenar guardar el canvas
-	***/
-	
-	var o = JSON.parse(estructura_problema);
-
-	var llaves=(Object.values(o['nodeDataArray']));
-	var valor=(Object.keys(llaves).length);
-	var json64=window.btoa(estructura_problema);
-  //console.log(json64);
-		//console.log(valor);
-		for (x=0;x<valor;x++){
-			var objetos = Object.values(llaves[x]);
-			console.log(objetos);
-		
-			   if(objetos[0] == 'Source')
-				{
-					Nombre_problema=objetos[3];
-				//	console.log(nombre);
-					
-				}
-		}
-	  /***
-	  *fin
-	  ***/
-  
-    $.ajax({
-                
-                type: "POST",
-                url: url+"modificaciones/frm_20",
-                data: "id_problema="+id_problema+"&estructura_problema="+json64+"&Nombre_problema="+Nombre_problema,
-                success: function(data) {
-                         console.log( "Peticion realizada correctamente!" );
-						 if(data=="Correcto"){
-							    new PNotify({
-                                title: 'Datos guardados',
-                              
-                                type: 'success',
-                            
-                             
-                            });
-						 }else{
-							   new PNotify({
-                                title: 'Error datos no guardados',
-                              
-                                type: 'error',
-                            
-                             
-                            });
-						 }
-						 	 
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log("Status: " + textStatus);
-                    console.log("Error: " + errorThrown);
-						    new PNotify({
-                                title: 'Error en el servidor',
-                              
-                                type: 'error',
-                            
-                             
-                            });
-
-                }
-				
-}); 
-	
+    var jsonData = myDiagram.model.toJson ();
+    
   }
   function load() {
     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);

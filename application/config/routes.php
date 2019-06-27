@@ -66,6 +66,9 @@ $route['formatos/frm_3'] = 'C_Frm_3/index';
 $route['formatos/frm_4'] = 'C_Frm_4/index';
 $route['formatos/frm_5'] = 'C_Frm_5/index';
 
+$route['modificaciones/frm_20'] = 'C_Frm_20/actualizarproblema';
+$route['consultas/frm_20/(:any)'] = 'C_Frm_20/consultar_problema';
+
 
 
 
