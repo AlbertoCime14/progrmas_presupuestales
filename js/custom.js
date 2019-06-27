@@ -1,4 +1,6 @@
-
+/*
+*Incializa el canvas
+*/
 
 
 
@@ -11,10 +13,13 @@
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
 
+
+//causa
     var yellowgrad = $(go.Brush, "Linear", { 0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)" });
-    var greengrad = $(go.Brush, "Linear", { 0: "#98FB98", 1: "#9ACD32" });
+    
+	var greengrad = $(go.Brush, "Linear", { 0: "#98FB98", 1: "#9ACD32" });
     var bluegrad = $(go.Brush, "Linear", { 0: "#B0E0E6", 1: "#87CEEB" });
-    var redgrad = $(go.Brush, "Linear", { 0: "#C45245", 1: "#871E1B" });
+    //var redgrad = $(go.Brush, "Linear", { 0: "#C45245", 1: "#871E1B" });
     var whitegrad = $(go.Brush, "Linear", { 0: "#F0F8FF", 1: "#E6E6FA" });
 
     var bigfont = "bold 13pt Helvetica, Arial, sans-serif";
@@ -90,6 +95,7 @@
             editable: true
           },
           new go.Binding("text", "text").makeTwoWay()));
+		  
 
     myDiagram.nodeTemplateMap.add("Source",
       $(go.Node, "Auto",
@@ -100,7 +106,7 @@
             portId: "", fromLinkable: true, cursor: "pointer", fromEndSegmentLength: 40
           }),
           //globo 1
-        $(go.TextBlock, "Source", textStyle(),
+        $(go.TextBlock, "Problema", textStyle(),
           new go.Binding("text", "text").makeTwoWay())
       ));
 
@@ -108,9 +114,12 @@
       $(go.Node, "Auto",
         new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
         $(go.Shape, "RoundedRectangle",
-          { fill: greengrad, portId: "", toLinkable: true, toEndSegmentLength: 50 }),
+          { fill: greengrad,
+		    portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer",
+            toEndSegmentLength: 50, fromEndSegmentLength: 40
+		  }),
           //globo 2
-        $(go.TextBlock, "Success!", textStyle(),
+        $(go.TextBlock, "Consecuencias", textStyle(),
           new go.Binding("text", "text").makeTwoWay())
       ));
 
@@ -146,7 +155,7 @@
     );
 
 
-    myDiagram.nodeTemplateMap.add("UndesiredEvent",
+/*     myDiagram.nodeTemplateMap.add("UndesiredEvent",
       $(go.Node, "Auto",
         new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
         { selectionAdornmentTemplate: UndesiredEventAdornment },
@@ -169,7 +178,7 @@
             new go.Binding("itemArray", "reasonsList").makeTwoWay()
           )
         )
-      ));
+      )); */
 
     myDiagram.nodeTemplateMap.add("Comment",
       $(go.Node, "Auto",
@@ -190,6 +199,7 @@
       ));
 
     // clicking the button on an UndesiredEvent node inserts a new text object into the panel
+	
     function addReason(e, obj) {
       var adorn = obj.part;
       if (adorn === null) return;
@@ -259,7 +269,7 @@
       { category: "Source" },
       {}, // default node
       { category: "DesiredEvent" },
-      { category: "UndesiredEvent", reasonsList: [{}] },
+     /*  { category: "UndesiredEvent", reasonsList: [{}] }, */
       { category: "Comment" }
     ];
 
@@ -268,7 +278,10 @@
     //layout();
   })();
   
-  
+  /*
+*funcion para llenar el canvas automaticamente desde la base de datos
+*/
+
   	(function autorecuperarjson() {
 	var url=document.getElementById("url").value;
 	var id_problema=1;
@@ -320,6 +333,12 @@
   }
 
   // Show the diagram's model in JSON format
+  
+  
+  
+  /**
+  *Funcion para guardar los datos del canvas a la base de datos
+  **/
   function save() {
     document.getElementById("mySavedModel").value = myDiagram.model.toJson();
     //myDiagram.isModified = false;
@@ -337,7 +356,6 @@ var url=document.getElementById("url").value;
 	***/
 	
 	var o = JSON.parse(estructura_problema);
-
 	var llaves=(Object.values(o['nodeDataArray']));
 	var valor=(Object.keys(llaves).length);
 	var json64=window.btoa(estructura_problema);
