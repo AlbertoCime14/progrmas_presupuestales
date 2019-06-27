@@ -83,7 +83,7 @@
             toEndSegmentLength: 50, fromEndSegmentLength: 40
           }),
           //globo 3
-        $(go.TextBlock, "Page",
+        $(go.TextBlock, "Causa",
           {
             margin: 6,
             font: bigfont,
@@ -177,7 +177,7 @@
         $(go.Shape, "Rectangle",
           { portId: "", fill: whitegrad, fromLinkable: true }),
           //globo 5
-        $(go.TextBlock, "A comment",
+        $(go.TextBlock, "Comentario",
           {
             margin: 9,
             maxSize: new go.Size(200, NaN),
@@ -360,9 +360,10 @@ var url=document.getElementById("url").value;
   
     $.ajax({
                 
+				
                 type: "POST",
                 url: url+"modificaciones/frm_20",
-                data: "iId_problema="+id_problema+"&tNombre_problema="+json64+"&tEstructura_problema="+Nombre_problema,
+                data: "iId_problema="+id_problema+"&tEstructura_problema="+json64+"&tNombre_problema="+Nombre_problema,
                 success: function(data) {
                          console.log( "Peticion realizada correctamente!" );
 						 if(data=="Correcto"){

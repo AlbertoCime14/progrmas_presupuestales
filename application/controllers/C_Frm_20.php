@@ -21,8 +21,8 @@ class C_Frm_20 extends CI_Controller {
 			$tEstructura_problema = $this->input->post('tEstructura_problema');
 			
 				$data = array(
-				'Nombre_problema' => $tNombre_problema,
-				'estructura_problema' => $tEstructura_problema
+				'tNombre_problema' => $tNombre_problema,
+				'tEstructura_problema' => $tEstructura_problema
 			 );
 		
 		
