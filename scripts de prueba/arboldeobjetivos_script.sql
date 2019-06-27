@@ -19,19 +19,16 @@ USE `programas_presupuestales`;
 
 /*Table structure for table `problemas` */
 
-DROP TABLE IF EXISTS `problemas`;
+DROP TABLE IF EXISTS `objetivos`;
 
-CREATE TABLE `problemas` (
-  `id_problema` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_problema` text,
-  `estructura_problema` text ,
-  PRIMARY KEY (`id_problema`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `problemas` (`id_problema`, `Nombre_problema`, `estructura_problema`) VALUES (NULL, 'Problema', '');
+CREATE TABLE `objetivos` (
+  `iId_objeivos` int(11) NOT NULL AUTO_INCREMENT,
+  `tNombre_objetivo` text,
+  `tEstructura_objetivo` text,
+  `iId_problemas` int(11) NULL,
+  PRIMARY KEY (`iId_objeivos`),
+  FOREIGN KEY (`iId_problemas`) REFERENCES problemas (`iId_problema`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `problemas` */
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
