@@ -290,9 +290,9 @@
 								
 								 
 								document.getElementById("mySavedModel").value=window.atob(objetos[2]);
-								myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+							
 								console.log("JSON Recuperado correctamente");
-								
+								load();
 							
 								 
 								
@@ -340,7 +340,7 @@ var url=document.getElementById("url").value;
 		//console.log(valor);
 		for (x=0;x<valor;x++){
 			var objetos = Object.values(llaves[x]);
-			console.log(objetos);
+			//console.log(objetos);
 		
 			   if(objetos[0] == 'Source')
 				{
@@ -370,9 +370,9 @@ var url=document.getElementById("url").value;
                             });
 						 }else{
 							   new PNotify({
-                                title: 'Error datos no guardados',
+                                title: 'Realiza cambios primero antes de guardar',
                               
-                                type: 'error',
+                                type: 'warning',
                             
                              
                             });
