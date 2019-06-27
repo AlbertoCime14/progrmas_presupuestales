@@ -11,7 +11,7 @@ class M_Problemas extends CI_Model {
 
     public function actualizar_problema($data,$id)
 	{	
-		$this->db->where('id_problema', $id);
+		$this->db->where('iId_problema', $id);
 		$this->db->update('problemas', $data);
 				
 		if ($this->db->affected_rows() > 0)
@@ -23,18 +23,18 @@ class M_Problemas extends CI_Model {
 		  return FALSE;
 			}
     }
-	  public function consultarproblemas($id_problema){
+	  public function consultarproblemas($iId_problema){
         $this->db->select('*');
         $this->db->from('problemas');
-        $this->db->where('id_problema',$id_problema);
+        $this->db->where('iId_problema',$iId_problema);
 		
         $query = $this->db->get();
 		
         foreach ($query->result() as $row) {
            $datos[] = [
-		   	'id_problema'       => $row->id_problema ,  
-            'Nombre_problema'       => $row->Nombre_problema , 
-            'estructura_problema'       => $row->estructura_problema 
+		   	'iId_problema'       => $row->iId_problema ,
+            'tNombre_problema'       => $row->tNombre_problema ,
+            'tEstructura_problema'       => $row->tEstructura_problema
 						  
             ];
         }

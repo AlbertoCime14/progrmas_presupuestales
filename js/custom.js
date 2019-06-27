@@ -362,7 +362,7 @@ var url=document.getElementById("url").value;
                 
                 type: "POST",
                 url: url+"modificaciones/frm_20",
-                data: "id_problema="+id_problema+"&estructura_problema="+json64+"&Nombre_problema="+Nombre_problema,
+                data: "iId_problema="+id_problema+"&tNombre_problema="+json64+"&tEstructura_problema="+Nombre_problema,
                 success: function(data) {
                          console.log( "Peticion realizada correctamente!" );
 						 if(data=="Correcto"){
