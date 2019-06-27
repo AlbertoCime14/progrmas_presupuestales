@@ -264,7 +264,7 @@
     ];
 
     // read in the JSON-format data from the "mySavedModel" element
-    load();
+   
     //layout();
   })();
   
@@ -292,8 +292,13 @@
 								document.getElementById("mySavedModel").value=window.atob(objetos[2]);
 							
 								console.log("JSON Recuperado correctamente");
-								load();
+								
+								
 							
+							 setTimeout(function(){ 
+
+								myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+							 }, 0);
 								 
 								
 								
@@ -394,7 +399,4 @@ var url=document.getElementById("url").value;
 				
 }); 
 	
-  }
-  function load() {
-    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
   }
