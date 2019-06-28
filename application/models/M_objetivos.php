@@ -9,10 +9,10 @@ class M_objetivos extends CI_Model {
 
 	}
 
-    public function actualizar_problema($data,$id)
+    public function actualizar_objetivos($data,$id)
 	{
-		$this->db->where('iId_problema', $id);
-		$this->db->update('problemas', $data);
+		$this->db->where('iId_objeivos', $id);
+		$this->db->update('objetivos', $data);
 
 		if ($this->db->affected_rows() > 0)
 			{
@@ -23,23 +23,7 @@ class M_objetivos extends CI_Model {
 		  return FALSE;
 			}
     }
-	  public function consultarproblemas($iId_problema){
-        $this->db->select('*');
-        $this->db->from('problemas');
-        $this->db->where('iId_problema',$iId_problema);
-
-        $query = $this->db->get();
-
-        foreach ($query->result() as $row) {
-           $datos[] = [
-		   	'iId_problema'       => $row->iId_problema ,
-            'tNombre_problema'       => $row->tNombre_problema ,
-            'tEstructura_problema' => $row->tEstructura_problema
-
-            ];
-        }
-        return $datos;
-    }
+	
     public function consultarobjetivos($iId_objetivos){
         $this->db->select('*');
         $this->db->from('objetivos');
@@ -51,7 +35,9 @@ class M_objetivos extends CI_Model {
             $datos[] = [
                 'iId_objeivos'       => $row->iId_objeivos ,
                 'tNombre_objetivo'       => $row->tNombre_objetivo ,
-                'tEstructura_objetivo' => $row->tEstructura_objetivo//averiguar si traigo el id del problema
+                'tEstructura_objetivo' => $row->tEstructura_objetivo,
+				'iId_problemas' => $row->iId_problemas,
+				'IActivo' => $row->IActivo
 
             ];
         }

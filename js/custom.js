@@ -384,24 +384,13 @@ function save() {
         data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
         success: function (data) {
             console.log("Peticion realizada correctamente!");
-            if (data == "Correcto") {
-                new PNotify({
+ new PNotify({
                     title: 'Datos guardados',
 
                     type: 'success',
 
 
                 });
-            } else {
-                new PNotify({
-                    title: 'Realiza cambios primero antes de guardar',
-
-                    type: 'warning',
-
-
-                });
-            }
-
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -466,22 +455,11 @@ function resetearjson() {
                  sirve para recargar el json64
 
                  */
-                if (data == "Correcto") {
-
-                    new PNotify({
+           new PNotify({
                         title: 'Problema restablecido correctamente',
                         type: 'success',
                     });
                     autorecuperarjson();
-                } else {
-                    new PNotify({
-                        title: 'Realiza cambios primero antes de guardar',
-
-                        type: 'warning',
-
-
-                    });
-                }
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

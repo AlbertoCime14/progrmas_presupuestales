@@ -13,7 +13,7 @@ class M_Problemas extends CI_Model {
 	{	
 		$this->db->where('iId_problema', $id);
 		$this->db->update('problemas', $data);
-				
+		$this->actualizar_status_objetivo($id);
 		if ($this->db->affected_rows() > 0)
 			{
 		  return TRUE;
@@ -23,6 +23,14 @@ class M_Problemas extends CI_Model {
 		  return FALSE;
 			}
     }
+	public function actualizar_status_objetivo($id){	
+		$data= array(
+		'IActivo'=>0
+		);
+		$this->db->where('iId_problemas', $id);
+		$this->db->update('objetivos', $data);
+		
+	}
 	  public function consultarproblemas($iId_problema){
         $this->db->select('*');
         $this->db->from('problemas');

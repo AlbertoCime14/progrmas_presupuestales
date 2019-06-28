@@ -22,28 +22,33 @@ class C_Frm_21 extends CI_Controller
 
     public function actualizarobjetivo()
     {
-        $iId_problema = $this->input->post('iId_problema');
-        $tNombre_problema = $this->input->post('tNombre_problema');
-        $tEstructura_problema = $this->input->post('tEstructura_problema');
+        $iId_objeivos = $this->input->post('iId_objeivos');
+		$iId_problemas = $this->input->post('iId_problemas');
+        $tNombre_objetivo = $this->input->post('tNombre_objetivo');
+        $tEstructura_objetivo = $this->input->post('tEstructura_objetivo');
+		$IActivo = $this->input->post('IActivo');
 
         $data = array(
-            'tNombre_problema' => $tNombre_problema,
-            'tEstructura_problema' => $tEstructura_problema
+            'iId_problemas' => $iId_problemas,
+            'tNombre_objetivo' => $tNombre_objetivo,
+			'tEstructura_objetivo' => $tEstructura_objetivo,
+			'IActivo' =>$IActivo
+			
         );
 
 
-        if ($this->M_objetivos->actualizar_problema($data, $iId_problema) === TRUE) {
+        if ($this->M_objetivos->actualizar_objetivos($data, $iId_objeivos) === TRUE) {
             echo "Correcto";
         } else {
             echo "Incorrecto";
         }
     }
 
-    public function consultar_problema()
+    public function consultar_objetivo()
     {
         //la consulta de este problema servira para pintar un json similar al del arbol de problemas
-        $iId_problema = $this->uri->segment(3);
-        $data['problema'] = $this->M_Problemas->consultarproblemas($iId_problema);
+        $iId_objeivos = $this->uri->segment(3);
+        $data['objetivos'] = $this->M_objetivos->consultarobjetivos($iId_objeivos);
         echo json_encode($data);
     }
     public function cosultar_objetivos()

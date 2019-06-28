@@ -272,10 +272,39 @@ var limpiar_Cadenas;
 *funcion para llenar el canvas automaticamente desde la base de datos
 */
 (function () {
-    autorecuperarjson();
+    validador_problema();
 })();
+function validador_problema(){
+	 var url = document.getElementById("url").value;
+	var id_problema=1;
+	   $.ajax({
+	   
 
-function autorecuperarjson() {
+        type: "POST",
+        url: url + "consultas/frm_21/" + id_problema,
+        data: "ok=ok",
+        success: function (data) {
+            var o = JSON.parse(data);
+            var llaves = (Object.values(o['objetivos'])[0]);
+			if(llaves.IActivo==0){
+				autorecuperarjson_problema();
+			}else{
+				
+				autorecuperarjson_objetivo();
+			}
+
+           
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Status: " + textStatus);
+            console.log("Error: " + errorThrown);
+
+        }
+
+    });
+}
+
+function autorecuperarjson_problema() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
 		//bolean para validar si se lleno el canvas de problemas
@@ -284,7 +313,7 @@ function autorecuperarjson() {
 	   
 
         type: "POST",
-        url: url + "consultas/frm_21/" + id_problema,
+        url: url + "consultas/frm_20/" + id_problema,
         data: "ok=ok",
         success: function (data) {
             var o = JSON.parse(data);
@@ -294,9 +323,7 @@ function autorecuperarjson() {
             //console.log(valor);
             for (x = 0; x < valor; x++) {
                 var objetos = Object.values(llaves[x]);
-                //console.log(objetos);
                 //posicion 2 viene de la base de datos modificar cualsea el caso
-
 
                 document.getElementById("mySavedModel").value = window.atob(objetos[2]);
                 json_parse = JSON.parse( window.atob(objetos[2]));
@@ -383,6 +410,34 @@ function autorecuperarjson() {
 
 }
 
+function autorecuperarjson_objetivo() {
+    var url = document.getElementById("url").value;
+    var id_problema = 1;
+		//bolean para validar si se lleno el canvas de problemas
+		var validador = true; 
+    $.ajax({
+	   
+
+        type: "POST",
+        url: url + "consultas/frm_21/" + id_problema,
+        data: "ok=ok",
+        success: function (data) {
+            var o = JSON.parse(data);
+            var llaves = (Object.values(o['objetivos']));
+			for(i=0; i<llaves.length; i++){
+				document.getElementById("mySavedModel").value = window.atob(llaves[i]['tEstructura_objetivo']);
+				
+				
+			}
+			 myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+
+
+        }
+    });
+
+
+}
+
 function layout() {
     myDiagram.layoutDiagram(true);
 }
@@ -401,18 +456,19 @@ function save() {
 
     /*Url estatica*/
     var url = document.getElementById("url").value;
-    var id_problema = 1;
-    var estructura_problema = document.getElementById("mySavedModel").value;
-    var Nombre_problema = "";
-
+    var iId_objeivos = 1;
+	var iId_problemas=1;
+    var tNombre_objetivo = "";
+    var tEstructura_objetivo = document.getElementById("mySavedModel").value;
+   var json64 = window.btoa(tEstructura_objetivo);
     /***
      *Inicio script para llenar guardar el canvas
      ***/
 
-    var o = JSON.parse(estructura_problema);
+    var o = JSON.parse(tEstructura_objetivo);
     var llaves = (Object.values(o['nodeDataArray']));
     var valor = (Object.keys(llaves).length);
-    var json64 = window.btoa(estructura_problema);
+ 
     //console.log(json64);
     //console.log(valor);
     for (x = 0; x < valor; x++) {
@@ -420,7 +476,7 @@ function save() {
         //console.log(objetos);
 
         if (objetos[0] == 'Source') {
-            Nombre_problema = objetos[3];
+            tNombre_objetivo = objetos[3];
             //	console.log(nombre);
 
         }
@@ -434,7 +490,7 @@ function save() {
 
         type: "POST",
         url: url + "modificaciones/frm_21",
-        data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
+        data: "iId_objeivos=" + iId_objeivos + "&tEstructura_objetivo=" + json64 + "&tNombre_objetivo=" + tNombre_objetivo+"&iId_problemas="+iId_problemas+"&IActivo="+1,
         success: function (data) {
             console.log("Peticion realizada correctamente!");
             if (data == "Correcto") {
@@ -470,91 +526,5 @@ function save() {
         }
 
     });
-
-}
-
-function resetearjson() {
-    /*Url estatica*/
-    var url = document.getElementById("url").value;
-    var id_problema = 1;
-    var Nombre_problema = "Problema central";
-    var json64 = "eyAiY2xhc3MiOiAiR3JhcGhMaW5rc01vZGVsIiwKICAibm9kZURhdGFBcnJheSI6IFsgCnsiY2F0ZWdvcnkiOiJTb3VyY2UiLCAia2V5IjotMSwgImxvYyI6Ii0xLjQyMTA4NTQ3MTUyMDIwMDRlLTE0IDQ3LjIzODU3NjI1MDg0NjAzIiwgInRleHQiOiJQcm9ibGVtYSBjZW50cmFsIn0sCnsia2V5IjotMiwgImxvYyI6IjI2OS40NTA5MzkxODU2OTQ0IDAifSwKeyJ0ZXh0IjoiQ2F1c2EiLCAibG9jIjoiNDg1LjA3Mzc4NTE1ODEyMzQgMCIsICJrZXkiOi0zfSwKeyJjYXRlZ29yeSI6IkRlc2lyZWRFdmVudCIsICJrZXkiOi00LCAibG9jIjoiMjI5LjEzOTUxNjE5OTQ4MDA2IDcyLjIzODU3NjI1MDg0NjA3In0sCnsiY2F0ZWdvcnkiOiJEZXNpcmVkRXZlbnQiLCAia2V5IjotNSwgImxvYyI6IjQ0NC43NjIzNjIxNzE5MDg5MyA3Mi4yMzg1NzYyNTA4NDYwNyJ9LAp7ImNhdGVnb3J5IjoiRGVzaXJlZEV2ZW50IiwgImtleSI6LTYsICJsb2MiOiI2NjAuMzg1MjA4MTQ0MzM3OSA3Mi4yMzg1NzYyNTA4NDYwMiJ9CiBdLAogICJsaW5rRGF0YUFycmF5IjogWyAKeyJmcm9tIjotMiwgInRvIjotMywgInBvaW50cyI6WzMzNC40NTA5MzkxODU2OTQ0LDE1Ljg4MTY2NjcwNzk5MjU1NCwzODQuNjU4NTU0NTA5ODM3MzYsMTUuODgxNjY2NzA3OTkyNTU2LDQzNC44NjYxNjk4MzM5ODA0LDE1Ljg4MTY2NjcwNzk5MjU1Niw0ODUuMDczNzg1MTU4MTIzNCwxNS44ODE2NjY3MDc5OTI1NTRdfSwKeyJmcm9tIjotMSwgInRvIjotMiwgInBvaW50cyI6WzE1OS4xMzk1MTYxOTk0Nzk4LDY1Ljg4MTY2NjcwNzk5MjU3LDE5OS4xMzk1MTYxOTk0Nzk4LDY1Ljg4MTY2NjcwNzk5MjU3LDIxOS40NTA5MzkxODU2OTQzOCwxNS44ODE2NjY3MDc5OTI1NTQsMjY5LjQ1MDkzOTE4NTY5NDQsMTUuODgxNjY2NzA3OTkyNTU0XX0sCnsiZnJvbSI6LTEsICJ0byI6LTQsICJwb2ludHMiOlsxNTkuMTM5NTE2MTk5NDc5OCw2NS44ODE2NjY3MDc5OTI1NywxOTkuMTM5NTE2MTk5NDc5OCw2NS44ODE2NjY3MDc5OTI1NywxNzkuMTM5NTE2MTk5NDc5ODksOTAuODgxNjY2NzA3OTkyNTcsMjI5LjEzOTUxNjE5OTQ3OTg5LDkwLjg4MTY2NjcwNzk5MjU3XX0sCnsiZnJvbSI6LTQsICJ0byI6LTUsICJwb2ludHMiOlszNzQuNzYyMzYyMTcxOTA4OSw5MC44ODE2NjY3MDc5OTI1NywzOTguMDk1Njk1NTA1MjQyMjUsOTAuODgxNjY2NzA3OTkyNTcsNDIxLjQyOTAyODgzODU3NTU2LDkwLjg4MTY2NjcwNzk5MjU3LDQ0NC43NjIzNjIxNzE5MDg5Myw5MC44ODE2NjY3MDc5OTI1N119LAp7ImZyb20iOi01LCAidG8iOi02LCAicG9pbnRzIjpbNTkwLjM4NTIwODE0NDMzOCw5MC44ODE2NjY3MDc5OTI1Nyw2MTMuNzE4NTQxNDc3NjcxNCw5MC44ODE2NjY3MDc5OTI1Nyw2MzcuMDUxODc0ODExMDA0Nyw5MC44ODE2NjY3MDc5OTI1Nyw2NjAuMzg1MjA4MTQ0MzM4LDkwLjg4MTY2NjcwNzk5MjU3XX0KIF19";
-    /***
-     *Inicio script para llenar guardar el canvas
-     ***/
-
-
-
-    new PNotify({
-        title: 'Eliminar',
-        text: '¿Seguro desea resetear el programa?',
-        icon: 'fa fa-question-circle',
-        type: 'warning',
-        hide: false,
-        confirm: {
-            confirm: true
-        },
-        buttons: {
-            closer: false,
-            sticker: false
-        },
-        history: {
-            history: false
-        },
-        addclass: 'stack-modal',
-        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
-    }).get().on('pnotify.confirm', function () {
-
-        $.ajax({
-
-
-            type: "POST",
-            url: url + "modificaciones/frm_20",
-            data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
-            success: function (data) {
-                console.log("Peticion realizada correctamente!");
-
-
-                /**
-                 sirve para recargar el json64
-
-                 */
-                if (data == "Correcto") {
-
-                    new PNotify({
-                        title: 'Problema restablecido correctamente',
-                        type: 'success',
-                    });
-                    autorecuperarjson();
-                } else {
-                    new PNotify({
-                        title: 'Realiza cambios primero antes de guardar',
-
-                        type: 'warning',
-
-
-                    });
-                }
-
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log("Status: " + textStatus);
-                console.log("Error: " + errorThrown);
-                new PNotify({
-                    title: 'Error en el servidor',
-
-                    type: 'error',
-
-
-                });
-
-            }
-
-        });
-
-    }).on('pnotify.cancel', function () {
-        //  alert('Cancelado');
-    })
-
 
 }

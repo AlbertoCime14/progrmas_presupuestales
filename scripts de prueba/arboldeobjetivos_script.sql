@@ -26,6 +26,7 @@ CREATE TABLE `objetivos` (
   `tNombre_objetivo` text,
   `tEstructura_objetivo` text,
   `iId_problemas` int(11) NULL,
+  `IActivo` int(11) NULL,
   PRIMARY KEY (`iId_objeivos`),
   FOREIGN KEY (`iId_problemas`) REFERENCES problemas (`iId_problema`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

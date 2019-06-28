@@ -134,7 +134,7 @@ $route['formatos/frm_11'] = 'C_Frm_11/index';
 $route['formatos/frm_12'] = 'C_Frm_12/index';
 $route['formatos/frm_21'] = 'C_Frm_21/index';
 $route['modificaciones/frm_21'] = 'C_Frm_21/actualizarobjetivo';
-$route['consultas/frm_21/(:any)'] = 'C_Frm_21/consultar_problema';
+$route['consultas/frm_21/(:any)'] = 'C_Frm_21/consultar_objetivo';
 $route['consultasObj/frm_21/(:any)'] = 'C_Frm_21/cosultar_objetivos';
 $route['listar_programas'] = 'Control_pagina/index';
 
