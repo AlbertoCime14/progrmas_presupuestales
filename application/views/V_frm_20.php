@@ -65,6 +65,8 @@
 <script src="<?=base_url();?>js/highlight.js"></script>
 <script src="<?=base_url();?>js/jquery.min.js"></script>
 <script src="<?=base_url();?>js/bootstrap.min.js"></script>
+
+<!--funciones para cargar el primer canvas de arbol de problemas-->
 <script src="<?=base_url();?>js/custom.js"></script>
 
 

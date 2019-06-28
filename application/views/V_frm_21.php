@@ -33,9 +33,9 @@
                                 <div id="sample">
                                     <div style="width: 100%; display: flex; justify-content: space-between">
                                         <div id="myPaletteDiv"
-                                             style="width: 100px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+                                             style="visibility:hidden" ></div>
                                         <div id="myDiagramDiv"
-                                             style="flex-grow: 1; height: 480px; border: solid 1px black"></div>
+                                             style="flex-grow: 1; height: 480px; border: solid 1px black visibility:hidden"></div>
                                     </div>
 
                                     <button id="SaveButton" onclick="save()" class="btn btn-primary">Guardar</button>

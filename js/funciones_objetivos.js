@@ -259,21 +259,9 @@ var limpiar_Cadenas;
             $(go.Shape, {strokeWidth: 2, stroke: "darkgreen"})));
 
 
-    var palette =
-        $(go.Palette, "myPaletteDiv",  // create a new Palette in the HTML DIV element
-            {
-                // share the template map with the Palette
-                nodeTemplateMap: myDiagram.nodeTemplateMap,
-                autoScale: go.Diagram.Uniform  // everything always fits in viewport
-            });
 
-    palette.model.nodeDataArray = [
-        {category: "Source"},
-        {}, // default node
-        {category: "DesiredEvent"},
-        /*  { category: "UndesiredEvent", reasonsList: [{}] }, */
-        {category: "Comment"}
-    ];
+
+
 
     // read in the JSON-format data from the "mySavedModel" element
 
@@ -290,7 +278,10 @@ var limpiar_Cadenas;
 function autorecuperarjson() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
+		//bolean para validar si se lleno el canvas de problemas
+		var validador = true; 
     $.ajax({
+	   
 
         type: "POST",
         url: url + "consultas/frm_21/" + id_problema,
@@ -309,30 +300,77 @@ function autorecuperarjson() {
 
                 document.getElementById("mySavedModel").value = window.atob(objetos[2]);
                 json_parse = JSON.parse( window.atob(objetos[2]));
+					
                 limpiar_Cadenas=json_parse.nodeDataArray;
-
-                for(i=0;i<limpiar_Cadenas.length;i++){
-                    if(limpiar_Cadenas[i]=="category"){
-                        console.log("funciono");
-                        break;
-                    }else{
-                        console.log("no funciono");
-                    }
-                }
+				
+						  /**********Valida los campos del proble que no esten vacios**********/
+				  for (x = 0; x < limpiar_Cadenas.length; x++) {
+				
+					
+				 	if(Object.values(limpiar_Cadenas[x])[0]== "Source"){
+						if(Object.values(limpiar_Cadenas[x])[3]== "Problema central"){
+							//aqui va la valida por tener el nodo problema central vacio
+						validador = false;  
+							
+						}
+					}else{
+						if(Object.values(limpiar_Cadenas[x])[0]== "Consecuencia"){
+								//aqui validar por tener el nodo consecuencia vacio
+									validador = false;  
+								
+						}else{
+								if(Object.values(limpiar_Cadenas[x])[0]== "DesiredEvent"){
+																					
+											if (typeof  Object.values(limpiar_Cadenas[x])[3] == "undefined") {
+																
+														//validar aqui por tener el nodo causa vacio
+														validador = false;  
+												}					
+								}
+						}
+					} 
+					
+				  }
+				  	  /**********Valida los campos del proble que no esten vacios**********/
+					  
+					  
                 //desiredevent siempre pertence a consecuencias
                 //los que no tiene categoria son causas
                 //category source pertence al problema
 
                 //console.log("JSON Recuperado correctamente");
+		if(validador==true){
+			
+			 $("#myDiagramDiv").css("visibility", "visible");
+			   myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+		}else{
+		
+			$("#myDiagramDiv").css("visibility", "hidden");
+			
+    new PNotify({
+        title: 'Recordatorio',
+        text: 'Por favor llene el diagrama de problema por completo',
+        icon: 'fa fa-comment',
+        type: 'warning',
+        hide: false,
+        confirm: {
+            confirm: false
+        },
+        buttons: {
+            closer: true,
+            sticker: false
+        },
+        history: {
+            history: false
+        },
+        addclass: 'stack-modal',
+        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
+    }).get().on('click', function() {
+			window.location.href=url+"formatos/frm_20";
+});
+		}
 
-
-                setTimeout(function () {
-
-                    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
-                }, 0);
-
-
-            }
+             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -395,7 +433,7 @@ function save() {
 
 
         type: "POST",
-        url: url + "modificaciones/frm_20",
+        url: url + "modificaciones/frm_21",
         data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
         success: function (data) {
             console.log("Peticion realizada correctamente!");
