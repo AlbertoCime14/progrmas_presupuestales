@@ -1,7 +1,8 @@
 /*
 *Incializa el canvas
 */
-
+var json_parse;
+var limpiar_Cadenas;
 
 (function init() {
 
@@ -292,7 +293,7 @@ function autorecuperarjson() {
     $.ajax({
 
         type: "POST",
-        url: url + "consultas/frm_20/" + id_problema,
+        url: url + "consultas/frm_21/" + id_problema,
         data: "ok=ok",
         success: function (data) {
             var o = JSON.parse(data);
@@ -307,8 +308,22 @@ function autorecuperarjson() {
 
 
                 document.getElementById("mySavedModel").value = window.atob(objetos[2]);
+                json_parse = JSON.parse( window.atob(objetos[2]));
+                limpiar_Cadenas=json_parse.nodeDataArray;
 
-                console.log("JSON Recuperado correctamente");
+                for(i=0;i<limpiar_Cadenas.length;i++){
+                    if(limpiar_Cadenas[i]=="category"){
+                        console.log("funciono");
+                        break;
+                    }else{
+                        console.log("no funciono");
+                    }
+                }
+                //desiredevent siempre pertence a consecuencias
+                //los que no tiene categoria son causas
+                //category source pertence al problema
+
+                //console.log("JSON Recuperado correctamente");
 
 
                 setTimeout(function () {
