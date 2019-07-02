@@ -137,9 +137,11 @@ $route['modificaciones/frm_21'] = 'C_Frm_21/actualizarobjetivo';
 $route['consultas/frm_21/(:any)'] = 'C_Frm_21/consultar_objetivo';
 $route['consultasObj/frm_21/(:any)'] = 'C_Frm_21/cosultar_objetivos';
 $route['listar_programas'] = 'Control_pagina/index';
-
-
-
+$route['actividades/nombrefuente'] = 'control_combobox/busquedanombrefuente/';
+$route['consultas/frm_12/periodicidad'] = 'C_Frm_12/consultar_periodicidad';
+$route['consultas/frm_12/tendencia'] = 'C_Frm_12/consultar_tendencia';
+$route['consultas/frm_12/ambitos'] = 'C_Frm_12/consultar_ambitos';
+$route['consultas/frm_12/desempenos'] = 'C_Frm_12/consultar_desempenios';
 
 
 

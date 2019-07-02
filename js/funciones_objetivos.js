@@ -259,10 +259,6 @@ var limpiar_Cadenas;
             $(go.Shape, {strokeWidth: 2, stroke: "darkgreen"})));
 
 
-
-
-
-
     // read in the JSON-format data from the "mySavedModel" element
 
     //layout();
@@ -274,26 +270,28 @@ var limpiar_Cadenas;
 (function () {
     validador_problema();
 })();
-function validador_problema(){
-	 var url = document.getElementById("url").value;
-	var id_problema=1;
-	   $.ajax({
-	   
+
+function validador_problema() {
+    var url = document.getElementById("url").value;
+    var id_problema = 1;
+    $.ajax({
+
 
         type: "POST",
         url: url + "consultas/frm_21/" + id_problema,
         data: "ok=ok",
         success: function (data) {
             var o = JSON.parse(data);
+            console.log(o);
             var llaves = (Object.values(o['objetivos'])[0]);
-			if(llaves.IActivo==0){
-				autorecuperarjson_problema();
-			}else{
-				
-				autorecuperarjson_objetivo();
-			}
+            if (llaves.IActivo != 0) {
+                autorecuperarjson_problema();
+            } else {
 
-           
+                autorecuperarjson_objetivo();
+            }
+
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -307,10 +305,10 @@ function validador_problema(){
 function autorecuperarjson_problema() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
-		//bolean para validar si se lleno el canvas de problemas
-		var validador = true; 
+    //bolean para validar si se lleno el canvas de problemas
+    var validador = true;
     $.ajax({
-	   
+
 
         type: "POST",
         url: url + "consultas/frm_20/" + id_problema,
@@ -326,78 +324,78 @@ function autorecuperarjson_problema() {
                 //posicion 2 viene de la base de datos modificar cualsea el caso
 
                 document.getElementById("mySavedModel").value = window.atob(objetos[2]);
-                json_parse = JSON.parse( window.atob(objetos[2]));
-					
-                limpiar_Cadenas=json_parse.nodeDataArray;
-				
-						  /**********Valida los campos del proble que no esten vacios**********/
-				  for (x = 0; x < limpiar_Cadenas.length; x++) {
-				
-					
-				 	if(Object.values(limpiar_Cadenas[x])[0]== "Source"){
-						if(Object.values(limpiar_Cadenas[x])[3]== "Problema central"){
-							//aqui va la valida por tener el nodo problema central vacio
-						validador = false;  
-							
-						}
-					}else{
-						if(Object.values(limpiar_Cadenas[x])[0]== "Consecuencia"){
-								//aqui validar por tener el nodo consecuencia vacio
-									validador = false;  
-								
-						}else{
-								if(Object.values(limpiar_Cadenas[x])[0]== "DesiredEvent"){
-																					
-											if (typeof  Object.values(limpiar_Cadenas[x])[3] == "undefined") {
-																
-														//validar aqui por tener el nodo causa vacio
-														validador = false;  
-												}					
-								}
-						}
-					} 
-					
-				  }
-				  	  /**********Valida los campos del proble que no esten vacios**********/
-					  
-					  
+                json_parse = JSON.parse(window.atob(objetos[2]));
+
+                limpiar_Cadenas = json_parse.nodeDataArray;
+
+                /**********Valida los campos del proble que no esten vacios**********/
+                for (x = 0; x < limpiar_Cadenas.length; x++) {
+
+
+                    if (Object.values(limpiar_Cadenas[x])[0] == "Source") {
+                        if (Object.values(limpiar_Cadenas[x])[3] == "Problema central") {
+                            //aqui va la valida por tener el nodo problema central vacio
+                            validador = false;
+
+                        }
+                    } else {
+                        if (Object.values(limpiar_Cadenas[x])[0] == "Consecuencia") {
+                            //aqui validar por tener el nodo consecuencia vacio
+                            validador = false;
+
+                        } else {
+                            if (Object.values(limpiar_Cadenas[x])[0] == "DesiredEvent") {
+
+                                if (typeof Object.values(limpiar_Cadenas[x])[3] == "undefined") {
+
+                                    //validar aqui por tener el nodo causa vacio
+                                    validador = false;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                /**********Valida los campos del proble que no esten vacios**********/
+
+
                 //desiredevent siempre pertence a consecuencias
                 //los que no tiene categoria son causas
                 //category source pertence al problema
 
                 //console.log("JSON Recuperado correctamente");
-		if(validador==true){
-			
-			 $("#myDiagramDiv").css("visibility", "visible");
-			   myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
-		}else{
-		
-			$("#myDiagramDiv").css("visibility", "hidden");
-			
-    new PNotify({
-        title: 'Recordatorio',
-        text: 'Por favor llene el diagrama de problema por completo',
-        icon: 'fa fa-comment',
-        type: 'warning',
-        hide: false,
-        confirm: {
-            confirm: false
-        },
-        buttons: {
-            closer: true,
-            sticker: false
-        },
-        history: {
-            history: false
-        },
-        addclass: 'stack-modal',
-        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
-    }).get().on('click', function() {
-			window.location.href=url+"formatos/frm_20";
-});
-		}
+                if (validador == true) {
 
-             }
+                    $("#myDiagramDiv").css("visibility", "visible");
+                    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+                } else {
+
+                    $("#myDiagramDiv").css("visibility", "hidden");
+
+                    new PNotify({
+                        title: 'Recordatorio',
+                        text: 'Por favor llene el diagrama de problema por completo',
+                        icon: 'fa fa-comment',
+                        type: 'warning',
+                        hide: false,
+                        confirm: {
+                            confirm: false
+                        },
+                        buttons: {
+                            closer: true,
+                            sticker: false
+                        },
+                        history: {
+                            history: false
+                        },
+                        addclass: 'stack-modal',
+                        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
+                    }).get().on('click', function () {
+                        window.location.href = url + "formatos/frm_20";
+                    });
+                }
+
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -413,10 +411,10 @@ function autorecuperarjson_problema() {
 function autorecuperarjson_objetivo() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
-		//bolean para validar si se lleno el canvas de problemas
-		var validador = true; 
+    //bolean para validar si se lleno el canvas de problemas
+    var validador = true;
     $.ajax({
-	   
+
 
         type: "POST",
         url: url + "consultas/frm_21/" + id_problema,
@@ -424,12 +422,12 @@ function autorecuperarjson_objetivo() {
         success: function (data) {
             var o = JSON.parse(data);
             var llaves = (Object.values(o['objetivos']));
-			for(i=0; i<llaves.length; i++){
-				document.getElementById("mySavedModel").value = window.atob(llaves[i]['tEstructura_objetivo']);
-				
-				
-			}
-			 myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+            for (i = 0; i < llaves.length; i++) {
+                document.getElementById("mySavedModel").value = window.atob(llaves[i]['tEstructura_objetivo']);
+
+
+            }
+            myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
 
         }
@@ -457,10 +455,10 @@ function save() {
     /*Url estatica*/
     var url = document.getElementById("url").value;
     var iId_objeivos = 1;
-	var iId_problemas=1;
+    var iId_problemas = 1;
     var tNombre_objetivo = "";
     var tEstructura_objetivo = document.getElementById("mySavedModel").value;
-   var json64 = window.btoa(tEstructura_objetivo);
+    var json64 = window.btoa(tEstructura_objetivo);
     /***
      *Inicio script para llenar guardar el canvas
      ***/
@@ -468,7 +466,7 @@ function save() {
     var o = JSON.parse(tEstructura_objetivo);
     var llaves = (Object.values(o['nodeDataArray']));
     var valor = (Object.keys(llaves).length);
- 
+
     //console.log(json64);
     //console.log(valor);
     for (x = 0; x < valor; x++) {
@@ -490,7 +488,7 @@ function save() {
 
         type: "POST",
         url: url + "modificaciones/frm_21",
-        data: "iId_objeivos=" + iId_objeivos + "&tEstructura_objetivo=" + json64 + "&tNombre_objetivo=" + tNombre_objetivo+"&iId_problemas="+iId_problemas+"&IActivo="+1,
+        data: "iId_objeivos=" + iId_objeivos + "&tEstructura_objetivo=" + json64 + "&tNombre_objetivo=" + tNombre_objetivo + "&iId_problemas=" + iId_problemas + "&IActivo=" + 1,
         success: function (data) {
             console.log("Peticion realizada correctamente!");
             if (data == "Correcto") {

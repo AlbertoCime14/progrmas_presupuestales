@@ -23,8 +23,8 @@ class C_Frm_12 extends CI_Controller {
 		parent::__construct();
 		//session_start();
 		$this->load->helper('url');
-		//$this->load->model('M_alineacion');
-		//$this->load->library('session');
+		$this->load->model('M_frm12');
+		$this->load->library('session');
 	}
 	public function index()
 	{
@@ -32,4 +32,21 @@ class C_Frm_12 extends CI_Controller {
 		$this->load->view('V_frm_12');
 		$this->load->view('masterpage/footer');
 	}
+    public function consultar_periodicidad(){
+        $data['periodicidad']=$this->M_frm12->recuperarperiodicidad();
+        echo json_encode($data);
+    }
+    public function consultar_tendencia(){
+        $data['tendencia']=$this->M_frm12->recuperartendencia();
+        echo json_encode($data);
+    }
+    public function consultar_ambitos(){
+        $data['ambitos']=$this->M_frm12->recuperarambito();
+        echo json_encode($data);
+    }
+    public function consultar_desempenios(){
+        $data['ambitos']=$this->M_frm12->recuperardesempenio();
+        echo json_encode($data);
+    }
+
 }
