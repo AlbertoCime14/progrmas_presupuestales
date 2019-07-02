@@ -3,25 +3,17 @@
 */
 var json_parse;
 var limpiar_Cadenas;
-
 (function init() {
-
-
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
-
-
 //causa
     var yellowgrad = $(go.Brush, "Linear", {0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)"});
-
     var greengrad = $(go.Brush, "Linear", {0: "#98FB98", 1: "#9ACD32"});
     var bluegrad = $(go.Brush, "Linear", {0: "#B0E0E6", 1: "#87CEEB"});
     //var redgrad = $(go.Brush, "Linear", { 0: "#C45245", 1: "#871E1B" });
     var whitegrad = $(go.Brush, "Linear", {0: "#F0F8FF", 1: "#E6E6FA"});
-
     var bigfont = "bold 13pt Helvetica, Arial, sans-serif";
     var smallfont = "bold 11pt Helvetica, Arial, sans-serif";
-
     // Common text styling
     function textStyle() {
         return {
@@ -32,7 +24,6 @@ var limpiar_Cadenas;
             font: bigfont
         }
     }
-
     myDiagram =
         $(go.Diagram, "myDiagramDiv",
             {
@@ -43,7 +34,6 @@ var limpiar_Cadenas;
                 layout: $(go.LayeredDigraphLayout, {isInitial: false, isOngoing: false, layerSpacing: 50}),
                 "undoManager.isEnabled": true
             });
-
     // when the document is modified, add a "*" to the title and enable the "Save" button
     myDiagram.addDiagramListener("Modified", function (e) {
         var button = document.getElementById("SaveButton");
@@ -55,7 +45,6 @@ var limpiar_Cadenas;
             if (idx >= 0) document.title = document.title.substr(0, idx);
         }
     });
-
     var defaultAdornment =
         $(go.Adornment, "Spot",
             $(go.Panel, "Auto",
@@ -73,7 +62,6 @@ var limpiar_Cadenas;
                 $(go.Shape, "PlusLine", {desiredSize: new go.Size(6, 6)})
             )
         );
-
     // define the Node template
     myDiagram.nodeTemplate =
         $(go.Node, "Auto",
@@ -94,8 +82,6 @@ var limpiar_Cadenas;
                     editable: true
                 },
                 new go.Binding("text", "text").makeTwoWay()));
-
-
     myDiagram.nodeTemplateMap.add("Source",
         $(go.Node, "Auto",
             new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -108,7 +94,6 @@ var limpiar_Cadenas;
             $(go.TextBlock, "Problema", textStyle(),
                 new go.Binding("text", "text").makeTwoWay())
         ));
-
     myDiagram.nodeTemplateMap.add("DesiredEvent",
         $(go.Node, "Auto",
             new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -122,7 +107,6 @@ var limpiar_Cadenas;
             $(go.TextBlock, "Consecuencias", textStyle(),
                 new go.Binding("text", "text").makeTwoWay())
         ));
-
     // Undesired events have a special adornment that allows adding additional "reasons"
     var UndesiredEventAdornment =
         $(go.Adornment, "Spot",
@@ -141,7 +125,6 @@ var limpiar_Cadenas;
                 $(go.Shape, "TriangleDown", {desiredSize: new go.Size(10, 10)})
             )
         );
-
     var reasonTemplate = $(go.Panel, "Horizontal",
         //globo 4: razon
         $(go.TextBlock, "Reason",
@@ -155,8 +138,6 @@ var limpiar_Cadenas;
             },
             new go.Binding("text", "text").makeTwoWay())
     );
-
-
     /*     myDiagram.nodeTemplateMap.add("UndesiredEvent",
           $(go.Node, "Auto",
             new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -171,7 +152,6 @@ var limpiar_Cadenas;
                   minSize: new go.Size(80, NaN)
                 },
                 new go.Binding("text", "text").makeTwoWay()),
-
               $(go.Panel, "Vertical",
                 {
                   defaultAlignment: go.Spot.TopLeft,
@@ -181,7 +161,6 @@ var limpiar_Cadenas;
               )
             )
           )); */
-
     myDiagram.nodeTemplateMap.add("Comment",
         $(go.Node, "Auto",
             new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -199,9 +178,7 @@ var limpiar_Cadenas;
                 new go.Binding("text", "text").makeTwoWay())
             // no ports, because no links are allowed to connect with a comment
         ));
-
     // clicking the button on an UndesiredEvent node inserts a new text object into the panel
-
     function addReason(e, obj) {
         var adorn = obj.part;
         if (adorn === null) return;
@@ -211,7 +188,6 @@ var limpiar_Cadenas;
         myDiagram.model.addArrayItem(arr, {});
         myDiagram.commitTransaction("add reason");
     }
-
     // clicking the button of a default node inserts a new node to the right of the selected node,
     // and adds a link to that new node
     function addNodeAndLink(e, obj) {
@@ -241,7 +217,6 @@ var limpiar_Cadenas;
         diagram.select(newnode);
         diagram.commitTransaction("Add State");
     }
-
     // replace the default Link template in the linkTemplateMap
     myDiagram.linkTemplate =
         $(go.Link,  // the whole link panel
@@ -253,30 +228,22 @@ var limpiar_Cadenas;
             $(go.Shape,  // the arrowhead
                 {toArrow: "kite", fill: "#2F4F4F", stroke: null, scale: 2})
         );
-
     myDiagram.linkTemplateMap.add("Comment",
         $(go.Link, {selectable: false},
             $(go.Shape, {strokeWidth: 2, stroke: "darkgreen"})));
-
-
     // read in the JSON-format data from the "mySavedModel" element
-
     //layout();
 })();
-
 /*
 *funcion para llenar el canvas automaticamente desde la base de datos
 */
 (function () {
     validador_problema();
 })();
-
 function validador_problema() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
     $.ajax({
-
-
         type: "POST",
         url: url + "consultas/frm_21/" + id_problema,
         data: "ok=ok",
@@ -287,29 +254,21 @@ function validador_problema() {
             if (llaves.IActivo != 0) {
                 autorecuperarjson_problema();
             } else {
-
                 autorecuperarjson_objetivo();
             }
-
-
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
             console.log("Error: " + errorThrown);
-
         }
-
     });
 }
-
 function autorecuperarjson_problema() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
     //bolean para validar si se lleno el canvas de problemas
     var validador = true;
     $.ajax({
-
-
         type: "POST",
         url: url + "consultas/frm_20/" + id_problema,
         data: "ok=ok",
@@ -317,61 +276,44 @@ function autorecuperarjson_problema() {
             var o = JSON.parse(data);
             var llaves = (Object.values(o['problema']));
             var valor = (Object.keys(llaves).length);
-
             //console.log(valor);
             for (x = 0; x < valor; x++) {
                 var objetos = Object.values(llaves[x]);
                 //posicion 2 viene de la base de datos modificar cualsea el caso
-
                 document.getElementById("mySavedModel").value = window.atob(objetos[2]);
                 json_parse = JSON.parse(window.atob(objetos[2]));
-
                 limpiar_Cadenas = json_parse.nodeDataArray;
-
                 /**********Valida los campos del proble que no esten vacios**********/
                 for (x = 0; x < limpiar_Cadenas.length; x++) {
-
-
                     if (Object.values(limpiar_Cadenas[x])[0] == "Source") {
                         if (Object.values(limpiar_Cadenas[x])[3] == "Problema central") {
                             //aqui va la valida por tener el nodo problema central vacio
                             validador = false;
-
                         }
                     } else {
                         if (Object.values(limpiar_Cadenas[x])[0] == "Consecuencia") {
                             //aqui validar por tener el nodo consecuencia vacio
                             validador = false;
-
                         } else {
                             if (Object.values(limpiar_Cadenas[x])[0] == "DesiredEvent") {
-
                                 if (typeof Object.values(limpiar_Cadenas[x])[3] == "undefined") {
-
                                     //validar aqui por tener el nodo causa vacio
                                     validador = false;
                                 }
                             }
                         }
                     }
-
                 }
                 /**********Valida los campos del proble que no esten vacios**********/
-
-
                 //desiredevent siempre pertence a consecuencias
                 //los que no tiene categoria son causas
                 //category source pertence al problema
-
                 //console.log("JSON Recuperado correctamente");
                 if (validador == true) {
-
                     $("#myDiagramDiv").css("visibility", "visible");
                     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
                 } else {
-
                     $("#myDiagramDiv").css("visibility", "hidden");
-
                     new PNotify({
                         title: 'Recordatorio',
                         text: 'Por favor llene el diagrama de problema por completo',
@@ -394,28 +336,20 @@ function autorecuperarjson_problema() {
                         window.location.href = url + "formatos/frm_20";
                     });
                 }
-
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
             console.log("Error: " + errorThrown);
-
         }
-
     });
-
-
 }
-
 function autorecuperarjson_objetivo() {
     var url = document.getElementById("url").value;
     var id_problema = 1;
     //bolean para validar si se lleno el canvas de problemas
     var validador = true;
     $.ajax({
-
-
         type: "POST",
         url: url + "consultas/frm_21/" + id_problema,
         data: "ok=ok",
@@ -424,25 +358,15 @@ function autorecuperarjson_objetivo() {
             var llaves = (Object.values(o['objetivos']));
             for (i = 0; i < llaves.length; i++) {
                 document.getElementById("mySavedModel").value = window.atob(llaves[i]['tEstructura_objetivo']);
-
-
             }
             myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
-
-
         }
     });
-
-
 }
-
 function layout() {
     myDiagram.layoutDiagram(true);
 }
-
 // Show the diagram's model in JSON format
-
-
 /**
  *Funcion para guardar los datos del canvas a la base de datos
  **/
@@ -450,8 +374,6 @@ function save() {
     document.getElementById("mySavedModel").value = myDiagram.model.toJson();
     //myDiagram.isModified = false;
     //var jsonData = myDiagram.model.toJson ();
-
-
     /*Url estatica*/
     var url = document.getElementById("url").value;
     var iId_objeivos = 1;
@@ -462,30 +384,23 @@ function save() {
     /***
      *Inicio script para llenar guardar el canvas
      ***/
-
     var o = JSON.parse(tEstructura_objetivo);
     var llaves = (Object.values(o['nodeDataArray']));
     var valor = (Object.keys(llaves).length);
-
     //console.log(json64);
     //console.log(valor);
     for (x = 0; x < valor; x++) {
         var objetos = Object.values(llaves[x]);
         //console.log(objetos);
-
         if (objetos[0] == 'Source') {
             tNombre_objetivo = objetos[3];
             //	console.log(nombre);
-
         }
     }
     /***
      *fin
      ***/
-
     $.ajax({
-
-
         type: "POST",
         url: url + "modificaciones/frm_21",
         data: "iId_objeivos=" + iId_objeivos + "&tEstructura_objetivo=" + json64 + "&tNombre_objetivo=" + tNombre_objetivo + "&iId_problemas=" + iId_problemas + "&IActivo=" + 1,
@@ -494,35 +409,22 @@ function save() {
             if (data == "Correcto") {
                 new PNotify({
                     title: 'Datos guardados',
-
                     type: 'success',
-
-
                 });
             } else {
                 new PNotify({
                     title: 'Realiza cambios primero antes de guardar',
-
                     type: 'warning',
-
-
                 });
             }
-
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
             console.log("Error: " + errorThrown);
             new PNotify({
                 title: 'Error en el servidor',
-
                 type: 'error',
-
-
             });
-
         }
-
     });
-
 }
