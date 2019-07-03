@@ -167,6 +167,7 @@ function prueba() {
     busquedapediodicidadcalculo();
 })();
 
+//=============================================Metodo para recuperar la periodicidad====================//
 function busquedapediodicidadcalculo() {
     /*Url estatica*/
     var url = document.getElementById("url").value;
@@ -204,6 +205,7 @@ function busquedapediodicidadcalculo() {
     recueperar_tendencia();
 })();
 
+//=============================================Metodo para recuperar la tendencia====================//
 function recueperar_tendencia() {
     /*Url estatica*/
     var url = document.getElementById("url").value;
@@ -241,6 +243,7 @@ function recueperar_tendencia() {
     recuperar_ambito();
 })();
 
+//=============================================Metodo para recuperar la ambito====================//
 function recuperar_ambito() {
     /*Url estatica*/
     var url = document.getElementById("url").value;
@@ -273,10 +276,12 @@ function recuperar_ambito() {
         }
     });
 }
+
 (function () {
     recuperar_desempenio();
 })();
 
+//=============================================Metodo para recuperar el desempeño====================//
 function recuperar_desempenio() {
     /*Url estatica*/
     var url = document.getElementById("url").value;
@@ -306,6 +311,69 @@ function recuperar_desempenio() {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
 
+        }
+    });
+}
+
+//=============================================Metodo para guardar el indicador====================//
+function GuardarIndicador() {
+
+    /** url del sitio**/
+    var url = document.getElementById("url").value;
+    /** id de la actividad modificando**/
+    var txtActividadId = document.getElementById('txtActividadId').value;
+
+    /*** Sive para poner el nombre de la actividad estrategica****/
+    var Nombre = document.getElementById('txtNombreactividad').value;
+    /**Sirve para obtener el objetivo general de la actividad***/
+    var objetivo_general = document.getElementById('txtObjetivo').value;
+    /*****Sirve para obtener la descripcion de la actividad*********/
+    var descripcion = document.getElementById('txtDescripcion').value;
+    /** id Lineas de accion**/
+    var cboLineaacion = document.getElementById('cboLineaacion').value;
+    /** id UBP**/
+    var cboUbp = document.getElementById('cboUbp').value;
+    /** id poblacion objetivo**/
+    var cobPoblacion = document.getElementById('cobPoblacion').value;
+    /** id origen de la fuente de financiamiento**/
+    var cbofuente = 0;
+    /*var cbofuente=document.getElementById('cbofuente').value;*/
+    /** id de la fuente de financiamiento**/
+    var nombrefuente = document.getElementById('nombrefuente').value;
+    /** Sacar el monto propio**/
+//var txtMontoPropio=document.getElementById('txtMontoPropio').value;
+    /** Sacarl el monto de otras fuentes**/
+    /**
+     var txtMontoOtras=document.getElementById('txtMontoOtras').value;
+     **/
+    /** Para sacar la fecha de inicio**/
+    var txtFechaInicio = document.getElementById('txtFechaInicio').value;
+    /** Para sacar la fecha de fin**/
+    var txtFechafin = document.getElementById('txtFechafin').value;
+
+    /*** Sive para poner el nombre de la actividad estrategica****/
+
+//===============================Campos utilizables cuando se requieran===================//
+    var elaboro = "example";
+    var autorizo = "example";
+
+//===========================llamada  de ajax paara actualizar los datos===============//
+    /******** Datos de la actualizacion  *********/
+    var datos = "id_actividad_estrategica=" + txtActividadId + "&Nombre=" + Nombre + "&objetivo_general=" + objetivo_general + "&descripcion=" + descripcion + "+&fecha_inicio=" + txtFechaInicio + "&fecha_fin=" + txtFechafin + "&elaboro=" + elaboro + "&autorizo=" + autorizo + "&cat_lineaaccion_ped_lineaaccionid=" + cboLineaacion + "&ubp_id_ubp=" + cboUbp + "&poblacion_objetivo_id_poblacion=" + cobPoblacion + "&origen_fuente_id_origen=" + cbofuente + "&fuente_financiamiento_id_ff=" + nombrefuente;
+    // var datos="id_actividad_estrategica="+txtActividadId+"&objetivo_general="+objetivo_general+"&descripcion="+descripcion+"&monto_propio="+txtMontoPropio+"&monto_otro="+txtMontoOtras+"&fecha_inicio="+txtFechaInicio+"&fecha_fin="+txtFechafin+"&elaboro="+elaboro+"&autorizo="+autorizo+"&cat_lineaaccion_ped_lineaaccionid="+cboLineaacion+"&ubp_id_ubp="+cboUbp+"&poblacion_objetivo_id_poblacion="+cobPoblacion+"&origen_fuente_id_origen="+cbofuente+"&fuente_financiamiento_id_ff="+nombrefuente;
+    $.ajax({
+        type: "POST",
+        url: url + "actividades/actualizar",
+        data: datos,
+        success: function (data) {
+
+            //=========================================//
+            notie.alert({type: 1, text: 'Correcto!', time: 2});
+            //setTimeout(function(){ location.href = url+"actividades"; }, 1000);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus);
+            alert("Error: " + errorThrown);
         }
     });
 }
