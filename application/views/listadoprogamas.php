@@ -269,14 +269,15 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-md-6" style="text-align: right">
-                                            <form action="formatos/frm_1" method="POST">
-                                                <button type="submit" class="btn btn-labeled btn-success" name="idprograma" value="1" >
+                                            <div >
+											<a href="<?=base_url()."formatos/diagnostico/".base64_encode("1");?>" >
+                                                <button type="submit" class="btn btn-labeled btn-success" name="idprograma"  >
                                                     <span class="btn-label">
                                                     <i class="glyphicon glyphicon-edit" ></i>
                                                 </span> Editar
                                                 </button>
-
-                                            </form>
+												</a>
+                                            </div>
 
                                         </div>
                                         <div class="col-md-6">

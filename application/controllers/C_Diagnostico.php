@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Control_pagina extends CI_Controller {
+class C_Diagnostico extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -29,16 +29,12 @@ class Control_pagina extends CI_Controller {
 	public function index()
 	{
 		
-			$this->load->view('listadoprogamas');
-			$this->load->view('masterpage/footer');
-		//========Esto quitar cuando ya funcione el login======//
-		//$this->load->view('masterpage/head');
-	/* 	if(isset($_SESION['idusuario'])){
-						$this->load->view('listadoprogamas');
-		$this->load->view('masterpage/footer');
-		}else{
-					$this->load->view('V_login');
-		} */
+			$this->load->view('masterpage/Head');
+		$this->load->view('V_diagnostico');
+		$this->load->view('masterpage/Footer');
+		
+		
+		
 	}
 
 	

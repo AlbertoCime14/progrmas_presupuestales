@@ -35,9 +35,9 @@ li {
 }
 /*quick icons*/
 
-.panel-body .btn:not(.btn-block) {
+/* .panel-body .btn:not(.btn-block) {
     margin-bottom : 10px;
-}
+} */
 /*Group buttons panel*/
 
 .ui-group-buttons .or {

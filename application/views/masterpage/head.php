@@ -33,6 +33,7 @@
         <link href="<?=base_url();?>vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/complex_forms.css">
+	    <link rel="stylesheet" href="<?=base_url();?>vendors/blueimp-file-upload/css/jquery.fileupload.css"/>
 
     <!--Notifiaciones-->
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom.css">
@@ -44,7 +45,10 @@
     <link href="<?=base_url();?>vendors/pnotify/css/pnotify.mobile.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url();?>vendors/pnotify/css/pnotify.history.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom_css/toastr_notificatons.css">
-
+	    <link rel="stylesheet" href="<?=base_url();?>vendors/lcswitch/css/lc_switch.css">
+		
+		 <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/formelements.css">
+		  <link href="<?=base_url();?>vendors/iCheck/css/all.css" rel="stylesheet"/>
 </head>
 
 <!--Head-->

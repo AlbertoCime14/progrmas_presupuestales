@@ -17,8 +17,16 @@
 <!--<script src="js/custom_js/notifications.js"></script>
 -->
 
+<!-- flip --->
+
+<script type="text/javascript" src="<?=base_url();?>vendors/flip/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="<?=base_url();?>vendors/lcswitch/js/lc_switch.min.js"></script>
+
 
 <!-- end of page level js -->
+<script src="<?=base_url();?>vendors/iCheck/js/icheck.js"></script>
+<script src="<?=base_url();?>vendors/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+<script src="<?=base_url();?>js/custom_js/form_elements.js"></script>
 
 </body>
 
