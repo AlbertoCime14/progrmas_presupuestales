@@ -67,9 +67,14 @@ if(isset($_SESION['idusuario'])){
                                 <i class="fa fa-fw ti-file"></i>3. Arbol objetivo
                             </a>
                         </li>
-						   <li class="<?php echo ($pag == 3) ? 'active' : ''; ?>" id="frm_3">
+						          <li class="<?php echo ($pag == 4) ? 'active' : ''; ?>" id="frm_3">
+                             <a href="<?= base_url(); ?>formatos/bienesyservicios/<?=$id_programa;?>/">
+                                <i class="fa fa-fw ti-file"></i>4. Bienes y servicios
+                            </a>
+                        </li>
+						   <li class="<?php echo ($pag == 5) ? 'active' : ''; ?>" id="frm_3">
                              <a href="<?= base_url(); ?>formatos/poblaciones/<?=$id_programa;?>/">
-                                <i class="fa fa-fw ti-file"></i>4. Poblaciones
+                                <i class="fa fa-fw ti-file"></i>5. Poblaciones
                             </a>
                         </li>
 
