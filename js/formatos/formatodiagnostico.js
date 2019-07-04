@@ -1,4 +1,17 @@
-function eliminarprograma(){
+
+/***/
+$("#nuevoprograma").click(function(){
+$("#panel_p_estatal").css({"display": "inline"});
+});
+
+/**Funcion para editar programa estatal previo**/
+function editar_p_estatal(id){
+	
+	$("#panel_p_estatal").css({"display": "inline"});
+	
+}
+
+function eliminar_p_estatal(id){
     new PNotify({
                                         title: 'Eliminar',
                                         text: '¿Seguro desea eliminar este programa presupuestal?',

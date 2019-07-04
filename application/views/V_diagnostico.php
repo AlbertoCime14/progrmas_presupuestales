@@ -13,7 +13,7 @@
         <!---Aqui va el contenido de la pagina :v-->
         <section class="content">
             <div class="row">
-                <div class="col-md-12">
+                <div id="panel_p_estatal" class="col-md-12" style="display: none">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
@@ -183,7 +183,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                Listado de Programas estatales previos | <input type="submit" value="Nuevo programa"
+                                Listado de Programas estatales previos | <input id="nuevoprograma" type="submit" value="Nuevo programa"
                                                                                 class="btn btn-success">
                             </h3>
 
@@ -199,11 +199,11 @@
                                     <tr>
                                         <td><label>Nombre de un programa de ejemplo</label></td>
                                         <td class="ui-group-buttons">
-                                            <a class="btn btn-success" role="button">
+                                            <a class="btn btn-success" role="button"  onclick="editar_p_estatal(1)">
                                                 <span class="glyphicon glyphicon-edit"></span>
                                             </a>
 
-                                            <a class="btn btn-danger" role="button">
+                                            <a class="btn btn-danger" role="button" onclick="eliminar_p_estatal(1)">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </a>
                                         </td>
@@ -735,3 +735,7 @@
     </aside>
     <!-- /.right-side -->
 </div>
+<script  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+			  crossorigin="anonymous"></script>
+<script src="<?=base_url();?>js/formatos/formatodiagnostico.js"></script>

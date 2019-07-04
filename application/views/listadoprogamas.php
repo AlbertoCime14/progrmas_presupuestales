@@ -239,13 +239,13 @@
                         <div class="panel-body">
                                <div class="col-md-7" >
 
-                    <input type="text" class="form-control" placeholder="Escriba un nuevo plan presupuestal">
+                    <input id="nombreplan" type="text" class="form-control" placeholder="Escriba un nuevo plan presupuestal">
                 </div>
 							<div class="form-inline">
 
 					  <div class="form-group col-md-3">
 						<label>Tipo de programa</label>
-							   <select class="form-control">
+							   <select id="tipoprograma" class="form-control">
 										   <option>Seleccione</option>
 										   <option>O</option>
 										   <option>O</option>
@@ -256,7 +256,7 @@
                 <div class="col-md-2" >
 			
 
-                    <button type="button" class="btn btn-labeled btn-success">
+                    <button id="enviarprograma" type="button" class="btn btn-labeled btn-success">
                                             <span class="btn-label">
                                                 <i class="glyphicon glyphicon-ok"></i>
                                             </span> Crear
@@ -265,9 +265,7 @@
 				
 				<div class="col-md-12">
 				<label>Descipción</label>
-				<textarea class="form-control" placeholder="Describe brevemente el programa">
-				
-				</textarea>
+				<textarea id="descripcionprograma" class="form-control" placeholder="Describe brevemente el programa"></textarea>
 				</div>
 
                         
@@ -344,7 +342,7 @@
     <!-- /.right-side -->
 </div>
 
-<script type="text/javascript" src="<?= base_url(); ?>/js/formatos/programas.js"></script>
+
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.js"></script>
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.animate.js"></script>
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.buttons.js"></script>
@@ -354,4 +352,8 @@
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.desktop.js"></script>
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.history.js"></script>
 <script type="text/javascript" src="<?=base_url();?>vendors/pnotify/js/pnotify.callbacks.js"></script>
-<script src="js/custom_js/notifications.js"></script>
+<script src="<?=base_url();?>js/custom_js/notifications.js"></script>
+<script  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+			  crossorigin="anonymous"></script>
+<script src="<?=base_url();?>js/formatos/formatoprincipal.js"></script>
