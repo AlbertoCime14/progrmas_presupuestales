@@ -228,12 +228,33 @@
             <!---Aqui va el contenido de la pagina :v-->
          <div class="row">
             <sesion >
+			<div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <i class=""></i> Nuevo programa presupuestal
+                            </h3>
 
-                <div class="col-md-10" >
+                        </div>
+                        <div class="panel-body">
+                               <div class="col-md-7" >
 
                     <input type="text" class="form-control" placeholder="Escriba un nuevo plan presupuestal">
                 </div>
+							<div class="form-inline">
+
+					  <div class="form-group col-md-3">
+						<label>Tipo de programa</label>
+							   <select class="form-control">
+										   <option>Seleccione</option>
+										   <option>O</option>
+										   <option>O</option>
+										   <option>O</option>
+										   </select>
+					  </div>
+					</div>
                 <div class="col-md-2" >
+			
 
                     <button type="button" class="btn btn-labeled btn-success">
                                             <span class="btn-label">
@@ -241,16 +262,32 @@
                                             </span> Crear
                     </button>
                 </div>
+				
+				<div class="col-md-12">
+				<label>Descipción</label>
+				<textarea class="form-control" placeholder="Describe brevemente el programa">
+				
+				</textarea>
+				</div>
+
+                        
+                        </div>
+                    </div>
+
+          
 
          </div>
             </sesion>
+			
+			
+			
             <br><br>
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class=""></i> Programas presupuestales
+                                <i class=""></i>Listado programas presupuestales
                             </h3>
 
                         </div>

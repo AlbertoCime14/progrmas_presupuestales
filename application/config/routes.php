@@ -73,6 +73,7 @@ $route['consultas/frm_20/(:any)'] = 'C_Frm_20/consultar_problema';
 $route['formatos/diagnostico/(:any)'] = 'C_Diagnostico/index';
 $route['formatos/bienesyservicios/(:any)'] = 'C_Bienesys/index';
 $route['formatos/poblaciones/(:any)'] = 'C_Poblaciones/index';
+$route['formatos/focalizacion/(:any)'] = 'C_Focalizacion/index';
 
 
 

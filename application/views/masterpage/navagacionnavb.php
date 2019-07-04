@@ -77,6 +77,11 @@ if(isset($_SESION['idusuario'])){
                                 <i class="fa fa-fw ti-file"></i>5. Poblaciones
                             </a>
                         </li>
+							   <li class="<?php echo ($pag == 6) ? 'active' : ''; ?>" id="frm_3">
+                             <a href="<?= base_url(); ?>formatos/focalizacion/<?=$id_programa;?>/">
+                                <i class="fa fa-fw ti-file"></i>6. Focalización de la población objetivo
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
