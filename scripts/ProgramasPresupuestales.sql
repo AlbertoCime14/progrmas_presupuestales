@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.33 (64 bit)
 MySQL - 10.1.35-MariaDB : Database - programaspresupuestales
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -553,6 +554,11 @@ CREATE TABLE `usuario` (
   KEY `FkUsuarioInstitucion` (`iIdInstitucion`),
   CONSTRAINT `FkUsuarioInstitucion` FOREIGN KEY (`iIdInstitucion`) REFERENCES `institucion` (`iIdInstitucion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `programaspresupuestales`.`programas`   
+  ADD COLUMN `iActivo` INT(11) DEFAULT 1  NULL AFTER `iIdTipoPrograma`;
+
 
 /*Data for the table `usuario` */
 
