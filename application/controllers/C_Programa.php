@@ -39,10 +39,14 @@
 			'iIdUsuario' =>$iIdUsuario
 			);			
 			if($this->M_Programa->agregar_programa($data)===TRUE){
-			echo "correcto";	
-			}else{
-			echo "incorrecto";
+				echo "correcto";	
+				}else{
+				echo "incorrecto";
 			}
+		}
+		public function listar_programas(){
+			$data['programas'] = $this->M_Programa->listar_programas();
+			echo json_encode($data);
 		}
 		
 	}

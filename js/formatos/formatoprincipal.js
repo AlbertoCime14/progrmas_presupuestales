@@ -3,6 +3,7 @@ var url="";
 $(document).ready(function() {
 	/**Inicializar variables**/
     url=$("#url").val();
+	listar_programas();
 });
 function eliminarprograma(){
     new PNotify({
@@ -73,5 +74,24 @@ $("#enviarprograma").click(function(){
 		
 	}
 });
+
+
+function listar_programas(){
+	var recurso="listar/programa";
+			$.ajax({
+			type: "GET",
+			url: url+recurso,
+			success: function(data) {
+			var o = JSON.parse(data);
+			var objetos = (Object.values(o['programas']));
+			for(x=0; x<objetos.length; x++){
+			//aceder al valor especifico
+			console.log(objetos[x].vNombre);
+			}
+			
+			}
+				
+		}); 
+}
 
 

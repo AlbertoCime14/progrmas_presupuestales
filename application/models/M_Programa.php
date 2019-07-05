@@ -20,6 +20,25 @@ class M_Programa extends CI_Model {
 		  return FALSE;
 			}
 	}
+	public function listar_programas(){
+		$iIdUsuario=2;
+        $this->db->select('*');
+        $this->db->from('programas');
+		$this->db->where("(iIdUsuario=$iIdUsuario AND iActivo=1)");
+		
+        $query = $this->db->get();
+		
+        foreach ($query->result() as $row) {
+           $datos[] = [
+		   'iIdPrograma' => $row->iIdPrograma,
+		   	'vNombre'       => $row->vNombre ,
+            'iIdTipoPrograma'       => $row->iIdTipoPrograma ,
+            'tDescripcion'       => $row->tDescripcion
+						  
+            ];
+        }
+        return $datos;
+    }
 
     public function actualizar_problema($data,$id)
 	{	
@@ -43,22 +62,6 @@ class M_Programa extends CI_Model {
 		$this->db->update('objetivos', $data);
 		
 	}
-	  public function consultarproblemas($iId_problema){
-        $this->db->select('*');
-        $this->db->from('problemas');
-        $this->db->where('iId_problema',$iId_problema);
-		
-        $query = $this->db->get();
-		
-        foreach ($query->result() as $row) {
-           $datos[] = [
-		   	'iId_problema'       => $row->iId_problema ,
-            'tNombre_problema'       => $row->tNombre_problema ,
-            'tEstructura_problema'       => $row->tEstructura_problema
-						  
-            ];
-        }
-        return $datos;
-    }
+
 	
 }

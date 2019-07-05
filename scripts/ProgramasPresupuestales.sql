@@ -557,7 +557,7 @@ CREATE TABLE `usuario` (
 
 
 ALTER TABLE `programaspresupuestales`.`programas`   
-  ADD COLUMN `iActivo` INT(11) DEFAULT 1  NULL AFTER `iIdTipoPrograma`;
+  ADD COLUMN `iActivo` INT(11) DEFAULT 1;
 
 
 /*Data for the table `usuario` */

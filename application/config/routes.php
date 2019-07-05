@@ -77,6 +77,7 @@ $route['formatos/focalizacion/(:any)'] = 'C_Focalizacion/index';
 
 //=======================Acciones programas===========//
 $route['agregar/programa'] = 'C_Programa/agregar_programa';
+$route['listar/programa'] = 'C_Programa/listar_programas';
 
 
 
