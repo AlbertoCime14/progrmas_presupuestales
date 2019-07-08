@@ -556,8 +556,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-ALTER TABLE `programaspresupuestales`.`programas`   
-  ADD COLUMN `iActivo` INT(11) DEFAULT 1;
+
 
 
 /*Data for the table `usuario` */
