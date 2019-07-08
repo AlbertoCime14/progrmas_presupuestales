@@ -25,7 +25,7 @@ class M_Programa extends CI_Model {
         $this->db->select('*');
         $this->db->from('programas');
 		$this->db->where("(iIdUsuario=$iIdUsuario AND iActivo=1)");
-		
+		$this->db->order_by("iIdPrograma", "desc");
         $query = $this->db->get();
 		
         foreach ($query->result() as $row) {
