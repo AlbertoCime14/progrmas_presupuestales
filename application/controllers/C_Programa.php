@@ -48,5 +48,16 @@
 			$data['programas'] = $this->M_Programa->listar_programas();
 			echo json_encode($data);
 		}
+		public function actualizar_status_objetivo(){
+		$iIdPrograma = $this->input->post('iIdPrograma');			
+			$data = array(
+			'iActivo' => 0
+			);			
+			if($this->M_Programa->actualizar_status_objetivo($iIdPrograma,$data)===TRUE){
+				echo "correcto";	
+				}else{
+				echo "incorrecto";
+			}
+		}
 		
 	}

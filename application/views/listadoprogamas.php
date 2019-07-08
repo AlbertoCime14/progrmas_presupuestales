@@ -259,39 +259,15 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<table class="table table-striped table-bordered" id="table2">
+										<table class="table table-striped table-bordered" id="listado_programas">
 											<thead>
 												<tr>
 													<th>Nombre del programa</th>
 													<th>Opciones</th>
 												</tr>
 											</thead>
-											<tbody>
-											</tr>
-											<td style="width: 60%;">Nombre de ejemplo</td>
-											<td>
-												<div class="row">
-													<div class="col-md-6" style="text-align: right">
-														<div >
-															<a href="<?=base_url()."formatos/diagnostico/".base64_encode("1");?>" >
-																<button type="submit" class="btn btn-labeled btn-success" name="idprograma"  >
-																	<span class="btn-label">
-																		<i class="glyphicon glyphicon-edit" ></i>
-																	</span> Editar
-																</button>
-															</a>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<button type="button" class="btn btn-labeled btn-danger" onclick="eliminarprograma()">
-															<span class="btn-label">
-																<i class="glyphicon glyphicon-remove"></i>
-															</span> Eliminar
-														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
+											<tbody id="listado_programas_body">
+											
 									</tbody>
 								</table>
 							</div>

@@ -75,9 +75,11 @@ $route['formatos/bienesyservicios/(:any)'] = 'C_Bienesys/index';
 $route['formatos/poblaciones/(:any)'] = 'C_Poblaciones/index';
 $route['formatos/focalizacion/(:any)'] = 'C_Focalizacion/index';
 
+
 //=======================Acciones programas===========//
 $route['agregar/programa'] = 'C_Programa/agregar_programa';
 $route['listar/programa'] = 'C_Programa/listar_programas';
+$route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
 
 

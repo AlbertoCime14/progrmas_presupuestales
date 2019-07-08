@@ -39,6 +39,19 @@ class M_Programa extends CI_Model {
         }
         return $datos;
     }
+		public function actualizar_status_objetivo($iIdPrograma,$data){	
+		$this->db->where('iIdPrograma', $iIdPrograma);
+		$this->db->update('programas', $data);
+		if ($this->db->affected_rows() > 0)
+			{
+		  return TRUE;
+			}
+		else
+			{
+		  return FALSE;
+			}
+		
+	}
 
     public function actualizar_problema($data,$id)
 	{	
@@ -54,14 +67,7 @@ class M_Programa extends CI_Model {
 		  return FALSE;
 			}
     }
-	public function actualizar_status_objetivo($id){	
-		$data= array(
-		'IActivo'=>0
-		);
-		$this->db->where('iId_problemas', $id);
-		$this->db->update('objetivos', $data);
-		
-	}
+
 
 	
 }

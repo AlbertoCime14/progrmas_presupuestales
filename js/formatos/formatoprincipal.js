@@ -5,7 +5,7 @@ $(document).ready(function() {
     url=$("#url").val();
 	listar_programas();
 });
-function eliminarprograma(){
+function eliminarprograma(iIdPrograma){
     new PNotify({
 		title: 'Eliminar',
 		text: '¿Seguro desea eliminar este programa presupuestal?',
@@ -25,10 +25,28 @@ function eliminarprograma(){
 		addclass: 'stack-modal',
 		stack: {'dir1': 'down', 'dir2': 'right', 'modal': true }
 		}).get().on('pnotify.confirm', function(){
+		var recurso="eliminar/programa";
+		var data_recurso="iIdPrograma="+iIdPrograma;
+		$.ajax({
+			type: "POST",
+			url: url+recurso,
+			data: data_recurso ,
+		success: function(data) {
+			if(data=="correcto"){
+			listar_programas();
 		new PNotify({
 			title: 'Eliminado',
 			type: 'success',
-		})
+		})	
+		}else{
+		new PNotify({
+						title: 'Error en la petición comuniquese con soporte',
+						type: 'error',
+					})
+		
+		}
+			
+		}});		
 		}).on('pnotify.cancel', function(){
 		//  alert('Cancelado');
 	})
@@ -56,6 +74,7 @@ $("#enviarprograma").click(function(){
 					var nombre=$("#nombreplan").val("");
 					var tipoprograma=$("#tipoprograma").val(0);
 					var descripcionprograma=$("#descripcionprograma").val("");
+					listar_programas();
 					new PNotify({
 						title: 'Agregado',
 						type: 'success',
@@ -78,20 +97,25 @@ $("#enviarprograma").click(function(){
 
 function listar_programas(){
 	var recurso="listar/programa";
-			$.ajax({
-			type: "GET",
-			url: url+recurso,
-			success: function(data) {
+	$.ajax({
+		type: "GET",
+		url: url+recurso,
+		success: function(data) {
+		$("#listado_programas_body").empty();
 			var o = JSON.parse(data);
 			var objetos = (Object.values(o['programas']));
 			for(x=0; x<objetos.length; x++){
-			//aceder al valor especifico
-			console.log(objetos[x].vNombre);
+				
+				//aceder al valor especifico
+				/* console.log(objetos[x].vNombre); */
+			var nodotabla='<tr><td style="width: 60%;">'+objetos[x].vNombre+'</td><td><div class="row"><div class="col-md-6" style="text-align:right"><div ><a href="'+url+'formatos/diagnostico/'+btoa(+objetos[x].iIdPrograma)+'" ><button type="submit" class="btn btn-labeled btn-success" name="idprograma"><span class="btn-label"><i class="glyphicon glyphicon-edit" ></i></span> Editar</button></a></div></div><div class="col-md-6"><button type="button" class="btn btn-labeled btn-danger" onclick="eliminarprograma('+objetos[x].iIdPrograma+')"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Eliminar</button></div></div></td></tr>';
+				$('#listado_programas').find('tbody').append(nodotabla);
+				/* $('#listado_programas_body tbody').append(nodotabla); */
 			}
 			
-			}
-				
-		}); 
+		}
+		
+	}); 
 }
 
 
