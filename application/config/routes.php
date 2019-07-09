@@ -60,20 +60,22 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'Control_login/inicia_sesion';
 
 //======================Carlos====================================//
-$route['formatos/frm_1'] = 'C_Frm_1/index';
+//====================Formatos antiguos=================//
+/* $route['formatos/frm_1'] = 'C_Frm_1/index';
 $route['formatos/frm_2'] = 'C_Frm_2/index';
 $route['formatos/frm_3'] = 'C_Frm_3/index';
 $route['formatos/frm_4'] = 'C_Frm_4/index';
 $route['formatos/frm_5'] = 'C_Frm_5/index';
 
 $route['modificaciones/frm_20'] = 'C_Frm_20/actualizarproblema';
-$route['consultas/frm_20/(:any)'] = 'C_Frm_20/consultar_problema';
+$route['consultas/frm_20/(:any)'] = 'C_Frm_20/consultar_problema'; */
 
 //===============nuevos formatos=====================//
 $route['formatos/diagnostico/(:any)'] = 'C_Diagnostico/index';
 $route['formatos/bienesyservicios/(:any)'] = 'C_Bienesys/index';
 $route['formatos/poblaciones/(:any)'] = 'C_Poblaciones/index';
 $route['formatos/focalizacion/(:any)'] = 'C_Focalizacion/index';
+$route['formatos/arbolproblema/(:any)'] = 'C_Problemas/index';
 
 
 //=======================Acciones programas===========//
@@ -82,8 +84,12 @@ $route['listar/programa'] = 'C_Programa/listar_programas';
 $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
 
-//====================conbobox======================//
+//====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
+
+//====================recuperado json de arbol problemas==============//
+$route['listar/arbolproblema/(:any)'] = 'C_Problemas/consultar_problema';
+$route['actualizacion/arbolproblema'] = 'C_Problemas/actualizarproblema';
 
 
 

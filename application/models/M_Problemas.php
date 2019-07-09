@@ -11,8 +11,8 @@ class M_Problemas extends CI_Model {
 
     public function actualizar_problema($data,$id)
 	{	
-		$this->db->where('iId_problema', $id);
-		$this->db->update('problemas', $data);
+		$this->db->where('iIdPrograma', $id);
+		$this->db->update('problema', $data);
 		$this->actualizar_status_objetivo($id);
 		if ($this->db->affected_rows() > 0)
 			{
@@ -25,24 +25,25 @@ class M_Problemas extends CI_Model {
     }
 	public function actualizar_status_objetivo($id){	
 		$data= array(
-		'IActivo'=>0
+		'iActivo'=>0
 		);
-		$this->db->where('iId_problemas', $id);
+		$this->db->where('iIdProblema', $id);
 		$this->db->update('objetivos', $data);
 		
 	}
-	  public function consultarproblemas($iId_problema){
+	  public function consultarproblemas($iIdPrograma){
         $this->db->select('*');
-        $this->db->from('problemas');
-        $this->db->where('iId_problema',$iId_problema);
+        $this->db->from('problema');
+        $this->db->where('iIdPrograma',$iIdPrograma);
 		
         $query = $this->db->get();
 		
         foreach ($query->result() as $row) {
            $datos[] = [
-		   	'iId_problema'       => $row->iId_problema ,
-            'tNombre_problema'       => $row->tNombre_problema ,
-            'tEstructura_problema'       => $row->tEstructura_problema
+		   	'iIdProblema'       => $row->iIdProblema ,
+            'vNombreProblema'       => $row->vNombreProblema ,
+            'tEstructuraProblema'       => $row->tEstructuraProblema,
+			'iIdPrograma' => $row->iIdPrograma
 						  
             ];
         }

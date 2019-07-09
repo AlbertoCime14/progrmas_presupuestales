@@ -1,6 +1,14 @@
 /*
  *Incializa el canvas
  */
+ var programa=0;
+ var url = "";
+$(document).ready(function () {
+    /**Inicializar variables**/
+	programa=$("#programa").val();
+    url = $("#url").val();
+	 autorecuperarjson();
+});
 (function init() {
     if (window.goSamples)
         goSamples(); // init for these samples -- you don't need to call this
@@ -297,38 +305,26 @@
     // read in the JSON-format data from the "mySavedModel" element
     //layout();
 })();
-/*
- *funcion para llenar el canvas automaticamente desde la base de datos
- */
-(function () {
-    autorecuperarjson();
-})();
+
 function autorecuperarjson() {
-    var url = document.getElementById("url").value;
-    var id_problema = 1;
+	    
     $.ajax({
-        type: "POST",
-        url: url + "consultas/frm_20/" + id_problema,
-        data: "ok=ok",
+        type: "GET",
+        url: url + "listar/arbolproblema/" + window.btoa(programa),
+        data: "success=success",
         success: function (data) {
             var o = JSON.parse(data);
-            var llaves = (Object.values(o['problema']));
-            var valor = (Object.keys(llaves).length);
-            //console.log(valor);
-            for (x = 0; x < valor; x++) {
-                var objetos = Object.values(llaves[x]);
+            var objetos = (Object.values(o['problema']));
+            for (x = 0; x < objetos.length; x++) {
                 //console.log(objetos);
                 //posicion 2 viene de la base de datos modificar cualsea el caso
-                document.getElementById("mySavedModel").value = window.atob(objetos[2]);
+                document.getElementById("mySavedModel").value = window.atob(objetos[x].tEstructuraProblema);
+			 
                 console.log("JSON Recuperado correctamente");
                 setTimeout(function () {
                     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
                 }, 100);
             }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("Status: " + textStatus);
-            console.log("Error: " + errorThrown);
         }
     });
 }
@@ -343,56 +339,33 @@ function save() {
     document.getElementById("mySavedModel").value = myDiagram.model.toJson();
     //myDiagram.isModified = false;
     //var jsonData = myDiagram.model.toJson ();
-    /*Url estatica*/
-    var url = document.getElementById("url").value;
-    var id_problema = 1;
-    var estructura_problema = document.getElementById("mySavedModel").value;
+   
+    var estructura_problema =$("#mySavedModel").val();
     var Nombre_problema = "";
-    /***
-     *Inicio script para llenar guardar el canvas
-     ***/
-    var o = JSON.parse(estructura_problema);
-    var llaves = (Object.values(o['nodeDataArray']));
-    var valor = (Object.keys(llaves).length);
-    var json64 = window.btoa(estructura_problema);
-    //console.log(json64);
-    //console.log(valor);
-    for (x = 0; x < valor; x++) {
-        var objetos = Object.values(llaves[x]);
-        //console.log(objetos);
-        if (objetos[0] == 'Source') {
-            Nombre_problema = objetos[3];
-            //	console.log(nombre);
-        }
-    }
-    /***
-     *fin
-     ***/
+	var json64 = window.btoa(estructura_problema);
+	 
+	  var o = JSON.parse(estructura_problema);
+            var objetos = (Object.values(o['nodeDataArray']));
+            for (x = 0; x < objetos.length; x++) {
+				if(objetos[x].category=="Source"){
+					Nombre_problema=(objetos[x].text);
+				}
+			}
+
     $.ajax({
         type: "POST",
-        url: url + "modificaciones/frm_20",
-        data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
+        url: url + "actualizacion/arbolproblema",
+        data: "iIdPrograma="+programa+"&vNombreProblema="+Nombre_problema+"&tEstructuraProblema="+json64,
         success: function (data) {
             console.log("Peticion realizada correctamente!");
             new PNotify({
                 title: 'Datos guardados',
                 type: 'success',
             });
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("Status: " + textStatus);
-            console.log("Error: " + errorThrown);
-            new PNotify({
-                title: 'Error en el servidor',
-                type: 'error',
-            });
         }
-    });
+    }); 
 }
 function resetearjson() {
-    /*Url estatica*/
-    var url = document.getElementById("url").value;
-    var id_problema = 1;
     var Nombre_problema = "Problema central";
     var json64 = "eyAiY2xhc3MiOiAiR3JhcGhMaW5rc01vZGVsIiwKICAibm9kZURhdGFBcnJheSI6IFsgCnsiY2F0ZWdvcnkiOiJTb3VyY2UiLCAia2V5IjotMSwgImxvYyI6IjQxNiAxMTIuMjM4NTc2MjUwODQ2MDUiLCAidGV4dCI6IlByb2JsZW1hIGNlbnRyYWwifSwKeyJrZXkiOi0yLCAibG9jIjoiMjI5LjEzOTUxNjE5OTQ3OTgzIDAifSwKeyJjYXRlZ29yeSI6IkRlc2lyZWRFdmVudCIsICJrZXkiOi00LCAibG9jIjoiMjkwLjExMTQyNjAzNzk3MjM2IDE5My4yMzg1NzYyNTA4NDYxIn0sCnsiY2F0ZWdvcnkiOiJEZXNpcmVkRXZlbnQiLCAia2V5IjotNSwgImxvYyI6IjY5Mi41NzgwOTMyMTMyNjU3IDIwNC4yMzg1NzYyNTA4NDYxIn0sCnsidGV4dCI6IkNvbnNlY3VlbmNpYSIsICJsb2MiOiI0MjkuNjA2MTgzMzc0NzcyOCAwIiwgImtleSI6LTd9LAp7InRleHQiOiJDb25zZWN1ZW5jaWEiLCAibG9jIjoiNjMwLjA3Mjg1MDU1MDA2NTggMCIsICJrZXkiOi04fQogXSwKICAibGlua0RhdGFBcnJheSI6IFsgCnsiZnJvbSI6LTEsICJ0byI6LTcsICJwb2ludHMiOls0ODguODg2NzA5NjE4NTE3NTYsMTEyLjI2Nzk4ODY4NzA1NzUyLDQ3OS4yODEzNjEzMjA1MDkyMyw4NS41MTUwOTg3NDQ2Mjc4Miw0NzkuMTExMDI0MTAyNDk1NCw1OC42OTAwMTQ0Mzk2NDkwMSw0ODkuMDA0MzMwNzI3NTcxMiwzMS43NjMzMzM0MTU5ODUxMV19LAp7ImZyb20iOi0xLCAidG8iOi04LCAicG9pbnRzIjpbNTE3LjYzMTkzNDk1MywxMTIuNDE3Njc2MDcxMjYwNjcsNTY2LjI2NzExMjM2OTgzNTEsNzEuNzE0NTU0Nzc4NTE1OTMsNjEzLjAwMjk4MTQ1OTU4ODIsNDQuODA1OTY4MDM3ODA4ODQsNjUwLjExNTM5MzkwODA4MjYsMzEuNzYzMzMzNDE1OTg1MTFdfSwKeyJmcm9tIjotMSwgInRvIjotNSwgInBvaW50cyI6WzU3MS44MzYyMTI0MjMyNzE0LDE0OC4yODYwOTQyOTU3MjU3LDU5OC4wNzY0MzgzMzE2OTg2LDE1NC4yNzQyNTkyODU5NTM1Miw2NDguNDIwODI1Njk5Mzc3OSwxNzQuMjE1MjI2NDYzNTM5NDQsNjk3LjgwNTUxMTI3OTA1ODksMjA0LjQ3NzMzMjQxNzg0NzU4XX0sCnsiZnJvbSI6LTEsICJ0byI6LTQsICJwb2ludHMiOls0NzEuMDI4NzM3MTExNDE2MjYsMTQ5LjMyNTE1MDE4MzA0OTM3LDQzMS4yNzkyNzQ0MzI3NzI4LDE3OS4xOTgzMzkxNzU2NjUzOCwzOTguNjg2NzIwODg1MTQsMTk0LjcwOTc2NTY5NjQ2NDM2LDM2MC42MjEwOTc5NzAwMDE3NiwyMDMuNjI1NjY1MjIzNDA0M119LAp7ImZyb20iOi0xLCAidG8iOi0yLCAicG9pbnRzIjpbNDQ0LjczMjg0OTgyMzEwNjg1LDExMi41NjkxMjQzMTkyMDU0OSw0MDguMzc1NDMxMTkwODc2NSw5OS40NzI0MDM5OTQ5MzYxNiwzNjEuMjk3MDMxODU2MTQxNyw3Mi41NjMzNjI2NTM3OTIwMywzMTMuMTI0MzYyNzE1NDE3MjUsMzEuNzYzMzMzNDE1OTg1MTFdfQogXX0";
     /***
@@ -422,9 +395,9 @@ function resetearjson() {
         }
     }).get().on('pnotify.confirm', function () {
         $.ajax({
-            type: "POST",
-            url: url + "modificaciones/frm_20",
-            data: "iId_problema=" + id_problema + "&tEstructura_problema=" + json64 + "&tNombre_problema=" + Nombre_problema,
+           type: "POST",
+        url: url + "actualizacion/arbolproblema",
+        data: "iIdPrograma="+programa+"&vNombreProblema="+Nombre_problema+"&tEstructuraProblema="+json64,
             success: function (data) {
                 console.log("Peticion realizada correctamente!");
                 /**
