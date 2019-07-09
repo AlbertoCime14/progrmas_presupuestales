@@ -76,6 +76,7 @@ $route['formatos/bienesyservicios/(:any)'] = 'C_Bienesys/index';
 $route['formatos/poblaciones/(:any)'] = 'C_Poblaciones/index';
 $route['formatos/focalizacion/(:any)'] = 'C_Focalizacion/index';
 $route['formatos/arbolproblema/(:any)'] = 'C_Problemas/index';
+$route['formatos/arbolobjetivo/(:any)'] = 'C_Objetivo/index';
 
 
 //=======================Acciones programas===========//
@@ -90,6 +91,13 @@ $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
 //====================recuperado json de arbol problemas==============//
 $route['listar/arbolproblema/(:any)'] = 'C_Problemas/consultar_problema';
 $route['actualizacion/arbolproblema'] = 'C_Problemas/actualizarproblema';
+
+//====================recuperado json de arbol  objetivos==============//
+
+$route['listar/arbolobjetivo/(:any)'] = 'C_Objetivo/consultar_objetivo';
+
+$route['actualizacion/arbolobjetivo'] = 'C_Objetivo/actualizarobjetivo';
+
 
 
 
