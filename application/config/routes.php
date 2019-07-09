@@ -82,6 +82,9 @@ $route['listar/programa'] = 'C_Programa/listar_programas';
 $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
 
+//====================conbobox======================//
+$route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
+
 
 
 
