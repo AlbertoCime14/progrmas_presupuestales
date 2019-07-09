@@ -32,3 +32,7 @@ ALTER TABLE `programaspresupuestales`.`cuantificacionpoblacion`
   /* la tabla `criteriosfocalizacion complemento` en el campo tOtroCriterio puede ser nulo, este caso pasa cuando el usuario selecciona en la lista de crterios el campo "otros criterios" y la especificacion de ese otro se guarda en este campo */
 ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento`   
   ADD COLUMN `tOtroCriterio` TEXT NULL AFTER `iIdCriterioFoc`;
+/*Adicion del campo no aplica a la tabla programa_similares` */
+ALTER TABLE `programaspresupuestales`.`unidadmedida`   
+  ADD COLUMN `vNota` VARCHAR(255) NULL AFTER `vNombre`,
+  ADD COLUMN `iActivo` TINYINT(1) DEFAULT 1  NULL AFTER `vNota`;

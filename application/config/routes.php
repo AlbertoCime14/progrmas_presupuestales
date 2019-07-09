@@ -151,8 +151,8 @@ $route['consultas/frm_12/periodicidad'] = 'C_Frm_12/consultar_periodicidad';
 $route['consultas/frm_12/tendencia'] = 'C_Frm_12/consultar_tendencia';
 $route['consultas/frm_12/ambitos'] = 'C_Frm_12/consultar_ambitos';
 $route['consultas/frm_12/desempenos'] = 'C_Frm_12/consultar_desempenios';
-
-
+$route['formatos/bienesyservicios/agregar'] = 'C_Bienesys/AgregarServicio';
+$route['consultas/bienesyservicios/listar_unidad_medida'] = 'C_Bienesys/listar_unidad_medida';
 
 
 
