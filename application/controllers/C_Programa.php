@@ -59,5 +59,9 @@
 				echo "incorrecto";
 			}
 		}
+				public function listar_tipoprograma(){
+			$data['tipoprograma'] = $this->M_Programa->listar_tipoprograma();
+			echo json_encode($data);
+		}
 		
 	}

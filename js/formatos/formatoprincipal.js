@@ -2,9 +2,35 @@ var url = "";
 $(document).ready(function () {
     /**Inicializar variables**/
     url = $("#url").val();
+	listar_tipoprograma();
     listar_programas();
 });
 
+function listar_tipoprograma(){
+	var recurso="listar/tipoprograma";
+	$.ajax({
+        type: "GET",
+        url: url + recurso,
+        success: function (data) {
+          /*   $("#listado_programas_body").empty(); */
+            var o = JSON.parse(data);
+            var objetos = (Object.values(o['tipoprograma']));
+			
+			/**Defaul position 0**/
+			var obj = new Option("option text", 0 );
+                             $("#tipoprograma").append(obj);
+                             $(obj).html("Seleccione");
+            for (x = 0; x < objetos.length; x++) {
+                //aceder al valor especifico
+                /* console.log(objetos[x].vNombre); */
+				var obj = new Option("option text", objetos[x].iIdTipoPrograma  );
+                             $("#tipoprograma").append(obj);
+                             $(obj).html(objetos[x].vNombre);
+            }
+        }
+    });
+	
+}
 function eliminarprograma(iIdPrograma) {
     new PNotify({
         title: 'Eliminar',

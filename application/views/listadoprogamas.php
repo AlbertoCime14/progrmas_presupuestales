@@ -39,7 +39,7 @@
 		<link href="<?=base_url();?>vendors/pnotify/css/pnotify.mobile.css" rel="stylesheet" type="text/css"/>
 		<link href="<?=base_url();?>vendors/pnotify/css/pnotify.history.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/custom_css/toastr_notificatons.css">
-	</head>
+		</head>
 	<!--Head-->
 	<body class="skin-default">
 		<div class="preloader">
@@ -227,10 +227,6 @@
 											<div class="form-group col-md-3">
 												<label>Tipo de programa</label>
 												<select id="tipoprograma" class="form-control">
-													<option value="0">Seleccione</option>
-													<option value="1">O</option>
-													<option>O</option>
-													<option>O</option>
 												</select>
 											</div>
 										</div>
