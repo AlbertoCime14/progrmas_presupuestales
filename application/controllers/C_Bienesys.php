@@ -38,28 +38,34 @@ class C_Bienesys extends CI_Controller
 
     }
 
-    public function agregar_programa()
+    public function AgregarServicio()
     {
-        $vNombre = $this->input->post('vNombre');
-        $iIdTipoPrograma = $this->input->post('iIdTipoPrograma');
-        $tDescripcion = $this->input->post('tDescripcion');
-        $iIdUsuario = 2;
+        $vNombre = $this->input->post('vNombreServicio');
+        $tDescripcion =$this->input->post('tDescripcion');
+        $tCriteriosCalidad=$this->input->post('tCriteriosCalidad');
+        $tCriteriosEntregas=$this->input->post('tCriteriosEntregas');
+        $iIdUnidadMedida = $this->input->post('iIdUnidadMedida');
+        $iIdPrograma = 20;
+
         $data = array(
-            'vNombre' => $vNombre,
-            'iIdTipoPrograma' => $iIdTipoPrograma,
+            'vNombreServicio' => $vNombre,
             'tDescripcion' => $tDescripcion,
-            'iIdUsuario' => $iIdUsuario
+            'tCriteriosCalidad' => $tCriteriosCalidad,
+            'tCriteriosEntregas' => $tCriteriosEntregas,
+            'iIdUnidadMedida'=> $iIdUnidadMedida,
+            'iIdPrograma'=> $iIdPrograma
         );
-        if ($this->M_Programa->agregar_programa($data) === TRUE) {
+
+        if ($this->M_ServiciosBienes->agregar_Servicio($data) === TRUE) {
             echo "correcto";
         } else {
             echo "incorrecto";
         }
     }
 
-    public function listar_programas()
+    public function ListarServicios()
     {
-        $data['programas'] = $this->M_Programa->listar_programas();
+        $data['servicios'] = $this->M_ServiciosBienes->listar_servicios();
         echo json_encode($data);
     }
 

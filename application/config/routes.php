@@ -149,8 +149,6 @@ $route['actualizacion/arbolobjetivo'] = 'C_Objetivo/actualizarobjetivo';
 
 
 //======================Alberto====================================//
-
-
 $route['formatos/frm_6'] = 'C_Frm_6/index';
 $route['formatos/frm_7'] = 'C_Frm_7/index';
 $route['formatos/frm_8'] = 'C_Frm_8/index';
@@ -168,8 +166,16 @@ $route['consultas/frm_12/periodicidad'] = 'C_Frm_12/consultar_periodicidad';
 $route['consultas/frm_12/tendencia'] = 'C_Frm_12/consultar_tendencia';
 $route['consultas/frm_12/ambitos'] = 'C_Frm_12/consultar_ambitos';
 $route['consultas/frm_12/desempenos'] = 'C_Frm_12/consultar_desempenios';
-$route['formatos/bienesyservicios/agregar'] = 'C_Bienesys/AgregarServicio';
-$route['consultas/bienesyservicios/listar_unidad_medida'] = 'C_Bienesys/listar_unidad_medida';
+
+
+//=======================Acciones bienes y servicios===========//
+$route['acciones/bienesyservicios/agregar'] = 'C_Bienesys/AgregarServicio';
+$route['acciones/bienesyservicios/listar_unidad_medida'] = 'C_Bienesys/listar_unidad_medida';
+$route['acciones/bienesyservicios/eliminar'] = 'C_Bienesys/EliminarServicio';
+$route['acciones/bienesyservicios/listar'] = 'C_Bienesys/ListarServicios';
+
+
+
 
 
 

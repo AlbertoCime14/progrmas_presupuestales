@@ -36,3 +36,9 @@ ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento`
 ALTER TABLE `programaspresupuestales`.`unidadmedida`   
   ADD COLUMN `vNota` VARCHAR(255) NULL AFTER `vNombre`,
   ADD COLUMN `iActivo` TINYINT(1) DEFAULT 1  NULL AFTER `vNota`;
+/*Adicion del campo nombre a la tabla bienes y servicios` */
+ALTER TABLE `programaspresupuestales`.`bienesservicios`   
+  ADD COLUMN `vNombreServicio` VARCHAR(255) NOT NULL AFTER `iIdPrograma`;
+/*Adicion del campo iActivo a la tabla bienes y servicios` */
+ALTER TABLE `programaspresupuestales`.`bienesservicios`   
+  ADD COLUMN `iActivo` TINYINT(1) UNSIGNED DEFAULT 1  NOT NULL AFTER `iIdPrograma`;

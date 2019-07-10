@@ -21,67 +21,58 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <div class="row"> <!--Etiqueta de entrada del row-->
-                                <section>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                        </div>
-                                    </div>
-                                </section>
-                                <section>
-                                    <div class="col-md-12">
-                                        <table class="table">
-                                            <tr>
-                                                <th>Bien o servicio</th>
-                                                <th>Descripción del bien o servicio</th>
-                                                <th>Criterios de calidad</th>
-                                                <th>Criterios para determinar la entrega oportuna</th>
-                                                <th>Unidad de medida</th>
-                                                <th>Opciones</th>
-                                            </tr>
-                                            <tbody>
-                                            <tr>
-                                                <td><input placeholder="Ingrese el nombre del bien y/o servicio" id="Nombre_bien" class="form-control" type="text"/></td>
-                                                <td><textarea id="descripcion_bien" rows="4" style="resize:none;" cols="35"
-                                                              placeholder="Ingrese aquí su descripción" class="form-control resize_vertical"></textarea>
-                                                </td>
-                                                <td> <textarea id="criterios_calidad" rows="4" style="resize:none;" cols="35"
-                                                               placeholder="Ingrese aquí su descripción" class="form-control resize_vertical"></textarea>
-                                                </td>
-                                                <td> <textarea id="criterios_entrega" rows="4" style="resize:none;" cols="15"
-                                                               placeholder="Ingrese aquí su descripción" class="form-control resize_vertical"></textarea>
-                                                </td>
-                                                <td>
-                                                    <select class="form-control" id="cbo_unidad_medida">
 
-                                                    </select>
-                                                </td>
 
-                                                <td class="ui-group-buttons">
+                            <div class="table-responsive">
+                                <table class="table table-striped " id="listado_bienes">
+                                    <thead>
+                                    <tr>
+                                        <th>Bien o servicio</th>
+                                        <th>Descripción del bien o servicio</th>
+                                        <th>Criterios de calidad</th>
+                                        <th>Criterios para determinar la entrega oportuna</th>
+                                        <th>Unidad de medida</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input style="width: 160px;" placeholder="Nombre del servicio"
+                                                   id="Nombre_bien" class="form-control" type="text"/></td>
+                                        <td><textarea style="width: 200px;resize:none;" id="descripcion_bien" rows="4"
+                                                      placeholder="Ingrese aquí su descripción"
+                                                      class="form-control resize_vertical"></textarea>
+                                        </td>
+                                        <td> <textarea style="width: 200px;" id="criterios_calidad" rows="4"
+                                                       style="width: 200px;resize:none;"
+                                                       placeholder="Ingrese aquí su descripción"
+                                                       class="form-control resize_vertical"></textarea>
+                                        </td>
+                                        <td> <textarea style="width: 200px;" id="criterios_entrega" rows="4"
+                                                       style="width: 200px;resize:none;"
+                                                       placeholder="Ingrese aquí su descripción"
+                                                       class="form-control resize_vertical"></textarea>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="cbo_unidad_medida" style="width: 150px;">
+                                                <option value="0">Seleccione</option>
+                                            </select>
+                                        </td>
 
-                                                    <a class="btn btn-success" role="button" id="create_service">
-                                                        <span class="glyphicon glyphicon-floppy-disk"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><label>Nombre de un programa de ejemplo</label></td>
-                                                <td>Ejemplo t actor</td>
-                                                <td>Ejemplo pocision</td>
-                                                <td>Ejemplo importancia</td>
-                                                <td>Ejemplo importancia</td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-danger" role="button">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                        <td class="ui-group-buttons">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                            </div> <!--Etiqueta de cierre del row-->
+                                            <a class="btn btn-success" role="button" id="create_service">
+                                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="listado_bienes_body">
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

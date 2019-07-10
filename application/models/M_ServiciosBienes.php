@@ -11,9 +11,9 @@ class M_ServiciosBienes extends CI_Model
 
     }
 
-    public function agregar_programa($data)
+    public function agregar_Servicio($data)
     {
-        $this->db->insert('programas', $data);
+        $this->db->insert('bienesservicios', $data);
         if ($this->db->affected_rows() > 0) {
             return TRUE;
         } else {
@@ -21,22 +21,24 @@ class M_ServiciosBienes extends CI_Model
         }
     }
 
-    public function listar_programas()
+    public function listar_servicios()
     {
-        $iIdUsuario = 2;
+        //falta mandarle el id del programa
+        $iIdProgrma = 20;
         $this->db->select('*');
-        $this->db->from('programas');
-        $this->db->where("(iIdUsuario=$iIdUsuario AND iActivo=1)");
-        $this->db->order_by("iIdPrograma", "desc");
+        $this->db->from('bienesservicios');
+        $this->db->where("(iIdPrograma=$iIdProgrma AND iActivo=1)");
+        $this->db->order_by("vNombreServicio", "desc");
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
             $datos[] = [
-                'iIdPrograma' => $row->iIdPrograma,
-                'vNombre' => $row->vNombre,
-                'iIdTipoPrograma' => $row->iIdTipoPrograma,
-                'tDescripcion' => $row->tDescripcion
-
+                'iIdBienServicio' => $row->iIdBienServicio,
+                'vNombreServicio' => $row->vNombreServicio,
+                'tDescripcion' => $row->tDescripcion,
+                'tCriteriosCalidad' => $row->tCriteriosCalidad,
+                'tCriteriosEntregas' => $row->tCriteriosEntregas,
+                'iIdUnidadMedida' => $row->iIdUnidadMedida
             ];
         }
         return $datos;
@@ -72,7 +74,7 @@ class M_ServiciosBienes extends CI_Model
         $this->db->select('*');
         $this->db->from('unidadmedida');
         $this->db->order_by("vNombre", "ASC");
-        //$this->db->where("iActivo", 1);
+        $this->db->where("iActivo", 1);
         $query = $this->db->get();
         foreach ($query->result() as $row) {
             $datos[] = [
