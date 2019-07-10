@@ -23,7 +23,7 @@ class C_Focalizacion extends CI_Controller {
 		parent::__construct();
 		//session_start();
 		$this->load->helper('url');
-		//$this->load->model('M_alineacion');
+		$this->load->model('M_Criterios');
 		//$this->load->library('session');
 	}
 	public function index()
@@ -35,6 +35,15 @@ class C_Focalizacion extends CI_Controller {
 		
 		
 		
+	}
+	public function listar_criteriofocalizacion(){
+	     $iIdPrograma = $this->uri->segment(3);
+        $data['criteriofocalizacion'] = $this->M_Criterios->listar_criteriofocalizacion(base64_decode($iIdPrograma));
+        echo json_encode($data);
+	}
+		public function listar_criterios(){
+        $data['criteriofocalizacion'] = $this->M_Criterios->listar_criterios();
+        echo json_encode($data);
 	}
 
 	

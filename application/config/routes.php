@@ -87,6 +87,7 @@ $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
 //====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
+$route['listar/criteriofocalizacion'] = 'C_Focalizacion/listar_criterios';
 
 //====================recuperado json de arbol problemas==============//
 $route['listar/arbolproblema/(:any)'] = 'C_Problemas/consultar_problema';
@@ -95,9 +96,10 @@ $route['actualizacion/arbolproblema'] = 'C_Problemas/actualizarproblema';
 //====================recuperado json de arbol  objetivos==============//
 
 $route['listar/arbolobjetivo/(:any)'] = 'C_Objetivo/consultar_objetivo';
-
 $route['actualizacion/arbolobjetivo'] = 'C_Objetivo/actualizarobjetivo';
 
+//=========================criterios de focalizacion================//
+$route['listar/criteriofocalizacion_values/(:any)'] = 'C_Focalizacion/listar_criteriofocalizacion';
 
 
 

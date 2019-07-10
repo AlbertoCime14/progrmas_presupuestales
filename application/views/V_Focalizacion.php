@@ -24,8 +24,9 @@
                             <div class="row"> <!--Etiqueta de entrada del row-->
 							<section>
 							<div class="col-md-12">
-							  <table class="table">
-                                    <tr>
+							  <table class="table" id="listado_criterios">
+                                    <thead>
+										<tr>
                                         <th>Criterio</th>
                                         <th>Descripción del criterio</th>
                                         <th>Justificación de la elección</th>
@@ -34,47 +35,9 @@
 										<th>Adjuntar archivo</th>
 										<th>Opciones</th>
                                     </tr>
-                                    <tbody>
-                                    <tr>
-                                        <td><input class="form-control" type="text"/></td>
-                                        <td><input class="form-control" type="text"/></td>
-                                        <td><input class="form-control" type="text"/></td>
-										   <td><input class="form-control" type="text"/></td>
-										      <td><input class="form-control" type="text"/></td>
-										       <td>
-                                                    <input type="file" style="width: 200px;"
-                                                           class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload"
-                                                    / value="Subir">
-                                                </td>
-										     
-                                        <td class="ui-group-buttons">
-
-                                            <a class="btn btn-success" role="button">
-                                                <span class="glyphicon glyphicon-floppy-disk"></span>
-                                            </a>
-                                        </td>
-                                    </tr>
-									     <tr>
-                                        <td><input class="form-control" type="text" disabled="disabled"/></td>
-                                        <td><input class="form-control" type="text" disabled="disabled"/></td>
-                                        <td><input class="form-control" type="text" disabled="disabled"/></td>
-										   <td><input class="form-control" type="text" disabled="disabled"/></td>
-										      <td><input class="form-control" type="text" disabled="disabled"/></td>
-										       <td>
-                                                    <input type="file" style="width: 200px;"
-                                                           class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload"
-                                                    / value="Subir" disabled="disabled">
-                                                </td>
-										     
-                                        <td class="ui-group-buttons">
-
-                                            <a class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                           
-
+									</thead>
+                                    <tbody id="listado_criterios_body">
+									
                                     </tbody>
                                 </table>
 								</div>
@@ -91,3 +54,6 @@
     </aside>
     <!-- /.right-side -->
 </div>
+<input type="text" value="<?=base64_decode($this->uri->segment(3))?>" id="programa" style="display: none"/>
+	<script  src="<?=base_url();?>js/jqueryfull.js"></script>
+		<script src="<?=base_url();?>js/formatos/formatocriterios.js"></script>		
