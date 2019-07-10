@@ -11,6 +11,8 @@ class M_Programa extends CI_Model {
 	
 	public function agregar_programa($data){
 	$this->db->insert('programas', $data);
+	$this->insertar_problema($this->db->insert_id());
+	
 			if ($this->db->affected_rows() > 0)
 			{
 		  return TRUE;
@@ -19,6 +21,26 @@ class M_Programa extends CI_Model {
 			{
 		  return FALSE;
 			}
+	}
+	public function insertar_problema($iIdPrograma){
+	$base64='eyAiY2xhc3MiOiAiR3JhcGhMaW5rc01vZGVsIiwKICAibm9kZURhdGFBcnJheSI6IFsgCnsiY2F0ZWdvcnkiOiJTb3VyY2UiLCAia2V5IjotMSwgImxvYyI6IjQxNiAxMTIuMjM4NTc2MjUwODQ2MDUiLCAidGV4dCI6IlByb2JsZW1hIGNlbnRyYWwifSwKeyJrZXkiOi0yLCAibG9jIjoiMjI5LjEzOTUxNjE5OTQ3OTgzIDAifSwKeyJjYXRlZ29yeSI6IkRlc2lyZWRFdmVudCIsICJrZXkiOi00LCAibG9jIjoiMjkwLjExMTQyNjAzNzk3MjM2IDE5My4yMzg1NzYyNTA4NDYxIn0sCnsiY2F0ZWdvcnkiOiJEZXNpcmVkRXZlbnQiLCAia2V5IjotNSwgImxvYyI6IjY5Mi41NzgwOTMyMTMyNjU3IDIwNC4yMzg1NzYyNTA4NDYxIn0sCnsidGV4dCI6IkNvbnNlY3VlbmNpYSIsICJsb2MiOiI0MjkuNjA2MTgzMzc0NzcyOCAwIiwgImtleSI6LTd9LAp7InRleHQiOiJDb25zZWN1ZW5jaWEiLCAibG9jIjoiNjMwLjA3Mjg1MDU1MDA2NTggMCIsICJrZXkiOi04fQogXSwKICAibGlua0RhdGFBcnJheSI6IFsgCnsiZnJvbSI6LTEsICJ0byI6LTcsICJwb2ludHMiOls0ODguODg2NzA5NjE4NTE3NTYsMTEyLjI2Nzk4ODY4NzA1NzUyLDQ3OS4yODEzNjEzMjA1MDkyMyw4NS41MTUwOTg3NDQ2Mjc4Miw0NzkuMTExMDI0MTAyNDk1NCw1OC42OTAwMTQ0Mzk2NDkwMSw0ODkuMDA0MzMwNzI3NTcxMiwzMS43NjMzMzM0MTU5ODUxMV19LAp7ImZyb20iOi0xLCAidG8iOi04LCAicG9pbnRzIjpbNTE3LjYzMTkzNDk1MywxMTIuNDE3Njc2MDcxMjYwNjcsNTY2LjI2NzExMjM2OTgzNTEsNzEuNzE0NTU0Nzc4NTE1OTMsNjEzLjAwMjk4MTQ1OTU4ODIsNDQuODA1OTY4MDM3ODA4ODQsNjUwLjExNTM5MzkwODA4MjYsMzEuNzYzMzMzNDE1OTg1MTFdfSwKeyJmcm9tIjotMSwgInRvIjotNSwgInBvaW50cyI6WzU3MS44MzYyMTI0MjMyNzE0LDE0OC4yODYwOTQyOTU3MjU3LDU5OC4wNzY0MzgzMzE2OTg2LDE1NC4yNzQyNTkyODU5NTM1Miw2NDguNDIwODI1Njk5Mzc3OSwxNzQuMjE1MjI2NDYzNTM5NDQsNjk3LjgwNTUxMTI3OTA1ODksMjA0LjQ3NzMzMjQxNzg0NzU4XX0sCnsiZnJvbSI6LTEsICJ0byI6LTQsICJwb2ludHMiOls0NzEuMDI4NzM3MTExNDE2MjYsMTQ5LjMyNTE1MDE4MzA0OTM3LDQzMS4yNzkyNzQ0MzI3NzI4LDE3OS4xOTgzMzkxNzU2NjUzOCwzOTguNjg2NzIwODg1MTQsMTk0LjcwOTc2NTY5NjQ2NDM2LDM2MC42MjEwOTc5NzAwMDE3NiwyMDMuNjI1NjY1MjIzNDA0M119LAp7ImZyb20iOi0xLCAidG8iOi0yLCAicG9pbnRzIjpbNDQ0LjczMjg0OTgyMzEwNjg1LDExMi41NjkxMjQzMTkyMDU0OSw0MDguMzc1NDMxMTkwODc2NSw5OS40NzI0MDM5OTQ5MzYxNiwzNjEuMjk3MDMxODU2MTQxNyw3Mi41NjMzNjI2NTM3OTIwMywzMTMuMTI0MzYyNzE1NDE3MjUsMzEuNzYzMzMzNDE1OTg1MTFdfQogXX0';
+	$data=array(
+	'vNombreProblema' =>'Problema central',
+	'tEstructuraProblema' =>$base64,
+	'iActivo' =>1,
+	'iIdPrograma' =>$iIdPrograma
+	);
+	$this->db->insert('problema', $data);
+	$this->insertar_objetivos($this->db->insert_id());
+	}
+	
+	public function insertar_objetivos($iIdProblema){
+	$data=array(
+	'iActivo' =>0,
+	'iIdProblema' =>$iIdProblema
+	);
+	$this->db->insert('objetivos', $data);
+	
 	}
 	public function listar_programas(){
 		$iIdUsuario=2;
