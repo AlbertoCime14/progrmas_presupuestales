@@ -7,17 +7,23 @@ var criterios_values;
 $(document).ready(function () {
 	url = $("#url").val();
 	programa=$("#programa").val();
-consultar_cricterios();
-consultar_cricterios_values();
+	consultar_cricterios();
+	consultar_cricterios_values();
 	
-	setTimeout(function(){ llenar_tabla(); }, 1000);
+	setTimeout(function(){ llenar_tabla(); }, 2000);
 });
 
 function llenar_tabla(){
-	if(criterios_values == null || criterios_all== null){
+	if(criterios_all== null){
 		location.reload();
-		}else{
-		 $("#listado_programas_body").empty();
+		}else if(criterios_values==null){
+		var objetos_all = (Object.values(criterios_all['criteriofocalizacion']));
+		for (x = 0; x < objetos_all.length; x++) {
+			
+			crear_tabla_insertar(objetos_all[x].iIdCriterioFoc,objetos_all[x].vNombre);
+		}
+		}else if(criterios_values!=null){
+		$("#listado_programas_body").empty();
 		var objetos_values = (Object.values(criterios_values['criteriofocalizacion']));
 		var objetos_all = (Object.values(criterios_all['criteriofocalizacion']));
 		for (x = 0; x < objetos_all.length; x++) {
@@ -25,14 +31,16 @@ function llenar_tabla(){
 			for (i = 0; i < objetos_values.length; i++) {
 				if(objetos_values[i].iIdCriterioFoc==objetos_all[x].iIdCriterioFoc){
 					crear_tabla_actualizar(objetos_values[i].iIdCriterio,objetos_all[x].vNombre,objetos_values[i].vDescripcion,objetos_values[i].vJustificacion,objetos_values[i].vMedioVerificacion,objetos_values[i].tLiga,objetos_values[i].tArchivo);
+					/*valido que contador sea diferente id del los valores*/
 					contador=objetos_values[i].iIdCriterioFoc;
 				}
 			}
 			if(contador==0){
 				crear_tabla_insertar(objetos_all[x].iIdCriterioFoc,objetos_all[x].vNombre);
 			}
-		} 
+		}
 	}
+	
 }
 function consultar_cricterios(){
 	var route="listar/criteriofocalizacion";
@@ -58,7 +66,12 @@ function consultar_cricterios_values(){
         url: url +route,
         data: "success=success",
         success: function (data) {
-			criterios_values=JSON.parse(data);
+			if(data==null){
+				criterios_values=null;
+				}else{
+				criterios_values=JSON.parse(data);
+			}
+			
 			/*  var o = JSON.parse(data); */
 			/*    var objetos = (Object.values(o['criteriofocalizacion']));
 				for (x = 0; x < objetos.length; x++) {
@@ -94,7 +107,6 @@ function insertar_criterio(id_criterio){
         data: dataset,
         success: function (data) {
 			if (data == "correcto") {
-				llenar_tabla();
 				new PNotify({
 					title: 'Agregado',
 					type: 'success',
