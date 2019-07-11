@@ -36,6 +36,34 @@ class C_Focalizacion extends CI_Controller {
 		
 		
 	}
+		public function agregar_criteriosfocalizacioncomplemento(){
+        $vDescripcion = $this->input->post('vDescripcion');
+        $vJustificacion = $this->input->post('vJustificacion');
+		$vMedioVerificacion = $this->input->post('vMedioVerificacion');
+		$tLiga = $this->input->post('tLiga');
+		$tArchivo = $this->input->post('tArchivo');
+		$iIdPrograma = $this->input->post('iIdPrograma');
+		$iIdCriterioFoc = $this->input->post('iIdCriterioFoc');
+			
+				$data = array(
+				'vDescripcion' => $vDescripcion,
+				'vJustificacion' => $vJustificacion,
+				'vMedioVerificacion' => $vMedioVerificacion,
+				'tLiga' => $tLiga,
+				'tArchivo' => $tArchivo,
+				'iIdPrograma' => $iIdPrograma,
+				'iIdCriterioFoc' => $iIdCriterioFoc,
+			
+			 );
+		
+		
+		
+		if($this->M_Criterios->agregar_criteriosfocalizacioncomplemento($data)===TRUE){
+			echo "correcto";
+		}else{
+			echo "incorrecto";
+		}
+	}
 	public function listar_criteriofocalizacion(){
 	     $iIdPrograma = $this->uri->segment(3);
         $data['criteriofocalizacion'] = $this->M_Criterios->listar_criteriofocalizacion(base64_decode($iIdPrograma));

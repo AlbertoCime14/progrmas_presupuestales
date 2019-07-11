@@ -9,10 +9,8 @@ class M_Criterios extends CI_Model {
 		
 	}
 	
-	public function agregar_programa($data){
-	$this->db->insert('programas', $data);
-	$this->insertar_problema($this->db->insert_id());
-	
+	public function agregar_criteriosfocalizacioncomplemento($data){
+	$this->db->insert('criteriosfocalizacioncomplemento', $data);	
 			if ($this->db->affected_rows() > 0)
 			{
 		  return TRUE;
@@ -26,6 +24,7 @@ class M_Criterios extends CI_Model {
 		$this->db->select('*' );
         $this->db->from('criteriosfocalizacioncomplemento');
 		$this->db->join('criteriofocalizacion','criteriofocalizacion.iIdCriterioFoc=criteriosfocalizacioncomplemento.iIdCriterioFoc', 'INNER');
+		 $this->db->order_by("criteriosfocalizacioncomplemento.iIdCriterioFoc", "asc");
         $this->db->where('iIdPrograma',$iIdPrograma);
 
         $query = $this->db->get();

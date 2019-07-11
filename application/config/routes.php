@@ -100,6 +100,7 @@ $route['actualizacion/arbolobjetivo'] = 'C_Objetivo/actualizarobjetivo';
 
 //=========================criterios de focalizacion================//
 $route['listar/criteriofocalizacion_values/(:any)'] = 'C_Focalizacion/listar_criteriofocalizacion';
+$route['agregar/criteriofocalizacion'] = 'C_Focalizacion/agregar_criteriosfocalizacioncomplemento';
 
 
 
