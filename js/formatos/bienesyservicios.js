@@ -1,8 +1,13 @@
+var datos_selector;
 $(document).ready(function () {
     /**Inicializar variables**/
     url = $("#url").val();
     recuperar_unidad_medida();
     listar_bienes();
+
+
+
+
 });
 
 function recuperar_unidad_medida() {
@@ -86,55 +91,112 @@ $("#create_service").click(function () {
     }
 });
 
+
 function listar_bienes() {
-    /*  ejemplo var a = 5;
-    var b = 10;
-    console.log(`Quince es ${a + b} y\nno ${2 * a + b}.`); */
 
-
-   /* var table = `<td><label>Nombre de un programa de ejemplo</label></td>
-                                                <td>Ejemplo t actor</td>
-                                                <td>Ejemplo pocision</td>
-                                                <td>Ejemplo importancia</td>
-                                                <td>jalo appended</td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-danger" role="button">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                   </a>
-                                                </td>`;*/
-
-    //$("#listado_bienes_body").append(table);
     var recurso = "acciones/bienesyservicios/listar";
     $.ajax({
         type: "GET",
         url: url + recurso,
         success: function (data) {
             $("#listado_bienes_body").empty();
-            var o = JSON.parse(data);
-            var objetos = (Object.values(o['servicios']));
-            console.log(objetos);
-            for (x = 0; x < objetos.length; x++) {
-                //aceder al valor especifico
-                /* console.log(objetos[x].vNombre); */
-                //objetos[x].iIdPrograma  y objetos[x].vNombre
-                var table = `<tr><td><label>${objetos[x].vNombreServicio}</label></td>
-                                                <td>${objetos[x].tDescripcion}</td>
-                                                <td>${objetos[x].tCriteriosCalidad}</td>
-                                                <td>${objetos[x].tCriteriosEntregas}</td>
-                                                <td>${objetos[x].iIdUnidadMedida}</td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-danger" role="button" onclick="EliminarServicio();">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                   </a>
-                                                </td> </tr>`;
-                //$("#listado_bienes_body").append(table);
+            $("#listado_bienes_body").append(data);
 
-                $('#listado_bienes').find('tbody').append(table);
-            }
         }
     });
 }
-function EliminarServicio(){
-    alert("eliminar");
+function EliminarServicio(iIdBienServicio){
+
+    new PNotify({
+        title: 'Eliminar',
+        text: '¿Esta seguro de eliminar este Servicio?',
+        icon: 'fa fa-question-circle',
+        type: 'warning',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        history: {
+            history: false
+        },
+        addclass: 'stack-modal',
+        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
+    }).get().on('pnotify.confirm', function () {
+        var recurso = "acciones/bienesyservicios/eliminar";
+            var data_recurso = "iIdBienServicio=" + iIdBienServicio;
+        $.ajax({
+            type: "POST",
+            url: url + recurso,
+            data: data_recurso,
+            success: function (data) {
+                if (data == "correcto") {
+                    listar_bienes();
+                    new PNotify({
+                        title: 'Servicio eliminado correctamente',
+                        type: 'success',
+                    })
+                } else {
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            }
+        });
+    }).on('pnotify.cancel', function () {
+        //  alert('Cancelado');
+    })
 }
+
+function ActualizarServicio(iIdServicio) {
+    var IdServicio=iIdServicio;
+    var nombre = $("#vNombreServicio"+iIdServicio).val().trim();
+    var descripcion_bien = $("#DescripcionServicio_"+iIdServicio).val().trim();
+    var criterios_calidad = $("#criterios_calidad_"+iIdServicio).val().trim();
+    var criterios_entrega = $("#criterios_entregas_"+iIdServicio).val().trim();
+    var unidad_medida = $("#cbo_unidad_"+iIdServicio).val().trim();
+
+
+    if (nombre == "" || descripcion_bien == "" || criterios_calidad == "" || criterios_entrega == "" || unidad_medida <= 0) {
+        new PNotify({
+            title: 'Por favor llene todos los campos correctamente',
+            type: 'error',
+        })
+    }else {
+
+        /**Seguir aqui la insercion de datos**/
+        var recurso = "acciones/bienesyservicios/actualizar";
+        var data_recurso = "iIdBienServicio="+ IdServicio + "&vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida;
+        //+"&iIdPrograma="+id_programa
+
+        $.ajax({
+            type: "POST",
+            url: url + recurso,
+            data: data_recurso,
+            success: function (data) {
+                console.log(data);
+                if (data == "correcto") {
+
+                    listar_bienes();
+                    new PNotify({
+                        title: 'Servicio actualizado correctamente',
+                        type: 'success',
+                    })
+                } else {
+                    new PNotify({
+                        title: 'No hay cambios detectados en la actualización de su servicio',
+                        type: 'info',
+                    })
+                }
+            }
+        });
+    }
+
+}
+
+
 

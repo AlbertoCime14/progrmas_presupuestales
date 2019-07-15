@@ -41,13 +41,13 @@
                                                       placeholder="Ingrese aquí su descripción"
                                                       class="form-control resize_vertical"></textarea>
                                         </td>
-                                        <td> <textarea style="width: 200px;" id="criterios_calidad" rows="4"
+                                        <td> <textarea style="width: 200px;resize:none;" id="criterios_calidad" rows="4"
                                                        style="width: 200px;resize:none;"
                                                        placeholder="Ingrese aquí su descripción"
                                                        class="form-control resize_vertical"></textarea>
                                         </td>
-                                        <td> <textarea style="width: 200px;" id="criterios_entrega" rows="4"
-                                                       style="width: 200px;resize:none;"
+                                        <td> <textarea style="width: 200px;resize:none;" id="criterios_entrega" rows="4"
+
                                                        placeholder="Ingrese aquí su descripción"
                                                        class="form-control resize_vertical"></textarea>
                                         </td>
@@ -59,7 +59,7 @@
 
                                         <td class="ui-group-buttons">
 
-                                            <a class="btn btn-success" role="button" id="create_service">
+                                            <a title="Agregar nuevo servicio" class="btn btn-success" role="button" id="create_service">
                                                 <span class="glyphicon glyphicon-floppy-disk"></span>
                                             </a>
                                         </td>

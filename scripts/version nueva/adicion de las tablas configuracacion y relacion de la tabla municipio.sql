@@ -42,3 +42,15 @@ ALTER TABLE `programaspresupuestales`.`bienesservicios`
 /*Adicion del campo iActivo a la tabla bienes y servicios` */
 ALTER TABLE `programaspresupuestales`.`bienesservicios`   
   ADD COLUMN `iActivo` TINYINT(1) UNSIGNED DEFAULT 1  NOT NULL AFTER `iIdPrograma`;
+
+/* 11 de julio del 2019, modificacion de la tabla focalizacion complemento, ya que puedes ser nulos` */
+ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento`   
+  CHANGE `tLiga` `tLiga` TEXT CHARSET utf8 COLLATE utf8_general_ci NULL,
+  CHANGE `tArchivo` `tArchivo` TEXT CHARSET utf8 COLLATE utf8_general_ci NULL;
+
+/* 11 de julio del 2019, modificacion de la llave foranea` */
+
+
+ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento` 
+  ADD CONSTRAINT `FkPrograma` FOREIGN KEY (`iIdPrograma`) REFERENCES `programaspresupuestales`.`programas`(`iIdPrograma`),
+  DROP FOREIGN KEY `FkProgramaCr`;

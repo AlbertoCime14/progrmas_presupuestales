@@ -21,14 +21,14 @@ class M_ServiciosBienes extends CI_Model
         }
     }
 
-    public function listar_servicios()
+    public function listar_servicios($iIdProgrma)
     {
-        //falta mandarle el id del programa
-        $iIdProgrma = 20;
+        //falta mandarle el id del programa que no sea de manera estatica
+        //$iIdProgrma = 20;
         $this->db->select('*');
         $this->db->from('bienesservicios');
         $this->db->where("(iIdPrograma=$iIdProgrma AND iActivo=1)");
-        $this->db->order_by("vNombreServicio", "desc");
+        $this->db->order_by("iIdBienServicio", "ASC");
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
@@ -43,11 +43,25 @@ class M_ServiciosBienes extends CI_Model
         }
         return $datos;
     }
+    public function listar_servicio($id){
+        $this->db->select('*');
+        $this->db->from('bienesservicios');
+        $this->db->where('iIdBienServicio',$id);
+        $query = $this->db->get()->row();
+        $datos = array();
+        foreach($query as $campo => $value)
+        {
+            $datos[$campo] = $value;
+        }
 
-    public function actualizar_status_objetivo($iIdPrograma, $data)
+
+        return $datos;
+    }
+
+    public function Eliminar_servicio($iIdBienServicio, $data)
     {
-        $this->db->where('iIdPrograma', $iIdPrograma);
-        $this->db->update('programas', $data);
+        $this->db->where('iIdBienServicio', $iIdBienServicio);
+        $this->db->update('bienesservicios', $data);
         if ($this->db->affected_rows() > 0) {
             return TRUE;
         } else {
@@ -84,5 +98,15 @@ class M_ServiciosBienes extends CI_Model
         }
         return $datos;
     }
+    public function actualizar_servicio($id,$datos)
+    {
+        $this->db->where('iIdBienServicio', $id);
+        $this->db->update('bienesservicios', $datos);
 
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }
