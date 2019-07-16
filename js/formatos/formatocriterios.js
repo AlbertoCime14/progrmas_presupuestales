@@ -88,12 +88,12 @@ function llenar_tabla_datos(){
 
 function crear_tabla_actualizar(iIdCriterio,nombre_criterio,vDescripcion,vJustificacion,vMedioVerificacion,tLiga,tArchivo){
 	/*  $("#listado_criterios_body").empty(); */
-	nodotabla='<tr><td>'+nombre_criterio+'</td><td><input class=form-control type="text" value="'+vDescripcion+'" id="ivDescripcion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+vJustificacion+'" id="ivJustificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text"  value="'+vMedioVerificacion+'" id="ivMedioVerificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+tLiga+'" id="itLiga'+iIdCriterio+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="itArchivo'+iIdCriterio+'"/></td><td class="ui-group-buttons" style="width: 150px;"><a class="btn btn-success" role="button" onclick="actualizar_criterio('+iIdCriterio+')" id="btn_actualizar'+iIdCriterio+'"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+	nodotabla='<tr><td>'+nombre_criterio+'</td><td><input class=form-control type="text" value="'+vDescripcion+'" id="ivDescripcion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+vJustificacion+'" id="ivJustificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text"  value="'+vMedioVerificacion+'" id="ivMedioVerificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+tLiga+'" id="itLiga'+iIdCriterio+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="itArchivo'+iIdCriterio+'" onchange="add_files('+iIdCriterio+')"/></td><td class="ui-group-buttons" style="width: 150px;"><a class="btn btn-success" role="button" onclick="actualizar_criterio('+iIdCriterio+')" id="btn_actualizar'+iIdCriterio+'"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
 	$('#listado_criterios').find('tbody').append(nodotabla);
 }
 function crear_tabla_insertar(iIdCriterioFoc,vNombre){
 	/*  $("#listado_criterios_body").empty(); */
-nodotabla='<tr><td>'+vNombre+'</td><td><input class=form-control type="text" value="" id="vDescripcion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="vJustificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text"  value="" id="vMedioVerificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="tLiga'+iIdCriterioFoc+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="tArchivo'+iIdCriterioFoc+'"/></td><td class="ui-group-buttons" style="width: 150px;"><a id="btn_insert'+iIdCriterioFoc+'" class="btn btn-success" role="button" onclick="insertar_criterio('+iIdCriterioFoc+')"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+nodotabla='<tr><td>'+vNombre+'</td><td><input class=form-control type="text" value="" id="vDescripcion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="vJustificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text"  value="" id="vMedioVerificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="tLiga'+iIdCriterioFoc+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="tArchivo'+iIdCriterioFoc+'" onchange="add_files('+iIdCriterioFoc+')"/></td><td class="ui-group-buttons" style="width: 150px;"><a id="btn_insert'+iIdCriterioFoc+'" class="btn btn-success" role="button" onclick="insertar_criterio('+iIdCriterioFoc+')"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
 	$('#listado_criterios').find('tbody').append(nodotabla);
 }
 /*****funciones para insertar y actualizar******/
@@ -191,3 +191,33 @@ function actualizar_criterio(id_criterio){
 	}
 }
 
+function add_files(id){
+	var route="agregar/criteriofocalizacion/file";
+var filepath=  $("#itArchivo"+id).val();
+var filename = $("#itArchivo"+id).val().replace(/C:\\fakepath\\/i, '');
+var dataset="filepath="+filepath+"&filename="+filename;
+$.ajax({
+        type: "POST",
+        url: url +route,
+        data: dataset,
+        success: function (data) {
+			if (data == "correcto") {
+		/* 	llenar_tabla_datos(); */
+			new PNotify({
+					title: 'Archivo subido correctamente',
+					type: 'success',
+				});
+
+			
+                } else {
+		/* 		llenar_tabla_datos(); */
+					new PNotify({
+					title: 'Error en la carga comuniquese con soporte',
+					type: 'error',
+				})
+			
+			}
+		}
+	});  
+
+}
