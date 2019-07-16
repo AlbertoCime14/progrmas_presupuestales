@@ -102,6 +102,7 @@ $route['actualizacion/arbolobjetivo'] = 'C_Objetivo/actualizarobjetivo';
 $route['listar/criteriofocalizacion_values/(:any)'] = 'C_Focalizacion/listar_criteriofocalizacion';
 $route['agregar/criteriofocalizacion'] = 'C_Focalizacion/agregar_criteriosfocalizacioncomplemento';
 $route['actualizacion/criteriofocalizacion'] = 'C_Focalizacion/modificar_criteriosfocalizacioncomplemento';
+$route['eliminar/criteriofocalizacion'] = 'C_Focalizacion/eliminar_criteriosfocalizacioncomplemento';
 
 $route['agregar/criteriofocalizacion/file'] = 'C_Focalizacion/add_files';
 

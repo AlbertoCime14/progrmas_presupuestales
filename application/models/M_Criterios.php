@@ -20,6 +20,18 @@
 				return FALSE;
 			}
 		}
+				public function eliminar_criteriosfocalizacioncomplemento($iIdCriterio){
+			$this->db->where('iIdCriterio', $iIdCriterio);
+$this->db->delete('criteriosfocalizacioncomplemento');
+			if ($this->db->affected_rows() > 0)
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
 		public function modificar_criteriosfocalizacioncomplemento($iIdCriterio,$data){
 			
 			$this->db->where('iIdCriterio', $iIdCriterio);

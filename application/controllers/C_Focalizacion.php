@@ -40,7 +40,7 @@
     $fileExtension = strtolower(end($fileNameCmps));
 
     // sanitize file-name
-    $newFileName = $id.'_nuevo_'.$fileName;
+    $newFileName =$fileName;
 
     // check if file has one of the following extensions
     $allowedfileExtensions = array('zip','pdf');
@@ -126,6 +126,15 @@
 			'iIdPrograma' => $iIdPrograma,			
 			);
 			if($this->M_Criterios->modificar_criteriosfocalizacioncomplemento($iIdCriterio,$data)===TRUE){
+				echo "correcto";
+				}else{
+				echo "incorrecto";
+			}
+		}
+		public function eliminar_criteriosfocalizacioncomplemento(){
+			$iIdCriterio = $this->input->post('iIdCriterio');
+		
+			if($this->M_Criterios->eliminar_criteriosfocalizacioncomplemento($iIdCriterio)===TRUE){
 				echo "correcto";
 				}else{
 				echo "incorrecto";
