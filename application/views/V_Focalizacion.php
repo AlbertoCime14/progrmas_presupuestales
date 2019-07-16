@@ -1,3 +1,4 @@
+<script  src="<?=base_url();?>js/jqueryfull.js"></script>
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
     <?php
@@ -55,5 +56,6 @@
     <!-- /.right-side -->
 </div>
 <input type="text" value="<?=base64_decode($this->uri->segment(3))?>" id="programa" style="display: none"/>
-	<script  src="<?=base_url();?>js/jqueryfull.js"></script>
+<input type="text" value="1" id="validador" style="display: none"/>
+	
 		<script src="<?=base_url();?>js/formatos/formatocriterios.js"></script>		

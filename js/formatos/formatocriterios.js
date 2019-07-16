@@ -10,14 +10,12 @@ $(document).ready(function () {
 	/******sirve para cargar datos y llenar la tabla*****/
 	llenar_tabla_datos();
 });
-
 function llenar_tabla(){
 	if(criterios_all== null){
 		location.reload();
 		}else if(criterios_values==null){
 		var objetos_all = (Object.values(criterios_all['criteriofocalizacion']));
 		for (x = 0; x < objetos_all.length; x++) {
-			
 			crear_tabla_insertar(objetos_all[x].iIdCriterioFoc,objetos_all[x].vNombre);
 		}
 		}else if(criterios_values!=null){		
@@ -30,22 +28,27 @@ function llenar_tabla(){
 					crear_tabla_actualizar(objetos_values[i].iIdCriterio,objetos_all[x].vNombre,objetos_values[i].vDescripcion,objetos_values[i].vJustificacion,objetos_values[i].vMedioVerificacion,objetos_values[i].tLiga,objetos_values[i].tArchivo);
 					/*valido que contador sea diferente id del los valores*/
 					contador=objetos_values[i].iIdCriterioFoc;
+					$("#itArchivo"+objetos_values[i].iIdCriterio).click(function (event) {
+						event.preventDefault();
+					})
 				}
 			}
 			if(contador==0){
 				crear_tabla_insertar(objetos_all[x].iIdCriterioFoc,objetos_all[x].vNombre);
+				$("#itArchivo"+objetos_all[x].iIdCriterioFoc).click(function (event) {
+					//stop submit the form, we will post it manually.
+				event.preventDefault();})
 			}
 		}
 	}
-	
 }
 function consultar_cricterios(){
 	var route="listar/criteriofocalizacion";
 	$.ajax({
-        type: "GET",
-        url: url +route,
-        data: "success=success",
-        success: function (data) {
+		type: "GET",
+		url: url +route,
+		data: "success=success",
+		success: function (data) {
 			criterios_all=JSON.parse(data);
 			/*   var o = JSON.parse(data); */
 			/*  var objetos = (Object.values(o['criteriofocalizacion']));
@@ -59,16 +62,15 @@ function consultar_cricterios(){
 function consultar_cricterios_values(){
 	var route="listar/criteriofocalizacion_values/" + window.btoa(programa);
 	$.ajax({
-        type: "GET",
-        url: url +route,
-        data: "success=success",
-        success: function (data) {
+		type: "GET",
+		url: url +route,
+		data: "success=success",
+		success: function (data) {
 			if(data==null){
 				criterios_values=null;
 				}else{
 				criterios_values=JSON.parse(data);
 			}
-			
 			/*  var o = JSON.parse(data); */
 			/*    var objetos = (Object.values(o['criteriofocalizacion']));
 				for (x = 0; x < objetos.length; x++) {
@@ -78,14 +80,12 @@ function consultar_cricterios_values(){
 	});
 }
 function llenar_tabla_datos(){
-				consultar_cricterios();
+	consultar_cricterios();
 	consultar_cricterios_values();
 	setTimeout(function(){
 		$("#listado_criterios_body").empty();
-		llenar_tabla();},2500);
+	llenar_tabla();},2500);
 }
-
-
 function crear_tabla_actualizar(iIdCriterio,nombre_criterio,vDescripcion,vJustificacion,vMedioVerificacion,tLiga,tArchivo){
 	/*  $("#listado_criterios_body").empty(); */
 	nodotabla='<tr><td>'+nombre_criterio+'</td><td><input class=form-control type="text" value="'+vDescripcion+'" id="ivDescripcion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+vJustificacion+'" id="ivJustificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text"  value="'+vMedioVerificacion+'" id="ivMedioVerificacion'+iIdCriterio+'"/></td><td><input class=form-control type="text" value="'+tLiga+'" id="itLiga'+iIdCriterio+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="itArchivo'+iIdCriterio+'" onchange="add_files('+iIdCriterio+')"/></td><td class="ui-group-buttons" style="width: 150px;"><a class="btn btn-success" role="button" onclick="actualizar_criterio('+iIdCriterio+')" id="btn_actualizar'+iIdCriterio+'"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
@@ -93,7 +93,7 @@ function crear_tabla_actualizar(iIdCriterio,nombre_criterio,vDescripcion,vJustif
 }
 function crear_tabla_insertar(iIdCriterioFoc,vNombre){
 	/*  $("#listado_criterios_body").empty(); */
-nodotabla='<tr><td>'+vNombre+'</td><td><input class=form-control type="text" value="" id="vDescripcion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="vJustificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text"  value="" id="vMedioVerificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="tLiga'+iIdCriterioFoc+'"/></td><td><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="tArchivo'+iIdCriterioFoc+'" onchange="add_files('+iIdCriterioFoc+')"/></td><td class="ui-group-buttons" style="width: 150px;"><a id="btn_insert'+iIdCriterioFoc+'" class="btn btn-success" role="button" onclick="insertar_criterio('+iIdCriterioFoc+')"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+nodotabla='<tr><td>'+vNombre+'</td><td><input class=form-control type="text" value="" id="vDescripcion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="vJustificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text"  value="" id="vMedioVerificacion'+iIdCriterioFoc+'"/></td><td><input class=form-control type="text" value="" id="tLiga'+iIdCriterioFoc+'" onkeypress="validador('+iIdCriterioFoc+')"/></td><td><form method="POST" enctype="multipart/form-data" id="fileUploadForm'+iIdCriterioFoc+'"><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="tArchivo'+iIdCriterioFoc+'"  name="tArchivo'+iIdCriterioFoc+'" onchange="add_files('+iIdCriterioFoc+')"/><input type="text" value="'+iIdCriterioFoc+'" name="id" style="display: none"></form></td><td class="ui-group-buttons" style="width: 150px;"><a id="btn_insert'+iIdCriterioFoc+'" class="btn btn-success" role="button" onclick="insertar_criterio('+iIdCriterioFoc+')"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
 	$('#listado_criterios').find('tbody').append(nodotabla);
 }
 /*****funciones para insertar y actualizar******/
@@ -104,46 +104,41 @@ function insertar_criterio(id_criterio){
 	var vJustificacion =  $("#vJustificacion"+id_criterio).val().trim();
 	var vMedioVerificacion =  $("#vMedioVerificacion"+id_criterio).val().trim();
 	var tLiga =  $("#tLiga"+id_criterio).val().trim();
-var tArchivo =  $("#tArchivo"+id_criterio).val();
+	var tArchivo =  $("#tArchivo"+id_criterio).val();
 	var iIdPrograma =  programa;
 	var iIdCriterioFoc =  id_criterio;
 	var dataset="vDescripcion="+vDescripcion+"&vJustificacion="+vJustificacion+"&vMedioVerificacion="+vMedioVerificacion+"&tLiga="+tLiga+"&tArchivo="+tArchivo+"&iIdPrograma="+iIdPrograma+"&iIdCriterioFoc="+iIdCriterioFoc;
 	var route="agregar/criteriofocalizacion";
-	if(vDescripcion=="" || vJustificacion=="" || vMedioVerificacion==""){
-			new PNotify({
-					title: 'Primero llene los campos antes de guardar',
-					type: 'error',
-				})
-				llenar_tabla_datos();
-	}else{
+	if(vDescripcion=="" || vJustificacion=="" || vMedioVerificacion=="" || tArchivo=="" && tLiga=="" ){
+		new PNotify({
+			title: 'Primero llene los campos antes de guardar',
+			type: 'error',
+		})
+		llenar_tabla_datos();
+		}else{
 		$.ajax({
-        type: "POST",
-        url: url +route,
-        data: dataset,
-        success: function (data) {
-			if (data == "correcto") {
-			
-	
-	
-	llenar_tabla_datos();
-	new PNotify({
-					title: 'Registro agregado',
-					type: 'success',
-				});
-			
-                } else {
-				new PNotify({
-					title: 'Error en la petición comuniquese con soporte',
-					type: 'error',
-				})
+		beforeSend: function(xhr,opts) {
+
+		},	type: "POST",
+			url: url +route,
+			data: dataset,
+			success: function (data) {
+				if (data == "correcto") {
+					llenar_tabla_datos();
+					new PNotify({
+						title: 'Registro agregado',
+						type: 'success',
+					});
+					} else {
+					new PNotify({
+						title: 'Error en la petición comuniquese con soporte',
+						type: 'error',
+					})
+				}
 			}
-		}
-	}); 
-	
+		}); 
 	}
-
 }
-
 //===============================acttualizacion==================//
 /*****funciones para insertar y actualizar******/
 function actualizar_criterio(id_criterio){
@@ -160,64 +155,82 @@ function actualizar_criterio(id_criterio){
 	var route="actualizacion/criteriofocalizacion";
 	if(vDescripcion=="" || vJustificacion=="" || vMedioVerificacion==""){
 		new PNotify({
-					title: 'Primero llene los campos antes de guardar',
-					type: 'error',
-				})
-				llenar_tabla_datos();
-	}else{
-	 	$.ajax({
-        type: "POST",
-        url: url +route,
-        data: dataset,
-        success: function (data) {
-			if (data == "correcto") {
-			llenar_tabla_datos();
-			new PNotify({
-					title: 'Registro modificado',
-					type: 'success',
-				});
-
-			
-                } else {
-				llenar_tabla_datos();
+			title: 'Primero llene los campos antes de guardar',
+			type: 'error',
+		})
+		llenar_tabla_datos();
+		}else{
+		$.ajax({
+			type: "POST",
+			url: url +route,
+			data: dataset,
+			success: function (data) {
+				if (data == "correcto") {
+					llenar_tabla_datos();
 					new PNotify({
-					title: 'Sin cambios realizados',
-					type: 'error',
-				})
-			
+						title: 'Registro modificado',
+						type: 'success',
+					});
+					} else {
+					llenar_tabla_datos();
+					new PNotify({
+						title: 'Sin cambios realizados',
+						type: 'error',
+					})
+				}
 			}
-		}
-	});  
+		});  
 	}
 }
-
 function add_files(id){
+	var form = $('#fileUploadForm'+id)[0];
+	var data = new FormData(form);
 	var route="agregar/criteriofocalizacion/file";
-var filepath=  $("#itArchivo"+id).val();
-var filename = $("#itArchivo"+id).val().replace(/C:\\fakepath\\/i, '');
-var dataset="filepath="+filepath+"&filename="+filename;
-$.ajax({
-        type: "POST",
-        url: url +route,
-        data: dataset,
-        success: function (data) {
-			if (data == "correcto") {
-		/* 	llenar_tabla_datos(); */
+	$.ajax({
+		beforeSend: function() {
 			new PNotify({
+				title: 'Subiendo archivos...',
+				type: 'warning',
+			});
+		},
+		type: "POST",
+		url: url +route,
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function (data) {
+			if (data == "correcto") {
+				/* 	llenar_tabla_datos(); */
+				new PNotify({
 					title: 'Archivo subido correctamente',
 					type: 'success',
 				});
-
-			
-                } else {
-		/* 		llenar_tabla_datos(); */
+				$('#tLiga'+id).attr("disabled", true);
+				}
+			 else if(data=="vilidartiposarchivos"){
 					new PNotify({
+					title: 'Error Solo archivos PDF y ZIP',
+					type: 'error',
+				});
+				$('#tArchivo'+id).val("");
+				}
+			 else if(data=="incorrecto") {
+				/* 		llenar_tabla_datos(); */
+				new PNotify({
 					title: 'Error en la carga comuniquese con soporte',
 					type: 'error',
-				})
-			
+				});
+				$('#tArchivo'+id).val("");
 			}
 		}
 	});  
-
+}
+function validador(id){
+	var input=$('#tLiga'+id).val().trim();
+	if(input=""){
+	$('#tArchivo'+id).attr("disabled", true);
+	}else{
+	$('#tArchivo'+id).attr("disabled", false);
+	}
 }

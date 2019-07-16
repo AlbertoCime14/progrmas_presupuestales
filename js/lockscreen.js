@@ -1,10 +1,17 @@
 "use strict";
 $(document).ready(function() {
     //=================Preloader===========//
-    $(window).on('load', function () {
+/*     $(window).on('load', function () {
         $('.preloader img').fadeOut();
         $('.preloader').fadeOut();
-    });
+    }); */
+	//==========modificado por cristobal=========//
+
+/* 	setTimeout(function(){
+	$('.preloader img').fadeOut();
+        $('.preloader').fadeOut();
+	
+	},6000); */
     //=================end of Preloader===========//
     var textfield = $("input[name=user]");
     $('button[type="submit"]').on('click', function(e) {

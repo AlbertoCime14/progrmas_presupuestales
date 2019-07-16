@@ -22,26 +22,63 @@
 			//session_start();
 			$this->load->helper('url');
 			
-			$this->load->library('ftp');
 			$this->load->model('M_Criterios');
 			//$this->load->library('session');
 		}
 		public function add_files(){
-			$config['hostname'] = '127.0.0.1';
-			$config['username'] = 'dev';
-			$config['password'] = '12345';
-			$config['debug']        = TRUE;
-			$this->ftp->connect($config);
-			$filename = $this->input->post('filename');
-			//$filepath = $this->input->post('filepath');
-			$filepath='C:\Users\carlo\Documents\CodeIgniter-3.1.10.zip';
-			$this->ftp->upload($filepath,  "progrmas_presupuestales/"."archivos/documentos_focalizacion/", 'ascii', 0775);
+		
+
+	$id=$_POST['id'];
+  if (isset($_FILES['tArchivo'.$id]) && $_FILES['tArchivo'.$id]['error'] === UPLOAD_ERR_OK)
+  {
+    // get details of the uploaded file
+    $fileTmpPath = $_FILES['tArchivo'.$id]['tmp_name'];
+    $fileName = $_FILES['tArchivo'.$id]['name'];
+    $fileSize = $_FILES['tArchivo'.$id]['size'];
+    $fileType = $_FILES['tArchivo'.$id]['type'];
+    $fileNameCmps = explode(".", $fileName);
+    $fileExtension = strtolower(end($fileNameCmps));
+
+    // sanitize file-name
+    $newFileName = $id.'_nuevo_'.$fileName;
+
+    // check if file has one of the following extensions
+    $allowedfileExtensions = array('zip','pdf');
+
+    if (in_array($fileExtension, $allowedfileExtensions))
+    {
+      // directory in which the uploaded file will be moved
+      $uploadFileDir = "./archivos/documentos_focalizacion/";
+      $dest_path = $uploadFileDir . $newFileName;
+
+      if(move_uploaded_file($fileTmpPath, $dest_path)) 
+      {
+       echo "correcto";
+      }
+      else 
+      {
+  //validar error al pasar archivo al servidor
+        echo "incorrecto";
+      }
+    }
+    else
+    {
+//valida los tipos de archivos
+      echo "vilidartiposarchivos";
+    }
+  }
+  else
+  {
+	  //valida si existe el post
+	echo "incorrecto";
+  }
+
 			
-			if($this->ftp->close()===TRUE){
+		/* 	if(===TRUE){
 			echo "correcto";
 			}else{
 			echo "incorrecto";
-			}
+			} */
 		}
 		public function index()
 		{
