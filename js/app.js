@@ -13882,7 +13882,7 @@ $(document).ready(function() {
 	$('.preloader img').fadeOut();
         $('.preloader').fadeOut();
 	
-	},5500);
+	},2500);
 		}else{
 			  $('.preloader img').fadeOut();
         $('.preloader').fadeOut();

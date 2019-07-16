@@ -3,9 +3,9 @@ $(document).ready(function () {
     /**Inicializar variables**/
     url = $("#url").val();
     recuperar_unidad_medida();
-    listar_bienes();
+    var id_programa=$("#id_programa").val().trim();
 
-
+    listar_bienes(id_programa);
 
 
 });
@@ -50,8 +50,8 @@ $("#create_service").click(function () {
     var criterios_calidad = $("#criterios_calidad").val().trim();
     var criterios_entrega = $("#criterios_entrega").val().trim();
     var unidad_medida = $("#cbo_unidad_medida").val().trim();
+    var id_programa=$("#id_programa").val().trim();
 
-    var id_programa = 1;
     if (nombre == "" || descripcion_bien == "" || criterios_calidad == "" || criterios_entrega == "" || unidad_medida <= 0) {
         new PNotify({
             title: 'Por favor llene todos los campos correctamente',
@@ -61,7 +61,7 @@ $("#create_service").click(function () {
 
         /**Seguir aqui la insercion de datos**/
         var recurso = "acciones/bienesyservicios/agregar";
-        var data_recurso = "vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida;
+        var data_recurso = "vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida + "&iIdPrograma="+id_programa;
         //+"&iIdPrograma="+id_programa
 
         $.ajax({
@@ -91,10 +91,9 @@ $("#create_service").click(function () {
     }
 });
 
+function listar_bienes(id_programa) {
 
-function listar_bienes() {
-
-    var recurso = "acciones/bienesyservicios/listar";
+    var recurso = "acciones/bienesyservicios/listar/"+id_programa;
     $.ajax({
         type: "GET",
         url: url + recurso,
@@ -105,7 +104,8 @@ function listar_bienes() {
         }
     });
 }
-function EliminarServicio(iIdBienServicio){
+
+function EliminarServicio(iIdBienServicio) {
 
     new PNotify({
         title: 'Eliminar',
@@ -127,7 +127,7 @@ function EliminarServicio(iIdBienServicio){
         stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
     }).get().on('pnotify.confirm', function () {
         var recurso = "acciones/bienesyservicios/eliminar";
-            var data_recurso = "iIdBienServicio=" + iIdBienServicio;
+        var data_recurso = "iIdBienServicio=" + iIdBienServicio;
         $.ajax({
             type: "POST",
             url: url + recurso,
@@ -153,12 +153,12 @@ function EliminarServicio(iIdBienServicio){
 }
 
 function ActualizarServicio(iIdServicio) {
-    var IdServicio=iIdServicio;
-    var nombre = $("#vNombreServicio"+iIdServicio).val().trim();
-    var descripcion_bien = $("#DescripcionServicio_"+iIdServicio).val().trim();
-    var criterios_calidad = $("#criterios_calidad_"+iIdServicio).val().trim();
-    var criterios_entrega = $("#criterios_entregas_"+iIdServicio).val().trim();
-    var unidad_medida = $("#cbo_unidad_"+iIdServicio).val().trim();
+    var IdServicio = iIdServicio;
+    var nombre = $("#vNombreServicio" + iIdServicio).val().trim();
+    var descripcion_bien = $("#DescripcionServicio_" + iIdServicio).val().trim();
+    var criterios_calidad = $("#criterios_calidad_" + iIdServicio).val().trim();
+    var criterios_entrega = $("#criterios_entregas_" + iIdServicio).val().trim();
+    var unidad_medida = $("#cbo_unidad_" + iIdServicio).val().trim();
 
 
     if (nombre == "" || descripcion_bien == "" || criterios_calidad == "" || criterios_entrega == "" || unidad_medida <= 0) {
@@ -166,11 +166,11 @@ function ActualizarServicio(iIdServicio) {
             title: 'Por favor llene todos los campos correctamente',
             type: 'error',
         })
-    }else {
+    } else {
 
         /**Seguir aqui la insercion de datos**/
         var recurso = "acciones/bienesyservicios/actualizar";
-        var data_recurso = "iIdBienServicio="+ IdServicio + "&vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida;
+        var data_recurso = "iIdBienServicio=" + IdServicio + "&vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida;
         //+"&iIdPrograma="+id_programa
 
         $.ajax({

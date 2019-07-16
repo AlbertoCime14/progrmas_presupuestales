@@ -43,14 +43,15 @@ class M_ServiciosBienes extends CI_Model
         }
         return $datos;
     }
-    public function listar_servicio($id){
+
+    public function listar_servicio($id)
+    {
         $this->db->select('*');
         $this->db->from('bienesservicios');
-        $this->db->where('iIdBienServicio',$id);
+        $this->db->where('iIdBienServicio', $id);
         $query = $this->db->get()->row();
         $datos = array();
-        foreach($query as $campo => $value)
-        {
+        foreach ($query as $campo => $value) {
             $datos[$campo] = $value;
         }
 
@@ -98,7 +99,8 @@ class M_ServiciosBienes extends CI_Model
         }
         return $datos;
     }
-    public function actualizar_servicio($id,$datos)
+
+    public function actualizar_servicio($id, $datos)
     {
         $this->db->where('iIdBienServicio', $id);
         $this->db->update('bienesservicios', $datos);

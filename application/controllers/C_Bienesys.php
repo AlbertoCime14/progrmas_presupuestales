@@ -45,7 +45,7 @@ class C_Bienesys extends CI_Controller
         $tCriteriosCalidad = $this->input->post('tCriteriosCalidad');
         $tCriteriosEntregas = $this->input->post('tCriteriosEntregas');
         $iIdUnidadMedida = $this->input->post('iIdUnidadMedida');
-        $iIdPrograma = 20; ///este id del programa se obtiene a traves de la url
+        $iIdPrograma =  $this->input->post('iIdPrograma');
 
         $data = array(
             'vNombreServicio' => $vNombre,
@@ -65,8 +65,9 @@ class C_Bienesys extends CI_Controller
 
     public function ListarServicios()
     {
-        //$key=base64_decode($this->uri->segment(3));//para obtener el id del programa sobre el que se trabajará
-        $key = 20;//id de manera provicional
+        $key=$this->uri->segment(4);
+
+        //$key = 20;//id de manera provicional
         $data['mydata'] = $this->M_ServiciosBienes->listar_servicios($key);
         $data['filas'] = ''; //las filas que contienen los datos
         $data['num_servicios'] = 0;
@@ -113,7 +114,7 @@ class C_Bienesys extends CI_Controller
 
 
         $html .= '<td>
-			<textarea name="DescripcionServicio_' . $iIdBienServicio . '" id="DescripcionServicio_' . $datos['iIdBienServicio'] . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required>' . $datos['tDescripcion'] . '</textarea>
+			    <textarea name="DescripcionServicio_' . $iIdBienServicio . '" id="DescripcionServicio_' . $datos['iIdBienServicio'] . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required>' . $datos['tDescripcion'] . '</textarea>
 			</td>
 			<td>
                 <textarea name="criterios_calidad_' . $iIdBienServicio . '" id="criterios_calidad_' . $datos['iIdBienServicio'] . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required>' . $datos['tCriteriosCalidad'] . '</textarea>
@@ -124,14 +125,19 @@ class C_Bienesys extends CI_Controller
 			<td> ' . $this->selector_unidad($datos['iIdUnidadMedida'], $iIdBienServicio) . '
 			
 			</td>
-			<td>
-				<input type="button" class="btn btn-success" value="Actualizar" onclick="ActualizarServicio(' . $datos['iIdBienServicio'] . ');" style="font-size:11px;">
-				<input type="button" class="btn btn-danger" value="Eliminar" onclick="EliminarServicio(' . $datos['iIdBienServicio'] . ');" style="font-size:11px;">
+			<td class="ui-group-buttons" style="width: 103px;">
+				
+				 <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio(' . $datos['iIdBienServicio'] . ');"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio(' . $datos['iIdBienServicio'] . ');"></span>
+                                            </a>
 			</td>
 		</tr>';
-        //.$this->selector_unidad($datos['Unidad_medida_id_unidad'],$iIdBienServicio).'</td>'
+
         echo $html;
-        //return "correcto";
+
     }
 
     function selector_unidad($seleccionado = 0, $iIdBienServicio)
@@ -150,7 +156,9 @@ class C_Bienesys extends CI_Controller
 
         return $html;
     }
-    function ActualizarServicio(){
+
+    function ActualizarServicio()
+    {
         $iIdBienServicio = $this->input->post('iIdBienServicio');
         $vNombre = $this->input->post('vNombreServicio');
         $tDescripcion = $this->input->post('tDescripcion');
@@ -169,9 +177,7 @@ class C_Bienesys extends CI_Controller
         );
 
 
-
-
-        if ($this->M_ServiciosBienes->actualizar_servicio($iIdBienServicio,$data) === TRUE) {
+        if ($this->M_ServiciosBienes->actualizar_servicio($iIdBienServicio, $data) === TRUE) {
             echo "correcto";
         } else {
             echo "incorrecto";

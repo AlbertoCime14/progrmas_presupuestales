@@ -79,6 +79,8 @@
 
 
             </div>
+            <?php $id_programa = base64_decode($this->uri->segment(3)) ;?>
+            <input type="text" value="<?= $id_programa; ?>" id="id_programa" style="visibility: hidden">
         </section>
         <!-- /.content -->
     </aside>

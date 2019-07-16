@@ -178,7 +178,7 @@ $route['consultas/frm_12/desempenos'] = 'C_Frm_12/consultar_desempenios';
 $route['acciones/bienesyservicios/agregar'] = 'C_Bienesys/AgregarServicio';
 $route['acciones/bienesyservicios/listar_unidad_medida'] = 'C_Bienesys/listar_unidad_medida';
 $route['acciones/bienesyservicios/eliminar'] = 'C_Bienesys/EliminarServicio';
-$route['acciones/bienesyservicios/listar'] = 'C_Bienesys/ListarServicios';
+$route['acciones/bienesyservicios/listar/(:any)'] = 'C_Bienesys/ListarServicios';
 $route['acciones/bienesyservicios/actualizar'] = 'C_Bienesys/ActualizarServicio';
 
 
