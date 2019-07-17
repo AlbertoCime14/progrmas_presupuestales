@@ -1,6 +1,7 @@
 var vale;
 var programa = 0;
 var url = "";
+var rutaarchivo = "archivos/documentos_focalizacion/";
 /**Objetos de las consultas**/
 var criterios_all;
 var criterios_values;
@@ -97,13 +98,16 @@ function llenar_tabla_datos() {
 function crear_tabla_actualizar(iIdCriterio, nombre_criterio, vDescripcion, vJustificacion, vMedioVerificacion, tLiga, tArchivo) {
     var atrib_liga;
     var atrib_archivo;
+    var operador = "";
+    var ttArchivo = "'" + tArchivo + "'";
     if (tArchivo != "") {
         atrib_liga = "disabled=disabled";
+        operador = '<a href="' + url + rutaarchivo + tArchivo + '">Ver archivo</a><a> || </a> <a href="#" onclick="eliminar_archivo(' + iIdCriterio + ',' + ttArchivo + ')">Eliminar</a>';
     } else {
         atrib_archivo = "disabled=disabled";
     }
     /*  $("#listado_criterios_body").empty(); */
-    nodotabla = '<tr><td>' + nombre_criterio + '</td><td><input class=form-control type="text" value="' + vDescripcion + '" id="ivDescripcion' + iIdCriterio + '"/></td><td><input class=form-control type="text" value="' + vJustificacion + '" id="ivJustificacion' + iIdCriterio + '"/></td><td><input class=form-control type="text"  value="' + vMedioVerificacion + '" id="ivMedioVerificacion' + iIdCriterio + '"/></td><td><input class=form-control type="text" value="' + tLiga + '" id="itLiga' + iIdCriterio + '" ' + atrib_liga + '  onkeyup="validadorA(' + iIdCriterio + ')"/></td><td><form method="POST" enctype="multipart/form-data" id="fileUploadForm' + iIdCriterio + '"><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="' + tArchivo + '" id="itArchivo' + iIdCriterio + '"  name="itArchivo' + iIdCriterio + '"  onchange="add_files(' + iIdCriterio + ')" ' + atrib_archivo + '/><input type="text" value="' + iIdCriterio + '" name="id" style="display: none"></form></td><td class="ui-group-buttons" style="width: 150px;"><a class="btn btn-success" role="button" onclick="actualizar_criterio(' + iIdCriterio + ')" id="btn_actualizar' + iIdCriterio + '"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button" id="btnBorrar' + iIdCriterio + '" onclick="borrar_criterio(' + iIdCriterio + ')"><span class="glyphicon glyphicon-trash" ></span></a></td></tr>';
+    nodotabla = '<tr><td>' + nombre_criterio + '</td><td><input class=form-control type="text" value="' + vDescripcion + '" id="ivDescripcion' + iIdCriterio + '"/></td><td><input class=form-control type="text" value="' + vJustificacion + '" id="ivJustificacion' + iIdCriterio + '"/></td><td><input class=form-control type="text"  value="' + vMedioVerificacion + '" id="ivMedioVerificacion' + iIdCriterio + '"/></td><td><input class=form-control type="text" value="' + tLiga + '" id="itLiga' + iIdCriterio + '" ' + atrib_liga + '  onkeyup="validadorA(' + iIdCriterio + ')"/></td><td><form method="POST" enctype="multipart/form-data" id="fileUploadForm' + iIdCriterio + '"><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="' + tArchivo + '" id="itArchivo' + iIdCriterio + '"  name="itArchivo' + iIdCriterio + '"  onchange="add_files(' + iIdCriterio + ')" ' + atrib_archivo + '/><input type="text" value="' + iIdCriterio + '" name="id" style="display: none"> </form> ' + operador + '</td><td class="ui-group-buttons" style="width: 150px;"><a class="btn btn-success" role="button" onclick="actualizar_criterio(' + iIdCriterio + ')" id="btn_actualizar' + iIdCriterio + '"><span class="glyphicon glyphicon-floppy-disk"></span></a><a class="btn btn-danger" role="button" id="btnBorrar' + iIdCriterio + '" onclick="borrar_criterio(' + iIdCriterio + ')"><span class="glyphicon glyphicon-trash" ></span></a></td></tr>';
     $('#listado_criterios').find('tbody').append(nodotabla);
 }
 
@@ -247,6 +251,60 @@ function add_files(id) {
             }
         }
     });
+}
+
+function eliminar_archivo(id, archivo) {
+
+
+    new PNotify({
+        title: 'Eliminar',
+        text: '¿Seguro desea eliminar este programa presupuestal?',
+        icon: 'fa fa-question-circle',
+        type: 'warning',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        history: {
+            history: false
+        },
+        addclass: 'stack-modal',
+        stack: { 'dir1': 'down', 'dir2': 'right', 'modal': true }
+    }).get().on('pnotify.confirm', function() {
+        var recurso = "borrar/criteriofocalizacion/file";
+        var data_recurso = "archivo=" + archivo;
+        $.ajax({
+            type: "POST",
+            url: url + recurso,
+            data: data_recurso,
+            success: function(data) {
+                if (data == "correcto") {
+                    $('#itLiga' + id).attr("disabled", false);
+                    $("#itArchivo" + id).val("");
+                    actualizar_criterio(id);
+                    llenar_tabla_datos();
+
+                    new PNotify({
+                        title: 'Archivo eliminado',
+                        type: 'success',
+                    })
+                } else {
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            }
+        });
+    }).on('pnotify.cancel', function() {
+        //  alert('Cancelado');
+    })
+
+
 }
 
 function borrar_criterio(id) {

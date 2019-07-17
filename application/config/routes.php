@@ -105,6 +105,7 @@ $route['actualizacion/criteriofocalizacion'] = 'C_Focalizacion/modificar_criteri
 $route['eliminar/criteriofocalizacion'] = 'C_Focalizacion/eliminar_criteriosfocalizacioncomplemento';
 
 $route['agregar/criteriofocalizacion/file'] = 'C_Focalizacion/add_files';
+$route['borrar/criteriofocalizacion/file'] = 'C_Focalizacion/drop_files';
 
 
 
