@@ -29,13 +29,19 @@
 		
 
 	$id=$_POST['id'];
-  if (isset($_FILES['tArchivo'.$id]) && $_FILES['tArchivo'.$id]['error'] === UPLOAD_ERR_OK)
+	$file;
+	if(isset($_FILES['tArchivo'.$id])){
+		$file=$_FILES['tArchivo'.$id];
+	}else if(isset($_FILES['itArchivo'.$id])){
+		$file=$_FILES['itArchivo'.$id];
+	}
+  if (isset($file) && $file['error'] === UPLOAD_ERR_OK)
   {
     // get details of the uploaded file
-    $fileTmpPath = $_FILES['tArchivo'.$id]['tmp_name'];
-    $fileName = $_FILES['tArchivo'.$id]['name'];
-    $fileSize = $_FILES['tArchivo'.$id]['size'];
-    $fileType = $_FILES['tArchivo'.$id]['type'];
+    $fileTmpPath = $file['tmp_name'];
+    $fileName = $file['name'];
+    $fileSize = $file['size'];
+    $fileType = $file['type'];
     $fileNameCmps = explode(".", $fileName);
     $fileExtension = strtolower(end($fileNameCmps));
 
@@ -73,12 +79,7 @@
 	echo "incorrecto";
   }
 
-			
-		/* 	if(===TRUE){
-			echo "correcto";
-			}else{
-			echo "incorrecto";
-			} */
+		
 		}
 		public function index()
 		{
