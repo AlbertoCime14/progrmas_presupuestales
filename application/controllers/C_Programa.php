@@ -31,12 +31,15 @@
 			$vNombre = $this->input->post('vNombre');
 			$iIdTipoPrograma = $this->input->post('iIdTipoPrograma');
 			$tDescripcion = $this->input->post('tDescripcion');
+			$dFechaCaptura= date("Y.m.d") ;
+			//usuario estatico para pruebas
 			$iIdUsuario=2;
 			$data = array(
 			'vNombre' => $vNombre,
 			'iIdTipoPrograma' => $iIdTipoPrograma,
 			'tDescripcion' => $tDescripcion,
-			'iIdUsuario' =>$iIdUsuario
+			'iIdUsuario' =>$iIdUsuario,
+			'dFechaCaptura' =>$dFechaCaptura
 			);			
 			if($this->M_Programa->agregar_programa($data)===TRUE){
 				echo "correcto";	
@@ -46,6 +49,10 @@
 		}
 		public function listar_programas(){
 			$data['programas'] = $this->M_Programa->listar_programas();
+			echo json_encode($data);
+		}
+		public function listar_programas_previos(){
+			$data['programas_previos'] = $this->M_Programa->listar_programas_previos();
 			echo json_encode($data);
 		}
 		public function actualizar_status_objetivo(){
