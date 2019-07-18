@@ -87,24 +87,16 @@
                                             <table>
                                                 <tr>
                                                     <th></th>
-                                                    <th></th>
+
 												</tr>
-                                                <tbody>
+                                                <tbody id="body_bienes_servicio">
+												
 													<tr>
-														<td style="width:239px;"><input type="text" class="form-control"
-														style="width: 95%;"/></td>
-														<td style="height:35px; width:81px;"><input type="submit"
-															class="btn btn-success"
-														value="Guardar"/></td>
-													</tr>
-													<tr>
-														<td style="width:239px;"><input type="text" class="form-control"
+														<td ><input type="text" class="form-control"
 															style="width: 95%;"
 															disabled="disabled"
 														value="Ejemplo de uno"/></td>
-														<td style="height:35px; width:81px;"><input type="submit"
-															class="btn btn-warning"
-														value="Eliminar"/></td>
+														
 													</tr>
 												</tbody>
 											</table>

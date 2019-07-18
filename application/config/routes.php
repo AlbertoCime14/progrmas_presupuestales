@@ -86,6 +86,9 @@ $route['listar/programa_previo'] = 'C_Programa/listar_programas_previos_combo';
 $route['listar/programa_previo_especifico'] = 'C_Programa/listar_programas_previos';
 $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
+//==============formato diagnostico====================//
+$route['listar/bienes_servicio'] = 'C_Programa/listar_bienes_servicios';
+
 
 //====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';

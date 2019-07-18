@@ -7,7 +7,12 @@ $(document).ready(function() {
     programa = $("#programa").val();
     /******carga de datos*****/
     llenar_programas_previos();
-
+    /*****
+     * sirve para inicializar los texbox en blanco
+     *****/
+    $("#txtDescripcion").val("");
+    $("#txtObjetivo").val("");
+    $("#cboPoliticapp").val(0);
 });
 $("#nuevoprograma").click(function() {
     $("#panel_p_estatal").css({ "display": "inline" });
@@ -54,7 +59,6 @@ function llenar_programas_previos() {
         data: "success=success",
         success: function(data) {
             try {
-
                 programas_previos = JSON.parse(data);
                 var objetos = (Object.values(programas_previos['programas_previos']));
                 /**Defaul position 0**/
@@ -68,29 +72,24 @@ function llenar_programas_previos() {
                     $("#programa_previo").append(obj);
                     $(obj).html(objetos[x].vNombre);
                 }
-
             } catch (e) {
                 programas_previos = null;
             }
-
             /*  var o = JSON.parse(data); */
             /*    var objetos = (Object.values(o['criteriofocalizacion']));
             	for (x = 0; x < objetos.length; x++) {
             	crear_tabla(objetos[x].vNombre);
-            } */
+			} */
         }
     });
-
 }
 
 function informacion_programa() {
     var route = "listar/programa_previo_especifico";
-
     if ($("#programa_previo").val() == 0) {
         $("#txtDescripcion").val("");
         $("#txtObjetivo").val("");
         $("#cboPoliticapp").val(0);
-
     } else {
         $.ajax({
             type: "POST",
@@ -99,11 +98,7 @@ function informacion_programa() {
             dataType: "json",
             success: function(data) {
                 try {
-
-
                     var objetos = (Object.values(data['programas_previos']));
-
-
                     for (x = 0; x < objetos.length; x++) {
                         //aceder al valor especifico
                         /* console.log(objetos[x].vNombre); */
@@ -113,15 +108,45 @@ function informacion_programa() {
                         $(obj).html(objetos[x].tNombretipopp);
                         $("#cboPoliticapp").val(objetos[x].iIdTipoPrograma);
                         $("#txtObjetivo").val(objetos[x].vNombreObjetivo);
-
                     }
-
                 } catch (e) {
                     programas_previos_especifico = null;
-                    // new PNotify({
-                    //     title: 'Error en la petición comuniquese con soporte',
-                    //     type: 'error',
-                    // })
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            }
+        });
+    }
+}
+
+function listar_bienes_servicios($id) {
+    var route = "listar/bienes_servicio";
+    if ($id == 0) {
+        $("#body_bienes_servicio").empty();
+    } else {
+        $.ajax({
+            type: "POST",
+            url: url + route,
+            data: { "id_programa": $id },
+            dataType: "json",
+            success: function(data) {
+                try {
+                    var objetos = (Object.values(data['bienes_servicios']));
+                    for (x = 0; x < objetos.length; x++) {
+                        //aceder al valor especifico
+                        /* console.log(objetos[x].vNombre); */
+                        $("#txtDescripcion").val(objetos[x].tDescripcion);
+                        var nodotabla = ;
+                        $('#body_bienes_servicio').find('tbody').append(nodotabla);
+                    }
+                } catch (e) {
+                    programas_previos_especifico = null;
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
                 }
             }
         });

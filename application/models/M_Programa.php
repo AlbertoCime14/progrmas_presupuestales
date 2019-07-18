@@ -84,7 +84,6 @@ class M_Programa extends CI_Model
     public function listar_programas_previos($id_programa)
     {
        
-       
         $this->db->select('*,p.vNombre as vNombreP, tp.vNombre as nombretipo');
         $this->db->from('programas p');
          $this->db->where("(p.iActivo=1 AND p.iIdPrograma=$id_programa)");
@@ -106,6 +105,22 @@ class M_Programa extends CI_Model
             ];
         }
         return $datos;
+    }
+    public function listar_bienes_servicios($iIdPrograma)
+    {
+        $this->db->select('*');
+        $this->db->from('bienesservicios bs');
+         $this->db->where("(bs.iActivo=1 AND bs.iIdPrograma=$iIdPrograma)");
+        $this->db->order_by("bs.vNombreServicio", "asc");
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $datos[] = [
+                'vNombreServicio' => $row->vNombreServicio,
+             ];
+        }
+        return $datos;
+       
     }
     public function listar_tipoprograma()
     {

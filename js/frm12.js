@@ -3,6 +3,8 @@ function prueba() {
         var b = 10;
         console.log(`Quince es ${a + b} y\nno ${2 * a + b}.`); */
     var variablea = ` <section>
+`
+    `
                                             <div class="col-md-2" style="margin-top: 70px; text-align: center">
                                                 <label class="control-label">
                                                     Variable A
@@ -163,7 +165,7 @@ function prueba() {
     //console.log(variableb);
 }
 
-(function () {
+(function() {
     busquedapediodicidadcalculo();
 })();
 
@@ -175,12 +177,11 @@ function busquedapediodicidadcalculo() {
         type: "GET",
         url: url + "consultas/frm_12/periodicidad",
         data: "ok=ok",
-        success: function (data) {
+        success: function(data) {
             value = 0;
-            JSON.parse(data, function (k, v) {
+            JSON.parse(data, function(k, v) {
                 if (isNaN(v) === true) {
-                    if (typeof v === 'object') {
-                    } else {
+                    if (typeof v === 'object') {} else {
                         //texto
                         var o = new Option("option text", value);
                         $("#cbo_nombre_periodicidad").append(o);
@@ -193,7 +194,7 @@ function busquedapediodicidadcalculo() {
 
             });
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
 
@@ -201,7 +202,7 @@ function busquedapediodicidadcalculo() {
     });
 }
 
-(function () {
+(function() {
     recueperar_tendencia();
 })();
 
@@ -213,12 +214,11 @@ function recueperar_tendencia() {
         type: "GET",
         url: url + "consultas/frm_12/tendencia",
         data: "ok=ok",
-        success: function (data) {
+        success: function(data) {
             value = 0;
-            JSON.parse(data, function (k, v) {
+            JSON.parse(data, function(k, v) {
                 if (isNaN(v) === true) {
-                    if (typeof v === 'object') {
-                    } else {
+                    if (typeof v === 'object') {} else {
                         //texto
                         var o = new Option("option text", value);
                         $("#cbo_nombre_tendencia").append(o);
@@ -231,7 +231,7 @@ function recueperar_tendencia() {
 
             });
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
 
@@ -239,7 +239,7 @@ function recueperar_tendencia() {
     });
 }
 
-(function () {
+(function() {
     recuperar_ambito();
 })();
 
@@ -251,12 +251,11 @@ function recuperar_ambito() {
         type: "GET",
         url: url + "consultas/frm_12/ambitos",
         data: "ok=ok",
-        success: function (data) {
+        success: function(data) {
             value = 0;
-            JSON.parse(data, function (k, v) {
+            JSON.parse(data, function(k, v) {
                 if (isNaN(v) === true) {
-                    if (typeof v === 'object') {
-                    } else {
+                    if (typeof v === 'object') {} else {
                         //texto
                         var o = new Option("option text", value);
                         $("#cbo_nombre_medicion").append(o);
@@ -269,7 +268,7 @@ function recuperar_ambito() {
 
             });
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
 
@@ -277,7 +276,7 @@ function recuperar_ambito() {
     });
 }
 
-(function () {
+(function() {
     recuperar_desempenio();
 })();
 
@@ -289,12 +288,11 @@ function recuperar_desempenio() {
         type: "GET",
         url: url + "consultas/frm_12/desempenos",
         data: "ok=ok",
-        success: function (data) {
+        success: function(data) {
             value = 0;
-            JSON.parse(data, function (k, v) {
+            JSON.parse(data, function(k, v) {
                 if (isNaN(v) === true) {
-                    if (typeof v === 'object') {
-                    } else {
+                    if (typeof v === 'object') {} else {
                         //texto
                         var o = new Option("option text", value);
                         $("#cbo_dimension_desempenio").append(o);
@@ -307,7 +305,7 @@ function recuperar_desempenio() {
 
             });
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
 
@@ -341,7 +339,7 @@ function GuardarIndicador() {
     /** id de la fuente de financiamiento**/
     var nombrefuente = document.getElementById('nombrefuente').value;
     /** Sacar el monto propio**/
-//var txtMontoPropio=document.getElementById('txtMontoPropio').value;
+    //var txtMontoPropio=document.getElementById('txtMontoPropio').value;
     /** Sacarl el monto de otras fuentes**/
     /**
      var txtMontoOtras=document.getElementById('txtMontoOtras').value;
@@ -353,11 +351,11 @@ function GuardarIndicador() {
 
     /*** Sive para poner el nombre de la actividad estrategica****/
 
-//===============================Campos utilizables cuando se requieran===================//
+    //===============================Campos utilizables cuando se requieran===================//
     var elaboro = "example";
     var autorizo = "example";
 
-//===========================llamada  de ajax paara actualizar los datos===============//
+    //===========================llamada  de ajax paara actualizar los datos===============//
     /******** Datos de la actualizacion  *********/
     var datos = "id_actividad_estrategica=" + txtActividadId + "&Nombre=" + Nombre + "&objetivo_general=" + objetivo_general + "&descripcion=" + descripcion + "+&fecha_inicio=" + txtFechaInicio + "&fecha_fin=" + txtFechafin + "&elaboro=" + elaboro + "&autorizo=" + autorizo + "&cat_lineaaccion_ped_lineaaccionid=" + cboLineaacion + "&ubp_id_ubp=" + cboUbp + "&poblacion_objetivo_id_poblacion=" + cobPoblacion + "&origen_fuente_id_origen=" + cbofuente + "&fuente_financiamiento_id_ff=" + nombrefuente;
     // var datos="id_actividad_estrategica="+txtActividadId+"&objetivo_general="+objetivo_general+"&descripcion="+descripcion+"&monto_propio="+txtMontoPropio+"&monto_otro="+txtMontoOtras+"&fecha_inicio="+txtFechaInicio+"&fecha_fin="+txtFechafin+"&elaboro="+elaboro+"&autorizo="+autorizo+"&cat_lineaaccion_ped_lineaaccionid="+cboLineaacion+"&ubp_id_ubp="+cboUbp+"&poblacion_objetivo_id_poblacion="+cobPoblacion+"&origen_fuente_id_origen="+cbofuente+"&fuente_financiamiento_id_ff="+nombrefuente;
@@ -365,16 +363,15 @@ function GuardarIndicador() {
         type: "POST",
         url: url + "actividades/actualizar",
         data: datos,
-        success: function (data) {
+        success: function(data) {
 
             //=========================================//
-            notie.alert({type: 1, text: 'Correcto!', time: 2});
+            notie.alert({ type: 1, text: 'Correcto!', time: 2 });
             //setTimeout(function(){ location.href = url+"actividades"; }, 1000);
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
         }
     });
 }
-

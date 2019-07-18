@@ -61,6 +61,12 @@
 			$data['programas_previos'] = $this->M_Programa->listar_programas_previos($iIdPrograma);
 			echo json_encode($data);
 		}
+		 public function listar_bienes_servicios()
+		{
+			$iIdPrograma = $this->input->post('id_programa');	
+			$data['bienes_servicios'] = $this->M_Programa->listar_bienes_servicios($iIdPrograma);
+			echo json_encode($data);
+		}
 		public function actualizar_status_objetivo(){
 		$iIdPrograma = $this->input->post('iIdPrograma');			
 			$data = array(
