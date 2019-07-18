@@ -31,12 +31,15 @@
 			$vNombre = $this->input->post('vNombre');
 			$iIdTipoPrograma = $this->input->post('iIdTipoPrograma');
 			$tDescripcion = $this->input->post('tDescripcion');
+			$dFechaCaptura= date("Y.m.d") ;
+			//usuario estatico para pruebas
 			$iIdUsuario=2;
 			$data = array(
 			'vNombre' => $vNombre,
 			'iIdTipoPrograma' => $iIdTipoPrograma,
 			'tDescripcion' => $tDescripcion,
-			'iIdUsuario' =>$iIdUsuario
+			'iIdUsuario' =>$iIdUsuario,
+			'dFechaCaptura' =>$dFechaCaptura
 			);			
 			if($this->M_Programa->agregar_programa($data)===TRUE){
 				echo "correcto";	
