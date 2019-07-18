@@ -9,7 +9,7 @@ Release Information
 *******************
 
 Desarrollado por:
-Carlos Cristobal Cauich Alvarez
+Carlos Cristobal Cauich Alvarez y
 Alberto Cime Castellanos
 
 **************************
