@@ -51,8 +51,14 @@
 			$data['programas'] = $this->M_Programa->listar_programas();
 			echo json_encode($data);
 		}
+		
+		public function listar_programas_previos_combo(){
+			$data['programas_previos'] = $this->M_Programa->listar_programas_previos_combo();
+			echo json_encode($data);
+		}
 		public function listar_programas_previos(){
-			$data['programas_previos'] = $this->M_Programa->listar_programas_previos();
+			$iIdPrograma = $this->input->post('id_programa');				
+			$data['programas_previos'] = $this->M_Programa->listar_programas_previos($iIdPrograma);
 			echo json_encode($data);
 		}
 		public function actualizar_status_objetivo(){
