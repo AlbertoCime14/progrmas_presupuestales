@@ -72,11 +72,14 @@ function consultar_cricterios_values() {
         url: url + route,
         data: "success=success",
         success: function(data) {
-            if (data == null) {
-                criterios_values = null;
-            } else {
+            try {
+
                 criterios_values = JSON.parse(data);
+
+            } catch (e) {
+                criterios_values = null;
             }
+
             /*  var o = JSON.parse(data); */
             /*    var objetos = (Object.values(o['criteriofocalizacion']));
             	for (x = 0; x < objetos.length; x++) {
@@ -92,7 +95,7 @@ function llenar_tabla_datos() {
     setTimeout(function() {
         $("#listado_criterios_body").empty();
         llenar_tabla();
-    }, 2500);
+    }, 2000);
 }
 
 function crear_tabla_actualizar(iIdCriterio, nombre_criterio, vDescripcion, vJustificacion, vMedioVerificacion, tLiga, tArchivo) {
@@ -258,7 +261,7 @@ function eliminar_archivo(id, archivo) {
 
     new PNotify({
         title: 'Eliminar',
-        text: '¿Seguro desea eliminar este programa presupuestal?',
+        text: '¿Seguro desea eliminar el archivo?',
         icon: 'fa fa-question-circle',
         type: 'warning',
         hide: false,
@@ -310,7 +313,7 @@ function eliminar_archivo(id, archivo) {
 function borrar_criterio(id) {
     new PNotify({
         title: 'Eliminar',
-        text: '¿Seguro desea eliminar este programa presupuestal?',
+        text: '¿Seguro desea eliminar este criterio?',
         icon: 'fa fa-question-circle',
         type: 'warning',
         hide: false,
@@ -335,9 +338,10 @@ function borrar_criterio(id) {
             data: data_recurso,
             success: function(data) {
                 if (data == "correcto") {
+                    llenar_tabla_datos();
                     $('#btnBorrar' + id).removeAttr("onclick");
                     $('#btnBorrar' + id).attr("disabled", true);
-                    llenar_tabla_datos();
+
 
                     new PNotify({
                         title: 'Eliminado',
