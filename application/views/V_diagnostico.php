@@ -23,10 +23,16 @@
                         <div class="panel-body">
                             <div class="row"> <!--Etiqueta de entrada del row-->
                                 <section>
-                                    <div class="col-md-12">
-                                        <label class="">
+                                    <div class="col-md-9">
+                                       <select name="" id="programa_previo" class="form-control" onchange="informacion_programa()">
+									  
+									   </select>
+									  		
+									</div>
+									<div class="col-md-3">
+									<label class="">
                                             <div class="icheckbox_square-blue" style="position: relative;"><input
-											type="checkbox" name="c1" id="c1" value="" ins></div>
+											type="checkbox" id="chck_aplica" value="" ins></div>
                                             No aplica
 										</label>
 									</div>
@@ -36,17 +42,14 @@
                                         <label class="control-label">
                                             Política o programa
 										</label>
-                                        <select class="form-control">
-                                            <option>A</option>
-                                            <option>v</option>
-                                            <option>c</option>
+                                        <select class="form-control" disabled="disabled" id="cboPoliticapp"><option value="0">Seleccione</option>
 										</select>
 									</div>
                                     <div class="col-md-8">
                                         <label class="control-label">
                                             Objetivo
 										</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" disabled="disabled" id="txtObjetivo"></textarea>
 									</div>
 								</section>
                                 <section>
@@ -64,7 +67,7 @@
                                         <label class="control-label">
                                             Descripción
 										</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" disabled="disabled" id="txtDescripcion"></textarea>
 									</div>
 								</section>
                                 <section>
@@ -649,7 +652,10 @@
 	</aside>
     <!-- /.right-side -->
 </div>
+<input type="text" value="<?=base64_decode($this->uri->segment(3))?>" id="programa" style="display: none"/>
+
 <script  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
 crossorigin="anonymous"></script>
+
 <script src="<?=base_url();?>js/formatos/formatodiagnostico.js"></script>

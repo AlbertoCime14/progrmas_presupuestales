@@ -63,24 +63,46 @@ class M_Programa extends CI_Model
         }
         return $datos;
     }
-    public function listar_programas_previos()
+    public function listar_programas_previos_combo()
     {
-        $fecha_actual = date("Y");
+          $fecha_actual = date("Y");
         $dFechaCaptura = date("Y", strtotime($fecha_actual . "- 1 year"));
         $this->db->select('*');
-        $this->db->from('programas');
-		 $this->db->where("(YEAR(dFechaCaptura)=$dFechaCaptura AND iActivo=1)");
-        $this->db->order_by("iIdPrograma", "desc");
+        $this->db->from('programas p');
+         $this->db->where("(YEAR(dFechaCaptura)=$dFechaCaptura AND p.iActivo=1)");
+        $this->db->order_by("p.iIdPrograma", "desc");
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
             $datos[] = [
                 'iIdPrograma' => $row->iIdPrograma,
-                'vNombre' => $row->vNombre,
+                'vNombre' => $row->vNombre
+            ];
+        }
+        return $datos;
+    }
+    public function listar_programas_previos($id_programa)
+    {
+       
+       
+        $this->db->select('*,p.vNombre as vNombreP, tp.vNombre as nombretipo');
+        $this->db->from('programas p');
+         $this->db->where("(p.iActivo=1 AND p.iIdPrograma=$id_programa)");
+         $this->db->join('tipoprograma tp', 'p.iIdTipoPrograma = tp.iIdTipoPrograma');
+         $this->db->join('problema pro', 'pro.iIdPrograma = p.iIdPrograma');
+         $this->db->join('objetivos obj', 'pro.iIdProblema = obj.iIdProblema');
+        $this->db->order_by("p.iIdPrograma", "desc");
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $datos[] = [
+                'iIdPrograma' => $row->iIdPrograma,
+                'vNombre' => $row->vNombreP,
                 'iIdTipoPrograma' => $row->iIdTipoPrograma,
                 'tDescripcion' => $row->tDescripcion,
                 'dFechaCaptura' => $row->dFechaCaptura,
-
+                'tNombretipopp' =>$row->nombretipo, 
+                'vNombreObjetivo' =>$row->vNombreObjetivo
             ];
         }
         return $datos;
