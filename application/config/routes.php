@@ -183,6 +183,13 @@ $route['acciones/bienesyservicios/eliminar'] = 'C_Bienesys/EliminarServicio';
 $route['acciones/bienesyservicios/listar/(:any)'] = 'C_Bienesys/ListarServicios';
 $route['acciones/bienesyservicios/actualizar'] = 'C_Bienesys/ActualizarServicio';
 
+//=======================Acciones poblaciones===========//
+$route['acciones/poblaciones/agregar'] = 'C_PC_Poblaciones/AgregarPoblaciones';
+$route['acciones/poblaciones/listar_unidad_medida'] = 'C_Poblaciones/'; //esta ruta puede que sirva
+$route['acciones/poblaciones/eliminar'] = 'C_Poblaciones/EliminarPoblacion';
+$route['acciones/poblaciones/listar/(:any)'] = 'C_Poblaciones/ListarDefPoblacion'; //al final de la codificacion este ruta recibe un parametro
+$route['acciones/poblaciones/actualizar'] = 'C_Poblaciones/ActualizarPoblacion';
+
 
 
 

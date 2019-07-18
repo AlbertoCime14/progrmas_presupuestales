@@ -54,3 +54,8 @@ ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento`
 ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento` 
   ADD CONSTRAINT `FkPrograma` FOREIGN KEY (`iIdPrograma`) REFERENCES `programaspresupuestales`.`programas`(`iIdPrograma`),
   DROP FOREIGN KEY `FkProgramaCr`;
+
+
+/* 18 de julio, agreacion del campo fecha de creacion del programa presupuestal` */
+ALTER TABLE `programaspresupuestales`.`programas`   
+  ADD COLUMN `dFechaCaptura` DATE NOT NULL AFTER `iAplica`;

@@ -1,4 +1,4 @@
-var datos_selector;
+
 $(document).ready(function () {
     /**Inicializar variables**/
     url = $("#url").val();
