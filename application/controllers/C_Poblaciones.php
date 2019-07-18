@@ -73,19 +73,21 @@ class C_Poblaciones extends CI_Controller
         $data['cuantificacion_pobla'] = $this->M_poblaciones->cuantificacion_poblacion($key);
 
         if ($data['definicion_poblacion'] == null) {
-                echo '<script>location.reload();</script>';
+            echo '<script>location.reload();</script>';
         } else if ($data['cuantificacion_pobla'] == null) {
-                var_dump($data['cuantificacion_pobla']);
-                $objetos_definicion = $data['definicion_poblacion'];
-                foreach ($objetos_definicion as $datos) {
+            var_dump($data['cuantificacion_pobla']);
+            $objetos_definicion = $data['definicion_poblacion'];
+            foreach ($objetos_definicion as $datos) {
 
-                    $data['filas'] .= $this->fila_definicion($datos['iIdDefinicion'], $datos['vNombre'],$data['num_def']);
+                $data['filas'] .= $this->fila_definicion($datos['iIdDefinicion'], $datos['vNombre'], $data['num_def']);
 
-                    $data['num_def']++;
-                }
+                $data['num_def']++;
+            }
 
-        }else if($data['definicion_poblacion'] != null){
-                echo "no esta vacio";
+        } else if ($data['definicion_poblacion'] != null) {
+            $objeto_Def= $data['definicion_poblacion'];
+            $objeto_cuantificacion=$data['cuantificacion_pobla'];
+            var_dump($objeto_cuantificacion);
         }
 
 
@@ -110,50 +112,50 @@ class C_Poblaciones extends CI_Controller
         echo json_encode($data);
     }
 
-    public function fila_definicion($iIdDefinicion, $nombre_definicion,$num_definicion)
+    public function fila_definicion($iIdDefinicion, $nombre_definicion, $num_definicion)
     {
 
 
         //$datos = $model->listar_servicio($iIdBienServicio);
 
 
-
         $html = '<tr id="' . $num_definicion . '">
 		<td><input type="hidden" name="id' . $num_definicion . '" id="id' . $num_definicion . '" value="' . $iIdDefinicion . '">
-		<label style="width: 170px;" name="vNombreServicio' . $iIdDefinicion . '" type="text" id="vNombreServicio' . $iIdDefinicion . '"  >' .$nombre_definicion  . '</label></td>';
+		<label style="width: 170px;" name="vNombreServicio' . $iIdDefinicion . '" type="text" id="vNombreServicio' . $iIdDefinicion . '"  >' . $nombre_definicion . '</label></td>';
 
 
         $html .= '<td>
-			    <textarea name="DescripcionServicio_' . $iIdDefinicion . '" id="DescripcionServicio_' .$iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
+			    <textarea name="DescripcionServicio_' . $iIdDefinicion . '" id="DescripcionServicio_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
 			</td>
 			<td>
-                <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+                <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			<td>
-			    <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			    <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			
 			
 			</td>
 			<td  style="width: 103px;">
-				 <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+				 <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 				
 			</td>
 			<td>
-			    <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			    <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
-			<td>
-			    <textarea name="criterios_entregas_' . $iIdDefinicion . '" id="criterios_entregas_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
+			<td >
+			    ' . $this->Grupo_edad($iIdDefinicion) . '
+			</td>
+			<td >
+			    <button type="submit" class="btn btn-labeled btn-success" name="idprograma"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button>
+			</td>
+			<td >
+			    <button type="submit" class="btn btn-labeled btn-success" name="idprograma"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar criterios</button>
 			</td>
 			
-			<td class="ui-group-buttons" style="width: 103px;">
+			<td class="ui-group-buttons" style="width: 150px;">
+				 ' . $this->CoberturaGeografica($iIdDefinicion ,$nombre_definicion) . '
 				
-				 <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio();"></span>
-                                            </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" ></span>
-                                            </a>
 			</td>
 		</tr>';
 
@@ -161,17 +163,18 @@ class C_Poblaciones extends CI_Controller
 
     }
 
-    function selector_unidad($seleccionado = 0, $iIdBienServicio)
+    function Grupo_edad($iIdDefinicion)
     {
 
 
         $html = '';
-        $data['UnidadMedida'] = $this->M_ServiciosBienes->recuperar_unidad();
+        $data['Grupoedad'] = $this->M_poblaciones->recuperar_grupo_Edad();
 
-        $html .= '<select name="cbo_unidad' . $iIdBienServicio . '" id="cbo_unidad_' . $iIdBienServicio . '" class="form-control">';
-        foreach ($data['UnidadMedida'] as $u) {
-            $selected = ($u['iUnidadMedida'] == $seleccionado) ? 'selected' : '';
-            $html .= '<option value="' . $u['iUnidadMedida'] . '" ' . $selected . '>' . $u['vNombre'] . '</option>';
+        $html .= '<select style="width: 150px;" name="cbo_unidad' . $iIdDefinicion . '" id="cbo_unidad_' . $iIdDefinicion . '" class="form-control">';
+        foreach ($data['Grupoedad'] as $u) {
+
+            $html .= '<option value="' . $u['iIdGrupoEdad'] . '">' . $u['vClasificacion'] . '</option>';
+
         }
         $html .= '</select>';
 
@@ -203,5 +206,73 @@ class C_Poblaciones extends CI_Controller
         } else {
             echo "incorrecto";
         }
+    }
+
+    public function CoberturaGeografica($iIdDefinicion,$nombre_definicion)
+    {
+         $html='';
+        $definicion = $iIdDefinicion;
+        switch ($nombre_definicion) {
+
+            case "Población 2020":
+
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio('.$definicion.');"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio()"></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
+                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>';
+                break;
+            case "Población 2021":
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
+                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>';
+                break;
+            case "Población 2022":
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
+                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>';
+                break;
+            case "Población 2023":
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
+                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>';
+                break;
+            case "Población 2024":
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
+                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                                            </a>';
+                break;
+            default:
+                $html.=' <a title="Guardar" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="GuardarCuantificacion('.$definicion.');"></span>
+                                            </a>
+				<a title="Eliminar" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" onclick="EliminarCuantificacion('.$definicion.')"></span>
+                                            </a>';
+        }
+        return $html;
     }
 }

@@ -30,17 +30,21 @@ class M_ServiciosBienes extends CI_Model
         $this->db->where("(iIdPrograma=$iIdProgrma AND iActivo=1)");
         $this->db->order_by("iIdBienServicio", "ASC");
         $query = $this->db->get();
-
-        foreach ($query->result() as $row) {
-            $datos[] = [
-                'iIdBienServicio' => $row->iIdBienServicio,
-                'vNombreServicio' => $row->vNombreServicio,
-                'tDescripcion' => $row->tDescripcion,
-                'tCriteriosCalidad' => $row->tCriteriosCalidad,
-                'tCriteriosEntregas' => $row->tCriteriosEntregas,
-                'iIdUnidadMedida' => $row->iIdUnidadMedida
-            ];
+        if($query->num_rows() > 0){
+            foreach ($query->result() as $row) {
+                $datos[] = [
+                    'iIdBienServicio' => $row->iIdBienServicio,
+                    'vNombreServicio' => $row->vNombreServicio,
+                    'tDescripcion' => $row->tDescripcion,
+                    'tCriteriosCalidad' => $row->tCriteriosCalidad,
+                    'tCriteriosEntregas' => $row->tCriteriosEntregas,
+                    'iIdUnidadMedida' => $row->iIdUnidadMedida
+                ];
+            }
+        }else{
+            $datos = array();
         }
+
         return $datos;
     }
 

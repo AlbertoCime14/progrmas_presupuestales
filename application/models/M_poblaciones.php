@@ -80,18 +80,18 @@ class M_poblaciones extends CI_Model
         }
     }
 
-    public function recuperar_unidad()
+    public function recuperar_grupo_Edad()
     {
 
         $this->db->select('*');
-        $this->db->from('unidadmedida');
-        $this->db->order_by("vNombre", "ASC");
-        $this->db->where("iActivo", 1);
+        $this->db->from('grupoedad');
+        $this->db->order_by("vClasificacion", "ASC");
+        //$this->db->where("iActivo", 1);
         $query = $this->db->get();
         foreach ($query->result() as $row) {
             $datos[] = [
-                'iUnidadMedida' => $row->iUnidadMedida,
-                'vNombre' => $row->vNombre,
+                'iIdGrupoEdad' => $row->iIdGrupoEdad,
+                'vClasificacion' => $row->vClasificacion,
             ];
         }
         return $datos;

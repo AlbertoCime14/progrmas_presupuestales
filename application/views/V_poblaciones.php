@@ -36,6 +36,8 @@
                                                     <th>Mujeres</th>
                                                     <th>Hablantes de lengua indígena</th>
                                                     <th>¿Pertenece a un grupo de edad?</th>
+                                                    <th>Criterios</th>
+                                                    <th>Fuentes</th>
                                                     <th>Opciones</th>
                                                 </tr>
                                                 </thead>

@@ -1,9 +1,9 @@
-
+var id_programa;
 $(document).ready(function () {
     /**Inicializar variables**/
     url = $("#url").val();
     recuperar_unidad_medida();
-    var id_programa=$("#id_programa").val().trim();
+   id_programa=$("#id_programa").val().trim();
 
     listar_bienes(id_programa);
 
@@ -75,7 +75,7 @@ $("#create_service").click(function () {
                     var criterios_calidad = $("#criterios_calidad").val("");
                     var criterios_entrega = $("#criterios_entrega").val("");
                     var unidad_medida = $("#cbo_unidad_medida").val(0);
-                    listar_bienes();
+                    listar_bienes(id_programa);
                     new PNotify({
                         title: 'Servicio agregado correctamente',
                         type: 'success',
@@ -128,13 +128,14 @@ function EliminarServicio(iIdBienServicio) {
     }).get().on('pnotify.confirm', function () {
         var recurso = "acciones/bienesyservicios/eliminar";
         var data_recurso = "iIdBienServicio=" + iIdBienServicio;
+
         $.ajax({
             type: "POST",
             url: url + recurso,
             data: data_recurso,
             success: function (data) {
                 if (data == "correcto") {
-                    listar_bienes();
+                    listar_bienes(id_programa);
                     new PNotify({
                         title: 'Servicio eliminado correctamente',
                         type: 'success',
@@ -153,6 +154,7 @@ function EliminarServicio(iIdBienServicio) {
 }
 
 function ActualizarServicio(iIdServicio) {
+
     var IdServicio = iIdServicio;
     var nombre = $("#vNombreServicio" + iIdServicio).val().trim();
     var descripcion_bien = $("#DescripcionServicio_" + iIdServicio).val().trim();
@@ -169,7 +171,7 @@ function ActualizarServicio(iIdServicio) {
     } else {
 
         /**Seguir aqui la insercion de datos**/
-        var recurso = "acciones/bienesyservicios/actualizar";
+        var recurso = "acciones/bienesyservicios/actualizar/"+id_programa;
         var data_recurso = "iIdBienServicio=" + IdServicio + "&vNombreServicio=" + nombre + "&tDescripcion=" + descripcion_bien + "&tCriteriosCalidad=" + criterios_calidad + "&tCriteriosEntregas=" + criterios_entrega + "&iIdUnidadMedida=" + unidad_medida;
         //+"&iIdPrograma="+id_programa
 
@@ -178,10 +180,11 @@ function ActualizarServicio(iIdServicio) {
             url: url + recurso,
             data: data_recurso,
             success: function (data) {
-                console.log(data);
+
                 if (data == "correcto") {
 
-                    listar_bienes();
+                    listar_bienes(id_programa);
+
                     new PNotify({
                         title: 'Servicio actualizado correctamente',
                         type: 'success',

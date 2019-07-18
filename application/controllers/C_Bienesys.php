@@ -74,7 +74,7 @@ class C_Bienesys extends CI_Controller
 
         foreach ($data['mydata'] as $datos) {
             $datos['iIdBienServicio'];
-            $data['filas'] .= $this->fila_servicio($datos['iIdBienServicio'], $data['num_servicios']);
+            $this->fila_servicio($datos['iIdBienServicio'], $data['num_servicios']);
             $data['num_servicios']++;
         }
 
@@ -127,11 +127,11 @@ class C_Bienesys extends CI_Controller
 			</td>
 			<td class="ui-group-buttons" style="width: 103px;">
 				
-				 <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio(' . $datos['iIdBienServicio'] . ');"></span>
+				 <a title="Actualizar servicio" onclick="ActualizarServicio(' . $datos['iIdBienServicio'] . ');" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio(' . $datos['iIdBienServicio'] . ');"></span>
+				<a title="Eliminar servicio" onclick="EliminarServicio(' . $datos['iIdBienServicio'] . ');" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" ></span>
                                             </a>
 			</td>
 		</tr>';
@@ -165,7 +165,7 @@ class C_Bienesys extends CI_Controller
         $tCriteriosCalidad = $this->input->post('tCriteriosCalidad');
         $tCriteriosEntregas = $this->input->post('tCriteriosEntregas');
         $iIdUnidadMedida = $this->input->post('iIdUnidadMedida');
-        $iIdPrograma = 20; ///este id del programa se obtiene a traves de la url
+        $iIdPrograma =$this->uri->segment(4); ; ///este id del programa se obtiene a traves de la url
 
         $data = array(
             'vNombreServicio' => $vNombre,
