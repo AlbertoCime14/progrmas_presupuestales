@@ -100,3 +100,4 @@
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
         crossorigin="anonymous"></script>
 <script src="<?= base_url(); ?>js/formatos/bienesyservicios.js"></script>
+

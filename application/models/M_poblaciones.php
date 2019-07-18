@@ -118,22 +118,29 @@ class M_poblaciones extends CI_Model
         $this->db->where('iIdPrograma', $iIdPrograma);
 
         $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            foreach ($query->result() as $row) {
+                $datos[] = [
+                    'iIdCuantificacion' => $row->iIdCuantificacion,
+                    'tDescripcion' => $row->tDescripcion,
+                    'iHombres' => $row->iHombres,
+                    'iMujeres' => $row->iMujeres,
+                    'iHablantesIndigenas' => $row->iHablantesIndigenas,
+                    'tEspecificacionGrupo' => $row->tEspecificacionGrupo,
+                    'iIdGrupoEdad' => $row->iIdGrupoEdad,
+                    'iIdDefinicion' => $row->iIdDefinicion,
+                    'vNombre' => $row->vNombre
 
-        foreach ($query->result() as $row) {
-            $datos[] = [
-                'iIdCuantificacion' => $row->iIdCuantificacion,
-                'tDescripcion' => $row->tDescripcion,
-                'iHombres' => $row->iHombres,
-                'iMujeres' => $row->iMujeres,
-                'iHablantesIndigenas' => $row->iHablantesIndigenas,
-                'tEspecificacionGrupo' => $row->tEspecificacionGrupo,
-                'iIdGrupoEdad' => $row->iIdGrupoEdad,
-                'iIdDefinicion' => $row->iIdDefinicion,
-                'vNombre' => $row->vNombre
 
-
-            ];
+                ];
+            }
         }
+        else{
+            $datos = array();
+        }
+
+
         return $datos;
     }
 }

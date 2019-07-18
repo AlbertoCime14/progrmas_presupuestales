@@ -17,7 +17,7 @@ function listar_poblacion(id_programa) {
         type: "GET",
         url: url + recurso,
         success: function (data) {
-            console.log(data);
+
             $("#listado_bienes_body").empty();
             $("#listado_bienes_body").append(data);
 

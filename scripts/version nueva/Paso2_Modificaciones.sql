@@ -59,3 +59,7 @@ ALTER TABLE `programaspresupuestales`.`criteriosfocalizacioncomplemento`
 /* 18 de julio, agreacion del campo fecha de creacion del programa presupuestal` */
 ALTER TABLE `programaspresupuestales`.`programas`   
   ADD COLUMN `dFechaCaptura` DATE NOT NULL AFTER `iAplica`;
+
+/* 18 de julio, agreacion del campo aplica a la tabla configuracion del programa previo` */
+ALTER TABLE `programaspresupuestales`.`confprogramasprevios`   
+  ADD COLUMN `iAplica` TINYINT(1) NOT NULL AFTER `iIdProgramaPrevio`;

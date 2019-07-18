@@ -73,18 +73,20 @@ class C_Poblaciones extends CI_Controller
         $data['cuantificacion_pobla'] = $this->M_poblaciones->cuantificacion_poblacion($key);
 
         if ($data['definicion_poblacion'] == null) {
-            echo '<script>location.reload();</script>';
-        } else if( $data['cuantificacion_pobla'] == null){
-            $objetos_definicion = $data['definicion_poblacion'];
-            foreach ($objetos_definicion as $datos) {
+                echo '<script>location.reload();</script>';
+        } else if ($data['cuantificacion_pobla'] == null) {
+                var_dump($data['cuantificacion_pobla']);
+                $objetos_definicion = $data['definicion_poblacion'];
+                foreach ($objetos_definicion as $datos) {
 
-                $data['filas'] .= $this->fila_definicion($datos['iIdDefinicion'],$datos['vNombre']);
+                    $data['filas'] .= $this->fila_definicion($datos['iIdDefinicion'], $datos['vNombre'],$data['num_def']);
 
-                $data['num_def'] ++;
-            }
-            
+                    $data['num_def']++;
+                }
+
+        }else if($data['definicion_poblacion'] != null){
+                echo "no esta vacio";
         }
-
 
 
     }
@@ -108,16 +110,52 @@ class C_Poblaciones extends CI_Controller
         echo json_encode($data);
     }
 
-    public function fila_definicion($iIdBienServicio, $nombre_definicion)
+    public function fila_definicion($iIdDefinicion, $nombre_definicion,$num_definicion)
     {
 
 
         //$datos = $model->listar_servicio($iIdBienServicio);
 
-        $html = '<tr id="' . $iIdBienServicio . '">
-		<td><input type="hidden" name="id' . $iIdBienServicio . '" id="id' . $iIdBienServicio . '" value="' . $iIdBienServicio . '">
-		<input name="vNombreServicio' . $iIdBienServicio . '" type="text" id="vNombreServicio' . $iIdBienServicio . '" class="form-control" value="' . $nombre_definicion . '"></td></tr>';
 
+
+        $html = '<tr id="' . $num_definicion . '">
+		<td><input type="hidden" name="id' . $num_definicion . '" id="id' . $num_definicion . '" value="' . $iIdDefinicion . '">
+		<label style="width: 170px;" name="vNombreServicio' . $iIdDefinicion . '" type="text" id="vNombreServicio' . $iIdDefinicion . '"  >' .$nombre_definicion  . '</label></td>';
+
+
+        $html .= '<td>
+			    <textarea name="DescripcionServicio_' . $iIdDefinicion . '" id="DescripcionServicio_' .$iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
+			</td>
+			<td>
+                <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			</td>
+			<td>
+			    <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			</td>
+			
+			
+			</td>
+			<td  style="width: 103px;">
+				 <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+				
+			</td>
+			<td>
+			    <input style="width: 100px;" name="meta_'.$iIdDefinicion.'" id="meta_'.$iIdDefinicion.'" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			</td>
+			<td>
+			    <textarea name="criterios_entregas_' . $iIdDefinicion . '" id="criterios_entregas_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
+			</td>
+			
+			<td class="ui-group-buttons" style="width: 103px;">
+				
+				 <a title="Actualizar servicio" class="btn btn-success" role="button" >
+                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio();"></span>
+                                            </a>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a>
+			</td>
+		</tr>';
 
         echo $html;
 
