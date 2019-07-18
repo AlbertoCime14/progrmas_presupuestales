@@ -90,6 +90,7 @@ function informacion_programa() {
         $("#txtDescripcion").val("");
         $("#txtObjetivo").val("");
         $("#cboPoliticapp").val(0);
+        $("#body_bienes_servicio").empty();
     } else {
         $.ajax({
             type: "POST",
@@ -108,6 +109,7 @@ function informacion_programa() {
                         $(obj).html(objetos[x].tNombretipopp);
                         $("#cboPoliticapp").val(objetos[x].iIdTipoPrograma);
                         $("#txtObjetivo").val(objetos[x].vNombreObjetivo);
+                        listar_bienes_servicios($("#programa_previo").val());
                     }
                 } catch (e) {
                     programas_previos_especifico = null;
@@ -123,32 +125,28 @@ function informacion_programa() {
 
 function listar_bienes_servicios($id) {
     var route = "listar/bienes_servicio";
-    if ($id == 0) {
-        $("#body_bienes_servicio").empty();
-    } else {
-        $.ajax({
-            type: "POST",
-            url: url + route,
-            data: { "id_programa": $id },
-            dataType: "json",
-            success: function(data) {
-                try {
-                    var objetos = (Object.values(data['bienes_servicios']));
-                    for (x = 0; x < objetos.length; x++) {
-                        //aceder al valor especifico
-                        /* console.log(objetos[x].vNombre); */
-                        $("#txtDescripcion").val(objetos[x].tDescripcion);
-                        var nodotabla = ;
-                        $('#body_bienes_servicio').find('tbody').append(nodotabla);
-                    }
-                } catch (e) {
-                    programas_previos_especifico = null;
-                    new PNotify({
-                        title: 'Error en la petición comuniquese con soporte',
-                        type: 'error',
-                    })
+    $.ajax({
+        type: "POST",
+        url: url + route,
+        data: { "id_programa": $id },
+        dataType: "json",
+        success: function(data) {
+            try {
+                var objetos = (Object.values(data['bienes_servicios']));
+                for (x = 0; x < objetos.length; x++) {
+                    var nodotabla = `<tr>
+                    <td>${objetos[x].vNombreServicio}</td>
+                   </tr> `;
+                    $('#bienes_servicio').find('tbody').append(nodotabla);
+
                 }
+            } catch (e) {
+                programas_previos_especifico = null;
+                new PNotify({
+                    title: 'Error en la petición comuniquese con soporte',
+                    type: 'error',
+                })
             }
-        });
-    }
+        }
+    });
 }

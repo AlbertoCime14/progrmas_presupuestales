@@ -84,20 +84,12 @@
                                             <label class="control-label">
                                                 Bienes y servicios que entregaba y se vinculan con el nuevo programa
 											</label>
-                                            <table>
-                                                <tr>
+                                            <table class="table" id="bienes_servicio">
+											<thead>
                                                     <th></th>
 
-												</tr>
+													</thead>
                                                 <tbody id="body_bienes_servicio">
-												
-													<tr>
-														<td ><input type="text" class="form-control"
-															style="width: 95%;"
-															disabled="disabled"
-														value="Ejemplo de uno"/></td>
-														
-													</tr>
 												</tbody>
 											</table>
 										</div>
