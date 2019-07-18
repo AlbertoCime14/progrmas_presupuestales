@@ -19,7 +19,7 @@ insert  into `tipoprograma`(`iIdTipoPrograma`,`vNombre`) values (1,'Universal'),
 
 /*Data for the table `grupoedad` */
 
-insert  into `grupoedad`(`iIdGrupoEdad`,`vClasificacion`) values ( a 1 año'),( a 5 años'),(3,'1 a 3 años'),(4,'3 a 5 años'),(5,'6 a 11 años'),(6,'10 a 24 años'),(7,'12 a 15 años'),(8,'12 a 29 años'),(9,'14 a 29 años'),(10,'15 a 17 años'),(11,'16 a 18 años'),(12,'16 a 65 años'),(13,'18 a 21 años'),(14,'18 a 23 años'),(15,'18 a 24 años'),(16,'18 a 65 años'),(17,'30 a 65 años'),(18,'más de 65 años'),(19,'Otro\r\n');
+insert  into `grupoedad`(`iIdGrupoEdad`,`vClasificacion`) values ( 1,'0 a 1 año'),(2,'0 a 5 años'),(3,'1 a 3 años'),(4,'3 a 5 años'),(5,'6 a 11 años'),(6,'10 a 24 años'),(7,'12 a 15 años'),(8,'12 a 29 años'),(9,'14 a 29 años'),(10,'15 a 17 años'),(11,'16 a 18 años'),(12,'16 a 65 años'),(13,'18 a 21 años'),(14,'18 a 23 años'),(15,'18 a 24 años'),(16,'18 a 65 años'),(17,'30 a 65 años'),(18,'más de 65 años'),(19,'Otro\r\n');
 
 /*Data for the table `definicionpoblacion` */
 

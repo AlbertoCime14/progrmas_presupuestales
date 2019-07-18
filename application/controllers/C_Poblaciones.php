@@ -80,9 +80,9 @@ class C_Poblaciones extends CI_Controller
 
                 $data['filas'] .= $this->fila_definicion($datos['iIdDefinicion'],$datos['vNombre']);
 
-
+                $data['num_def'] ++;
             }
-            echo "perr";
+            
         }
 
 
