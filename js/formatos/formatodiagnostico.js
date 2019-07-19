@@ -13,6 +13,10 @@ $(document).ready(function() {
     $("#txtDescripcion").val("");
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
+    //======inicializa el check======//
+    $("#txtDescripcion").prop("disabled", true);
+    $('#chkAplica').is(':checked');
+
 });
 $("#nuevoprograma").click(function() {
     $("#panel_p_estatal").css({ "display": "inline" });
@@ -149,4 +153,26 @@ function listar_bienes_servicios($id) {
             }
         }
     });
+}
+
+//=============apartado de validaciones==============//
+//============valida el checkbox aplica o no aplica===//
+
+function validarcheck() {
+
+    var validador;
+
+
+    if ($('#chkAplica').is(':checked')) {
+        validador = false;
+    } else {
+        validador = true;
+    }
+
+
+    $("#txtPoblacionobj").prop("disabled", validador);
+    $("#txtResultados").prop("disabled", validador);
+    $("#txtLiga").prop("disabled", validador);
+    $("#txtArchivo").prop("disabled", validador);
+    $("#cboLugarimpl").prop("disabled", validador);
 }

@@ -48,7 +48,7 @@
 	    <link rel="stylesheet" href="<?=base_url();?>vendors/lcswitch/css/lc_switch.css">
 		
 		 <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/formelements.css">
-		  <link href="<?=base_url();?>vendors/iCheck/css/all.css" rel="stylesheet"/>
+		  <!-- <link href="<?=base_url();?>vendors/iCheck/css/all.css" rel="stylesheet"/> -->
 </head>
 
 <!--Head-->
