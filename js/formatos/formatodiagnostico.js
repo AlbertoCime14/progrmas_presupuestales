@@ -180,17 +180,19 @@ function validarcheck() {
 
 //============subida de informacion del programa estatal previo=======================//
 function add_programa_estaltal_previo() {
-    var programaprevio = $("#programa_previo").val();
-    var poblacionobj = $("#txtPoblacionobj").val().trim();
-    var resultados = $("#txtResultados").val().trim();
-    var liga = $("#txtLiga").val();
-    var archivo = $("#txtArchivo").val();
+
     var aplica;
     if ($('#chkAplica').is(':checked')) {
         aplica = 1;
     } else {
         aplica = 0;
     }
+    var programaprevio = $("#programa_previo").val();
+    var poblacionobj = $("#txtPoblacionobj").val().trim();
+    var resultados = $("#txtResultados").val().trim();
+    var liga = $("#txtLiga").val();
+    var archivo = $("#txtArchivo").val();
+
 
     if (programaprevio == 0 || poblacionobj == "" || resultados == "" || liga == "" && archivo == "") {
         new PNotify({
@@ -205,22 +207,40 @@ function add_programa_estaltal_previo() {
             data: { "iIdPrograma": programa, "iIdProgramaPrevio": programaprevio, "tPoblacionObjetivo": poblacionobj, "tArchivo": archivo, "tLiga": liga, "tResultadoEvaluacion": resultados, "iAplica": aplica },
             dataType: "json",
             success: function(data) {
-                if (data == "correcto") {
-                    // llenar_tabla_datos();
-                    new PNotify({
-                        title: 'Registro agregado',
-                        type: 'success',
-                    });
-                } else {
-                    new PNotify({
-                        title: 'Error en la petición comuniquese con soporte',
-                        type: 'error',
-                    })
-                }
+                add_lugar_implementacion(data.id_programapp);
+                new PNotify({
+                    title: 'Registro agregado',
+                    type: 'success',
+                });
             }
 
         });
     }
+}
+
+function add_lugar_implementacion(id) {
+    var municipios = $('#cboLugarimpl').val();
+    var route = "agregar/lugar_implementacion";
+    $.ajax({
+        type: "POST",
+        url: url + route,
+        data: { "iIdConfiguracion": id, "iIdmunicipio": municipios },
+        dataType: "json",
+        success: function(data) {
+            if (data == "correcto") {
+                // new PNotify({
+                //     title: 'Registro agregado',
+                //     type: 'success',
+                // });
+                console.log(data);
+            } else {
+                new PNotify({
+                    title: 'Error en la petición comuniquese con soporte',
+                    type: 'error',
+                })
+            }
+        }
+    });
 }
 
 function listar_municipios() {

@@ -29,7 +29,7 @@
 <!-- end of page level js -->
 <!-- <script src="<?=base_url();?>vendors/iCheck/js/icheck.js"></script> -->
 <script src="<?=base_url();?>vendors/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
-<script src="<?=base_url();?>js/custom_js/form_elements.js"></script>
+<!-- <script src="<?=base_url();?>js/custom_js/form_elements.js"></script> -->
 
 </body>
 

@@ -38,11 +38,22 @@ class C_Diagnostico extends CI_Controller {
 	}
 	public function agregar_programa_estatal_previo()
 	{
-		if ($this->M_Diagnostico->agregar_programa_estatal_previo($_POST) === TRUE) {
-			echo "correcto";
-		} else {
-			echo "incorrecto";
+	$data['id_programapp']=$this->M_Diagnostico->agregar_programa_estatal_previo($_POST);
+	echo json_encode($data);
+	}
+	public function agregar_lugarimplementacion()
+	{
+		$iIdConfiguracion = $this->input->post('iIdConfiguracion');
+		$iIdmunicipio = $this->input->post('iIdmunicipio');
+		for ($i = 0; $i < count($iIdmunicipio); $i++) {
+			$datos=array(
+			'iIdConfiguracion' =>$iIdConfiguracion,
+			'iIdmunicipio' =>$iIdmunicipio[$i]
+			);
+			$this->M_Diagnostico->agregar_lugarimplementacion($datos);
+		
 		}
+			echo "correcto";	
 	}
 	public function listar_municipios()
     {

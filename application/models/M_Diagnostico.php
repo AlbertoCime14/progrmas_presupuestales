@@ -11,6 +11,11 @@
 		
 		public function agregar_programa_estatal_previo($data){
 			$this->db->insert('confprogramasprevios', $data);	
+			return $this->db->insert_id();
+		}
+
+		public function agregar_lugarimplementacion($data){
+			$this->db->insert('lugarimplementacion', $data);
 			if ($this->db->affected_rows() > 0)
 			{
 				return TRUE;
@@ -18,11 +23,13 @@
 			else
 			{
 				return FALSE;
-			}
+			}	
 		}
+
+
 				public function eliminar_criteriosfocalizacioncomplemento($iIdCriterio){
 			$this->db->where('iIdCriterio', $iIdCriterio);
-$this->db->delete('criteriosfocalizacioncomplemento');
+			$this->db->delete('criteriosfocalizacioncomplemento');
 			if ($this->db->affected_rows() > 0)
 			{
 				return TRUE;
@@ -32,6 +39,7 @@ $this->db->delete('criteriosfocalizacioncomplemento');
 				return FALSE;
 			}
 		}
+	
 		public function modificar_criteriosfocalizacioncomplemento($iIdCriterio,$data){
 			
 			$this->db->where('iIdCriterio', $iIdCriterio);
