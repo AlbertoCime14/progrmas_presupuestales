@@ -34,7 +34,7 @@ include 'application/views/masterpage/navagacionnavb.php';
                                     <div class="col-md-3">
                                         <!-- Default unchecked -->
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="chkAplica" onchange="validarcheck()">
+                                            <input type="checkbox" class="custom-control-input" id="chkAplica" onchange="validarcheck()" checked/>
                                             <label class="custom-control-label" for="chkAplica">Aplica</label>
                                         </div>
                                     </div>
@@ -78,8 +78,8 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <label class="control-label">
                                             Descripción
                                         </label>
-                                        <textarea class="form-control" disabled="disabled"
-                                            id="txtDescripcion"></textarea>
+                                        <textarea class="form-control" 
+                                            id="txtDescripcion" disabled="disabled"></textarea>
                                     </div>
                                 </section>
                                 <section>

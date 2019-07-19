@@ -63,3 +63,12 @@ ALTER TABLE `programaspresupuestales`.`programas`
 /* 18 de julio, agreacion del campo aplica a la tabla configuracion del programa previo` */
 ALTER TABLE `programaspresupuestales`.`confprogramasprevios`   
   ADD COLUMN `iAplica` TINYINT(1) NOT NULL AFTER `iIdProgramaPrevio`;
+
+
+/* 19 de julio, agreacion del campo aplica a la tabla configuracion del programa previo` */
+ALTER TABLE `programaspresupuestales`.`confprogramasprevios`   
+  ADD COLUMN `tPoblacionObjetivo` TEXT NOT NULL  COMMENT 'Agregado para la poblacion objetivo' AFTER `iAplica`,
+  ADD COLUMN `tArchivo` TEXT NULL  COMMENT 'Agregado para subir el archivo' AFTER `tPoblacionObjetivo`,
+  ADD COLUMN `tLiga` TEXT NULL  COMMENT 'Agregado para poner la liga del archivo' AFTER `tArchivo`,
+  ADD COLUMN `tResultadoEvaluacion` TEXT NOT NULL  COMMENT 'Agregado para poner el resultado de la evaluacion' AFTER `tLiga`,
+  ADD COLUMN `iActivo` TINYINT(1) DEFAULT 1  NOT NULL  COMMENT 'Agregado para manejar el borrado logico' AFTER `tResultadoEvaluacion`;

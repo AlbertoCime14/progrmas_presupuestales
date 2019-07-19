@@ -13,9 +13,6 @@ $(document).ready(function() {
     $("#txtDescripcion").val("");
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
-    //======inicializa el check======//
-    $("#txtDescripcion").prop("disabled", true);
-    $('#chkAplica').is(':checked');
 
 });
 $("#nuevoprograma").click(function() {
