@@ -88,11 +88,15 @@ $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
 //==============formato diagnostico====================//
 $route['listar/bienes_servicio'] = 'C_Programa/listar_bienes_servicios';
+$route['agregar/programa_estatal_previo'] = 'C_Diagnostico/agregar_programa_estatal_previo';
 
 
 //====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
 $route['listar/criteriofocalizacion'] = 'C_Focalizacion/listar_criterios';
+$route['listar/municipio'] = 'C_Diagnostico/listar_municipios';
+
+
 
 //====================recuperado json de arbol problemas==============//
 $route['listar/arbolproblema/(:any)'] = 'C_Problemas/consultar_problema';

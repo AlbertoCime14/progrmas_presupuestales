@@ -1,3 +1,4 @@
+//===========inicializadores de variables========//
 var programa_previo;
 var programas_previos_especifico;
 var programa = 0;
@@ -7,6 +8,9 @@ $(document).ready(function() {
     programa = $("#programa").val();
     /******carga de datos*****/
     llenar_programas_previos();
+
+    /****carga los datos de los selectores multiples de municipios*** */
+    listar_municipios();
     /*****
      * sirve para inicializar los texbox en blanco
      *****/
@@ -172,4 +176,76 @@ function validarcheck() {
     $("#txtLiga").prop("disabled", validador);
     $("#txtArchivo").prop("disabled", validador);
     $("#cboLugarimpl").prop("disabled", validador);
+}
+
+//============subida de informacion del programa estatal previo=======================//
+function add_programa_estaltal_previo() {
+    var programaprevio = $("#programa_previo").val();
+    var poblacionobj = $("#txtPoblacionobj").val().trim();
+    var resultados = $("#txtResultados").val().trim();
+    var liga = $("#txtLiga").val();
+    var archivo = $("#txtArchivo").val();
+    var aplica;
+    if ($('#chkAplica').is(':checked')) {
+        aplica = 1;
+    } else {
+        aplica = 0;
+    }
+
+    if (programaprevio == 0 || poblacionobj == "" || resultados == "" || liga == "" && archivo == "") {
+        new PNotify({
+            title: 'LLene correctamente los campos',
+            type: 'error',
+        })
+    } else {
+        var route = "agregar/programa_estatal_previo";
+        $.ajax({
+            type: "POST",
+            url: url + route,
+            data: { "iIdPrograma": programa, "iIdProgramaPrevio": programaprevio, "tPoblacionObjetivo": poblacionobj, "tArchivo": archivo, "tLiga": liga, "tResultadoEvaluacion": resultados, "iAplica": aplica },
+            dataType: "json",
+            success: function(data) {
+                if (data == "correcto") {
+                    // llenar_tabla_datos();
+                    new PNotify({
+                        title: 'Registro agregado',
+                        type: 'success',
+                    });
+                } else {
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            }
+
+        });
+    }
+}
+
+function listar_municipios() {
+    var route = "listar/municipio";
+    $.ajax({
+        type: "POST",
+        url: url + route,
+        data: { "success": "success" },
+        dataType: "json",
+        success: function(data) {
+            try {
+                var objetos = (Object.values(data['municipios']));
+                for (x = 0; x < objetos.length; x++) {
+                    var obj = new Option("option text", objetos[x].iIdMunicipio);
+                    $("#cboLugarimpl").append(obj);
+                    $(obj).html(objetos[x].vMunicipio);
+                }
+
+
+            } catch (e) {
+                new PNotify({
+                    title: 'Error en la petición comuniquese con soporte',
+                    type: 'error',
+                })
+            }
+        }
+    });
 }

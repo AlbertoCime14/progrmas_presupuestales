@@ -23,7 +23,7 @@ class C_Diagnostico extends CI_Controller {
 		parent::__construct();
 		//session_start();
 		$this->load->helper('url');
-		//$this->load->model('M_alineacion');
+		$this->load->model('M_Diagnostico');
 		//$this->load->library('session');
 	}
 	public function index()
@@ -36,6 +36,20 @@ class C_Diagnostico extends CI_Controller {
 		
 		
 	}
+	public function agregar_programa_estatal_previo()
+	{
+		if ($this->M_Diagnostico->agregar_programa_estatal_previo($_POST) === TRUE) {
+			echo "correcto";
+		} else {
+			echo "incorrecto";
+		}
+	}
+	public function listar_municipios()
+    {
+
+        $data['municipios'] = $this->M_Diagnostico->listar_municipios();
+        echo json_encode($data);
+    }
 
 	
 }

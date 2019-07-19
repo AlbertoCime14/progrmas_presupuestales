@@ -98,9 +98,6 @@ include 'application/views/masterpage/navagacionnavb.php';
                                             Lugar donde se implementó
                                         </label>
                                         <select class="form-control" multiple style="height:71px;" id="cboLugarimpl">
-                                            <option>A</option>
-                                            <option>v</option>
-                                            <option>c</option>
                                         </select>
                                     </div>
 
@@ -147,7 +144,7 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <div class="col-md-12">
                                             <div class="col-md-10"></div>
                                             <div class="col-md-1">
-                                                <input class="btn btn-success" value="Guardar" type="submit" />
+                                                <input class="btn btn-success" value="Guardar" type="submit"  onclick="add_programa_estaltal_previo()"/>
                                             </div>
                                         </div>
                                     </section>
