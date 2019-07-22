@@ -75,7 +75,7 @@ class C_Poblaciones extends CI_Controller
         if ($data['definicion_poblacion'] == null) {
             echo '<script>location.reload();</script>';
         } else if ($data['cuantificacion_pobla'] == null) {
-            var_dump($data['cuantificacion_pobla']);
+
             $objetos_definicion = $data['definicion_poblacion'];
             foreach ($objetos_definicion as $datos) {
 
@@ -121,41 +121,45 @@ class C_Poblaciones extends CI_Controller
 
         $html = '<tr id="' . $num_definicion . '">
 		<td><input type="hidden" name="id' . $num_definicion . '" id="id' . $num_definicion . '" value="' . $iIdDefinicion . '">
-		<label style="width: 170px;" name="vNombreServicio' . $iIdDefinicion . '" type="text" id="vNombreServicio' . $iIdDefinicion . '"  >' . $nombre_definicion . '</label></td>';
+		<label style="width: 170px;" name="vPoblacionReferencia_' . $iIdDefinicion . '" type="text" id="vPoblacionReferencia' . $iIdDefinicion . '"  >' . $nombre_definicion . '</label></td>';
 
 
         $html .= '<td>
-			    <textarea name="DescripcionServicio_' . $iIdDefinicion . '" id="DescripcionServicio_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
+			    <textarea name="DescripcionPoblacion_' . $iIdDefinicion . '" id="DescripcionPoblacion_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
 			</td>
 			<td>
-                <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+                <input style="width: 100px;" name="total_' . $iIdDefinicion . '" id="total_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			<td>
-			    <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			    <input style="width: 100px;" name="hombres_' . $iIdDefinicion . '" id="hombres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			
 			
 			</td>
 			<td  style="width: 103px;">
-				 <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+				 <input style="width: 100px;" name="mujeres_' . $iIdDefinicion . '" id="mujeres' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 				
 			</td>
 			<td>
-			    <input style="width: 100px;" name="meta_' . $iIdDefinicion . '" id="meta_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			    <input style="width: 100px;" name="indigenas' . $iIdDefinicion . '" id="indigenas' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			<td >
 			    ' . $this->Grupo_edad($iIdDefinicion) . '
 			</td>
 			<td >
-			    <button type="submit" class="btn btn-labeled btn-success" name="idprograma"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button>
+			    <button disabled type="submit" class="btn btn-labeled btn-success" name="fuentes"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button>
 			</td>
 			<td >
-			    <button type="submit" class="btn btn-labeled btn-success" name="idprograma"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar criterios</button>
+			    <button disabled type="submit" class="btn btn-labeled btn-success" name="criterios"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar criterios</button>
 			</td>
 			
 			<td class="ui-group-buttons" style="width: 150px;">
-				 ' . $this->CoberturaGeografica($iIdDefinicion ,$nombre_definicion) . '
-				
+				<a title="Agregar población" class="btn btn-success" role="button"  onclick="AgregarPoblacion()" >
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
+                                            </a>
+				<a title="Eliminar población" class="btn btn-danger" role="button"  onclick="EliminarPoblacion()">
+                                                <span class="glyphicon glyphicon-trash"></span>
+				</a>
 			</td>
 		</tr>';
 
@@ -276,3 +280,5 @@ class C_Poblaciones extends CI_Controller
         return $html;
     }
 }
+//combo de cobertura geografica
+// ' . $this->CoberturaGeografica($iIdDefinicion ,$nombre_definicion) . '
