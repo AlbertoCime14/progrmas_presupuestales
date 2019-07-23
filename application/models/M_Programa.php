@@ -106,6 +106,28 @@ class M_Programa extends CI_Model
         }
         return $datos;
     }
+    public function listar_programas_previos_tabla($id_programa)
+    {
+       
+        $this->db->select('*');
+        $this->db->from('confprogramasprevios cp');
+        $this->db->order_by("cp.iIdConfiguracion", "desc");
+        $this->db->where($id_programa);
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $datos[] = [
+                'iIdConfiguracion' => $row->iIdConfiguracion,
+                'iIdProgramaPrevio' => $row->iIdProgramaPrevio,
+                'tPoblacionObjetivo' => $row->tPoblacionObjetivo,
+                'iAplica' => $row->iAplica,
+                'tArchivo' => $row->tArchivo,
+                'tLiga' =>$row->tLiga, 
+                'tResultadoEvaluacion' =>$row->tResultadoEvaluacion
+            ];
+        }
+        return $datos;
+    }
     public function listar_bienes_servicios($iIdPrograma)
     {
         $this->db->select('*');

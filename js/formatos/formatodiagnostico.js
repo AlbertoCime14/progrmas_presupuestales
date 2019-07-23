@@ -18,6 +18,10 @@ $(document).ready(function() {
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
     /**
+     * sirve para inicializar la tabla de los programas previos guardados
+     */
+    llenar_programas_previos_tabla();
+    /**
      * Inicializa los valores del select multiple de los municipios
      */
     listas_lugar_implementacion(programa);
@@ -61,6 +65,7 @@ function eliminar_p_estatal(id) {
     })
 }
 
+//============datos para llenar el combobox de un programa previo nuevo=================//
 function llenar_programas_previos() {
     var route = "listar/programa_previo";
     $.ajax({
@@ -81,6 +86,7 @@ function llenar_programas_previos() {
                     var obj = new Option("option text", objetos[x].iIdPrograma);
                     $("#programa_previo").append(obj);
                     $(obj).html(objetos[x].vNombre);
+
                 }
             } catch (e) {
                 programas_previos = null;
@@ -93,6 +99,40 @@ function llenar_programas_previos() {
         }
     });
 }
+
+/**
+ * Siver para llenar la tabla de programas estatales previos
+ */
+function llenar_programas_previos_tabla() {
+    var route = "listar/programa_previo_especifico/table";
+    $.ajax({
+        type: "POST",
+        url: url + route,
+        data: { "iIdPrograma": programa },
+        dataType: "json",
+        success: function(data) {
+            try {
+                var objetos = (Object.values(data['programas_previos_tabla']));
+                for (x = 0; x < objetos.length; x++) {
+                    crear_tabla(objetos[x].vNombre);
+                }
+
+                var nodotabla = `<tr>
+                <td>${objetos[x].vNombreServicio}</td>
+               </tr> `;
+                $('#bienes_servicio').find('tbody').append(nodotabla);
+            } catch (e) {
+                programas_previos = null;
+            }
+            /*  var o = JSON.parse(data); */
+            /*    var objetos = (Object.values(o['criteriofocalizacion']));
+            	for (x = 0; x < objetos.length; x++) {
+            	crear_tabla(objetos[x].vNombre);
+			} */
+        }
+    });
+}
+
 
 function informacion_programa() {
     var route = "listar/programa_previo_especifico";
@@ -148,6 +188,7 @@ function listar_bienes_servicios($id) {
                     <td>${objetos[x].vNombreServicio}</td>
                    </tr> `;
                     $('#bienes_servicio').find('tbody').append(nodotabla);
+
 
                 }
             } catch (e) {
@@ -272,11 +313,6 @@ function listas_lugar_implementacion(id) {
                     console.log(objetos[x].iIdmunicipio);
                     $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", "selected");
 
-
-                    //   $("#cboLugarimpl option[value=" + objetos[x].iIdmunicipio + "]").attr('selected', 'selected');
-                    // $("#cboLugarimpl").val([objetos[x].iIdmunicipio]);
-                    //  $('#cboLugarimpl option[value="' + objetos[x].iIdmunicipio + '"]');
-                    //  $('#cboLugarimpl option[value="' + objetos[x].iIdmunicipio + '"]')
                 }
 
 

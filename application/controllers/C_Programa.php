@@ -61,6 +61,10 @@
 			$data['programas_previos'] = $this->M_Programa->listar_programas_previos($iIdPrograma);
 			echo json_encode($data);
 		}
+		public function listar_programas_previos_tabla(){	
+			$data['programas_previos_tabla'] = $this->M_Programa->listar_programas_previos_tabla($_POST);
+			echo json_encode($data);
+		}
 		 public function listar_bienes_servicios()
 		{
 			$iIdPrograma = $this->input->post('id_programa');	

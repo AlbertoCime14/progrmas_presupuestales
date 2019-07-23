@@ -166,25 +166,16 @@ include 'application/views/masterpage/navagacionnavb.php';
                         <div class="panel-body">
                             <div class="row">
                                 <!--Etiqueta de entrada del row-->
-                                <table class="table">
-                                    <tr>
-                                        <th>Nombre de Programas estatales previos</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                    <tbody>
-                                        <tr>
-                                            <td><label>Nombre de un programa de ejemplo</label></td>
-                                            <td class="ui-group-buttons">
-                                                <a class="btn btn-success" role="button" onclick="editar_p_estatal(1)">
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </a>
-                                                <a class="btn btn-danger" role="button" onclick="eliminar_p_estatal(1)">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <table class="table" id="tblProgramaP">
+                                                <thead>
+                                                    <th>Nombre del programa previo</th>
+                                                    <th>Opciones</th>
+
+                                                </thead>
+                                                <tbody id="body_tblProgramaP">
+                                                </tbody>
+                                            </table>
+                   
                             </div>
                             <!--Etiqueta de cierre del row-->
                         </div>

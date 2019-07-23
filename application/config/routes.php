@@ -83,6 +83,7 @@ $route['formatos/arbolobjetivo/(:any)'] = 'C_Objetivo/index';
 $route['agregar/programa'] = 'C_Programa/agregar_programa';
 $route['listar/programa'] = 'C_Programa/listar_programas';
 $route['listar/programa_previo'] = 'C_Programa/listar_programas_previos_combo';
+$route['listar/programa_previo_especifico/table'] = 'C_Programa/listar_programas_previos_tabla';
 $route['listar/programa_previo_especifico'] = 'C_Programa/listar_programas_previos';
 $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 
