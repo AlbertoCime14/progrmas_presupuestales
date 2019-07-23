@@ -55,6 +55,11 @@ class C_Diagnostico extends CI_Controller {
 		}
 			echo "correcto";	
 	}
+	public function listar_lugarimplementacion(){
+		
+		$data['lugares_implentacion'] = $this->M_Diagnostico->listar_lugarimplementacion($_POST);
+        echo json_encode($data);
+	}
 	public function listar_municipios()
     {
 

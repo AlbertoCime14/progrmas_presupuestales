@@ -26,6 +26,24 @@
 			}	
 		}
 
+		public function listar_lugarimplementacion($id_programa){
+			$this->db->select('*');
+			$this->db->from('lugarimplementacion lim');
+			$this->db->join('confprogramasprevios cf','cf.iIdConfiguracion=lim.iIdConfiguracion');
+			$this->db->where($id_programa);
+			$query = $this->db->get();
+			
+			foreach ($query->result() as $row) {
+				$datos[] = [
+				'iIdImplementacion' =>$row->iIdImplementacion,
+				'iIdConfiguracion' => $row->iIdConfiguracion,
+				'iIdmunicipio' => $row->iIdmunicipio
+
+				];
+			}
+			return $datos;
+		}
+
 
 				public function eliminar_criteriosfocalizacioncomplemento($iIdCriterio){
 			$this->db->where('iIdCriterio', $iIdCriterio);

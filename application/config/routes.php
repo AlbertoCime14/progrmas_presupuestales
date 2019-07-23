@@ -90,7 +90,7 @@ $route['eliminar/programa'] = 'C_Programa/actualizar_status_objetivo';
 $route['listar/bienes_servicio'] = 'C_Programa/listar_bienes_servicios';
 $route['agregar/programa_estatal_previo'] = 'C_Diagnostico/agregar_programa_estatal_previo';
 $route['agregar/lugar_implementacion'] = 'C_Diagnostico/agregar_lugarimplementacion';
-
+$route['listar/lugar_implementacion'] = 'C_Diagnostico/listar_lugarimplementacion';
 
 //====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';

@@ -3,7 +3,7 @@ var programa_previo;
 var programas_previos_especifico;
 var programa = 0;
 var url = "";
-$(document).ready(function () {
+$(document).ready(function() {
     url = $("#url").val();
     programa = $("#programa").val();
     /******carga de datos*****/
@@ -17,15 +17,19 @@ $(document).ready(function () {
     $("#txtDescripcion").val("");
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
+    /**
+     * Inicializa los valores del select multiple de los municipios
+     */
+    listas_lugar_implementacion(programa);
 
 });
-$("#nuevoprograma").click(function () {
-    $("#panel_p_estatal").css({"display": "inline"});
+$("#nuevoprograma").click(function() {
+    $("#panel_p_estatal").css({ "display": "inline" });
 });
 
 /**Funcion para editar programa estatal previo**/
 function editar_p_estatal(id) {
-    $("#panel_p_estatal").css({"display": "inline"});
+    $("#panel_p_estatal").css({ "display": "inline" });
 }
 
 function eliminar_p_estatal(id) {
@@ -46,13 +50,13 @@ function eliminar_p_estatal(id) {
             history: false
         },
         addclass: 'stack-modal',
-        stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
-    }).get().on('pnotify.confirm', function () {
+        stack: { 'dir1': 'down', 'dir2': 'right', 'modal': true }
+    }).get().on('pnotify.confirm', function() {
         new PNotify({
             title: 'Eliminado',
             type: 'success',
         })
-    }).on('pnotify.cancel', function () {
+    }).on('pnotify.cancel', function() {
         //  alert('Cancelado');
     })
 }
@@ -63,7 +67,7 @@ function llenar_programas_previos() {
         type: "GET",
         url: url + route,
         data: "success=success",
-        success: function (data) {
+        success: function(data) {
             try {
                 programas_previos = JSON.parse(data);
                 var objetos = (Object.values(programas_previos['programas_previos']));
@@ -101,9 +105,9 @@ function informacion_programa() {
         $.ajax({
             type: "POST",
             url: url + route,
-            data: {"id_programa": $("#programa_previo").val()},
+            data: { "id_programa": $("#programa_previo").val() },
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
                 try {
                     var objetos = (Object.values(data['programas_previos']));
                     for (x = 0; x < objetos.length; x++) {
@@ -134,9 +138,9 @@ function listar_bienes_servicios($id) {
     $.ajax({
         type: "POST",
         url: url + route,
-        data: {"id_programa": $id},
+        data: { "id_programa": $id },
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
             try {
                 var objetos = (Object.values(data['bienes_servicios']));
                 for (x = 0; x < objetos.length; x++) {
@@ -215,7 +219,7 @@ function add_programa_estaltal_previo() {
                 "iAplica": aplica
             },
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
                 add_lugar_implementacion(data.id_programapp);
                 new PNotify({
                     title: 'Registro agregado',
@@ -233,9 +237,9 @@ function add_lugar_implementacion(id) {
     $.ajax({
         type: "POST",
         url: url + route,
-        data: {"iIdConfiguracion": id, "iIdmunicipio": municipios},
+        data: { "iIdConfiguracion": id, "iIdmunicipio": municipios },
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
             if (data == "correcto") {
                 // new PNotify({
                 //     title: 'Registro agregado',
@@ -252,14 +256,49 @@ function add_lugar_implementacion(id) {
     });
 }
 
+function listas_lugar_implementacion(id) {
+    var route = "listar/lugar_implementacion";
+    $.ajax({
+        type: "POST",
+        url: url + route,
+        data: { "iIdPrograma": id },
+        dataType: "json",
+        success: function(data) {
+            try {
+                var objetos = (Object.values(data['lugares_implentacion']));
+
+                //  $("#cboLugarimpl option[value=]").attr('selected', 'selected');
+                for (x = 0; x < objetos.length; x++) {
+                    console.log(objetos[x].iIdmunicipio);
+                    $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", "selected");
+
+
+                    //   $("#cboLugarimpl option[value=" + objetos[x].iIdmunicipio + "]").attr('selected', 'selected');
+                    // $("#cboLugarimpl").val([objetos[x].iIdmunicipio]);
+                    //  $('#cboLugarimpl option[value="' + objetos[x].iIdmunicipio + '"]');
+                    //  $('#cboLugarimpl option[value="' + objetos[x].iIdmunicipio + '"]')
+                }
+
+
+            } catch (e) {
+                //  console.log(data);
+                // new PNotify({
+                //     title: 'Error en la petición comuniquese con soporte',
+                //     type: 'error',
+                // })
+            }
+        }
+    });
+}
+
 function listar_municipios() {
     var route = "listar/municipio";
     $.ajax({
         type: "POST",
         url: url + route,
-        data: {"success": "success"},
+        data: { "success": "success" },
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
             try {
                 var objetos = (Object.values(data['municipios']));
                 for (x = 0; x < objetos.length; x++) {
