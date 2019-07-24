@@ -3,32 +3,36 @@ var programa_previo;
 var programas_previos_especifico;
 var programa = 0;
 var url = "";
+var datos_tabla_peprevios;
 $(document).ready(function() {
     url = $("#url").val();
     programa = $("#programa").val();
     /******carga de datos*****/
     llenar_programas_previos();
 
-    /****carga los datos de los selectores multiples de municipios*** */
     listar_municipios();
-    /*****
-     * sirve para inicializar los texbox en blanco
-     *****/
+
+    llenar_programas_previos_tabla();
+    limpiarcampos_pep();
+
+});
+
+function limpiarcampos_pep() {
     $("#txtDescripcion").val("");
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
-    /**
-     * sirve para inicializar la tabla de los programas previos guardados
-     */
-    llenar_programas_previos_tabla();
-    /**
-     * Inicializa los valores del select multiple de los municipios
-     */
-    listas_lugar_implementacion(programa);
-
-});
+    $("#txtPoblacionobj").val("");
+    $("#txtResultados").val("");
+    $("#txtLiga").val("");
+    $("#programa_previo").val(0);
+    $("#chkAplica").prop("checked", "checked");
+    informacion_programa();
+}
 $("#nuevoprograma").click(function() {
     $("#panel_p_estatal").css({ "display": "inline" });
+    limpiarcampos_pep();
+    $("#btnGuardarProgramaEstatalP").removeAttr("onclick");
+    $("#btnGuardarProgramaEstatalP").attr("onclick", "add_programa_estaltal_previo()");
 });
 
 /**Funcion para editar programa estatal previo**/
@@ -118,11 +122,12 @@ function llenar_programas_previos_tabla() {
             try {
                 $("#tblProgramaP_body").empty();
                 var objetos = (Object.values(data['programas_previos_tabla']));
+                datos_tabla_peprevios = objetos;
                 for (x = 0; x < objetos.length; x++) {
                     var nodotabla = `<tr>
                     <td>${objetos[x].vNombre}</td>
                     <td class="ui-group-buttons">
-                    <a class="btn btn-success" role="button">
+                    <a class="btn btn-success" role="button" id="btnActualizarP${objetos[x].iIdConfiguracion}" onclick="actulizar_programa_previo(${objetos[x].iIdConfiguracion})">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                     <a class="btn btn-danger" role="button" id="btnEliminarP${objetos[x].iIdConfiguracion}" onclick="eliminar_programa_previo(${objetos[x].iIdConfiguracion})">
@@ -135,8 +140,7 @@ function llenar_programas_previos_tabla() {
 
 
             } catch (e) {
-                programas_previos = data;
-                console.log(programa_previo);
+
             }
             /*  var o = JSON.parse(data); */
             /*    var objetos = (Object.values(o['criteriofocalizacion']));
@@ -145,6 +149,27 @@ function llenar_programas_previos_tabla() {
 			} */
         }
     });
+}
+
+function actulizar_programa_previo(id) {
+    $("#panel_p_estatal").show();
+    $("#btnGuardarProgramaEstatalP").removeAttr("onclick");
+    $("#btnGuardarProgramaEstatalP").attr("onclick", "actulizar_programa_previo_data(" + id + ")");
+    for (x = 0; x < datos_tabla_peprevios.length; x++) {
+        $("#programa_previo").val(datos_tabla_peprevios[x].iIdProgramaPrevio);
+        $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
+        $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
+        $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+        if (datos_tabla_peprevios[x].iAplica == 1) {
+            $("#chkAplica").prop("checked", "checked");
+            validarcheck();
+        } else {
+            validarcheck();
+        }
+    }
+    listas_lugar_implementacion(id);
+    informacion_programa();
+
 }
 
 function eliminar_programa_previo(id) {
@@ -176,7 +201,10 @@ function eliminar_programa_previo(id) {
             dataType: 'text',
             success: function(data, status, xhr) {
                 if (data == "correcto") {
+                    $("#panel_p_estatal").hide();
+                    $("#tblProgramaP_body").empty();
                     llenar_programas_previos_tabla();
+                    limpiarcampos_pep();
                     new PNotify({
                         title: 'Programa previo eliminado',
                         type: 'success',
@@ -192,6 +220,7 @@ function eliminar_programa_previo(id) {
                 console.log(jqXhr);
                 console.log(textStatus);
                 console.log(errorMessage);
+                llenar_programas_previos_tabla();
             }
         });
     }).on('pnotify.cancel', function() {
@@ -331,10 +360,12 @@ function add_programa_estaltal_previo() {
             success: function(data) {
                 llenar_programas_previos_tabla();
                 add_lugar_implementacion(data.id_programapp);
+                limpiarcampos_pep();
                 new PNotify({
                     title: 'Registro agregado',
                     type: 'success',
                 });
+
             }
 
         });
@@ -371,7 +402,7 @@ function listas_lugar_implementacion(id) {
     $.ajax({
         type: "POST",
         url: url + route,
-        data: { "iIdPrograma": id },
+        data: { "iIdConfiguracion": id },
         dataType: "json",
         success: function(data) {
             try {

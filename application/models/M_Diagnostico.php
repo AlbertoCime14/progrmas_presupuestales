@@ -29,7 +29,6 @@
 		public function listar_lugarimplementacion($id_programa){
 			$this->db->select('*');
 			$this->db->from('lugarimplementacion lim');
-			$this->db->join('confprogramasprevios cf','cf.iIdConfiguracion=lim.iIdConfiguracion');
 			$this->db->where($id_programa);
 			$query = $this->db->get();
 			

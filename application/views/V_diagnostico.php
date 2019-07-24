@@ -144,7 +144,7 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <div class="col-md-12">
                                             <div class="col-md-10"></div>
                                             <div class="col-md-1">
-                                                <input class="btn btn-success" value="Guardar" type="submit"  onclick="add_programa_estaltal_previo()"/>
+                                                <input id="btnGuardarProgramaEstatalP" class="btn btn-success" value="Guardar" type="submit"  onclick="add_programa_estaltal_previo()"/>
                                             </div>
                                         </div>
                                     </section>

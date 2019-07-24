@@ -109,7 +109,7 @@ class M_Programa extends CI_Model
     public function listar_programas_previos_tabla($id_programa)
     {
        
-        $this->db->select('*');
+        $this->db->select('* , cp.tPoblacionObjetivo as poblacion, cp.iAplica as aplica');
         $this->db->from('confprogramasprevios cp');
          $this->db->join("programas p", "cp.iIdProgramaPrevio=p.iIdPrograma");
         $this->db->order_by("cp.iIdConfiguracion", "desc");
@@ -120,8 +120,8 @@ class M_Programa extends CI_Model
             $datos[] = [
                 'iIdConfiguracion' => $row->iIdConfiguracion,
                 'iIdProgramaPrevio' => $row->iIdProgramaPrevio,
-                'tPoblacionObjetivo' => $row->tPoblacionObjetivo,
-                'iAplica' => $row->iAplica,
+                'tPoblacionObjetivo' => $row->poblacion,
+                'iAplica' => $row->aplica,
                 'tArchivo' => $row->tArchivo,
                 'tLiga' =>$row->tLiga, 
                 'tResultadoEvaluacion' =>$row->tResultadoEvaluacion,
