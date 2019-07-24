@@ -111,8 +111,9 @@ class M_Programa extends CI_Model
        
         $this->db->select('*');
         $this->db->from('confprogramasprevios cp');
+         $this->db->join("programas p", "cp.iIdProgramaPrevio=p.iIdPrograma");
         $this->db->order_by("cp.iIdConfiguracion", "desc");
-        $this->db->where($id_programa);
+       $this->db->where("cp.iIdPrograma",$id_programa["iIdPrograma"]);
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
@@ -123,7 +124,8 @@ class M_Programa extends CI_Model
                 'iAplica' => $row->iAplica,
                 'tArchivo' => $row->tArchivo,
                 'tLiga' =>$row->tLiga, 
-                'tResultadoEvaluacion' =>$row->tResultadoEvaluacion
+                'tResultadoEvaluacion' =>$row->tResultadoEvaluacion,
+                'vNombre' =>$row->vNombre
             ];
         }
         return $datos;

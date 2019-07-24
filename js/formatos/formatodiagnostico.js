@@ -103,6 +103,10 @@ function llenar_programas_previos() {
 /**
  * Siver para llenar la tabla de programas estatales previos
  */
+
+/**
+ * today
+ */
 function llenar_programas_previos_tabla() {
     var route = "listar/programa_previo_especifico/table";
     $.ajax({
@@ -114,13 +118,14 @@ function llenar_programas_previos_tabla() {
             try {
                 var objetos = (Object.values(data['programas_previos_tabla']));
                 for (x = 0; x < objetos.length; x++) {
-                    crear_tabla(objetos[x].vNombre);
+
+                    var nodotabla = `<tr>
+                    <td>${objetos[x].vNombre}</td>
+                   </tr> `;
+                    $('#tblProgramaP').find('tbody').append(nodotabla);
                 }
 
-                var nodotabla = `<tr>
-                <td>${objetos[x].vNombreServicio}</td>
-               </tr> `;
-                $('#bienes_servicio').find('tbody').append(nodotabla);
+
             } catch (e) {
                 programas_previos = null;
             }
