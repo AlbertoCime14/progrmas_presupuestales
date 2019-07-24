@@ -112,14 +112,13 @@ function llenar_programas_previos_tabla() {
     $.ajax({
         type: "POST",
         url: url + route,
-        data: "iIdPrograma=" + programa,
+        data: { "iIdPrograma": programa },
+        dataType: "json",
         success: function(data) {
             try {
                 $("#tblProgramaP_body").empty();
-                var json = JSON.parse(data);
-                var objetos = (Object.values(json['programas_previos_tabla']));
+                var objetos = (Object.values(data['programas_previos_tabla']));
                 for (x = 0; x < objetos.length; x++) {
-
                     var nodotabla = `<tr>
                     <td>${objetos[x].vNombre}</td>
                     <td class="ui-group-buttons">
@@ -313,6 +312,8 @@ function add_programa_estaltal_previo() {
             type: 'error',
         })
     } else {
+
+        $("#panel_p_estatal").hide();
         var route = "agregar/programa_estatal_previo";
         $.ajax({
             type: "POST",
@@ -328,6 +329,7 @@ function add_programa_estaltal_previo() {
             },
             dataType: "json",
             success: function(data) {
+                llenar_programas_previos_tabla();
                 add_lugar_implementacion(data.id_programapp);
                 new PNotify({
                     title: 'Registro agregado',
