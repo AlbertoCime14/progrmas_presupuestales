@@ -97,10 +97,10 @@ class M_poblaciones extends CI_Model
         return $datos;
     }
 
-    public function actualizar_servicio($id, $datos)
+    public function actualizar_poblacion($id_cuantificacion, $datos)
     {
-        $this->db->where('iIdBienServicio', $id);
-        $this->db->update('bienesservicios', $datos);
+        $this->db->where('iIdCuantificacion', $id_cuantificacion);
+        $this->db->update('cuantificacionpoblacion', $datos);
 
         if ($this->db->affected_rows() > 0) {
             return TRUE;
@@ -140,7 +140,8 @@ class M_poblaciones extends CI_Model
                     'tEspecificacionGrupo' => $row->tEspecificacionGrupo,
                     'iIdGrupoEdad' => $row->iIdGrupoEdad,
                     'iIdDefinicion' => $row->iIdDefinicion,
-                    'vNombre' => $row->vNombre
+                    'vNombre' => $row->vNombre,
+                    'iIdPrograma' => $row->iIdPrograma
 
 
                 ];

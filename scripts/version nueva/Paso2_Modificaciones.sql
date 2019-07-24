@@ -73,6 +73,9 @@ ALTER TABLE `programaspresupuestales`.`confprogramasprevios`
   ADD COLUMN `tResultadoEvaluacion` TEXT NOT NULL  COMMENT 'Agregado para poner el resultado de la evaluacion' AFTER `tLiga`,
   ADD COLUMN `iActivo` TINYINT(1) DEFAULT 1  NOT NULL  COMMENT 'Agregado para manejar el borrado logico' AFTER `tResultadoEvaluacion`;
 
-/* 23 de julio, agreacion del campo aplica a la tabla configuracion del programa previo` */
+/* 23 de julio, agreacion del campo activo a la tabla cuantificacion` */
 ALTER TABLE `programaspresupuestales`.`cuantificacionpoblacion`   
   ADD COLUMN `iActivo` TINYINT(1) UNSIGNED DEFAULT 1  NOT NULL AFTER `iIdPrograma`;
+/* 24 de julio, agreacion del campo vNombre a la tabla otros criterios */
+ALTER TABLE `programaspresupuestales`.`otroscriterios`   
+  ADD COLUMN `VnombreCriterio` VARCHAR(255) NOT NULL AFTER `iIdCriterio`;
