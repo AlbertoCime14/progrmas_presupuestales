@@ -11,9 +11,9 @@ class M_poblaciones extends CI_Model
 
     }
 
-    public function agregar_Servicio($data)
+    public function agregar_poblacion($data)
     {
-        $this->db->insert('bienesservicios', $data);
+        $this->db->insert('cuantificacionpoblacion', $data);
         if ($this->db->affected_rows() > 0) {
             return TRUE;
         } else {
@@ -109,17 +109,27 @@ class M_poblaciones extends CI_Model
         }
     }
 
+    public function eliminar_poblacion($iIdCuantificacion,$data)
+    {
+        $this->db->where('iIdCuantificacion', $iIdCuantificacion);
+        $this->db->update('cuantificacionpoblacion',$data);
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public function cuantificacion_poblacion($iIdPrograma)
     {
         $this->db->select('*');
         $this->db->from('cuantificacionpoblacion');
         $this->db->join('definicionpoblacion', 'cuantificacionpoblacion.iIdDefinicion=definicionpoblacion.iIdDefinicion', 'INNER');
         $this->db->order_by("definicionpoblacion.iIdDefinicion", "asc");
-        $this->db->where('iIdPrograma', $iIdPrograma);
+        $this->db->where("(iIdPrograma=$iIdPrograma AND iActivo=1)");
 
         $query = $this->db->get();
-        if($query->num_rows() > 0)
-        {
+        if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
                 $datos[] = [
                     'iIdCuantificacion' => $row->iIdCuantificacion,
@@ -135,8 +145,7 @@ class M_poblaciones extends CI_Model
 
                 ];
             }
-        }
-        else{
+        } else {
             $datos = array();
         }
 

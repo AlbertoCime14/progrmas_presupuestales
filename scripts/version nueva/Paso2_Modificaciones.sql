@@ -72,3 +72,7 @@ ALTER TABLE `programaspresupuestales`.`confprogramasprevios`
   ADD COLUMN `tLiga` TEXT NULL  COMMENT 'Agregado para poner la liga del archivo' AFTER `tArchivo`,
   ADD COLUMN `tResultadoEvaluacion` TEXT NOT NULL  COMMENT 'Agregado para poner el resultado de la evaluacion' AFTER `tLiga`,
   ADD COLUMN `iActivo` TINYINT(1) DEFAULT 1  NOT NULL  COMMENT 'Agregado para manejar el borrado logico' AFTER `tResultadoEvaluacion`;
+
+/* 23 de julio, agreacion del campo aplica a la tabla configuracion del programa previo` */
+ALTER TABLE `programaspresupuestales`.`cuantificacionpoblacion`   
+  ADD COLUMN `iActivo` TINYINT(1) UNSIGNED DEFAULT 1  NOT NULL AFTER `iIdPrograma`;

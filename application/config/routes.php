@@ -167,6 +167,7 @@ $route['borrar/criteriofocalizacion/file'] = 'C_Focalizacion/drop_files';
 
 
 
+
 //======================Alberto====================================//
 $route['formatos/frm_6'] = 'C_Frm_6/index';
 $route['formatos/frm_7'] = 'C_Frm_7/index';
@@ -195,11 +196,12 @@ $route['acciones/bienesyservicios/listar/(:any)'] = 'C_Bienesys/ListarServicios'
 $route['acciones/bienesyservicios/actualizar/(:any)'] = 'C_Bienesys/ActualizarServicio';
 
 //=======================Acciones poblaciones===========//
-$route['acciones/poblaciones/agregar'] = 'C_PC_Poblaciones/AgregarPoblaciones';
+$route['acciones/poblaciones/agregar'] = 'C_Poblaciones/AgregarPoblaciones';
 $route['acciones/poblaciones/listar_unidad_medida'] = 'C_Poblaciones/'; //esta ruta puede que sirva
 $route['acciones/poblaciones/eliminar'] = 'C_Poblaciones/EliminarPoblacion';
 $route['acciones/poblaciones/listar/(:any)'] = 'C_Poblaciones/ListarDefPoblacion'; //al final de la codificacion este ruta recibe un parametro
 $route['acciones/poblaciones/actualizar'] = 'C_Poblaciones/ActualizarPoblacion';
+$route['acciones/poblaciones/listar_grupo_edad'] = 'C_Poblaciones/listar_grupo_Edad';
 
 
 

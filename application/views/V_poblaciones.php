@@ -31,9 +31,9 @@
                                                 <tr>
                                                     <th>Población</th>
                                                     <th>Descripción</th>
-                                                    <th>Total</th>
                                                     <th>Hombres</th>
                                                     <th>Mujeres</th>
+                                                    <th>Total</th>
                                                     <th>Hablantes de lengua indígena</th>
                                                     <th>¿Pertenece a un grupo de edad?</th>
                                                     <th>Criterios</th>

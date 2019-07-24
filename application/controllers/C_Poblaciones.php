@@ -36,25 +36,26 @@ class C_Poblaciones extends CI_Controller
         $this->load->view('masterpage/Footer');
     }
 
-    public function AgregarServicio()
+    public function AgregarPoblaciones()
     {
-        $vNombre = $this->input->post('vNombreServicio');
-        $tDescripcion = $this->input->post('tDescripcion');
-        $tCriteriosCalidad = $this->input->post('tCriteriosCalidad');
-        $tCriteriosEntregas = $this->input->post('tCriteriosEntregas');
-        $iIdUnidadMedida = $this->input->post('iIdUnidadMedida');
-        $iIdPrograma = $this->input->post('iIdPrograma');
-
+        $Descripcion = $this->input->post('Descripcion',TRUE); //este true es un segundo parametro que reciobe la funcion post, que hace un filtro para evitar ataques xss
+        $num_hombres = $this->input->post('num_hombres',TRUE);
+        $num_mujeres = $this->input->post('num_mujeres',TRUE);
+        $num_indigenas = $this->input->post('num_indigenas',TRUE);
+        $iIdEdad = $this->input->post('edad',TRUE);
+        $iIdPrograma = $this->input->post('idPrograma',TRUE);
+        $definicion=$this->input->post('definicion',TRUE);
         $data = array(
-            'vNombreServicio' => $vNombre,
-            'tDescripcion' => $tDescripcion,
-            'tCriteriosCalidad' => $tCriteriosCalidad,
-            'tCriteriosEntregas' => $tCriteriosEntregas,
-            'iIdUnidadMedida' => $iIdUnidadMedida,
+            'tDescripcion' => $Descripcion,
+            'iHombres' => $num_hombres,
+            'iMujeres' => $num_mujeres,
+            'iHablantesIndigenas' => $num_indigenas,
+            'iIdGrupoEdad' => $iIdEdad,
+            'iIdDefinicion' => $definicion, // falta una fila mas en caso de que haya una espeficicacion de otro grupo edad
             'iIdPrograma' => $iIdPrograma
         );
 
-        if ($this->M_ServiciosBienes->agregar_Servicio($data) === TRUE) {
+        if ($this->M_poblaciones->agregar_poblacion($data) === TRUE) {
             echo "correcto";
         } else {
             echo "incorrecto";
@@ -84,22 +85,39 @@ class C_Poblaciones extends CI_Controller
                 $data['num_def']++;
             }
 
-        } else if ($data['definicion_poblacion'] != null) {
+        } else if ($data['cuantificacion_pobla'] != null) {
             $objeto_Def= $data['definicion_poblacion'];
             $objeto_cuantificacion=$data['cuantificacion_pobla'];
-            var_dump($objeto_cuantificacion);
+
+            for($i=0;  $i < count($objeto_Def);$i++){
+                $contador = 0;
+
+
+                for($x=0; $x < count($objeto_cuantificacion); $x++){
+                    if($objeto_Def[$i]['iIdDefinicion'] == $objeto_cuantificacion[$x]['iIdDefinicion']){
+                        $this->tabla_Actualizar($objeto_cuantificacion[$x]['iIdCuantificacion'],$objeto_cuantificacion[$x]['tDescripcion'],$objeto_cuantificacion[$x]['iHombres'],$objeto_cuantificacion[$x]['iMujeres'],$objeto_cuantificacion[$x]['iHablantesIndigenas'],$objeto_cuantificacion[$x]['iIdGrupoEdad'],$objeto_cuantificacion[$x]['iIdDefinicion'],$objeto_cuantificacion[$x]['vNombre']);
+                         $contador =$objeto_cuantificacion[$x]['iIdDefinicion'];
+                    }
+                }
+                if($contador == 0){
+                    $this->fila_definicion($objeto_Def[$i]['iIdDefinicion'], $objeto_Def[$i]['vNombre'],  $i);
+                }
+
+            }
+
+
         }
 
 
     }
 
-    public function EliminarServicio()
+    public function EliminarPoblacion()
     {
-        $iIdBienServicio = $this->input->post('iIdBienServicio');
+        $iIdCuantificacion = $this->input->post('iIdCuantificacion');
         $data = array(
             'iActivo' => 0
         );
-        if ($this->M_ServiciosBienes->Eliminar_servicio($iIdBienServicio, $data) === TRUE) {
+        if ($this->M_poblaciones->eliminar_poblacion($iIdCuantificacion,$data) === TRUE) {
             echo "correcto";
         } else {
             echo "incorrecto";
@@ -127,24 +145,25 @@ class C_Poblaciones extends CI_Controller
         $html .= '<td>
 			    <textarea name="DescripcionPoblacion_' . $iIdDefinicion . '" id="DescripcionPoblacion_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required></textarea>
 			</td>
+			
 			<td>
-                <input style="width: 100px;" name="total_' . $iIdDefinicion . '" id="total_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
-			</td>
-			<td>
-			    <input style="width: 100px;" name="hombres_' . $iIdDefinicion . '" id="hombres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+			    <input style="width: 100px;" name="hombres_' . $iIdDefinicion . '" id="hombres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required onchange="sumar(this.value,'.$iIdDefinicion.');">
 			</td>
 			
 			
 			</td>
 			<td  style="width: 103px;">
-				 <input style="width: 100px;" name="mujeres_' . $iIdDefinicion . '" id="mujeres' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
+				 <input style="width: 100px;" name="mujeres_' . $iIdDefinicion . '" id="mujeres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required onchange="sumar(this.value,'.$iIdDefinicion.');">
 				
+			</td>
+			<td>
+                <label style="width: 100px;" name="total_' . $iIdDefinicion . '" id="total_' . $iIdDefinicion . '"  class="form-control"></label>
 			</td>
 			<td>
 			    <input style="width: 100px;" name="indigenas' . $iIdDefinicion . '" id="indigenas' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="" required>
 			</td>
 			<td >
-			    ' . $this->Grupo_edad($iIdDefinicion) . '
+			    ' . $this->Grupo_edad($iIdDefinicion,"") . '
 			</td>
 			<td >
 			    <button disabled type="submit" class="btn btn-labeled btn-success" name="fuentes"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button>
@@ -154,35 +173,50 @@ class C_Poblaciones extends CI_Controller
 			</td>
 			
 			<td class="ui-group-buttons" style="width: 150px;">
-				<a title="Agregar población" class="btn btn-success" role="button"  onclick="AgregarPoblacion()" >
+				<a title="Agregar población" class="btn btn-success" role="button"  onclick="AgregarPoblacion('.$iIdDefinicion.')" >
                                                 <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar población" class="btn btn-danger" role="button"  onclick="EliminarPoblacion()">
-                                                <span class="glyphicon glyphicon-trash"></span>
-				</a>
+				
 			</td>
 		</tr>';
 
         echo $html;
 
-    }
+    } //falta poner la opcion de seleccione al combobox
 
-    function Grupo_edad($iIdDefinicion)
+    function Grupo_edad($iIdDefinicion,$grupo_Edad)
     {
 
+        if($grupo_Edad == ""){
+            $html = '';
+            $data['Grupoedad'] = $this->M_poblaciones->recuperar_grupo_Edad();
 
-        $html = '';
-        $data['Grupoedad'] = $this->M_poblaciones->recuperar_grupo_Edad();
+            $html .= '<select style="width: 150px;" name="cbo_edad_' . $iIdDefinicion . '" id="cbo_edad_' . $iIdDefinicion . '" class="form-control">';
+            foreach ($data['Grupoedad'] as $u) {
 
-        $html .= '<select style="width: 150px;" name="cbo_unidad' . $iIdDefinicion . '" id="cbo_unidad_' . $iIdDefinicion . '" class="form-control">';
-        foreach ($data['Grupoedad'] as $u) {
 
-            $html .= '<option value="' . $u['iIdGrupoEdad'] . '">' . $u['vClasificacion'] . '</option>';
+                $html .= '<option value="' . $u['iIdGrupoEdad'] . '">' . $u['vClasificacion'] . '</option>';
 
+            }
+            $html .= '</select>';
+            return $html;
+        }else{
+            $html = '';
+            $data['Grupoedad'] = $this->M_poblaciones->recuperar_grupo_Edad();
+
+            $html .= '<select style="width: 150px;" name="cbo_unidad' . $iIdDefinicion . '" id="cbo_unidad_' . $iIdDefinicion . '" class="form-control">';
+            foreach ($data['Grupoedad'] as $u) {
+                $selected = ($u['iIdGrupoEdad'] == $grupo_Edad) ? 'selected' : '';
+                $html .= '<option value="' . $u['iIdGrupoEdad'] . '" ' . $selected . '>' . $u['vClasificacion'] . '</option>';
+            }
+            $html .= '</select>';
+
+            return $html;
         }
-        $html .= '</select>';
 
-        return $html;
+
+
+
     }
 
     function ActualizarServicio()
@@ -212,7 +246,7 @@ class C_Poblaciones extends CI_Controller
         }
     }
 
-    public function CoberturaGeografica($iIdDefinicion,$nombre_definicion)
+    public function CoberturaGeografica($iIdDefinicion,$nombre_definicion,$id_cuantificacion)
     {
          $html='';
         $definicion = $iIdDefinicion;
@@ -220,65 +254,125 @@ class C_Poblaciones extends CI_Controller
 
             case "Población 2020":
 
-                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio('.$definicion.');"></span>
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" onclick="ActualizarCuantificacio('.$id_cuantificacion.');">
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio()"></span>
-                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
-                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" onclick="CoberturaGeografica('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-globe" ></span>
                                             </a>';
                 break;
             case "Población 2021":
-                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" onclick="ActualizarCuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
-                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
-                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" onclick="CoberturaGeografica('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-globe" ></span>
                                             </a>';
                 break;
             case "Población 2022":
-                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" onclick="ActualizarCuantificacion('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
-                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
-                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" onclick="CoberturaGeografica('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-globe" ></span>
                                             </a>';
                 break;
             case "Población 2023":
-                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" onclick="ActualizarCuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
-                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
-                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" onclick="CoberturaGeografica('.$id_cuantificacion.')" >
+                                                <span class="glyphicon glyphicon-globe" ></span>
                                             </a>';
                 break;
             case "Población 2024":
-                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="ActualizarServicio($iIdDefinicion);"></span>
+                $html.=' <a title="Actualizar servicio" class="btn btn-success" role="button" onclick="ActualizarCuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar servicio" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarServicio($iIdDefinicion)"></span>
-                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button" >
-                                                <span class="glyphicon glyphicon-globe" onclick="ActualizarServicio($iIdDefinicion);"></span>
+				<a title="Eliminar servicio" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-trash" ></span>
+                                            </a><a title="Cobertura Geográfica" class="btn btn-info" role="button"  onclick="CoberturaGeografica('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-globe" ></span>
                                             </a>';
                 break;
             default:
-                $html.=' <a title="Guardar" class="btn btn-success" role="button" >
-                                                <span class="glyphicon glyphicon-floppy-disk" onclick="GuardarCuantificacion('.$definicion.');"></span>
+                $html.=' <a title="Actualizar población" class="btn btn-success" role="button" onclick="ActualizarCuantificacion('.$id_cuantificacion.');" >
+                                                <span class="glyphicon glyphicon-floppy-disk" ></span>
                                             </a>
-				<a title="Eliminar" class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-trash" onclick="EliminarCuantificacion('.$definicion.')"></span>
+				<a title="Eliminar población" class="btn btn-danger" role="button" onclick="Eliminar_cuantificacion('.$id_cuantificacion.')">
+                                                <span class="glyphicon glyphicon-trash" ></span>
                                             </a>';
         }
         return $html;
     }
+    public function listar_grupo_Edad()
+    {
+        $data['GrupoEdad'] = $this->M_poblaciones->recuperar_grupo_Edad();
+        echo json_encode($data);
+    }
+
+    public function tabla_Actualizar( $id_cuantificacion,$descripcion,$hombres,$mujeres,$indigenas,$grupo_Edad,$iIdDefinicion,$nombre_definicion)//falta el especificacion otro
+    {
+
+
+        //$datos = $model->listar_servicio($iIdBienServicio);
+
+
+        $html = '<tr id="' . $iIdDefinicion . '">
+		<td><input type="hidden" name="id' . $id_cuantificacion . '" id="id' . $id_cuantificacion . '" value="' .$id_cuantificacion . '">
+		<label style="width: 170px;" name="vPoblacionReferencia_' . $iIdDefinicion . '" type="text" id="vPoblacionReferencia' . $iIdDefinicion . '"  >' . $nombre_definicion . '</label></td>';
+
+
+        $html .= '<td>
+			    <textarea name="DescripcionPoblacion_' . $iIdDefinicion . '" id="DescripcionPoblacion_' . $iIdDefinicion . '" style="width: 200px;resize:none;"  rows="4" placeholder="Ingrese aquí su descripción" class="form-control resize_vertical" required>'.$descripcion.'</textarea>
+			</td>
+			
+			<td>
+			    <input style="width: 100px;" name="hombres_' . $iIdDefinicion . '" id="hombres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="'.$hombres.'" required onchange="sumar(this.value,'.$iIdDefinicion.');">
+			</td>
+			
+			
+			</td>
+			<td  style="width: 103px;">
+				 <input style="width: 100px;" name="mujeres_' . $iIdDefinicion . '" id="mujeres_' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="'.$mujeres.'" required onchange="sumar(this.value,'.$iIdDefinicion.');">
+				
+			</td>
+			<td>
+                <label style="width: 100px;" name="total_' . $iIdDefinicion . '" id="total_' . $iIdDefinicion . '"  class="form-control"></label>
+			</td>
+			<td>
+			    <input style="width: 100px;" name="indigenas' . $iIdDefinicion . '" id="indigenas' . $iIdDefinicion . '" type="number" min="1" max="99999999999999" maxlength="11" onKeyPress="return soloNumeros(event,\'decNO\');"  class="form-control" value="'.$indigenas.'" required>
+			</td>
+			<td >
+			    ' . $this->Grupo_edad($iIdDefinicion,$grupo_Edad) . '
+			</td>
+			<td >
+			    <button  type="submit" class="btn btn-labeled btn-success" name="fuentes"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button>
+			</td>
+			<td >
+			    <button  type="submit" class="btn btn-labeled btn-success" name="criterios"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar criterios</button>
+			</td>
+			
+			<td class="ui-group-buttons" style="width: 150px;">
+				' . $this->CoberturaGeografica($iIdDefinicion ,$nombre_definicion,$id_cuantificacion) . '
+				
+			</td>
+		</tr>';
+
+        echo $html;
+
+    }
+
 }
+
+
 //combo de cobertura geografica
 // ' . $this->CoberturaGeografica($iIdDefinicion ,$nombre_definicion) . '
