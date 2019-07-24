@@ -112,22 +112,32 @@ function llenar_programas_previos_tabla() {
     $.ajax({
         type: "POST",
         url: url + route,
-        data: { "iIdPrograma": programa },
-        dataType: "json",
+        data: "iIdPrograma=" + programa,
         success: function(data) {
             try {
-                var objetos = (Object.values(data['programas_previos_tabla']));
+                $("#tblProgramaP_body").empty();
+                var json = JSON.parse(data);
+                var objetos = (Object.values(json['programas_previos_tabla']));
                 for (x = 0; x < objetos.length; x++) {
 
                     var nodotabla = `<tr>
                     <td>${objetos[x].vNombre}</td>
+                    <td class="ui-group-buttons">
+                    <a class="btn btn-success" role="button">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    <a class="btn btn-danger" role="button" id="btnEliminarP${objetos[x].iIdConfiguracion}" onclick="eliminar_programa_previo(${objetos[x].iIdConfiguracion})">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
                    </tr> `;
                     $('#tblProgramaP').find('tbody').append(nodotabla);
                 }
 
 
             } catch (e) {
-                programas_previos = null;
+                programas_previos = data;
+                console.log(programa_previo);
             }
             /*  var o = JSON.parse(data); */
             /*    var objetos = (Object.values(o['criteriofocalizacion']));
@@ -136,6 +146,58 @@ function llenar_programas_previos_tabla() {
 			} */
         }
     });
+}
+
+function eliminar_programa_previo(id) {
+    new PNotify({
+        title: 'Eliminar',
+        text: '¿Seguro desea este programa previo?',
+        icon: 'fa fa-question-circle',
+        type: 'warning',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        history: {
+            history: false
+        },
+        addclass: 'stack-modal',
+        stack: { 'dir1': 'down', 'dir2': 'right', 'modal': true }
+    }).get().on('pnotify.confirm', function() {
+        $('#btnEliminarP' + id).removeAttr("onclick");
+        var recurso = "eliminar/programa_estatal_previo";
+        $.ajax({
+            type: "POST",
+            url: url + recurso,
+            data: { "iIdConfiguracion": id },
+            dataType: 'text',
+            success: function(data, status, xhr) {
+                if (data == "correcto") {
+                    llenar_programas_previos_tabla();
+                    new PNotify({
+                        title: 'Programa previo eliminado',
+                        type: 'success',
+                    })
+                } else {
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                console.log(jqXhr);
+                console.log(textStatus);
+                console.log(errorMessage);
+            }
+        });
+    }).on('pnotify.cancel', function() {
+        //  alert('Cancelado');
+    })
 }
 
 
@@ -291,7 +353,7 @@ function add_lugar_implementacion(id) {
                 //     title: 'Registro agregado',
                 //     type: 'success',
                 // });
-                console.log(data);
+
             } else {
                 new PNotify({
                     title: 'Error en la petición comuniquese con soporte',
@@ -315,7 +377,6 @@ function listas_lugar_implementacion(id) {
 
                 //  $("#cboLugarimpl option[value=]").attr('selected', 'selected');
                 for (x = 0; x < objetos.length; x++) {
-                    console.log(objetos[x].iIdmunicipio);
                     $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", "selected");
 
                 }

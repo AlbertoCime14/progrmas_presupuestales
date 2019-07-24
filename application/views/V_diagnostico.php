@@ -172,7 +172,7 @@ include 'application/views/masterpage/navagacionnavb.php';
                                                     <th>Opciones</th>
 
                                                 </thead>
-                                                <tbody id="body_tblProgramaP">
+                                                <tbody id="tblProgramaP_body">
                                                 </tbody>
                                             </table>
                    

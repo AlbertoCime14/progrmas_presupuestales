@@ -113,7 +113,7 @@ class M_Programa extends CI_Model
         $this->db->from('confprogramasprevios cp');
          $this->db->join("programas p", "cp.iIdProgramaPrevio=p.iIdPrograma");
         $this->db->order_by("cp.iIdConfiguracion", "desc");
-       $this->db->where("cp.iIdPrograma",$id_programa["iIdPrograma"]);
+        $this->db->where("(cp.iIdPrograma=$id_programa[iIdPrograma] AND cp.iActivo=1)");
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
@@ -166,6 +166,17 @@ class M_Programa extends CI_Model
     {
         $this->db->where('iIdPrograma', $iIdPrograma);
         $this->db->update('programas', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public function eliminar_programa_estatal_previo($iIdConfiguracion, $data)
+    {
+        $this->db->where($iIdConfiguracion);
+        $this->db->update('confprogramasprevios', $data);
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

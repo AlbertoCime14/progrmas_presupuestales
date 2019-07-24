@@ -87,5 +87,13 @@
 			$data['tipoprograma'] = $this->M_Programa->listar_tipoprograma();
 			echo json_encode($data);
 		}
+		public function eliminar_programa_estatal_previo(){		
+				$data = array('iActivo' => 0);			
+				if($this->M_Programa->eliminar_programa_estatal_previo($_POST,$data)===TRUE){
+					echo "correcto";	
+					}else{
+					echo "incorrecto";
+				}
+			}
 		
 	}
