@@ -468,13 +468,13 @@ function listar_municipios() {
 /**
  * Subida de archivos en el servidor no olvidar cambiar permisos en el servidor de lectura y escritura
  */
-"use strict";
 
-function add_files(id) {
 
-    var form = $('#fileUploadForm' + id)[0];
+function add_files_pep() {
+    console.log("arc");
+    var form = $('#fileUploadForm_pep')[0];
     var data = new FormData(form);
-    var route = "agregar/criteriofocalizacion/file";
+    var route = "agregar/programaestatalprevio/file";
     $.ajax({
         beforeSend: function() {
             new PNotify({
@@ -498,21 +498,21 @@ function add_files(id) {
                 });
 
 
-                $('#tLiga' + id).val("");
-                $('#tLiga' + id).attr("disabled", true);
+                $('#txtLiga').val("");
+                $('#txtLiga').attr("disabled", true);
             } else if (data == "vilidartiposarchivos") {
                 new PNotify({
                     title: 'Error Solo archivos PDF y ZIP',
                     type: 'error',
                 });
-                $('#tArchivo' + id).val("");
+                $('#txtArchivo').val("");
             } else if (data == "incorrecto") {
                 /* 		llenar_tabla_datos(); */
                 new PNotify({
                     title: 'Error en la carga comuniquese con soporte',
                     type: 'error',
                 });
-                $('#tArchivo' + id).val("");
+                $('#txtArchivo').val("");
             }
         }
     });

@@ -124,8 +124,9 @@ include 'application/views/masterpage/navagacionnavb.php';
                                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                                 </br>
                                                 <form method="POST" enctype="multipart/form-data" id="fileUploadForm_pep">
+                                                <input type="text" name="randon" value="<?=md5(mt_rand(10,100))?>" style="display:none">
                                                 <input type="file" class="btn btn-success fileinput-button"
-                                                    name="files" id="txtArchivo">
+                                                    name="files" onchage="add_files_pep()">
                                                 </form></br>
                                                 <!-- <button type="submit" class="btn btn-primary start">
                                                     <i class="fa fa-fw ti-export"></i>

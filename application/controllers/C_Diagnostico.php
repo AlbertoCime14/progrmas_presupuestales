@@ -65,7 +65,55 @@ class C_Diagnostico extends CI_Controller {
 
         $data['municipios'] = $this->M_Diagnostico->listar_municipios();
         echo json_encode($data);
-    }
+	}
+	/**
+		 * Subida de archivos
+		 */
+		public function add_files_pep()
+		{
+			$uploadFileDir = "./archivos/documentos_programas_estatales_previos/";
+	
+			$random = $_POST['randon'];
+			$file=$_FILES['files'];
+			// if (isset($_FILES['tArchivo' . $id])) {
+			// 	$file = $_FILES['tArchivo' . $id];
+			// } else if (isset($_FILES['itArchivo' . $id])) {
+			// 	$file = $_FILES['itArchivo' . $id];
+			// }
+			if (isset($file) && $file['error'] === UPLOAD_ERR_OK) {
+				// get details of the uploaded file
+				$fileTmpPath = $file['tmp_name'];
+				$fileName = $file['name'];
+				$fileSize = $file['size'];
+				$fileType = $file['type'];
+				$fileNameCmps = explode(".", $fileName);
+				$fileExtension = strtolower(end($fileNameCmps));
+	
+				$newFileName = $fileName;
+	
+				// check if file has one of the following extensions
+				$allowedfileExtensions = array('zip', 'pdf');
+	
+				if (in_array($fileExtension, $allowedfileExtensions)) {
+					// directory in which the uploaded file will be moved
+				
+					$dest_path =$uploadFileDir . $random."-".$newFileName;
+	
+					if (move_uploaded_file($fileTmpPath, $dest_path)) {
+						echo "correcto";
+					} else {
+						//validar error al pasar archivo al servidor
+						echo "incorrecto";
+					}
+				} else {
+					//valida los tipos de archivos
+					echo "vilidartiposarchivos";
+				}
+			} else {
+				//valida si existe el post
+				echo "incorrecto";
+			}
+		}
 
 	
 }

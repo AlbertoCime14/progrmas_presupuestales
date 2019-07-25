@@ -94,6 +94,13 @@ $route['eliminar/programa_estatal_previo'] = 'C_Programa/eliminar_programa_estat
 $route['agregar/lugar_implementacion'] = 'C_Diagnostico/agregar_lugarimplementacion';
 $route['listar/lugar_implementacion'] = 'C_Diagnostico/listar_lugarimplementacion';
 
+/**
+ * Para agregar y eliminar los archivos de dignostico apartado poblacion objetivo
+ */
+$route['agregar/programaestatalprevio/file'] = 'C_Diagnostico/add_files_pep';
+$route['borrar/programaestatalprevio/file'] = 'C_Diagnostico/drop_files_pep';
+
+
 //====================combox======================//
 $route['listar/tipoprograma'] = 'C_Programa/listar_tipoprograma';
 $route['listar/criteriofocalizacion'] = 'C_Focalizacion/listar_criterios';
@@ -116,6 +123,9 @@ $route['agregar/criteriofocalizacion'] = 'C_Focalizacion/agregar_criteriosfocali
 $route['actualizacion/criteriofocalizacion'] = 'C_Focalizacion/modificar_criteriosfocalizacioncomplemento';
 $route['eliminar/criteriofocalizacion'] = 'C_Focalizacion/eliminar_criteriosfocalizacioncomplemento';
 
+/**
+ * Para agregar y eliminar los criterios de focalizacion
+ */
 $route['agregar/criteriofocalizacion/file'] = 'C_Focalizacion/add_files';
 $route['borrar/criteriofocalizacion/file'] = 'C_Focalizacion/drop_files';
 
