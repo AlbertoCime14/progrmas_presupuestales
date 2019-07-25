@@ -32,7 +32,7 @@ class C_fuentes_otros extends CI_Controller
     public function index()
     {
         $this->load->view('masterpage/Head');
-        //$this->load->view('V_otros_criterios');
+        $this->load->view('V_fuentes_otros');
         $this->load->view('masterpage/Footer');
     }
     public function AgregarCriterio(){

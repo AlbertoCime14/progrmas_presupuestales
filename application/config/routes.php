@@ -211,8 +211,12 @@ $route['acciones/criterios/listar/(:any)'] = 'C_otros_criterios/ListarCriterios'
 $route['acciones/criterios/eliminar'] = 'C_otros_criterios/EliminarCriterio';
 $route['acciones/criterios/actualizar'] = 'C_otros_criterios/ActualizarCriterio';
 
-//=======================Acciones ===========//
-
+//=======================Acciones de fuentes de las poblaciones===========//
+$route['formatos/Pfuentes/(:any)/(:any)'] = 'C_fuentes_otros/index';
+$route['acciones/Pfuentes/agregar'] = 'C_fuentes_otros/AgregarCriterio';
+$route['acciones/Pfuentes/listar/(:any)'] = 'C_fuentes_otros/ListarCriterios';
+$route['acciones/Pfuentes/eliminar'] = 'C_fuentes_otros/EliminarCriterio';
+$route['acciones/Pfuentes/actualizar'] = 'C_fuentes_otros/ActualizarCriterio';
 
 
 
