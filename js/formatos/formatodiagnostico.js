@@ -420,7 +420,6 @@ function listas_lugar_implementacion(id) {
 
                 //  $("#cboLugarimpl option[value=]").attr('selected', 'selected');
                 for (x = 0; x < objetos.length; x++) {
-                    console.log(objetos[x].iIdmunicipio);
                     $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", true);
 
                 }
