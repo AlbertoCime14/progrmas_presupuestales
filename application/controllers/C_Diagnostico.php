@@ -114,6 +114,21 @@ class C_Diagnostico extends CI_Controller {
 				echo "incorrecto";
 			}
 		}
+		public function drop_files_pep()
+	{
+		$uploadFileDir = "./archivos/documentos_programas_estatales_previos/";
+
+		$archivo = $this->input->post('archivo');
+		$path = $uploadFileDir.$archivo;
+
+		chown($path, 666);
+
+		if (unlink($path)) {
+			echo 'correcto';
+		} else {
+			echo 'incorrecto';
+		}
+	}
 
 	
 }

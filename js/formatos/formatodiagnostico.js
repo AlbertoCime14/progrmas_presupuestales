@@ -154,6 +154,7 @@ function llenar_programas_previos_tabla() {
 }
 
 function actulizar_programa_previo(id) {
+    var rutaarchivo = "archivos/documentos_programas_estatales_previos/";
     limpiarcampos_pep();
     $("#chkAplica").prop('checked', false);
     $("#panel_p_estatal").show();
@@ -164,7 +165,15 @@ function actulizar_programa_previo(id) {
             $("#programa_previo").val(datos_tabla_peprevios[x].iIdProgramaPrevio);
             $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
             $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
-            $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+
+            if (datos_tabla_peprevios[x].tLiga == "") {
+                operador = `<a href="${url + rutaarchivo + datos_tabla_peprevios[x].tArchivo}" id="operador">Ver archivo</a><a id="operador1"> || </a> <a id="operador2" href="#" onclick="eliminar_archivo('${datos_tabla_peprevios[x].tArchivo}')">Eliminar</a>`;
+                console.log(operador);
+                $('#fileUploadForm_pep').append(operador);
+            } else {
+                $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+            }
+
 
             if (datos_tabla_peprevios[x].iAplica == 1) {
                 $("#chkAplica").prop("checked", "checked");
@@ -343,9 +352,8 @@ function add_programa_estaltal_previo() {
     var poblacionobj = $("#txtPoblacionobj").val().trim();
     var resultados = $("#txtResultados").val().trim();
     var liga = $("#txtLiga").val();
-    var archivo = $("#txtArchivo").val();
-
-
+    var archivo = $("#randon").val() + "-" + $("#txtArchivo").val().replace('C:\\fakepath\\', '');
+    console.log(archivo);
     if (programaprevio == 0 || poblacionobj == "" || resultados == "" || liga == "" && archivo == "") {
         new PNotify({
             title: 'LLene correctamente los campos',
@@ -516,4 +524,56 @@ function add_files_pep() {
             }
         }
     });
+}
+
+function eliminar_archivo(archivo) {
+    new PNotify({
+        title: 'Eliminar',
+        text: '¿Seguro desea eliminar el archivo?',
+        icon: 'fa fa-question-circle',
+        type: 'warning',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        history: {
+            history: false
+        },
+        addclass: 'stack-modal',
+        stack: { 'dir1': 'down', 'dir2': 'right', 'modal': true }
+    }).get().on('pnotify.confirm', function() {
+        var recurso = "borrar/programaestatalprevio/file";
+        $.ajax({
+            type: "POST",
+            url: url + recurso,
+            data: { "archivo": archivo },
+            success: function(data) {
+                if (data == "correcto") {
+                    $('#txtLiga').attr("disabled", false);
+                    $('#txtArchivo').attr("disabled", true);
+                    $("txtArchivo").val("");
+                    $("#operador").remove();
+                    $("#operador1").remove();
+                    $("#operador2").remove();
+                    new PNotify({
+                        title: 'Archivo eliminado',
+                        type: 'success',
+                    })
+                } else {
+                    new PNotify({
+                        title: 'Error en la petición comuniquese con soporte',
+                        type: 'error',
+                    })
+                }
+            }
+        });
+    }).on('pnotify.cancel', function() {
+        //  alert('Cancelado');
+    })
+
+
 }
