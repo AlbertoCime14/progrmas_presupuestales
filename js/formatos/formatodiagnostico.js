@@ -29,12 +29,16 @@ function limpiarcampos_pep() {
     $("#cboLugarimpl option:selected").prop("selected", false);
     informacion_programa();
     validarcheck();
+    $("#operador").remove();
+    $("#operador1").remove();
+    $("#operador2").remove();
 }
 $("#nuevoprograma").click(function() {
     $("#panel_p_estatal").css({ "display": "inline" });
     limpiarcampos_pep();
     $("#btnGuardarProgramaEstatalP").removeAttr("onclick");
     $("#btnGuardarProgramaEstatalP").attr("onclick", "add_programa_estaltal_previo()");
+
 });
 
 /**Funcion para editar programa estatal previo**/
@@ -166,15 +170,6 @@ function actulizar_programa_previo(id) {
             $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
             $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
 
-            if (datos_tabla_peprevios[x].tLiga == "") {
-                operador = `<a href="${url + rutaarchivo + datos_tabla_peprevios[x].tArchivo}" id="operador">Ver archivo</a><a id="operador1"> || </a> <a id="operador2" href="#" onclick="eliminar_archivo('${datos_tabla_peprevios[x].tArchivo}')">Eliminar</a>`;
-                console.log(operador);
-                $('#fileUploadForm_pep').append(operador);
-            } else {
-                $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
-            }
-
-
             if (datos_tabla_peprevios[x].iAplica == 1) {
                 $("#chkAplica").prop("checked", "checked");
                 //  validarcheck(datos_tabla_peprevios[x].iIdImplementacion);
@@ -184,6 +179,14 @@ function actulizar_programa_previo(id) {
             }
         } else {
 
+        }
+        if (datos_tabla_peprevios[x].tLiga == "") {
+            operador = `<a href="${url + rutaarchivo + datos_tabla_peprevios[x].tArchivo}" id="operador">Ver archivo</a><a id="operador1"> || </a> <a id="operador2" href="#" onclick="eliminar_archivo('${datos_tabla_peprevios[x].tArchivo}')">Eliminar</a>`;
+            $('#fileUploadForm_pep').append(operador);
+            $("#txtLiga").attr("disabled", true);
+        } else {
+            $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+            $("#tArchivo").attr("disabled", true);
         }
 
     }
@@ -321,24 +324,29 @@ function listar_bienes_servicios($id) {
 //============valida el checkbox aplica o no aplica===//
 
 function validarcheck() {
-
     var validador;
-
-
     if ($('#chkAplica').is(':checked')) {
         validador = false;
     } else {
         validador = true;
     }
-
-
     $("#txtPoblacionobj").prop("disabled", validador);
     $("#txtResultados").prop("disabled", validador);
     $("#txtLiga").prop("disabled", validador);
     $("#txtArchivo").prop("disabled", validador);
     $("#cboLugarimpl").prop("disabled", validador);
+    validarreferencia();
 }
 
+function validarreferencia() {
+    if ($("#txtLiga").val().length > 0) {
+
+        $("#txtArchivo").attr("disabled", true);
+    } else {
+        $("#txtArchivo").attr("disabled", false);
+    }
+
+}
 //============subida de informacion del programa estatal previo=======================//
 function add_programa_estaltal_previo() {
 

@@ -113,7 +113,7 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <label class="control-label">
                                             Liga del informe de evaluación
                                         </label>
-                                        <input type="text" class="form-control" id="txtLiga" />
+                                        <input type="text" class="form-control" id="txtLiga" onkeyup="validarreferencia()"/>
                                     </div>
                                     <div class="col-md-8">
                                         <label class="control-label">
