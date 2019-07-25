@@ -152,20 +152,29 @@ function llenar_programas_previos_tabla() {
 }
 
 function actulizar_programa_previo(id) {
+    limpiarcampos_pep();
+    $("#chkAplica").prop('checked', false);
     $("#panel_p_estatal").show();
     $("#btnGuardarProgramaEstatalP").removeAttr("onclick");
     $("#btnGuardarProgramaEstatalP").attr("onclick", "actulizar_programa_previo_data(" + id + ")");
     for (x = 0; x < datos_tabla_peprevios.length; x++) {
-        $("#programa_previo").val(datos_tabla_peprevios[x].iIdProgramaPrevio);
-        $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
-        $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
-        $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
-        if (datos_tabla_peprevios[x].iAplica == 1) {
-            $("#chkAplica").prop("checked", "checked");
-            validarcheck();
+        if (datos_tabla_peprevios[x].iIdConfiguracion == id) {
+            $("#programa_previo").val(datos_tabla_peprevios[x].iIdProgramaPrevio);
+            $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
+            $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
+            $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+
+            if (datos_tabla_peprevios[x].iAplica == 1) {
+                $("#chkAplica").prop("checked", "checked");
+                //  validarcheck(datos_tabla_peprevios[x].iIdImplementacion);
+                validarcheck();
+            } else {
+                validarcheck();
+            }
         } else {
-            validarcheck();
+
         }
+
     }
     listas_lugar_implementacion(id);
     informacion_programa();
@@ -398,6 +407,7 @@ function add_lugar_implementacion(id) {
 }
 
 function listas_lugar_implementacion(id) {
+    $("#cboLugarimpl option:selected").prop("selected", false);
     var route = "listar/lugar_implementacion";
     $.ajax({
         type: "POST",
@@ -410,7 +420,7 @@ function listas_lugar_implementacion(id) {
 
                 //  $("#cboLugarimpl option[value=]").attr('selected', 'selected');
                 for (x = 0; x < objetos.length; x++) {
-                    $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", "selected");
+                    $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", true);
 
                 }
 
