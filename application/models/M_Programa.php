@@ -128,7 +128,7 @@ class M_Programa extends CI_Model
                 'vNombre' =>$row->vNombre
             ];
         }
-        return $datos;
+       return $datos;
     }
     public function listar_bienes_servicios($iIdPrograma)
     {
