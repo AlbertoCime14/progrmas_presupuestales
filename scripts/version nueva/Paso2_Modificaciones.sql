@@ -79,3 +79,6 @@ ALTER TABLE `programaspresupuestales`.`cuantificacionpoblacion`
 /* 24 de julio, agreacion del campo vNombre a la tabla otros criterios */
 ALTER TABLE `programaspresupuestales`.`otroscriterios`   
   ADD COLUMN `VnombreCriterio` VARCHAR(255) NOT NULL AFTER `iIdCriterio`;
+  /*agreacion del campo iActivo a la tabla otros criterios */
+  ALTER TABLE `programaspresupuestales`.`otroscriterios`   
+  ADD COLUMN `iActivo` TINYINT(1) UNSIGNED DEFAULT 1  NOT NULL AFTER `iIdCuantificacion`;
