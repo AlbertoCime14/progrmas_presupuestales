@@ -169,6 +169,14 @@ function actulizar_programa_previo(id) {
             $("#programa_previo").val(datos_tabla_peprevios[x].iIdProgramaPrevio);
             $("#txtPoblacionobj").val(datos_tabla_peprevios[x].tPoblacionObjetivo);
             $("#txtResultados").val(datos_tabla_peprevios[x].tResultadoEvaluacion);
+            if (datos_tabla_peprevios[x].tLiga == "") {
+                operador = `<a href="${url + rutaarchivo + datos_tabla_peprevios[x].tArchivo}" id="operador">Ver archivo</a><a id="operador1"> || </a> <a id="operador2" href="#" onclick="eliminar_archivo('${datos_tabla_peprevios[x].tArchivo}')">Eliminar</a>`;
+                $('#fileUploadForm_pep').append(operador);
+                $("#txtLiga").attr("disabled", true);
+            } else {
+                $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
+                $("#tArchivo").attr("disabled", true);
+            }
 
             if (datos_tabla_peprevios[x].iAplica == 1) {
                 $("#chkAplica").prop("checked", "checked");
@@ -180,14 +188,7 @@ function actulizar_programa_previo(id) {
         } else {
 
         }
-        if (datos_tabla_peprevios[x].tLiga == "") {
-            operador = `<a href="${url + rutaarchivo + datos_tabla_peprevios[x].tArchivo}" id="operador">Ver archivo</a><a id="operador1"> || </a> <a id="operador2" href="#" onclick="eliminar_archivo('${datos_tabla_peprevios[x].tArchivo}')">Eliminar</a>`;
-            $('#fileUploadForm_pep').append(operador);
-            $("#txtLiga").attr("disabled", true);
-        } else {
-            $("#txtLiga").val(datos_tabla_peprevios[x].tLiga);
-            $("#tArchivo").attr("disabled", true);
-        }
+
 
     }
     listas_lugar_implementacion(id);
