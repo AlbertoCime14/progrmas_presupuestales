@@ -129,6 +129,53 @@ class C_fuentes_otros extends CI_Controller
         }
     }
 
+    public function add_files()
+    {
+        $uploadFileDir = "./archivos/documentos_focalizacion/";
+
+        //$id = $_POST['id'];
+        $file;
+        if (isset($_FILES['tArchivo'])) {
+            $file = $_FILES['tArchivo' ];
+        } else if (isset($_FILES['itArchivo' ])) {
+            $file = $_FILES['itArchivo' ];
+        }
+        if (isset($file) && $file['error'] === UPLOAD_ERR_OK) {
+            // get details of the uploaded file
+            $fileTmpPath = $file['tmp_name'];
+            $fileName = $file['name'];
+            $fileSize = $file['size'];
+            $fileType = $file['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+
+            // sanitize file-name
+            $newFileName = $fileName;
+
+            // check if file has one of the following extensions
+            $allowedfileExtensions = array('zip', 'pdf');
+
+            if (in_array($fileExtension, $allowedfileExtensions)) {
+                // directory in which the uploaded file will be moved
+
+                $dest_path =$uploadFileDir . $newFileName;
+
+                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    echo "correcto";
+                } else {
+                    //validar error al pasar archivo al servidor
+                    echo "incorrecto";
+                }
+            } else {
+                //valida los tipos de archivos
+                echo "vilidartiposarchivos";
+            }
+        } else {
+            //valida si existe el post
+            echo "incorrecto";
+        }
+    }
+
 
 }
 

@@ -63,10 +63,7 @@
                                                                        class="form-control">
                                                             </td>
                                                             <td>
-                                                                <input type="file" tabindex="500"
-                                                                       class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload"
-                                                                /
-                                                                value="Subir">
+                                                                <form method="POST" enctype="multipart/form-data" id="fileUploadForm"><input type="file" style="width: 200px;" class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" value="Subir" id="tArchivo"  name="tArchivo" onchange="add_files(<?= "" ?>)"/><input type="text" value="' + iIdCriterioFoc + '" name="id" style="display: none"></form>
                                                             </td>
                                                             <td class="ui-group-buttons">
                                                                 <a class="btn btn-success" role="button">

@@ -227,9 +227,8 @@ $route['acciones/Pfuentes/agregar'] = 'C_fuentes_otros/AgregarCriterio';
 $route['acciones/Pfuentes/listar/(:any)'] = 'C_fuentes_otros/ListarCriterios';
 $route['acciones/Pfuentes/eliminar'] = 'C_fuentes_otros/EliminarCriterio';
 $route['acciones/Pfuentes/actualizar'] = 'C_fuentes_otros/ActualizarCriterio';
-
-
-
+$route['acciones/Pfuentes/file'] = 'C_fuentes_otros/add_files';
+$route['borrar/criteriofocalizacion/file'] = 'C_fuentes_otros/drop_files';
 
 
 
