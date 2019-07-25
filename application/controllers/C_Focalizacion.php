@@ -91,9 +91,9 @@ class C_Focalizacion extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view('masterpage/Head');
+		$this->load->view('masterpage/head');
 		$this->load->view('V_Focalizacion');
-		$this->load->view('masterpage/Footer');
+		$this->load->view('masterpage/footer');
 	}
 	public function agregar_criteriosfocalizacioncomplemento()
 	{

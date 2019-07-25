@@ -29,9 +29,9 @@ class C_Diagnostico extends CI_Controller {
 	public function index()
 	{
 		
-	    $this->load->view('masterpage/Head');
+	    $this->load->view('masterpage/head');
 		$this->load->view('V_diagnostico');
-		$this->load->view('masterpage/Footer');
+		$this->load->view('masterpage/footer');
 		
 		
 		

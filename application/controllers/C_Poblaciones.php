@@ -31,9 +31,9 @@ class C_Poblaciones extends CI_Controller
 
     public function index()
     {
-        $this->load->view('masterpage/Head');
+        $this->load->view('masterpage/head');
         $this->load->view('V_poblaciones');
-        $this->load->view('masterpage/Footer');
+        $this->load->view('masterpage/footer');
     }
 
     public function AgregarPoblaciones()
