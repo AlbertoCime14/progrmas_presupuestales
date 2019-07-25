@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_otros_criterios extends CI_Controller
+class C_fuentes_otros extends CI_Controller
 {
 
     /**
@@ -24,7 +24,7 @@ class C_otros_criterios extends CI_Controller
         parent::__construct();
         //session_start();
         $this->load->helper('url');
-        $this->load->model('M_otro_criterios');
+        //$this->load->model('M_otro_criterios');
         //$this->load->library('session');
     }
 
@@ -32,7 +32,7 @@ class C_otros_criterios extends CI_Controller
     public function index()
     {
         $this->load->view('masterpage/Head');
-        $this->load->view('V_otros_criterios');
+        $this->load->view('V_fuentes_otros');
         $this->load->view('masterpage/Footer');
     }
     public function AgregarCriterio(){
@@ -64,7 +64,7 @@ class C_otros_criterios extends CI_Controller
 
         for($x=0; $x < count($data_criterio); $x++){
 
-                $this->fila_criterios($data_criterio[$x]['iIdCriterio'],$data_criterio[$x]['VnombreCriterio'],$data_criterio[$x]['tDescripcionCriterio']);
+            $this->fila_criterios($data_criterio[$x]['iIdCriterio'],$data_criterio[$x]['VnombreCriterio'],$data_criterio[$x]['tDescripcionCriterio']);
 
 
         }

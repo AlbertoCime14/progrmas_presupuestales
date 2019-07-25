@@ -329,7 +329,7 @@ class C_Poblaciones extends CI_Controller
 			    ' . $this->Grupo_edad($iIdDefinicion,$grupo_Edad) . '
 			</td>
 			<td >
-			    <a href="'.$url.'formatos/criterios/'.base64_encode($id_programa).'" <button  type="submit" class="btn btn-labeled btn-success" name="fuentes"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button></a>
+			    <a href="'.$url.'formatos/Pfuentes/'.base64_encode($id_programa).'/'.base64_encode($id_cuantificacion).'" <button  type="submit" class="btn btn-labeled btn-success" name="fuentes"><span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Agregar fuente</button></a>
 			    
 			</td>
 			<td >

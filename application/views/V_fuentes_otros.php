@@ -15,7 +15,7 @@
                 <aside class="right-side strech" style="padding: 8px">
                     <!-- Content Header (Page header) -->
                     <section class="content-header" style="padding: 10px">
-                        <h1>Otros criterios</h1>
+                        <h1>Fuentes utilizadas</h1>
 
                     </section>
                     <!-- Main content -->
@@ -23,45 +23,64 @@
                         <!---Aqui va el contenido de la pagina :v-->
                         <div class="row">
                             <section>
-                                <div>
-                                    <div style="margin-bottom: 10px;" class="text-right"><a
-                                                href="<?= base_url(); ?>formatos/poblaciones/<?= $id_programa; ?>/"
-                                                class="btn btn-md btn-default float-right"><span
-                                                    class="fa fa-mail-reply"></span>Regresar</a></div>
-                                    <div class="panel">
-
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title" style="margin-left: 14px;">
-                                                <i class=""></i> Nuevos criterios
-                                            </h3>
-                                        </div>
-                                        <div class="panel-body">
-
-                                            <div class="col-md-12">
-                                                <label>Nombre</label>
-                                                <input id="nombre_criterio" type="text" class="form-control"
-                                                       placeholder="Escriba el nombre del criterio">
-                                            </div>
-
-
-                                            <div class="col-md-12">
-                                                <label>Descripción</label>
-                                                <textarea style="resize:none;height: 100px" id="descripcion_criterio"
-                                                          class="form-control"
-                                                          placeholder="Describe el criterio"></textarea>
-                                            </div>
-                                            <div class="col-md-12">
-
-                                                <button onclick="agregar_criterio();" style="margin-top: 20px;" id="enviarprograma" type="button"
-                                                        class="btn btn-labeled btn-success">
-                                                        <span class="btn-label">
-                                                            <i class="glyphicon glyphicon-ok"></i>
-                                                        </span> Crear
-                                                </button>
-                                            </div>
-                                        </div>
+                                <section>
+                                    <div class="col-md-12">
+                                        <label class="control-label">
+                                            Identifica las fuentes utilizadas
+                                        </label>
+                                        <table class="table">
+                                            <tr>
+                                                <th>Fuente</th>
+                                                <th>Fecha de consulta</th>
+                                                <th>Liga</th>
+                                                <th>Adjuntar el archivo</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                            <tbody>
+                                            <tr>
+                                                <td><input type="text" value="Ejemplo de fuente"
+                                                           class="form-control">
+                                                </td>
+                                                <td><input type="date" class="form-control" /></td>
+                                                <td><input type="text" value="wwww.ok.com" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="file" tabindex="500"
+                                                           class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" /
+                                                    value="Subir">
+                                                </td>
+                                                <td class="ui-group-buttons">
+                                                    <a class="btn btn-success" role="button">
+                                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>Ejemplo de fuente</label></td>
+                                                <td><input type="date" class="form-control" readonly /></td>
+                                                <td>www.ok.com</td>
+                                                <td>Sin archivo</td>
+                                                <td class="ui-group-buttons">
+                                                    <a class="btn btn-danger" role="button">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>Ejemplo de fuente 2</label></td>
+                                                <td><input type="date" class="form-control" readonly /></td>
+                                                <td>Sin URL</td>
+                                                <td>Pack.zip</td>
+                                                <td class="ui-group-buttons">
+                                                    <a class="btn btn-danger" role="button">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+                                </section>
                                 </secion>
                                 <br>
                                 <div class="row">
@@ -110,7 +129,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
         crossorigin="anonymous"></script>
-<script src="<?= base_url(); ?>js/formatos/OtrosCriterios.js"></script>
+<script src="<?= base_url(); ?>js/formatos/fuentes_criterios.js"></script>
 
 <script>
 
@@ -129,3 +148,4 @@
     }
 
 </script>
+
