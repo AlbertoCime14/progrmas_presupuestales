@@ -26,7 +26,9 @@ function limpiarcampos_pep() {
     $("#txtLiga").val("");
     $("#programa_previo").val(0);
     $("#chkAplica").prop("checked", "checked");
+    $("#cboLugarimpl option:selected").prop("selected", false);
     informacion_programa();
+    validarcheck();
 }
 $("#nuevoprograma").click(function() {
     $("#panel_p_estatal").css({ "display": "inline" });
@@ -458,6 +460,59 @@ function listar_municipios() {
                     title: 'Error en la petición comuniquese con soporte',
                     type: 'error',
                 })
+            }
+        }
+    });
+}
+
+/**
+ * Subida de archivos en el servidor no olvidar cambiar permisos en el servidor de lectura y escritura
+ */
+"use strict";
+
+function add_files(id) {
+
+    var form = $('#fileUploadForm' + id)[0];
+    var data = new FormData(form);
+    var route = "agregar/criteriofocalizacion/file";
+    $.ajax({
+        beforeSend: function() {
+            new PNotify({
+                title: 'Subiendo archivos...',
+                type: 'warning',
+            });
+
+        },
+        type: "POST",
+        url: url + route,
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            if (data == "correcto") {
+                /* 	llenar_tabla_datos(); */
+                new PNotify({
+                    title: 'Archivo cargado correctamente',
+                    type: 'success',
+                });
+
+
+                $('#tLiga' + id).val("");
+                $('#tLiga' + id).attr("disabled", true);
+            } else if (data == "vilidartiposarchivos") {
+                new PNotify({
+                    title: 'Error Solo archivos PDF y ZIP',
+                    type: 'error',
+                });
+                $('#tArchivo' + id).val("");
+            } else if (data == "incorrecto") {
+                /* 		llenar_tabla_datos(); */
+                new PNotify({
+                    title: 'Error en la carga comuniquese con soporte',
+                    type: 'error',
+                });
+                $('#tArchivo' + id).val("");
             }
         }
     });

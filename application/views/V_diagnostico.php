@@ -100,12 +100,6 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <select class="form-control" multiple style="height:71px;" id="cboLugarimpl">
                                         </select>
                                     </div>
-
-
-
-                                       
-
-
                                         <div class="col-md-8">
                                             <label class="control-label">
                                                 Resultados de evaluaciones
@@ -128,8 +122,11 @@ include 'application/views/masterpage/navagacionnavb.php';
                                         <div class="fileupload-buttonbar">
                                             <div class="col-lg-8">
                                                 <!-- The fileinput-button span is used to style the file input field as button -->
-                                                </br><input type="file" class="btn btn-success fileinput-button"
-                                                    name="files" id="txtArchivo"></br>
+                                                </br>
+                                                <form method="POST" enctype="multipart/form-data" id="fileUploadForm_pep">
+                                                <input type="file" class="btn btn-success fileinput-button"
+                                                    name="files" id="txtArchivo">
+                                                </form></br>
                                                 <!-- <button type="submit" class="btn btn-primary start">
                                                     <i class="fa fa-fw ti-export"></i>
                                                     <span>Iniciar carga de archivo</span>
