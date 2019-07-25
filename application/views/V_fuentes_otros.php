@@ -20,75 +20,78 @@
                     </section>
                     <!-- Main content -->
                     <section class="content">
+
                         <!---Aqui va el contenido de la pagina :v-->
                         <div class="row">
                             <section>
-                                <section>
-                                    <div class="col-md-12">
-                                        <label class="control-label">
-                                            Identifica las fuentes utilizadas
-                                        </label>
-                                        <table class="table">
-                                            <tr>
-                                                <th>Fuente</th>
-                                                <th>Fecha de consulta</th>
-                                                <th>Liga</th>
-                                                <th>Adjuntar el archivo</th>
-                                                <th>Opciones</th>
-                                            </tr>
-                                            <tbody>
-                                            <tr>
-                                                <td><input type="text" value="Ejemplo de fuente"
-                                                           class="form-control">
-                                                </td>
-                                                <td><input type="date" class="form-control" /></td>
-                                                <td><input type="text" value="wwww.ok.com" class="form-control">
-                                                </td>
-                                                <td>
-                                                    <input type="file" tabindex="500"
-                                                           class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload" /
-                                                    value="Subir">
-                                                </td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-success" role="button">
-                                                        <span class="glyphicon glyphicon-floppy-disk"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><label>Ejemplo de fuente</label></td>
-                                                <td><input type="date" class="form-control" readonly /></td>
-                                                <td>www.ok.com</td>
-                                                <td>Sin archivo</td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-danger" role="button">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><label>Ejemplo de fuente 2</label></td>
-                                                <td><input type="date" class="form-control" readonly /></td>
-                                                <td>Sin URL</td>
-                                                <td>Pack.zip</td>
-                                                <td class="ui-group-buttons">
-                                                    <a class="btn btn-danger" role="button">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+
+                                <div>
+                                    <div style="margin-bottom: 10px;" class="text-right"><a
+                                                href="<?= base_url(); ?>formatos/poblaciones/<?= $id_programa; ?>/"
+                                                class="btn btn-md btn-default float-right"><span
+                                                    class="fa fa-mail-reply"></span>Regresar</a></div>
+                                    <div class="panel">
+
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title" style="margin-left: 14px;">
+                                                <i class=""></i> Nuevas fuentes
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+
+
+                                            <div class="col-md-12">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped " id="listado_bienes">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Fuente</th>
+                                                                <th>Fecha de consulta</th>
+                                                                <th>Liga</th>
+                                                                <th>Adjuntar el archivo</th>
+                                                                <th>Opciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td><input type="text" value="Ejemplo de fuente"
+                                                                       class="form-control">
+                                                            </td>
+                                                            <td><input type="date" class="form-control"/></td>
+                                                            <td><input type="text" value="wwww.ok.com"
+                                                                       class="form-control">
+                                                            </td>
+                                                            <td>
+                                                                <input type="file" tabindex="500"
+                                                                       class="btn btn-default fileinput-upload fileinput-upload-button glyphicon glyphicon-upload"
+                                                                /
+                                                                value="Subir">
+                                                            </td>
+                                                            <td class="ui-group-buttons">
+                                                                <a class="btn btn-success" role="button">
+                                                                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
-                                </section>
-                                </secion>
+                                </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="panel">
                                             <div class="panel-heading">
                                                 <h3 class="panel-title">
-                                                    <i class=""></i>Listado de criterios
+                                                    <i class=""></i>Listado de fuentes
                                                 </h3>
                                             </div>
                                             <div class="panel-body">
@@ -96,12 +99,36 @@
                                                        id="listado_programas">
                                                     <thead>
                                                     <tr>
-                                                        <th>Nombre del criterio</th>
-                                                        <th>Descripcion del criterio</th>
+                                                        <th>Nombre de la fuente</th>
+                                                        <th>Fecha de consulta</th>
+                                                        <th>Liga</th>
+                                                        <th>Adjuntar el archivo</th>
                                                         <th>Opciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody id="listado_criterios_body">
+                                                    <tr>
+                                                        <td><label>Ejemplo de fuente</label></td>
+                                                        <td><input type="date" class="form-control" readonly/></td>
+                                                        <td>www.ok.com</td>
+                                                        <td>Sin archivo</td>
+                                                        <td class="ui-group-buttons">
+                                                            <a class="btn btn-danger" role="button">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Ejemplo de fuente 2</label></td>
+                                                        <td><input type="date" class="form-control" readonly/></td>
+                                                        <td>Sin URL</td>
+                                                        <td>Pack.zip</td>
+                                                        <td class="ui-group-buttons">
+                                                            <a class="btn btn-danger" role="button">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
