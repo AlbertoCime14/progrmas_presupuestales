@@ -18,12 +18,19 @@ $(document).ready(function() {
 });
 
 function limpiarcampos_pep() {
+    // $("#cboLugarimpl option[value=" + objetos[x].iIdmunicipio + "]").attr("selected", "selected");
+    // console.log(objetos[x].iIdmunicipio);
+    // $("#cboLugarimpl option:selected").prop("selected", false);
+    // $("#cboLugarimpl option:selected").removeAttr("selected");
+    // $("#cboLugarimpl").multiselect('destroy');
+
     $("#txtDescripcion").val("");
     $("#txtObjetivo").val("");
     $("#cboPoliticapp").val(0);
     $("#txtPoblacionobj").val("");
     $("#txtResultados").val("");
     $("#txtLiga").val("");
+    $("#txtArchivo").val("");
     $("#programa_previo").val(0);
     $("#chkAplica").prop("checked", "checked");
     $("#cboLugarimpl option:selected").prop("selected", false);
@@ -160,6 +167,7 @@ function llenar_programas_previos_tabla() {
 function actulizar_programa_previo(id) {
     var rutaarchivo = "archivos/documentos_programas_estatales_previos/";
     limpiarcampos_pep();
+    listas_lugar_implementacion(id);
     $("#chkAplica").prop('checked', false);
     $("#panel_p_estatal").show();
     $("#btnGuardarProgramaEstatalP").removeAttr("onclick");
@@ -188,12 +196,9 @@ function actulizar_programa_previo(id) {
         } else {
 
         }
-
-
     }
-    listas_lugar_implementacion(id);
-    informacion_programa();
 
+    informacion_programa();
 }
 
 function eliminar_programa_previo(id) {
@@ -343,6 +348,7 @@ function validarreferencia() {
     if ($("#txtLiga").val().length > 0) {
 
         $("#txtArchivo").attr("disabled", true);
+        $("#txtArchivo").val("");
     } else {
         $("#txtArchivo").attr("disabled", false);
     }
@@ -362,7 +368,6 @@ function add_programa_estaltal_previo() {
     var resultados = $("#txtResultados").val().trim();
     var liga = $("#txtLiga").val();
     var archivo = $("#randon").val() + "-" + $("#txtArchivo").val().replace('C:\\fakepath\\', '');
-    console.log(archivo);
     if (programaprevio == 0 || poblacionobj == "" || resultados == "" || liga == "" && archivo == "") {
         new PNotify({
             title: 'LLene correctamente los campos',
@@ -426,7 +431,7 @@ function add_lugar_implementacion(id) {
 }
 
 function listas_lugar_implementacion(id) {
-    $("#cboLugarimpl option:selected").prop("selected", false);
+
     var route = "listar/lugar_implementacion";
     $.ajax({
         type: "POST",
@@ -435,16 +440,28 @@ function listas_lugar_implementacion(id) {
         dataType: "json",
         success: function(data) {
             try {
+
                 var objetos = (Object.values(data['lugares_implentacion']));
 
                 //  $("#cboLugarimpl option[value=]").attr('selected', 'selected');
+                // $("#cboLugarimpl option:selected").prop("selected", false);
+                // $("#cboLugarimpl option:selected").removeAttr("selected");
+                // $("#cboLugarimpl").removeAttr("selected");
+                // $("#cboLugarimpl").val(null).trigger('change');
                 for (x = 0; x < objetos.length; x++) {
-                    $("#cboLugarimpl option[value='" + objetos[x].iIdmunicipio + "']").attr("selected", true);
+                    // $("#cboLugarimpl option[value=" + objetos[x].iIdmunicipio + "]").attr("selected", "selected");
+                    $("#cboLugarimpl option[value=" + objetos[x].iIdmunicipio + "]").prop("selected", true);
+                    // $("#cboLugarimpl option:selected").prop("selected", false);
+                    // consola
+                    console.log(objetos[x].iIdmunicipio);
+
 
                 }
+                console.log($("#cboLugarimpl option:selected").length);
 
 
             } catch (e) {
+                console.log(e);
                 //  console.log(data);
                 // new PNotify({
                 //     title: 'Error en la petición comuniquese con soporte',
@@ -488,7 +505,6 @@ function listar_municipios() {
 
 
 function add_files_pep() {
-    console.log("arc");
     var form = $('#fileUploadForm_pep')[0];
     var data = new FormData(form);
     var route = "agregar/programaestatalprevio/file";
@@ -513,8 +529,6 @@ function add_files_pep() {
                     title: 'Archivo cargado correctamente',
                     type: 'success',
                 });
-
-
                 $('#txtLiga').val("");
                 $('#txtLiga').attr("disabled", true);
             } else if (data == "vilidartiposarchivos") {
